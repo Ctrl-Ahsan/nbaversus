@@ -2746,40 +2746,6 @@
         "country": "USA"
     },
     {
-        "firstName": "Kendall",
-        "lastName": "Brown",
-        "temporaryDisplayName": "Brown, Kendall",
-        "personId": "1631112",
-        "teamId": "1610612754",
-        "jersey": "10",
-        "isActive": true,
-        "pos": "G",
-        "heightFeet": "-",
-        "heightInches": "-",
-        "heightMeters": "",
-        "weightPounds": "",
-        "weightKilograms": "",
-        "dateOfBirthUTC": "",
-        "teamSitesOnly": {
-            "playerCode": "kendall_brown",
-            "posFull": "Guard",
-            "displayAffiliation": "Baylor",
-            "freeAgentCode": ""
-        },
-        "teams": [],
-        "draft": {
-            "teamId": "",
-            "pickNum": "",
-            "roundNum": "",
-            "seasonYear": ""
-        },
-        "nbaDebutYear": "",
-        "yearsPro": "",
-        "collegeName": "",
-        "lastAffiliation": "",
-        "country": ""
-    },
-    {
         "firstName": "Moses",
         "lastName": "Brown",
         "temporaryDisplayName": "Brown, Moses",
@@ -5173,40 +5139,6 @@
         "collegeName": "Louisville",
         "lastAffiliation": "Louisville/Senegal",
         "country": "Senegal"
-    },
-    {
-        "firstName": "Ousmane",
-        "lastName": "Dieng",
-        "temporaryDisplayName": "Dieng, Ousmane",
-        "personId": "1631172",
-        "teamId": "1610612760",
-        "jersey": "13",
-        "isActive": true,
-        "pos": "F",
-        "heightFeet": "-",
-        "heightInches": "-",
-        "heightMeters": "",
-        "weightPounds": "",
-        "weightKilograms": "",
-        "dateOfBirthUTC": "",
-        "teamSitesOnly": {
-            "playerCode": "ousmane_dieng",
-            "posFull": "Forward",
-            "displayAffiliation": "France",
-            "freeAgentCode": ""
-        },
-        "teams": [],
-        "draft": {
-            "teamId": "",
-            "pickNum": "",
-            "roundNum": "",
-            "seasonYear": ""
-        },
-        "nbaDebutYear": "",
-        "yearsPro": "",
-        "collegeName": "",
-        "lastAffiliation": "",
-        "country": ""
     },
     {
         "firstName": "Spencer",
@@ -8859,40 +8791,6 @@
         "country": "USA"
     },
     {
-        "firstName": "Chet",
-        "lastName": "Holmgren",
-        "temporaryDisplayName": "Holmgren, Chet",
-        "personId": "1631096",
-        "teamId": "1610612760",
-        "jersey": "7",
-        "isActive": true,
-        "pos": "C-F",
-        "heightFeet": "-",
-        "heightInches": "-",
-        "heightMeters": "",
-        "weightPounds": "",
-        "weightKilograms": "",
-        "dateOfBirthUTC": "",
-        "teamSitesOnly": {
-            "playerCode": "chet_holmgren",
-            "posFull": "Center-Forward",
-            "displayAffiliation": "Gonzaga/USA",
-            "freeAgentCode": ""
-        },
-        "teams": [],
-        "draft": {
-            "teamId": "",
-            "pickNum": "",
-            "roundNum": "",
-            "seasonYear": ""
-        },
-        "nbaDebutYear": "",
-        "yearsPro": "",
-        "collegeName": "",
-        "lastAffiliation": "",
-        "country": ""
-    },
-    {
         "firstName": "Rodney",
         "lastName": "Hood",
         "temporaryDisplayName": "Hood, Rodney",
@@ -12343,40 +12241,6 @@
         "country": "USA"
     },
     {
-        "firstName": "Bennedict",
-        "lastName": "Mathurin",
-        "temporaryDisplayName": "Mathurin, Bennedict",
-        "personId": "1631097",
-        "teamId": "1610612754",
-        "jersey": "00",
-        "isActive": true,
-        "pos": "G-F",
-        "heightFeet": "-",
-        "heightInches": "-",
-        "heightMeters": "",
-        "weightPounds": "",
-        "weightKilograms": "",
-        "dateOfBirthUTC": "",
-        "teamSitesOnly": {
-            "playerCode": "tmp_bennedict_mathurin",
-            "posFull": "Guard-Forward",
-            "displayAffiliation": "Arizona/Canada",
-            "freeAgentCode": ""
-        },
-        "teams": [],
-        "draft": {
-            "teamId": "",
-            "pickNum": "",
-            "roundNum": "",
-            "seasonYear": ""
-        },
-        "nbaDebutYear": "",
-        "yearsPro": "",
-        "collegeName": "",
-        "lastAffiliation": "",
-        "country": ""
-    },
-    {
         "firstName": "Wesley",
         "lastName": "Matthews",
         "temporaryDisplayName": "Matthews, Wesley",
@@ -14015,40 +13879,6 @@
         "collegeName": "Wyoming",
         "lastAffiliation": "Wyoming/USA",
         "country": "USA"
-    },
-    {
-        "firstName": "Andrew",
-        "lastName": "Nembhard",
-        "temporaryDisplayName": "Nembhard, Andrew",
-        "personId": "1629614",
-        "teamId": "1610612754",
-        "jersey": "2",
-        "isActive": true,
-        "pos": "G-F",
-        "heightFeet": "-",
-        "heightInches": "-",
-        "heightMeters": "",
-        "weightPounds": "",
-        "weightKilograms": "",
-        "dateOfBirthUTC": "",
-        "teamSitesOnly": {
-            "playerCode": "andrew_nembhard",
-            "posFull": "Guard-Forward",
-            "displayAffiliation": "Gonzaga/Canada",
-            "freeAgentCode": ""
-        },
-        "teams": [],
-        "draft": {
-            "teamId": "",
-            "pickNum": "",
-            "roundNum": "",
-            "seasonYear": ""
-        },
-        "nbaDebutYear": "",
-        "yearsPro": "",
-        "collegeName": "",
-        "lastAffiliation": "",
-        "country": ""
     },
     {
         "firstName": "Aaron",
@@ -19854,74 +19684,6 @@
         "collegeName": "Tennessee",
         "lastAffiliation": "Tennessee/USA",
         "country": "USA"
-    },
-    {
-        "firstName": "Jalen",
-        "lastName": "Williams",
-        "temporaryDisplayName": "Williams, Jalen",
-        "personId": "1631114",
-        "teamId": "1610612760",
-        "jersey": "8",
-        "isActive": true,
-        "pos": "G-F",
-        "heightFeet": "-",
-        "heightInches": "-",
-        "heightMeters": "",
-        "weightPounds": "",
-        "weightKilograms": "",
-        "dateOfBirthUTC": "",
-        "teamSitesOnly": {
-            "playerCode": "jalen_williams",
-            "posFull": "Guard-Forward",
-            "displayAffiliation": "Santa Clara/USA",
-            "freeAgentCode": ""
-        },
-        "teams": [],
-        "draft": {
-            "teamId": "",
-            "pickNum": "",
-            "roundNum": "",
-            "seasonYear": ""
-        },
-        "nbaDebutYear": "",
-        "yearsPro": "",
-        "collegeName": "",
-        "lastAffiliation": "",
-        "country": ""
-    },
-    {
-        "firstName": "Jaylin",
-        "lastName": "Williams",
-        "temporaryDisplayName": "Williams, Jaylin",
-        "personId": "1631119",
-        "teamId": "1610612760",
-        "jersey": "6",
-        "isActive": true,
-        "pos": "F",
-        "heightFeet": "-",
-        "heightInches": "-",
-        "heightMeters": "",
-        "weightPounds": "",
-        "weightKilograms": "",
-        "dateOfBirthUTC": "",
-        "teamSitesOnly": {
-            "playerCode": "jaylin_williams",
-            "posFull": "Forward",
-            "displayAffiliation": "Arkansas/USA",
-            "freeAgentCode": ""
-        },
-        "teams": [],
-        "draft": {
-            "teamId": "",
-            "pickNum": "",
-            "roundNum": "",
-            "seasonYear": ""
-        },
-        "nbaDebutYear": "",
-        "yearsPro": "",
-        "collegeName": "",
-        "lastAffiliation": "",
-        "country": ""
     },
     {
         "firstName": "Kenrich",
