@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { IoReloadCircle, IoInformationCircle, IoSettings } from "react-icons/io5"
 import { GiPodium } from "react-icons/gi"
 
-const Menu = () => {
+const Menu = (props) => {
     
     const MenuContainer = styled.nav`
         display: flex;
@@ -10,7 +10,7 @@ const Menu = () => {
         position: absolute;
         bottom: 0;
         right: 0;
-        z-index: 2;
+        z-index: 3;
         align-items: center;
         margin-right: 0.5em;
         margin-bottom: 2.5em;
@@ -19,11 +19,27 @@ const Menu = () => {
         @media screen and (min-width: 320px){
             font-size: 1em;
         }
+
+        & svg{
+            cursor: pointer;
+            transition: all 0.3s;
+            -webkit-tap-highlight-color: transparent;
+            
+            :hover{
+                scale: 1.1;
+            }
+            :active{
+                scale: 0.9;
+                color: grey !important;
+            }
+        }
+
     `
 
     return ( 
         <MenuContainer>
-            <IoReloadCircle style={{color: "orange", fontSize: "5em", marginBottom: "0.2em"}}/>
+
+            <IoReloadCircle onClick={props.reload} style={{color: "orange", fontSize: "5em", marginBottom: "0.2em"}}/>
             <IoInformationCircle style={{fontSize: "2em"}}/>
             <GiPodium style={{fontSize: "2em"}}/>
             <IoSettings style={{fontSize: "1.8em", marginTop: "0.4em"}}/>

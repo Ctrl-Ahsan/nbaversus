@@ -127,7 +127,7 @@ const Versus = () => {
                 setBg1("#623787")
                 break
             case "1610612759":
-                setBg1("#000000")
+                setBg1("#b8b8b8")
                 break
             case "1610612761":
                 setBg1("#000000")
@@ -221,7 +221,7 @@ const Versus = () => {
                 setBg2("#623787")
                 break
             case "1610612759":
-                setBg2("#000000")
+                setBg2("#b8b8b8")
                 break
             case "1610612761":
                 setBg2("#000000")
@@ -242,10 +242,29 @@ const Versus = () => {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        height: ${window.innerHeight};
-
+        height: ${window.innerHeight}px;
+        transition: all 0.3s;
+        
+        & #one{
+            :hover{
+                z-index: 2;
+            }
+            :active{
+                background-image: linear-gradient(${bg1}, ${bg1}, black);
+            }
+            
+        }
+        & #two{
+            :hover{
+                z-index: 2;
+            }
+            :active{
+                background-image: linear-gradient(${bg2}, ${bg2}, black);
+            }
+            
+        }
         & .panel{
-            height: 50vh;
+            height: 50%;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -253,13 +272,28 @@ const Versus = () => {
             position: relative;
             overflow: hidden;
             
+            & img,svg{
+                -webkit-touch-callout: none;
+                -webkit-tap-highlight-color: transparent;
+                -moz-user-select: none;
+                -webkit-user-select: none;
+                user-select: none;
+                -webkit-user-drag: none;
+            }
+
+            :hover{
+                scale: 1.05;
+                transition: scale 0.5s;
+            }
+            :active{
+                scale: 1.1;
+                transition: scale 0.3s;
+            }
+
             & .info{
                 margin: auto;
                 z-index: 1;
                 position: relative;
-            }
-            & .logo{
-                height: 10%;
             }
             & .name{
                 font-size: 2em;
@@ -289,9 +323,9 @@ const Versus = () => {
 
     return (
         <>
-        <Menu />
+        <Menu reload={setReload}/>
             <VersusContainer>
-                <div className='panel' style={{backgroundColor: bg1}}>
+                <div id='one' className='panel' style={{backgroundColor: bg1}}>
                     <div className='info'>
                         <div>
                             <div className='name'>{name1}</div>
@@ -301,7 +335,7 @@ const Versus = () => {
                     <img className='logoBG' src={logo1} alt="logo1" />
                     <img className='player' src={img1} alt="player1" />
                 </div>
-                <div className='panel' style={{backgroundColor: bg2}}>
+                <div id='two' className='panel' style={{backgroundColor: bg2}}>
                     <div className='info'>
                         <div className='name'>{name2}</div>
                         <div className='stats'>{stats2}</div>
