@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import styled from "styled-components"
+import Menu from './Menu';
 import playersFile from "../players.json"
 
 const Versus = () => {
@@ -48,7 +49,7 @@ const Versus = () => {
         
         switch(player1.teamId){
             case "1610612737":
-                setBg1("#864D36")
+                setBg1("#DF393E")
                 break
             case "1610612738":
                 setBg1("#096839")
@@ -142,7 +143,7 @@ const Versus = () => {
         }
         switch(player2.teamId){
             case "1610612737":
-                setBg2("#864D36")
+                setBg2("#DF393E")
                 break
             case "1610612738":
                 setBg2("#096839")
@@ -286,27 +287,30 @@ const Versus = () => {
     `
     
 
-    return ( 
-        <VersusContainer>
-            <div className='panel' style={{backgroundColor: bg1}}>
-                <div className='info'>
-                    <div>
-                        <div className='name'>{name1}</div>
-                        <div className='stats'>{stats1}</div>
+    return (
+        <>
+        <Menu />
+            <VersusContainer>
+                <div className='panel' style={{backgroundColor: bg1}}>
+                    <div className='info'>
+                        <div>
+                            <div className='name'>{name1}</div>
+                            <div className='stats'>{stats1}</div>
+                        </div>
                     </div>
+                    <img className='logoBG' src={logo1} alt="logo1" />
+                    <img className='player' src={img1} alt="player1" />
                 </div>
-                <img className='logoBG' src={logo1} alt="logo1" />
-                <img className='player' src={img1} alt="player1" />
-            </div>
-            <div className='panel' style={{backgroundColor: bg2}}>
-                <div className='info'>
-                    <div className='name'>{name2}</div>
-                    <div className='stats'>{stats2}</div>
+                <div className='panel' style={{backgroundColor: bg2}}>
+                    <div className='info'>
+                        <div className='name'>{name2}</div>
+                        <div className='stats'>{stats2}</div>
+                    </div>
+                        <img className='logoBG' src={logo2} alt="logo2" />
+                    <img className='player' src={img2} alt="player2" />
                 </div>
-                    <img className='logoBG' src={logo2} alt="logo2" />
-                <img className='player' src={img2} alt="player2" />
-            </div>
-        </VersusContainer>
+            </VersusContainer>
+        </>
      );
 }
  
