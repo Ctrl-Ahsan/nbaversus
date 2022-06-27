@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import styled from "styled-components"
 import Menu from './Menu';
+import Stats from './Stats';
 import playersFile from "../players.json"
 
 const Versus = () => {
@@ -11,15 +12,21 @@ const Versus = () => {
     const [p2Wins, setP2Wins] = useState(false)
     const [playerWon, setPlayerWon] = useState(false)
     const [reload, setReload] = useState(false)
+    const [menuOpen, setMenuOpen] = useState(false)
+    const [menuClosed, setMenuClosed] = useState(false)
+    const [toggleStats, setToggleStats] = useState(false)
 
     const playerArray = playersFile.playersArray
     
     useEffect(() => {
     
-        // unset win state
+        // reset states
         setP1Wins(false)
         setP2Wins(false)
         setPlayerWon(false)
+        setMenuOpen(false)
+        setMenuClosed(false)
+        setToggleStats(false)
         // set random player
         const randomInt1 = Math.floor(Math.random() * playerArray.length)
         const randomInt2 = Math.floor(Math.random() * playerArray.length)
@@ -235,14 +242,14 @@ const Versus = () => {
     }
 
     const handleClick1 = () => {
-        if(!p1Wins && !p2Wins){
+        if(!playerWon && !menuOpen){
             setP1Wins(true)
             setPlayerWon(true)
             console.log(player1.personId);
         }
     }
     const handleClick2 = () => {
-        if(!p1Wins && !p2Wins){
+        if(!playerWon && !menuOpen){
             setP2Wins(true)
             setPlayerWon(true)
             console.log(player2.personId);
@@ -275,11 +282,10 @@ const Versus = () => {
             position: relative;
             overflow: hidden;
             transition: all 0.3s;
-            cursor: pointer;
             
-            
-            ${(!p1Wins && !p2Wins) ? ":hover{scale: 1.05;transition: scale 0.5s;z-index: 2;}" : ""}
-            ${(!p1Wins && !p2Wins) ? ":active{scale: 1.2;transition: scale 0.1s;}" : ""}
+            ${(!playerWon && !menuOpen) ? "cursor: pointer;" : ""}
+            ${(!playerWon && !menuOpen) ? ":hover{scale: 1.05;transition: scale 0.5s;z-index: 2;}" : ""}
+            ${(!playerWon && !menuOpen) ? ":active{scale: 1.2;transition: scale 0.1s;}" : ""}
             
             & img,svg{
                 -webkit-touch-callout: none;
@@ -323,8 +329,8 @@ const Versus = () => {
     
     const Panel1 = () => {
         return(
-            <div id='one' className={(!p1Wins && !p2Wins) ? 'panel tilt-in-fwd-tr' : 
-                p1Wins ? 'panel shake-horizontal' : 'panel'} onClick={handleClick1}>
+            <div id='one' className={(!playerWon && !menuOpen && !menuClosed) ? 'panel tilt-in-fwd-tr' : 
+                p1Wins && !menuOpen ? 'panel shake-horizontal' : 'panel'} onClick={handleClick1}>
                 <div className='info'>
                     <div>
                         <div className='name'>{player1.firstName} {player1.lastName}</div>
@@ -338,8 +344,8 @@ const Versus = () => {
     }
     const Panel2 = () => {
         return(
-            <div id='two' className={(!p1Wins && !p2Wins) ? 'panel tilt-in-fwd-bl' : 
-                p2Wins ? 'panel shake-horizontal' : 'panel'} onClick={handleClick2}>
+            <div id='two' className={(!playerWon && !menuOpen && !menuClosed) ? 'panel tilt-in-fwd-bl' : 
+                p2Wins && !menuOpen ? 'panel shake-horizontal' : 'panel'} onClick={handleClick2}>
                 <div className='info'>
                     <div className='name'>{player2.firstName} {player2.lastName}</div>
                     <div className='stats'>{stats2}</div>
@@ -352,7 +358,8 @@ const Versus = () => {
 
     return (
         <>
-            <Menu reload={setReload} pWon = {playerWon} />
+            <Menu reload={setReload} pWon = {playerWon} menuOpen={menuOpen} setMenuOpen={setMenuOpen} setToggleStats={setToggleStats} />
+            <Stats setMenuOpen={setMenuOpen} setMenuClosed={setMenuClosed} toggleStats={toggleStats} setToggleStats={setToggleStats} p1={player1} p2={player2}/>
             <VersusContainer>
                 <Panel1 />
                 <Panel2 />

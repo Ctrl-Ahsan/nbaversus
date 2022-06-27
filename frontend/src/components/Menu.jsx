@@ -3,6 +3,12 @@ import { IoReloadCircle, IoInformationCircle, IoSettings, IoArrowForwardCircle }
 import { GiPodium } from "react-icons/gi"
 
 const Menu = (props) => {
+
+    const handleStats = () => {
+        props.setMenuOpen(true)
+        props.setToggleStats(true)
+        console.log("menu component toggling stats");
+    }
     
     const MenuContainer = styled.nav`
         display: flex;
@@ -20,8 +26,11 @@ const Menu = (props) => {
             font-size: 1em;
         }
 
+        ${props.menuOpen ? "display: none;" : ""}
+
         & svg{
             cursor: pointer;
+            margin-bottom: 5px;
             transition: all 0.3s;
             -webkit-tap-highlight-color: transparent;
             
@@ -40,7 +49,7 @@ const Menu = (props) => {
         <MenuContainer>
 
             {(!props.pWon) ? <IoReloadCircle onClick={props.reload} style={{color: "orange", fontSize: "5em", marginBottom: "0.2em"}}/> : <IoArrowForwardCircle className="scale-in-center" onClick={props.reload} style={{color: "orange", fontSize: "5em", marginBottom: "0.2em"}}/>}
-            <IoInformationCircle style={{fontSize: "2em"}}/>
+            <IoInformationCircle onClick={handleStats} style={{fontSize: "2em"}}/>
             <GiPodium style={{fontSize: "2em"}}/>
             <IoSettings style={{fontSize: "1.8em", marginTop: "0.4em"}}/>
         </MenuContainer>
