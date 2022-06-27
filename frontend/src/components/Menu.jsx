@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { IoReloadCircle, IoInformationCircle, IoSettings } from "react-icons/io5"
+import { IoReloadCircle, IoInformationCircle, IoSettings, IoArrowForwardCircle } from "react-icons/io5"
 import { GiPodium } from "react-icons/gi"
 
 const Menu = (props) => {
@@ -39,7 +39,7 @@ const Menu = (props) => {
     return ( 
         <MenuContainer>
 
-            <IoReloadCircle onClick={props.reload} style={{color: "orange", fontSize: "5em", marginBottom: "0.2em"}}/>
+            {(!props.pWon) ? <IoReloadCircle onClick={props.reload} style={{color: "orange", fontSize: "5em", marginBottom: "0.2em"}}/> : <IoArrowForwardCircle className="scale-in-center" onClick={props.reload} style={{color: "orange", fontSize: "5em", marginBottom: "0.2em"}}/>}
             <IoInformationCircle style={{fontSize: "2em"}}/>
             <GiPodium style={{fontSize: "2em"}}/>
             <IoSettings style={{fontSize: "1.8em", marginTop: "0.4em"}}/>

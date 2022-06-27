@@ -9,6 +9,7 @@ const Versus = () => {
     const [player2, setPlayer2] = useState({})
     const [p1Wins, setP1Wins] = useState(false)
     const [p2Wins, setP2Wins] = useState(false)
+    const [playerWon, setPlayerWon] = useState(false)
     const [reload, setReload] = useState(false)
 
     const playerArray = playersFile.playersArray
@@ -18,6 +19,7 @@ const Versus = () => {
         // unset win state
         setP1Wins(false)
         setP2Wins(false)
+        setPlayerWon(false)
         // set random player
         const randomInt1 = Math.floor(Math.random() * playerArray.length)
         const randomInt2 = Math.floor(Math.random() * playerArray.length)
@@ -235,12 +237,14 @@ const Versus = () => {
     const handleClick1 = () => {
         if(!p1Wins && !p2Wins){
             setP1Wins(true)
+            setPlayerWon(true)
             console.log(player1.personId);
         }
     }
     const handleClick2 = () => {
         if(!p1Wins && !p2Wins){
             setP2Wins(true)
+            setPlayerWon(true)
             console.log(player2.personId);
         }
     }
@@ -319,7 +323,8 @@ const Versus = () => {
     
     const Panel1 = () => {
         return(
-            <div id='one' className={(!p1Wins && !p2Wins) ? 'panel tilt-in-fwd-tr' : 'panel'} onClick={handleClick1}>
+            <div id='one' className={(!p1Wins && !p2Wins) ? 'panel tilt-in-fwd-tr' : 
+                p1Wins ? 'panel shake-horizontal' : 'panel'} onClick={handleClick1}>
                 <div className='info'>
                     <div>
                         <div className='name'>{player1.firstName} {player1.lastName}</div>
@@ -333,7 +338,8 @@ const Versus = () => {
     }
     const Panel2 = () => {
         return(
-            <div id='two' className={(!p1Wins && !p2Wins) ? 'panel tilt-in-fwd-bl' : 'panel'} onClick={handleClick2}>
+            <div id='two' className={(!p1Wins && !p2Wins) ? 'panel tilt-in-fwd-bl' : 
+                p2Wins ? 'panel shake-horizontal' : 'panel'} onClick={handleClick2}>
                 <div className='info'>
                     <div className='name'>{player2.firstName} {player2.lastName}</div>
                     <div className='stats'>{stats2}</div>
@@ -346,7 +352,7 @@ const Versus = () => {
 
     return (
         <>
-            <Menu reload={setReload}/>
+            <Menu reload={setReload} pWon = {playerWon} />
             <VersusContainer>
                 <Panel1 />
                 <Panel2 />
