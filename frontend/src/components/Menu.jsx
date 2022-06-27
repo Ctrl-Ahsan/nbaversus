@@ -7,7 +7,6 @@ const Menu = (props) => {
     const handleStats = () => {
         props.setMenuOpen(true)
         props.setToggleStats(true)
-        console.log("menu component toggling stats");
     }
     
     const MenuContainer = styled.nav`

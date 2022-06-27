@@ -19,11 +19,6 @@ const Stats = (props) => {
                 setStats1(json1)
                 setStats2(json2)
             })
-            .catch((err) => {
-                setStats1(null);
-                setStats2(null);
-                console.log(err);
-          }) 
         }
         fetchStats()
       }, [props.p1, props.p2, props.toggleStats])
