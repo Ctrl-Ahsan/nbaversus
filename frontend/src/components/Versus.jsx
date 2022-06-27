@@ -5,16 +5,8 @@ import playersFile from "../players.json"
 
 const Versus = () => {
 
-    const [name1, setName1] = useState("")
-    const [name2, setName2] = useState("")
-    const [stats1, setStats1] = useState("")
-    const [stats2, setStats2] = useState("")
-    const [img1, setImg1] = useState("")
-    const [img2, setImg2] = useState("")
-    const [logo1, setLogo1] = useState("")
-    const [logo2, setLogo2] = useState("")
-    const [bg1, setBg1] = useState("")
-    const [bg2, setBg2] = useState("")
+    const [player1, setPlayer1] = useState({})
+    const [player2, setPlayer2] = useState({})
     const [reload, setReload] = useState(false)
 
     const playerArray = playersFile.playersArray
@@ -24,219 +16,215 @@ const Versus = () => {
         // set random player
         const randomInt1 = Math.floor(Math.random() * playerArray.length)
         const randomInt2 = Math.floor(Math.random() * playerArray.length)
-        const player1 = playerArray[randomInt1]
-        const player2 = playerArray[randomInt2]
-         
-        // set states
-        let formatted = ""
-
-        formatted = `${player1.firstName} ${player1.lastName}`
-        setName1(formatted)
-        formatted = `${player2.firstName} ${player2.lastName}`
-        setName2(formatted)
-
-        formatted = `#${player1.jersey} | ${player1.pos} | ${player1.heightFeet}"${player1.heightInches} | ${player1.weightPounds} lbs`
-        setStats1(formatted)
-        formatted = `#${player2.jersey} | ${player2.pos} | ${player2.heightFeet}"${player2.heightInches} | ${player2.weightPounds} lbs`
-        setStats2(formatted)
-
-        setImg1(`https://cdn.nba.com/headshots/nba/latest/1040x760/${player1.personId}.png`)
-        setImg2(`https://cdn.nba.com/headshots/nba/latest/1040x760/${player2.personId}.png`)
-
-        setLogo1(`https://cdn.nba.com/logos/nba/${player1.teamId}/global/L/logo.svg`)
-        setLogo2(`https://cdn.nba.com/logos/nba/${player2.teamId}/global/L/logo.svg`)
-
+        setPlayer1(playerArray[randomInt1])
+        setPlayer2(playerArray[randomInt2])
         
-        switch(player1.teamId){
-            case "1610612737":
-                setBg1("#DF393E")
-                break
-            case "1610612738":
-                setBg1("#096839")
-                break
-            case "1610612751":
-                setBg1("#000000")
-                break
-            case "1610612766":
-                setBg1("#065F70")
-                break
-            case "1610612741":
-                setBg1("#CE1241")
-                break
-            case "1610612739":
-                setBg1("#591E31")
-                break
-            case "1610612742":
-                setBg1("#024396")
-                break
-            case "1610612743":
-                setBg1("#0C1B34")
-                break
-            case "1610612765":
-                setBg1("#1C428A")
-                break
-            case "1610612744":
-                setBg1("#065591")
-                break
-            case "1610612745":
-                setBg1("#CE1241")
-                break
-            case "1610612754":
-                setBg1("#012D61")
-                break
-            case "1610612746":
-                setBg1("#9F0E25")
-                break
-            case "1610612747":
-                setBg1("#552582")
-                break
-            case "1610612763":
-                setBg1("#5D76A9")
-                break
-            case "1610612748":
-                setBg1("#98002E")
-                break
-            case "1610612749":
-                setBg1("#00471B")
-                break
-            case "1610612750":
-                setBg1("#0D2240")
-                break
-            case "1610612740":
-                setBg1("#012B5C")
-                break
-            case "1610612752":
-                setBg1("#156EB6")
-                break
-            case "1610612760":
-                setBg1("#007AC0")
-                break
-            case "1610612753":
-                setBg1("#0177BF")
-                break
-            case "1610612755":
-                setBg1("#1A71B9")
-                break
-            case "1610612756":
-                setBg1("#1D1260")
-                break
-            case "1610612757":
-                setBg1("#D9363C")
-                break
-            case "1610612758":
-                setBg1("#623787")
-                break
-            case "1610612759":
-                setBg1("#b8b8b8")
-                break
-            case "1610612761":
-                setBg1("#000000")
-                break
-            case "1610612762":
-                setBg1("#012B5C")
-                break
-            case "1610612764":
-                setBg1("#012B5C")
-                break
-            default:
-                setBg1("#051D2D")
-        }
-        switch(player2.teamId){
-            case "1610612737":
-                setBg2("#DF393E")
-                break
-            case "1610612738":
-                setBg2("#096839")
-                break
-            case "1610612751":
-                setBg2("#000000")
-                break
-            case "1610612766":
-                setBg2("#065F70")
-                break
-            case "1610612741":
-                setBg2("#CE1241")
-                break
-            case "1610612739":
-                setBg2("#591E31")
-                break
-            case "1610612742":
-                setBg2("#024396")
-                break
-            case "1610612743":
-                setBg2("#0C1B34")
-                break
-            case "1610612765":
-                setBg2("#1C428A")
-                break
-            case "1610612744":
-                setBg2("#065591")
-                break
-            case "1610612745":
-                setBg2("#CE1241")
-                break
-            case "1610612754":
-                setBg2("#012D61")
-                break
-            case "1610612746":
-                setBg2("#9F0E25")
-                break
-            case "1610612747":
-                setBg2("#552582")
-                break
-            case "1610612763":
-                setBg2("#5D76A9")
-                break
-            case "1610612748":
-                setBg2("#98002E")
-                break
-            case "1610612749":
-                setBg2("#00471B")
-                break
-            case "1610612750":
-                setBg2("#0D2240")
-                break
-            case "1610612740":
-                setBg2("#012B5C")
-                break
-            case "1610612752":
-                setBg2("#156EB6")
-                break
-            case "1610612760":
-                setBg2("#007AC0")
-                break
-            case "1610612753":
-                setBg2("#0177BF")
-                break
-            case "1610612755":
-                setBg2("#1A71B9")
-                break
-            case "1610612756":
-                setBg2("#1D1260")
-                break
-            case "1610612757":
-                setBg2("#D9363C")
-                break
-            case "1610612758":
-                setBg2("#623787")
-                break
-            case "1610612759":
-                setBg2("#b8b8b8")
-                break
-            case "1610612761":
-                setBg2("#000000")
-                break
-            case "1610612762":
-                setBg2("#012B5C")
-                break
-            case "1610612764":
-                setBg2("#012B5C")
-                break
-            default:
-                setBg2("#051D2D")
-        }
-
+        
     }, [reload, playerArray])
+    
+    let formatted = ""
+
+    formatted = `#${player1.jersey} | ${player1.pos} | ${player1.heightFeet}"${player1.heightInches} | ${player1.weightPounds} lbs`
+    const stats1 = (formatted)
+    formatted = `#${player2.jersey} | ${player2.pos} | ${player2.heightFeet}"${player2.heightInches} | ${player2.weightPounds} lbs`
+    const stats2 = (formatted)
+
+    const img1 = (`https://cdn.nba.com/headshots/nba/latest/1040x760/${player1.personId}.png`)
+    const img2 = (`https://cdn.nba.com/headshots/nba/latest/1040x760/${player2.personId}.png`)
+
+    const logo1 = (`https://cdn.nba.com/logos/nba/${player1.teamId}/global/L/logo.svg`)
+    const logo2 = (`https://cdn.nba.com/logos/nba/${player2.teamId}/global/L/logo.svg`)
+
+    let bg1 = ""
+    let bg2 = ""
+    switch(player1.teamId){
+        case "1610612737":
+            bg1 = "#DF393E"
+            break
+        case "1610612738":
+            bg1 = "#096839"
+            break
+        case "1610612751":
+            bg1 = "#000000"
+            break
+        case "1610612766":
+            bg1 = "#065F70"
+            break
+        case "1610612741":
+            bg1 = "#CE1241"
+            break
+        case "1610612739":
+            bg1 = "#591E31"
+            break
+        case "1610612742":
+            bg1 = "#024396"
+            break
+        case "1610612743":
+            bg1 = "#0C1B34"
+            break
+        case "1610612765":
+            bg1 = "#1C428A"
+            break
+        case "1610612744":
+            bg1 = "#065591"
+            break
+        case "1610612745":
+            bg1 = "#CE1241"
+            break
+        case "1610612754":
+            bg1 = "#012D61"
+            break
+        case "1610612746":
+            bg1 = "#9F0E25"
+            break
+        case "1610612747":
+            bg1 = "#552582"
+            break
+        case "1610612763":
+            bg1 = "#5D76A9"
+            break
+        case "1610612748":
+            bg1 = "#98002E"
+            break
+        case "1610612749":
+            bg1 = "#00471B"
+            break
+        case "1610612750":
+            bg1 = "#0D2240"
+            break
+        case "1610612740":
+            bg1 = "#012B5C"
+            break
+        case "1610612752":
+            bg1 = "#156EB6"
+            break
+        case "1610612760":
+            bg1 = "#007AC0"
+            break
+        case "1610612753":
+            bg1 = "#0177BF"
+            break
+        case "1610612755":
+            bg1 = "#1A71B9"
+            break
+        case "1610612756":
+            bg1 = "#1D1260"
+            break
+        case "1610612757":
+            bg1 = "#D9363C"
+            break
+        case "1610612758":
+            bg1 = "#623787"
+            break
+        case "1610612759":
+            bg1 = "#b8b8b8"
+            break
+        case "1610612761":
+            bg1 = "#000000"
+            break
+        case "1610612762":
+            bg1 = "#012B5C"
+            break
+        case "1610612764":
+            bg1 = "#012B5C"
+            break
+        default:
+            bg1 = "#051D2D"
+    }
+    switch(player2.teamId){
+        case "1610612737":
+            bg2 = "#DF393E"
+            break
+        case "1610612738":
+            bg2 = "#096839"
+            break
+        case "1610612751":
+            bg2 = "#000000"
+            break
+        case "1610612766":
+            bg2 = "#065F70"
+            break
+        case "1610612741":
+            bg2 = "#CE1241"
+            break
+        case "1610612739":
+            bg2 = "#591E31"
+            break
+        case "1610612742":
+            bg2 = "#024396"
+            break
+        case "1610612743":
+            bg2 = "#0C1B34"
+            break
+        case "1610612765":
+            bg2 = "#1C428A"
+            break
+        case "1610612744":
+            bg2 = "#065591"
+            break
+        case "1610612745":
+            bg2 = "#CE1241"
+            break
+        case "1610612754":
+            bg2 = "#012D61"
+            break
+        case "1610612746":
+            bg2 = "#9F0E25"
+            break
+        case "1610612747":
+            bg2 = "#552582"
+            break
+        case "1610612763":
+            bg2 = "#5D76A9"
+            break
+        case "1610612748":
+            bg2 = "#98002E"
+            break
+        case "1610612749":
+            bg2 = "#00471B"
+            break
+        case "1610612750":
+            bg2 = "#0D2240"
+            break
+        case "1610612740":
+            bg2 = "#012B5C"
+            break
+        case "1610612752":
+            bg2 = "#156EB6"
+            break
+        case "1610612760":
+            bg2 = "#007AC0"
+            break
+        case "1610612753":
+            bg2 = "#0177BF"
+            break
+        case "1610612755":
+            bg2 = "#1A71B9"
+            break
+        case "1610612756":
+            bg2 = "#1D1260"
+            break
+        case "1610612757":
+            bg2 = "#D9363C"
+            break
+        case "1610612758":
+            bg2 = "#623787"
+            break
+        case "1610612759":
+            bg2 = "#b8b8b8"
+            break
+        case "1610612761":
+            bg2 = "#000000"
+            break
+        case "1610612762":
+            bg2 = "#012B5C"
+            break
+        case "1610612764":
+            bg2 = "#012B5C"
+            break
+        default:
+            bg2 = "#051D2D"
+    }
 
     const VersusContainer = styled.main`
         display: flex;
@@ -328,7 +316,7 @@ const Versus = () => {
                 <div id='one' className='panel' style={{backgroundColor: bg1}}>
                     <div className='info'>
                         <div>
-                            <div className='name'>{name1}</div>
+                            <div className='name'>{player1.firstName} {player1.lastName}</div>
                             <div className='stats'>{stats1}</div>
                         </div>
                     </div>
@@ -337,7 +325,7 @@ const Versus = () => {
                 </div>
                 <div id='two' className='panel' style={{backgroundColor: bg2}}>
                     <div className='info'>
-                        <div className='name'>{name2}</div>
+                        <div className='name'>{player2.firstName} {player2.lastName}</div>
                         <div className='stats'>{stats2}</div>
                     </div>
                         <img className='logoBG' src={logo2} alt="logo2" />
