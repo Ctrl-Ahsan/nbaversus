@@ -7,12 +7,17 @@ const Versus = () => {
 
     const [player1, setPlayer1] = useState({})
     const [player2, setPlayer2] = useState({})
+    const [p1Wins, setP1Wins] = useState(false)
+    const [p2Wins, setP2Wins] = useState(false)
     const [reload, setReload] = useState(false)
 
     const playerArray = playersFile.playersArray
     
     useEffect(() => {
     
+        // unset win state
+        setP1Wins(false)
+        setP2Wins(false)
         // set random player
         const randomInt1 = Math.floor(Math.random() * playerArray.length)
         const randomInt2 = Math.floor(Math.random() * playerArray.length)
@@ -24,6 +29,7 @@ const Versus = () => {
     
     let formatted = ""
 
+    // set player info
     formatted = `#${player1.jersey} | ${player1.pos} | ${player1.heightFeet}"${player1.heightInches} | ${player1.weightPounds} lbs`
     const stats1 = (formatted)
     formatted = `#${player2.jersey} | ${player2.pos} | ${player2.heightFeet}"${player2.heightInches} | ${player2.weightPounds} lbs`
@@ -226,29 +232,34 @@ const Versus = () => {
             bg2 = "#051D2D"
     }
 
+    const handleClick1 = () => {
+        if(!p1Wins && !p2Wins){
+            setP1Wins(true)
+            console.log(player1.personId);
+        }
+    }
+    const handleClick2 = () => {
+        if(!p1Wins && !p2Wins){
+            setP2Wins(true)
+            console.log(player2.personId);
+        }
+    }
+
+    // styling
     const VersusContainer = styled.main`
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         height: ${window.innerHeight}px;
-        transition: all 0.3s;
         
         & #one{
-            :hover{
-                z-index: 2;
-            }
-            :active{
-                background-image: linear-gradient(${bg1}, ${bg1}, black);
-            }
+            background-color: ${bg1};
+            ${p2Wins ? "filter: brightness(30%);" : ""}
             
         }
         & #two{
-            :hover{
-                z-index: 2;
-            }
-            :active{
-                background-image: linear-gradient(${bg2}, ${bg2}, black);
-            }
+            background-color: ${bg2};
+            ${p1Wins ? "filter: brightness(30%);" : ""}
             
         }
         & .panel{
@@ -259,6 +270,12 @@ const Versus = () => {
             justify-content: space-between;
             position: relative;
             overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+            
+            
+            ${(!p1Wins && !p2Wins) ? ":hover{scale: 1.05;transition: scale 0.5s;z-index: 2;}" : ""}
+            ${(!p1Wins && !p2Wins) ? ":active{scale: 1.2;transition: scale 0.1s;}" : ""}
             
             & img,svg{
                 -webkit-touch-callout: none;
@@ -269,15 +286,6 @@ const Versus = () => {
                 -webkit-user-drag: none;
             }
 
-            :hover{
-                scale: 1.05;
-                transition: scale 0.5s;
-            }
-            :active{
-                scale: 1.1;
-                transition: scale 0.3s;
-            }
-
             & .info{
                 margin: auto;
                 z-index: 1;
@@ -286,6 +294,7 @@ const Versus = () => {
             & .name{
                 font-size: 2em;
                 font-weight: 700;
+                margin-bottom: 0.3rem;
             }
             & .stats{
                 font-size: 1em;
@@ -308,29 +317,39 @@ const Versus = () => {
         }
     `
     
+    const Panel1 = () => {
+        return(
+            <div id='one' className={(!p1Wins && !p2Wins) ? 'panel tilt-in-fwd-tr' : 'panel'} onClick={handleClick1}>
+                <div className='info'>
+                    <div>
+                        <div className='name'>{player1.firstName} {player1.lastName}</div>
+                        <div className='stats'>{stats1}</div>
+                    </div>
+                </div>
+                <img className='logoBG' src={logo1} alt="logo1" />
+                <img className='player' src={img1} alt="player1" />
+            </div>
+        )
+    }
+    const Panel2 = () => {
+        return(
+            <div id='two' className={(!p1Wins && !p2Wins) ? 'panel tilt-in-fwd-bl' : 'panel'} onClick={handleClick2}>
+                <div className='info'>
+                    <div className='name'>{player2.firstName} {player2.lastName}</div>
+                    <div className='stats'>{stats2}</div>
+                </div>
+                <img className='logoBG' src={logo2} alt="logo2" />
+                <img className='player' src={img2} alt="player2" />
+            </div>
+        )
+    }
 
     return (
         <>
-        <Menu reload={setReload}/>
+            <Menu reload={setReload}/>
             <VersusContainer>
-                <div id='one' className='panel' style={{backgroundColor: bg1}}>
-                    <div className='info'>
-                        <div>
-                            <div className='name'>{player1.firstName} {player1.lastName}</div>
-                            <div className='stats'>{stats1}</div>
-                        </div>
-                    </div>
-                    <img className='logoBG' src={logo1} alt="logo1" />
-                    <img className='player' src={img1} alt="player1" />
-                </div>
-                <div id='two' className='panel' style={{backgroundColor: bg2}}>
-                    <div className='info'>
-                        <div className='name'>{player2.firstName} {player2.lastName}</div>
-                        <div className='stats'>{stats2}</div>
-                    </div>
-                        <img className='logoBG' src={logo2} alt="logo2" />
-                    <img className='player' src={img2} alt="player2" />
-                </div>
+                <Panel1 />
+                <Panel2 />
             </VersusContainer>
         </>
      );
