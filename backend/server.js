@@ -1,6 +1,6 @@
 const express = require("express")
 const rateLimit = require("express-rate-limit")
-const dotenv = require("dotenv").config({ path: "../.env" })
+const dotenv = require("dotenv").config({ path: "./.env" })
 const colors = require("colors")
 const { errorHandler } = require("./middleware/errorMiddleware")
 const connectDB = require("./config/db")
