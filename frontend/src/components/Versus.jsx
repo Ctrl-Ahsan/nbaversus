@@ -1,11 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react"
 import styled from "styled-components"
-import Menu from './Menu';
-import Stats from './Stats';
+import axios from "axios"
+import Menu from "./Menu"
+import Stats from "./Stats"
+import Settings from "./Settings"
 import playersFile from "../players.json"
 
 const Versus = () => {
-
     const [player1, setPlayer1] = useState({})
     const [player2, setPlayer2] = useState({})
     const [p1Wins, setP1Wins] = useState(false)
@@ -15,11 +16,11 @@ const Versus = () => {
     const [menuOpen, setMenuOpen] = useState(false)
     const [menuClosed, setMenuClosed] = useState(false)
     const [toggleStats, setToggleStats] = useState(false)
+    const [toggleSettings, setToggleSettings] = useState(false)
 
     const playerArray = playersFile.playersArray
-    
+
     useEffect(() => {
-    
         // reset states
         setP1Wins(false)
         setP2Wins(false)
@@ -32,27 +33,25 @@ const Versus = () => {
         const randomInt2 = Math.floor(Math.random() * playerArray.length)
         setPlayer1(playerArray[randomInt1])
         setPlayer2(playerArray[randomInt2])
-        
-        
     }, [reload, playerArray])
-    
+
     let formatted = ""
 
     // set player info
     formatted = `#${player1.jersey} | ${player1.pos} | ${player1.heightFeet}"${player1.heightInches} | ${player1.weightPounds} lbs`
-    const stats1 = (formatted)
+    const stats1 = formatted
     formatted = `#${player2.jersey} | ${player2.pos} | ${player2.heightFeet}"${player2.heightInches} | ${player2.weightPounds} lbs`
-    const stats2 = (formatted)
+    const stats2 = formatted
 
-    const img1 = (`https://cdn.nba.com/headshots/nba/latest/1040x760/${player1.personId}.png`)
-    const img2 = (`https://cdn.nba.com/headshots/nba/latest/1040x760/${player2.personId}.png`)
+    const img1 = `https://cdn.nba.com/headshots/nba/latest/1040x760/${player1.personId}.png`
+    const img2 = `https://cdn.nba.com/headshots/nba/latest/1040x760/${player2.personId}.png`
 
-    const logo1 = (`https://cdn.nba.com/logos/nba/${player1.teamId}/global/L/logo.svg`)
-    const logo2 = (`https://cdn.nba.com/logos/nba/${player2.teamId}/global/L/logo.svg`)
+    const logo1 = `https://cdn.nba.com/logos/nba/${player1.teamId}/global/L/logo.svg`
+    const logo2 = `https://cdn.nba.com/logos/nba/${player2.teamId}/global/L/logo.svg`
 
     let bg1 = ""
     let bg2 = ""
-    switch(player1.teamId){
+    switch (player1.teamId) {
         case "1610612737":
             bg1 = "#DF393E"
             break
@@ -146,7 +145,7 @@ const Versus = () => {
         default:
             bg1 = "#051D2D"
     }
-    switch(player2.teamId){
+    switch (player2.teamId) {
         case "1610612737":
             bg2 = "#DF393E"
             break
@@ -242,17 +241,67 @@ const Versus = () => {
     }
 
     const handleClick1 = () => {
-        if(!playerWon && !menuOpen){
+        if (!playerWon && !menuOpen) {
             setP1Wins(true)
             setPlayerWon(true)
-            console.log(player1.personId);
+            if (localStorage.getItem("user") !== null) {
+                const token = JSON.parse(localStorage.getItem("user")).Token
+                axios
+                    .post(
+                        "/api/votes",
+                        {
+                            winner: player1.personId,
+                            loser: player2.personId,
+                            winnerTeam: player1.teamId,
+                            loserTeam: player2.teamId,
+                        },
+                        {
+                            headers: { Authorization: "Bearer " + token },
+                        }
+                    )
+                    .then((response) => console.log(response))
+            } else {
+                axios
+                    .post("/api/votes", {
+                        winner: player1.personId,
+                        loser: player2.personId,
+                        winnerTeam: player1.teamId,
+                        loserTeam: player2.teamId,
+                    })
+                    .then((response) => console.log(response))
+            }
         }
     }
     const handleClick2 = () => {
-        if(!playerWon && !menuOpen){
+        if (!playerWon && !menuOpen) {
             setP2Wins(true)
             setPlayerWon(true)
-            console.log(player2.personId);
+            if (localStorage.getItem("user") !== null) {
+                const token = JSON.parse(localStorage.getItem("user")).Token
+                axios
+                    .post(
+                        "/api/votes",
+                        {
+                            winner: player2.personId,
+                            loser: player1.personId,
+                            winnerTeam: player2.teamId,
+                            loserTeam: player1.teamId,
+                        },
+                        {
+                            headers: { Authorization: "Bearer " + token },
+                        }
+                    )
+                    .then((response) => console.log(response))
+            } else {
+                axios
+                    .post("/api/votes", {
+                        winner: player2.personId,
+                        loser: player1.personId,
+                        winnerTeam: player2.teamId,
+                        loserTeam: player1.teamId,
+                    })
+                    .then((response) => console.log(response))
+            }
         }
     }
 
@@ -262,18 +311,16 @@ const Versus = () => {
         flex-direction: column;
         justify-content: space-between;
         height: ${window.innerHeight}px;
-        
-        & #one{
+
+        & #one {
             background-color: ${bg1};
             ${p2Wins ? "filter: brightness(30%);" : ""}
-            
         }
-        & #two{
+        & #two {
             background-color: ${bg2};
             ${p1Wins ? "filter: brightness(30%);" : ""}
-            
         }
-        & .panel{
+        & .panel {
             height: 50%;
             display: flex;
             flex-direction: column;
@@ -282,12 +329,16 @@ const Versus = () => {
             position: relative;
             overflow: hidden;
             transition: all 0.3s;
+
+            ${!playerWon && !menuOpen ? "cursor: pointer;" : ""}
+            ${!playerWon && !menuOpen
+                ? ":hover{scale: 1.05;transition: scale 0.5s;z-index: 2;}"
+                : ""}
+            ${!playerWon && !menuOpen
+                ? ":active{scale: 1.2;transition: scale 0.1s;}"
+                : ""}
             
-            ${(!playerWon && !menuOpen) ? "cursor: pointer;" : ""}
-            ${(!playerWon && !menuOpen) ? ":hover{scale: 1.05;transition: scale 0.5s;z-index: 2;}" : ""}
-            ${(!playerWon && !menuOpen) ? ":active{scale: 1.2;transition: scale 0.1s;}" : ""}
-            
-            & img,svg{
+            & img,svg {
                 -webkit-touch-callout: none;
                 -webkit-tap-highlight-color: transparent;
                 -moz-user-select: none;
@@ -296,76 +347,121 @@ const Versus = () => {
                 -webkit-user-drag: none;
             }
 
-            & .info{
+            & .info {
                 margin: auto;
                 z-index: 1;
                 position: relative;
             }
-            & .name{
+            & .name {
                 font-size: 2em;
                 font-weight: 700;
                 margin-bottom: 0.3rem;
             }
-            & .stats{
+            & .stats {
                 font-size: 1em;
                 font-weight: 400;
             }
-            & .logoBG{
+            & .logoBG {
                 position: absolute;
                 left: 50%;
                 top: 60%;
-                transform: translate(-50%,-50%);
+                transform: translate(-50%, -50%);
                 z-index: 0;
                 height: 150%;
                 opacity: 10%;
             }
-            & .player{
+            & .player {
                 max-height: 30vh;
                 max-width: 100%;
                 z-index: 1;
             }
         }
     `
-    
+
     const Panel1 = () => {
-        return(
-            <div id='one' className={(!playerWon && !menuOpen && !menuClosed) ? 'panel tilt-in-fwd-tr' : 
-                p1Wins && !menuOpen ? 'panel shake-horizontal' : 'panel'} onClick={handleClick1}>
-                <div className='info'>
+        return (
+            <div
+                id="one"
+                className={
+                    !playerWon && !menuOpen && !menuClosed
+                        ? "panel tilt-in-fwd-tr"
+                        : p1Wins && !menuOpen
+                        ? "panel shake-horizontal"
+                        : "panel"
+                }
+                onClick={handleClick1}
+            >
+                <div className="info">
                     <div>
-                        <div className='name'>{player1.firstName} {player1.lastName}</div>
-                        <div className='stats'>{stats1}</div>
+                        <div className="name">
+                            {player1.firstName} {player1.lastName}
+                        </div>
+                        <div className="stats">{stats1}</div>
                     </div>
                 </div>
-                <img className='logoBG' src={logo1} alt="logo1" />
-                <img className='player' src={img1} alt="player1" />
+                <img className="logoBG" src={logo1} alt="logo1" />
+                <img className="player" src={img1} alt="player1" />
             </div>
         )
     }
     const Panel2 = () => {
-        return(
-            <div id='two' className={(!playerWon && !menuOpen && !menuClosed) ? 'panel tilt-in-fwd-bl' : 
-                p2Wins && !menuOpen ? 'panel shake-horizontal' : 'panel'} onClick={handleClick2}>
-                <div className='info'>
-                    <div className='name'>{player2.firstName} {player2.lastName}</div>
-                    <div className='stats'>{stats2}</div>
+        return (
+            <div
+                id="two"
+                className={
+                    !playerWon && !menuOpen && !menuClosed
+                        ? "panel tilt-in-fwd-bl"
+                        : p2Wins && !menuOpen
+                        ? "panel shake-horizontal"
+                        : "panel"
+                }
+                onClick={handleClick2}
+            >
+                <div className="info">
+                    <div className="name">
+                        {player2.firstName} {player2.lastName}
+                    </div>
+                    <div className="stats">{stats2}</div>
                 </div>
-                <img className='logoBG' src={logo2} alt="logo2" />
-                <img className='player' src={img2} alt="player2" />
+                <img className="logoBG" src={logo2} alt="logo2" />
+                <img className="player" src={img2} alt="player2" />
             </div>
         )
     }
 
     return (
         <>
-            <Menu reload={setReload} pWon = {playerWon} menuOpen={menuOpen} setMenuOpen={setMenuOpen} setToggleStats={setToggleStats} />
-            <Stats setMenuOpen={setMenuOpen} setMenuClosed={setMenuClosed} toggleStats={toggleStats} setToggleStats={setToggleStats} p1={player1} p2={player2}/>
+            <Menu
+                reload={setReload}
+                pWon={playerWon}
+                menuOpen={menuOpen}
+                setMenuOpen={setMenuOpen}
+                setToggleStats={setToggleStats}
+                setToggleSettings={setToggleSettings}
+            />
+            <Stats
+                setMenuOpen={setMenuOpen}
+                setMenuClosed={setMenuClosed}
+                toggleStats={toggleStats}
+                setToggleStats={setToggleStats}
+                p1={player1}
+                p2={player2}
+            />
+            {toggleSettings && (
+                <Settings
+                    setMenuOpen={setMenuOpen}
+                    menuClosed={menuClosed}
+                    setMenuClosed={setMenuClosed}
+                    toggleSettings={toggleSettings}
+                    setToggleSettings={setToggleSettings}
+                />
+            )}
             <VersusContainer>
                 <Panel1 />
                 <Panel2 />
             </VersusContainer>
         </>
-     );
+    )
 }
- 
-export default Versus;
+
+export default Versus

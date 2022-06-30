@@ -2,19 +2,18 @@ import { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import styled from "styled-components"
 import { toast } from "react-toastify"
-import { FaUser } from "react-icons/fa"
-import { register, reset } from "../features/auth/authSlice"
+import { FaSignInAlt } from "react-icons/fa"
+import { login, reset } from "../features/auth/authSlice"
 import Spinner from "../components/Spinner"
 
-const Register = (props) => {
+const Login = (props) => {
     const Form = () => {
         const [formData, setFormData] = useState({
             name: "",
             password: "",
-            password2: "",
         })
 
-        const { name, password, password2 } = formData
+        const { name, password } = formData
 
         const dispatch = useDispatch()
 
@@ -39,17 +38,16 @@ const Register = (props) => {
 
         const onSubmit = (e) => {
             e.preventDefault()
-            if (name === "" || password === "" || password2 === "") {
-                toast.error("Please fill in all register fields")
-            } else if (password !== password2) {
-                toast.error("Passwords do not match")
+
+            if (name === "" || password === "") {
+                toast.error("Please fill in all fields")
             } else {
                 const userData = {
                     name,
                     password,
                 }
-
-                dispatch(register(userData))
+                dispatch(login(userData))
+                props.setCategoryChanged(true)
             }
         }
 
@@ -80,17 +78,14 @@ const Register = (props) => {
                     />
                 </div>
                 <div className="form-item">
-                    <input
-                        type="password"
-                        id="password2"
-                        name="password2"
-                        value={password2}
-                        placeholder="Confirm password"
-                        onChange={onChange}
-                    />
+                    <button type="submit">Login</button>
                 </div>
+                <hr className="divider" />
                 <div className="form-item">
-                    <button className="signup" type="submit">
+                    <button
+                        className="signup"
+                        onClick={props.setToggleRegister}
+                    >
                         Sign Up
                     </button>
                 </div>
@@ -98,20 +93,20 @@ const Register = (props) => {
         )
     }
 
-    const RegisterContainer = styled.div`
+    const LoginContainer = styled.div`
         display: flex;
         flex-direction: column;
         align-items: center;
     `
 
     return (
-        <RegisterContainer>
+        <LoginContainer>
             <div className="form-title">
-                <FaUser /> Register
+                <FaSignInAlt /> Login
             </div>
             <Form />
-        </RegisterContainer>
+        </LoginContainer>
     )
 }
 
-export default Register
+export default Login
