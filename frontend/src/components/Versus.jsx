@@ -3,6 +3,7 @@ import styled from "styled-components"
 import axios from "axios"
 import Menu from "./Menu"
 import Stats from "./Stats"
+import Leaderboard from "./Leaderboard"
 import Settings from "./Settings"
 import playersFile from "../players.json"
 
@@ -399,8 +400,8 @@ const Versus = () => {
                         <div className="stats">{stats1}</div>
                     </div>
                 </div>
-                <img className="logoBG" src={logo1} alt="logo1" />
-                <img className="player" src={img1} alt="player1" />
+                {player1 && <img className="logoBG" src={logo1} alt="logo1" />}
+                {player1 && <img className="player" src={img1} alt="player1" />}
             </div>
         )
     }
@@ -423,8 +424,8 @@ const Versus = () => {
                     </div>
                     <div className="stats">{stats2}</div>
                 </div>
-                <img className="logoBG" src={logo2} alt="logo2" />
-                <img className="player" src={img2} alt="player2" />
+                {player2 && <img className="logoBG" src={logo2} alt="logo2" />}
+                {player2 && <img className="player" src={img2} alt="player2" />}
             </div>
         )
     }
@@ -447,6 +448,7 @@ const Versus = () => {
                 p1={player1}
                 p2={player2}
             />
+            <Leaderboard />
             {toggleSettings && (
                 <Settings
                     setMenuOpen={setMenuOpen}

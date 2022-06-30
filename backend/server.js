@@ -11,7 +11,7 @@ connectDB()
 // Rate limiter
 const limiter = rateLimit({
     windowMs: 1 * 60 * 1000, // 1 minute
-    max: 30, // limit each IP to 30 requests per windowMs
+    max: 100, // limit each IP to 30 requests per windowMs
 })
 app.use(limiter)
 

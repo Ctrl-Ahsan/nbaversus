@@ -19,7 +19,7 @@ const Settings = (props) => {
         props.setToggleSettings(false)
     }
 
-    const SettingsContainer = styled.div`
+    const SettingsContainer = styled.section`
         position: absolute;
         top: 50%;
         left: 50%;
