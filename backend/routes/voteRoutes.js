@@ -5,6 +5,6 @@ const { mixed } = require("../middleware/authMiddleware")
 
 router.get("/", getVote)
 
-router.post("/", mixed, setVote)
+router.post("/", setVote)
 
 module.exports = router

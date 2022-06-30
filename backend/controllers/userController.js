@@ -28,7 +28,6 @@ const registerUser = asycHandler(async (req, res) => {
         name,
         password: hashedPassword,
     })
-    console.log(user)
 
     if (user) {
         res.status(201).json({
@@ -65,21 +64,12 @@ const getMe = asycHandler(async (req, res) => {
 const updateMe = asycHandler(async (req, res) => {
     const me = await User.findById(req.user.id)
 
-    if (req.body.name === me.name || req.body.password === me.password) {
-        throw new Error("You already have these credentials")
-    }
-    if (req.body.name) {
-        const nameTaken = await User.findOne({ name: req.body.name })
-        if (nameTaken) {
-            console.log(nameTaken)
-            throw new Error("This name is taken")
+    if (req.body.password) {
+        samePassword = await bcrypt.compare(req.body.password, me.password)
+        if (samePassword) {
+            throw new Error("You already have these credentials")
         }
 
-        me.name = req.body.name
-        await me.save()
-        res.status(200).json({ message: "Name updated!" })
-    }
-    if (req.body.password) {
         const salt = await bcrypt.genSalt(10)
         const hashedPassword = await bcrypt.hash(req.body.password, salt)
         me.password = hashedPassword

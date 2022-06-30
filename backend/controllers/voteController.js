@@ -1,4 +1,5 @@
 const asyncHandler = require("express-async-handler")
+const jwt = require("jsonwebtoken")
 const Vote = require("../models/voteModel")
 const User = require("../models/userModel")
 
@@ -28,7 +29,12 @@ const setVote = asyncHandler(async (req, res) => {
             skip: req.body.skip,
         })
         if (req.headers.authorization) {
-            userToUpdate = await User.findById(req.user.id)
+            token = req.headers.authorization.split(" ")[1]
+
+            // Verify token
+            const decoded = jwt.verify(token, process.env.JWT_SECRET)
+
+            userToUpdate = await User.findById(decoded.id)
             userToUpdate.skips.push(vote)
             userToUpdate.save()
         }
@@ -41,7 +47,12 @@ const setVote = asyncHandler(async (req, res) => {
             loserTeam: req.body.loserTeam,
         })
         if (req.headers.authorization) {
-            userToUpdate = await User.findById(req.user.id)
+            token = req.headers.authorization.split(" ")[1]
+
+            // Verify token
+            const decoded = jwt.verify(token, process.env.JWT_SECRET)
+
+            userToUpdate = await User.findById(decoded.id)
             userToUpdate.votes.push(vote)
             userToUpdate.save()
         }
