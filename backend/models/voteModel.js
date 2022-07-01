@@ -14,10 +14,6 @@ const voteSchema = mongoose.Schema(
         loserTeam: {
             type: String,
         },
-        skip: {
-            type: [String],
-            default: undefined,
-        },
     },
     {
         timestamps: true,

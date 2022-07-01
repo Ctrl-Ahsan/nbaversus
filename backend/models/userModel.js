@@ -14,10 +14,6 @@ const userSchema = mongoose.Schema({
         type: [mongoose.Schema.Types.ObjectId],
         ref: "Vote",
     },
-    skips: {
-        type: [mongoose.Schema.Types.ObjectId],
-        ref: "Vote",
-    },
 })
 
 module.exports = mongoose.model("User", userSchema)
