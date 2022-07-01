@@ -145,7 +145,7 @@ const Settings = (props) => {
         }
     `
     return (
-        <SettingsContainer className={categoryChanged ? "" : "fade-in"}>
+        <SettingsContainer>
             <div className="close" onClick={handleClick}>
                 <AiOutlineClose />
             </div>

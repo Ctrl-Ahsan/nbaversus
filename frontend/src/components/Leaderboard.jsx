@@ -1,9 +1,9 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import styled from "styled-components"
-import Players from "../players.json"
 import { AiOutlineClose } from "react-icons/ai"
 import { FaMedal } from "react-icons/fa"
+import Players from "../players.json"
 
 const Leaderboard = (props) => {
     const [winners, setWinners] = useState([])
@@ -107,7 +107,7 @@ const Leaderboard = (props) => {
     `
 
     return (
-        <LeaderboardContainer className="fade-in">
+        <LeaderboardContainer>
             <div className="close" onClick={handleClick}>
                 <AiOutlineClose />
             </div>

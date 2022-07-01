@@ -104,7 +104,7 @@ const Stats = (props) => {
     `
 
     return (
-        <StatsContainer className="fade-in">
+        <StatsContainer>
             <div className="close" onClick={handleClick}>
                 <AiOutlineClose />
             </div>
