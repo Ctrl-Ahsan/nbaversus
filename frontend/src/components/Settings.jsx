@@ -5,15 +5,14 @@ import { AiOutlineClose } from "react-icons/ai"
 import Register from "./Register"
 import Login from "./Login"
 import Profile from "./Profile"
+import Contact from "./Contact"
 
 const Settings = (props) => {
     const [category, setCategory] = useState("account")
-    const [categoryChanged, setCategoryChanged] = useState(false)
     const [toggleRegister, setToggleRegister] = useState(false)
     const { user } = useSelector((state) => state.auth)
 
     function handleClick() {
-        setCategoryChanged(false)
         props.setMenuOpen(false)
         props.setMenuClosed(true)
         props.setToggleSettings(false)
@@ -50,7 +49,7 @@ const Settings = (props) => {
             width: 100%;
             margin-top: 5px;
             padding: 10px;
-            border: 1px solid #000;
+            border: none;
             border-radius: 5px;
             background: #000;
             color: #fff;
@@ -116,7 +115,6 @@ const Settings = (props) => {
 
         & .form-item {
             margin-bottom: 10px;
-            object-fit: cover;
             width: 100%;
             display: flex;
             justify-content: center;
@@ -126,7 +124,7 @@ const Settings = (props) => {
                 font-size: 0.7em;
                 font-family: inherit;
                 padding: 10px;
-                border: 0.1px solid black;
+                border: 0.1px solid #2a2a2a;
                 border-radius: 5px;
                 background-color: #333333;
                 color: white;
@@ -155,7 +153,6 @@ const Settings = (props) => {
                     className="heading"
                     onClick={() => {
                         setCategory("account")
-                        setCategoryChanged(true)
                     }}
                 >
                     <div className="headingText">Account</div>
@@ -165,25 +162,20 @@ const Settings = (props) => {
                     className="heading"
                     onClick={() => {
                         setCategory("support")
-                        setCategoryChanged(true)
+                        setToggleRegister(false)
                     }}
                 >
                     <div className="headingText">Support</div>
                 </div>
             </div>
-            {user && <Profile />}
-            {!user && !toggleRegister && (
-                <Login
-                    setCategoryChanged={setCategoryChanged}
-                    setToggleRegister={setToggleRegister}
-                />
+            {category === "account" && user && <Profile />}
+            {category === "account" && !user && !toggleRegister && (
+                <Login setToggleRegister={setToggleRegister} />
             )}
-            {!user && toggleRegister && (
-                <Register
-                    setCategoryChanged={setCategoryChanged}
-                    setToggleRegister={setToggleRegister}
-                />
+            {category === "account" && !user && toggleRegister && (
+                <Register setToggleRegister={setToggleRegister} />
             )}
+            {category === "support" && <Contact />}
         </SettingsContainer>
     )
 }

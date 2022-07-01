@@ -1,5 +1,5 @@
 import axios from "axios"
-import { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import styled from "styled-components"
 import { AiOutlineClose } from "react-icons/ai"
 import { FaMedal } from "react-icons/fa"
@@ -124,11 +124,11 @@ const Leaderboard = (props) => {
                 {winners !== [] &&
                     winners.map((winner, i) => {
                         return (
-                            <>
+                            <React.Fragment key={i}>
                                 <div className="entry">{i + 1}</div>
                                 <div className="entry">{winner[0]}</div>
                                 <div className="entry">{winner[1]}</div>
-                            </>
+                            </React.Fragment>
                         )
                     })}
             </div>

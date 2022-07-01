@@ -78,14 +78,14 @@ const Profile = () => {
                                 Players.playersArray[j].personId
                             ) {
                                 winnerArray[0][0] =
-                                    Players.playersArray[j].firstName
+                                    Players.playersArray[j].lastName
                             }
                             if (
                                 loserArray[0][0] ===
                                 Players.playersArray[j].personId
                             ) {
                                 loserArray[0][0] =
-                                    Players.playersArray[j].firstName
+                                    Players.playersArray[j].lastName
                             }
                         }
                         setFavorite(winnerArray[0][0])
@@ -117,7 +117,6 @@ const Profile = () => {
             background-color: #d3d3d352;
             border-radius: 20px;
             padding: 0.4em;
-            height: 100%;
             font-weight: 700;
 
             img {
@@ -145,7 +144,7 @@ const Profile = () => {
 
         & .playerImg {
             display: flex;
-            width: 1em;
+            height: 1em;
         }
 
         & .logout {

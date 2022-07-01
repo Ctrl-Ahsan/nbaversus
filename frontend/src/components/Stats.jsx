@@ -62,8 +62,6 @@ const Stats = (props) => {
         max-width: 740px;
         padding: 20px;
 
-        ${props.toggleStats ? "" : "display: none;"}
-
         & .close {
             position: absolute;
             top: 1em;

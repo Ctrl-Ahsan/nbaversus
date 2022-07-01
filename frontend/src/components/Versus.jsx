@@ -442,14 +442,15 @@ const Versus = () => {
                 setToggleLeaderboard={setToggleLeaderboard}
                 setToggleSettings={setToggleSettings}
             />
-            <Stats
-                setMenuOpen={setMenuOpen}
-                setMenuClosed={setMenuClosed}
-                toggleStats={toggleStats}
-                setToggleStats={setToggleStats}
-                p1={player1}
-                p2={player2}
-            />
+            {toggleStats && (
+                <Stats
+                    setMenuOpen={setMenuOpen}
+                    setMenuClosed={setMenuClosed}
+                    setToggleStats={setToggleStats}
+                    p1={player1}
+                    p2={player2}
+                />
+            )}
             {toggleLeaderboard && (
                 <Leaderboard
                     setMenuOpen={setMenuOpen}

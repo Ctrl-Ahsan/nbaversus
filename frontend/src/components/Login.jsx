@@ -47,7 +47,6 @@ const Login = (props) => {
                     password,
                 }
                 dispatch(login(userData))
-                props.setCategoryChanged(true)
             }
         }
 
