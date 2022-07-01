@@ -24,6 +24,8 @@ const Versus = () => {
 
     useEffect(() => {
         // reset states
+        setPlayer1({})
+        setPlayer2({})
         setP1Wins(false)
         setP2Wins(false)
         setPlayerWon(false)
@@ -334,10 +336,7 @@ const Versus = () => {
 
             ${!playerWon && !menuOpen ? "cursor: pointer;" : ""}
             ${!playerWon && !menuOpen
-                ? ":hover{scale: 1.05;transition: scale 0.5s;z-index: 2;}"
-                : ""}
-            ${!playerWon && !menuOpen
-                ? ":active{scale: 1.2;transition: scale 0.1s;}"
+                ? ":active{scale: 1.2;transition: scale 0.1s; z-index: 2;}"
                 : ""}
             
             & img,svg {
@@ -401,8 +400,8 @@ const Versus = () => {
                         <div className="stats">{stats1}</div>
                     </div>
                 </div>
-                {player1 && <img className="logoBG" src={logo1} alt="logo1" />}
-                {player1 && <img className="player" src={img1} alt="player1" />}
+                {player1 && <img className="logoBG" src={logo1} alt="" />}
+                {player1 && <img className="player" src={img1} alt="" />}
             </div>
         )
     }
@@ -425,8 +424,8 @@ const Versus = () => {
                     </div>
                     <div className="stats">{stats2}</div>
                 </div>
-                {player2 && <img className="logoBG" src={logo2} alt="logo2" />}
-                {player2 && <img className="player" src={img2} alt="player2" />}
+                {player2 && <img className="logoBG" src={logo2} alt="" />}
+                {player2 && <img className="player" src={img2} alt="" />}
             </div>
         )
     }

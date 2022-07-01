@@ -92,7 +92,8 @@ const Leaderboard = (props) => {
             padding: 1em 10px;
             display: grid;
             grid-template-columns: 1fr 2fr 1fr;
-            overflow: scroll;
+            overflow-x: hidden;
+            overflow-y: scroll;
         }
 
         & .heading {
