@@ -2,20 +2,44 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import styled from "styled-components"
 import Players from "../players.json"
+import { AiOutlineClose } from "react-icons/ai"
+import { FaMedal } from "react-icons/fa"
 
-const Leaderboard = () => {
+const Leaderboard = (props) => {
     const [winners, setWinners] = useState([])
     useEffect(() => {
         const setLeaderboard = async () => {
             const votesJSON = await axios.get("/api/votes")
-            let winnerArray = []
+            let count = {}
             for (let i = 0; i < votesJSON.data.length; i++) {
-                winnerArray.push(votesJSON.data[i].winner)
+                let property = votesJSON.data[i].winner
+                if (count.hasOwnProperty(property)) {
+                    count[property] += 1
+                } else {
+                    count[property] = 1
+                }
             }
-            setWinners(winnerArray)
+            const countArray = Object.entries(count).sort((a, b) => b[1] - a[1])
+            for (let i = 0; i < countArray.length; i++) {
+                for (let j = 0; j < Players.playersArray.length; j++) {
+                    if (countArray[i][0] === Players.playersArray[j].personId) {
+                        countArray[
+                            i
+                        ][0] = `${Players.playersArray[j].firstName} ${Players.playersArray[j].lastName}`
+                        break
+                    }
+                }
+            }
+            setWinners(countArray)
         }
         setLeaderboard()
     }, [])
+
+    function handleClick() {
+        props.setMenuOpen(false)
+        props.setMenuClosed(true)
+        props.setToggleLeaderboard(false)
+    }
 
     const LeaderboardContainer = styled.section`
         position: absolute;
@@ -37,22 +61,77 @@ const Leaderboard = () => {
         width: 70%;
         max-width: 740px;
         min-height: 50%;
-        padding: 20px;
-        overflow: scroll;
+        padding: 1em;
+
+        display: flex;
+        flex-direction: column;
+
+        & .close {
+            position: absolute;
+            top: 1em;
+            right: 1em;
+            cursor: pointer;
+        }
+
+        & .title {
+            font-size: 1.5em;
+            font-weight: 700;
+            padding: 10px 20px;
+            margin-bottom: 0.5em;
+
+            svg {
+                font-size: 0.7em;
+                margin-right: 5px;
+            }
+        }
+
+        & .leaderboard {
+            background-color: #0000007a;
+            border: solid 1px #21212179;
+            border-radius: 5px;
+            padding: 1em 10px;
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            overflow: scroll;
+        }
+
+        & .heading {
+            font-weight: 300;
+            font-family: Roboto Condensed, Roboto, Arial;
+        }
+
+        & .entry {
+            font-weight: 700;
+            padding: 10px;
+        }
     `
 
     return (
-        <LeaderboardContainer>
-            {winners !== [] &&
-                winners.map((winner) => {
-                    for (let i = 0; i < Players.playersArray.length; i++) {
-                        if (winner === Players.playersArray[i].personId) {
-                            return (
-                                <div>{Players.playersArray[i].firstName}</div>
-                            )
-                        }
-                    }
-                })}
+        <LeaderboardContainer className="fade-in">
+            <div className="close" onClick={handleClick}>
+                <AiOutlineClose />
+            </div>
+            <div className="title">
+                <FaMedal /> Leaderboard
+            </div>
+            <div className="leaderboard">
+                <div className="heading">Rank</div>
+                <div className="heading">Player</div>
+                <div className="heading">Votes</div>
+                <hr style={{ width: "1em" }} />
+                <hr style={{ width: "1em" }} />
+                <hr style={{ width: "1em" }} />
+                {winners !== [] &&
+                    winners.map((winner, i) => {
+                        return (
+                            <>
+                                <div className="entry">{i + 1}</div>
+                                <div className="entry">{winner[0]}</div>
+                                <div className="entry">{winner[1]}</div>
+                            </>
+                        )
+                    })}
+            </div>
         </LeaderboardContainer>
     )
 }

@@ -17,6 +17,7 @@ const Versus = () => {
     const [menuOpen, setMenuOpen] = useState(false)
     const [menuClosed, setMenuClosed] = useState(false)
     const [toggleStats, setToggleStats] = useState(false)
+    const [toggleLeaderboard, setToggleLeaderboard] = useState(false)
     const [toggleSettings, setToggleSettings] = useState(false)
 
     const playerArray = playersFile.playersArray
@@ -438,6 +439,7 @@ const Versus = () => {
                 menuOpen={menuOpen}
                 setMenuOpen={setMenuOpen}
                 setToggleStats={setToggleStats}
+                setToggleLeaderboard={setToggleLeaderboard}
                 setToggleSettings={setToggleSettings}
             />
             <Stats
@@ -448,7 +450,13 @@ const Versus = () => {
                 p1={player1}
                 p2={player2}
             />
-            <Leaderboard />
+            {toggleLeaderboard && (
+                <Leaderboard
+                    setMenuOpen={setMenuOpen}
+                    setMenuClosed={setMenuClosed}
+                    setToggleLeaderboard={setToggleLeaderboard}
+                />
+            )}
             {toggleSettings && (
                 <Settings
                     setMenuOpen={setMenuOpen}

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import styled from "styled-components"
 import { AiOutlineClose } from "react-icons/ai"
+import { IoIosStats } from "react-icons/io"
 
 const Stats = (props) => {
     const [stats1, setStats1] = useState(null)
@@ -57,12 +58,8 @@ const Stats = (props) => {
         color: white;
         font-weight: 300;
 
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-row-gap: 20px;
         width: 70%;
         max-width: 740px;
-        min-height: 50%;
         padding: 20px;
 
         ${props.toggleStats ? "" : "display: none;"}
@@ -74,12 +71,35 @@ const Stats = (props) => {
             cursor: pointer;
         }
 
+        & .title {
+            font-size: 1.5em;
+            font-weight: 700;
+            padding: 10px 20px;
+            margin-bottom: 0.5em;
+
+            svg {
+                font-size: 0.7em;
+                margin-right: 5px;
+            }
+        }
+
+        & .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-row-gap: 20px;
+            background-color: #0000007a;
+            border: solid 1px #21212179;
+            border-radius: 5px;
+            padding: 0.5em 10px;
+        }
+
         & .heading {
+            font-family: Roboto Condensed, Roboto, Arial;
             font-weight: 700;
         }
 
         & .text {
-            padding: 0.5em;
+            padding: 0.4em;
         }
     `
 
@@ -88,38 +108,42 @@ const Stats = (props) => {
             <div className="close" onClick={handleClick}>
                 <AiOutlineClose />
             </div>
-            <Row left="" middle="Stats" right="" />
-            <Row
-                left={<span className="heading">{props.p1.lastName}</span>}
-                middle=""
-                right={<span className="heading">{props.p2.lastName}</span>}
-            />
+            <div className="title">
+                <IoIosStats /> Stats
+            </div>
+            <div className="stats">
+                <Row
+                    left={<span className="heading">{props.p1.lastName}</span>}
+                    middle=""
+                    right={<span className="heading">{props.p2.lastName}</span>}
+                />
 
-            <Row
-                left={stats1?.league?.standard?.stats?.careerSummary.ppg}
-                middle="PPG"
-                right={stats2?.league?.standard?.stats?.careerSummary.ppg}
-            />
-            <Row
-                left={stats1?.league?.standard?.stats?.careerSummary.apg}
-                middle="APG"
-                right={stats2?.league?.standard?.stats?.careerSummary.apg}
-            />
-            <Row
-                left={stats1?.league?.standard?.stats?.careerSummary.rpg}
-                middle="RPG"
-                right={stats2?.league?.standard?.stats?.careerSummary.rpg}
-            />
-            <Row
-                left={stats1?.league?.standard?.stats?.careerSummary.fgp}
-                middle="FG%"
-                right={stats2?.league?.standard?.stats?.careerSummary.fgp}
-            />
-            <Row
-                left={stats1?.league?.standard?.stats?.careerSummary.tpp}
-                middle="3P%"
-                right={stats2?.league?.standard?.stats?.careerSummary.tpp}
-            />
+                <Row
+                    left={stats1?.league?.standard?.stats?.careerSummary.ppg}
+                    middle="PPG"
+                    right={stats2?.league?.standard?.stats?.careerSummary.ppg}
+                />
+                <Row
+                    left={stats1?.league?.standard?.stats?.careerSummary.apg}
+                    middle="APG"
+                    right={stats2?.league?.standard?.stats?.careerSummary.apg}
+                />
+                <Row
+                    left={stats1?.league?.standard?.stats?.careerSummary.rpg}
+                    middle="RPG"
+                    right={stats2?.league?.standard?.stats?.careerSummary.rpg}
+                />
+                <Row
+                    left={stats1?.league?.standard?.stats?.careerSummary.fgp}
+                    middle="FG%"
+                    right={stats2?.league?.standard?.stats?.careerSummary.fgp}
+                />
+                <Row
+                    left={stats1?.league?.standard?.stats?.careerSummary.tpp}
+                    middle="3P%"
+                    right={stats2?.league?.standard?.stats?.careerSummary.tpp}
+                />
+            </div>
         </StatsContainer>
     )
 }

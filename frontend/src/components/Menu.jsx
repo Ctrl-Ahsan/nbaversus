@@ -12,6 +12,10 @@ const Menu = (props) => {
         props.setMenuOpen(true)
         props.setToggleStats(true)
     }
+    const handleLeaderboard = () => {
+        props.setMenuOpen(true)
+        props.setToggleLeaderboard(true)
+    }
     const handleSettings = () => {
         props.setMenuOpen(true)
         props.setToggleSettings(true)
@@ -77,7 +81,7 @@ const Menu = (props) => {
                 onClick={handleStats}
                 style={{ fontSize: "2em" }}
             />
-            <GiPodium style={{ fontSize: "2em" }} />
+            <GiPodium onClick={handleLeaderboard} style={{ fontSize: "2em" }} />
             <IoSettings
                 onClick={handleSettings}
                 style={{ fontSize: "1.8em", marginTop: "0.4em" }}
