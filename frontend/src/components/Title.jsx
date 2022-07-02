@@ -20,6 +20,7 @@ const Title = (props) => {
         height: ${window.innerHeight}px;
         align-items: center;
 
+        background: linear-gradient(270deg, #860000, #013a6b);
         font-family: Bebas Neue, Roboto, Arial, Helvetica, sans-serif;
         font-size: 9em;
         & .vs {
