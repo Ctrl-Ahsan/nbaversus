@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import styled from "styled-components"
 import axios from "axios"
+import Title from "./Title"
 import Menu from "./Menu"
 import Stats from "./Stats"
 import Leaderboard from "./Leaderboard"
@@ -8,6 +9,7 @@ import Settings from "./Settings"
 import playersFile from "../players.json"
 
 const Versus = () => {
+    const [toggleTitle, setToggleTitle] = useState(true)
     const [player1, setPlayer1] = useState({})
     const [player2, setPlayer2] = useState({})
     const [p1Wins, setP1Wins] = useState(false)
@@ -427,6 +429,16 @@ const Versus = () => {
                 {player2 && <img className="logoBG" src={logo2} alt="" />}
                 {player2 && <img className="player" src={img2} alt="" />}
             </div>
+        )
+    }
+
+    if (toggleTitle) {
+        return (
+            <Title
+                setToggleTitle={setToggleTitle}
+                setMenuOpen={setMenuOpen}
+                setToggleSettings={setToggleSettings}
+            />
         )
     }
 
