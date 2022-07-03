@@ -4,11 +4,13 @@ const Vote = require("../models/voteModel")
 const User = require("../models/userModel")
 
 const getVote = asyncHandler(async (req, res) => {
+    let now = new Date().toLocaleString("en-US", { timeZone: "UTC" })
     const votes = await Vote.find()
     res.status(200).json(votes)
 })
 
 const setVote = asyncHandler(async (req, res) => {
+    let now = new Date().toLocaleString("en-US", { timeZone: "UTC" })
     if (
         !(
             req.body.winner &&
@@ -18,6 +20,9 @@ const setVote = asyncHandler(async (req, res) => {
         )
     ) {
         res.status(400)
+        console.log(
+            `${now} | Vote submitted without all parameters | ${req.ip}`
+        )
         throw new Error(
             "Please include winner ID, loser ID, winner team ID and loser team ID"
         )

@@ -14,6 +14,7 @@ const limiter = rateLimit({
     max: 100, // limit each IP to 30 requests per windowMs
 })
 app.use(limiter)
+app.enable("trust proxy")
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))

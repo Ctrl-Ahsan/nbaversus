@@ -5,18 +5,31 @@ const User = require("../models/userModel")
 
 const registerUser = asycHandler(async (req, res) => {
     const { name, password } = req.body
+    let now = new Date().toLocaleString("en-US", { timeZone: "UTC" })
 
     // Check if all fields are present
     if (!name || !password) {
-        res.status(400)
-        throw new Error("Please fill in all fields")
+        console.log(
+            now +
+                " | User tried submitting form without filling in all fields | " +
+                req.ip
+        )
+        res.status(400).send("Please fill in all fields")
+        return
     }
 
     // Check if user already exists
     const userExists = await User.findOne({ name })
     if (userExists) {
-        res.status(400)
-        throw new Error("User already exists")
+        console.log(
+            now +
+                " | A user tried taking a taken name: " +
+                name +
+                " | " +
+                req.ip
+        )
+        res.status(400).send("This name is already taken")
+        return
     }
 
     // Hash password
@@ -30,6 +43,7 @@ const registerUser = asycHandler(async (req, res) => {
     })
 
     if (user) {
+        console.log(`${now} ${user} created`)
         res.status(201).json({
             _id: user.id,
             Name: user.name,
@@ -37,27 +51,35 @@ const registerUser = asycHandler(async (req, res) => {
         })
     } else {
         res.status(400)
+        console.log(now + " | Couldn't create account")
         throw new Error("Invalid user data")
     }
 })
 
 const loginUser = asycHandler(async (req, res) => {
     const { name, password } = req.body
+    let now = new Date().toLocaleString("en-US", { timeZone: "UTC" })
 
     const user = await User.findOne({ name })
     if (user && (await bcrypt.compare(password, user.password))) {
+        console.log(`${now} | ${user.name} logged in | ${req.ip}`)
         res.json({
             _id: user.id,
             Name: user.name,
             Token: generateToken(user.id),
         })
     } else {
-        res.status(400)
-        throw new Error("Invalid credentials")
+        console.log(
+            `${now} | Attempted login with invalid credentials | ${req.ip}`
+        )
+        res.status(400).send("Invalid credentials")
+        return
     }
 })
 
 const getMe = asycHandler(async (req, res) => {
+    let now = new Date().toLocaleString("en-US", { timeZone: "UTC" })
+    console.log(`${now} | ${req.user.name} requested their profile | ${req.ip}`)
     res.status(200).json(req.user)
 })
 
@@ -67,14 +89,14 @@ const updateMe = asycHandler(async (req, res) => {
     if (req.body.password) {
         samePassword = await bcrypt.compare(req.body.password, me.password)
         if (samePassword) {
-            throw new Error("You already have these credentials")
+            res.status(400).send("You already have these credentials")
+            return
         }
 
         const salt = await bcrypt.genSalt(10)
         const hashedPassword = await bcrypt.hash(req.body.password, salt)
         me.password = hashedPassword
         me.save()
-        res.status(200).json({ hashedPW: hashedPassword, mePW: me.password })
     }
 })
 
