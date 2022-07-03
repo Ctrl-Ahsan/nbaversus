@@ -10,9 +10,8 @@ const registerUser = asycHandler(async (req, res) => {
     // Check if all fields are present
     if (!name || !password) {
         console.log(
-            now +
-                " | User tried submitting form without filling in all fields | " +
-                req.ip
+            `${now} | User tried submitting form without filling in all fields | ${req.ip}`
+                .yellow
         )
         res.status(400).send("Please fill in all fields")
         return
@@ -22,11 +21,8 @@ const registerUser = asycHandler(async (req, res) => {
     const userExists = await User.findOne({ name })
     if (userExists) {
         console.log(
-            now +
-                " | A user tried taking a taken name: " +
-                name +
-                " | " +
-                req.ip
+            `${now} | A user tried taking a taken name: " +
+                name | ${req.ip}`
         )
         res.status(400).send("This name is already taken")
         return
@@ -43,7 +39,7 @@ const registerUser = asycHandler(async (req, res) => {
     })
 
     if (user) {
-        console.log(`${now} ${user} created`)
+        console.log(`${now} ${user} created`.green)
         res.status(201).json({
             _id: user.id,
             Name: user.name,
@@ -51,7 +47,7 @@ const registerUser = asycHandler(async (req, res) => {
         })
     } else {
         res.status(400)
-        console.log(now + " | Couldn't create account")
+        console.log(`${now} | Couldn't create account`.yellow)
         throw new Error("Invalid user data")
     }
 })
@@ -62,7 +58,7 @@ const loginUser = asycHandler(async (req, res) => {
 
     const user = await User.findOne({ name })
     if (user && (await bcrypt.compare(password, user.password))) {
-        console.log(`${now} | ${user.name} logged in | ${req.ip}`)
+        console.log(`${now} | ${user.name} logged in | ${req.ip}`.green)
         res.json({
             _id: user.id,
             Name: user.name,
@@ -71,6 +67,7 @@ const loginUser = asycHandler(async (req, res) => {
     } else {
         console.log(
             `${now} | Attempted login with invalid credentials | ${req.ip}`
+                .yellow
         )
         res.status(400).send("Invalid credentials")
         return
@@ -79,7 +76,9 @@ const loginUser = asycHandler(async (req, res) => {
 
 const getMe = asycHandler(async (req, res) => {
     let now = new Date().toLocaleString("en-US", { timeZone: "UTC" })
-    console.log(`${now} | ${req.user.name} requested their profile | ${req.ip}`)
+    console.log(
+        `${now} | ${req.user.name} requested their profile | ${req.ip}`.green
+    )
     res.status(200).json(req.user)
 })
 

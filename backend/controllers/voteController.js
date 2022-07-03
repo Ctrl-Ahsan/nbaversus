@@ -21,7 +21,7 @@ const setVote = asyncHandler(async (req, res) => {
     ) {
         res.status(400)
         console.log(
-            `${now} | Vote submitted without all parameters | ${req.ip}`
+            `${now} | Vote submitted without all parameters | ${req.ip}`.yellow
         )
         throw new Error(
             "Please include winner ID, loser ID, winner team ID and loser team ID"
