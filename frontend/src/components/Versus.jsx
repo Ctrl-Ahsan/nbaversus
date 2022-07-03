@@ -26,8 +26,6 @@ const Versus = () => {
 
     useEffect(() => {
         // reset states
-        setPlayer1({})
-        setPlayer2({})
         setP1Wins(false)
         setP2Wins(false)
         setPlayerWon(false)
@@ -35,8 +33,11 @@ const Versus = () => {
         setMenuClosed(false)
         setToggleStats(false)
         // set random player
-        const randomInt1 = Math.floor(Math.random() * playerArray.length)
-        const randomInt2 = Math.floor(Math.random() * playerArray.length)
+        let randomInt1 = Math.floor(Math.random() * playerArray.length)
+        let randomInt2 = Math.floor(Math.random() * playerArray.length)
+        while (randomInt2 === randomInt1) {
+            randomInt2 = Math.floor(Math.random() * playerArray.length)
+        }
         setPlayer1(playerArray[randomInt1])
         setPlayer2(playerArray[randomInt2])
     }, [reload, playerArray])
