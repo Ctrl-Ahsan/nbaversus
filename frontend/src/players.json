@@ -154,7 +154,7 @@
             "playerCode": "lamarcus_aldridge",
             "posFull": "Center-Forward",
             "displayAffiliation": "Texas/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -344,7 +344,7 @@
             "playerCode": "kyle_anderson",
             "posFull": "Forward-Guard",
             "displayAffiliation": "UCLA/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -474,7 +474,7 @@
             "playerCode": "carmelo_anthony",
             "posFull": "Forward",
             "displayAffiliation": "Syracuse/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -619,7 +619,7 @@
             "playerCode": "ryan_arcidiacono",
             "posFull": "Guard",
             "displayAffiliation": "Villanova/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -664,7 +664,7 @@
             "playerCode": "d.j._augustin",
             "posFull": "Guard",
             "displayAffiliation": "Texas/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -794,7 +794,7 @@
             "playerCode": "deandre_ayton",
             "posFull": "Center",
             "displayAffiliation": "Arizona/Bahamas",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -874,7 +874,7 @@
             "playerCode": "marvin_bagley_iii",
             "posFull": "Forward",
             "displayAffiliation": "Duke/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -1009,7 +1009,7 @@
             "playerCode": "mohamed_bamba",
             "posFull": "Center",
             "displayAffiliation": "Texas/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -1274,7 +1274,7 @@
             "playerCode": "nicolas_batum",
             "posFull": "Guard-Forward",
             "displayAffiliation": "Le Mans/France",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -1324,7 +1324,7 @@
             "playerCode": "kent_bazemore",
             "posFull": "Guard-Forward",
             "displayAffiliation": "Old Dominion/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -1343,12 +1343,12 @@
                 "seasonEnd": "2018"
             },
             {
-                "teamId": "1610612757",
+                "teamId": "1610612758",
                 "seasonStart": "2019",
                 "seasonEnd": "2019"
             },
             {
-                "teamId": "1610612758",
+                "teamId": "1610612757",
                 "seasonStart": "2019",
                 "seasonEnd": "2019"
             },
@@ -1434,7 +1434,7 @@
             "playerCode": "bradley_beal",
             "posFull": "Guard",
             "displayAffiliation": "Florida/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -1744,7 +1744,7 @@
             "playerCode": "bismack_biyombo",
             "posFull": "Center",
             "displayAffiliation": "Baloncesto Fuenlabrada/DRC",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -1804,7 +1804,7 @@
             "playerCode": "nemanja_bjelica",
             "posFull": "Forward",
             "displayAffiliation": "Fenerbahce Ulker/Serbia",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -1924,7 +1924,7 @@
             "playerCode": "keljin_blevins",
             "posFull": "Guard",
             "displayAffiliation": "Montana State/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -2064,7 +2064,7 @@
             "playerCode": "bol_bol",
             "posFull": "Center-Forward",
             "displayAffiliation": "Oregon/Sudan",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -2109,7 +2109,7 @@
             "playerCode": "isaac_bonga",
             "posFull": "Guard",
             "displayAffiliation": "Germany",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -2199,7 +2199,7 @@
             "playerCode": "chris_boucher",
             "posFull": "Forward-Center",
             "displayAffiliation": "Oregon/Canada",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -2244,7 +2244,7 @@
             "playerCode": "avery_bradley",
             "posFull": "Guard",
             "displayAffiliation": "Texas/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -2273,12 +2273,12 @@
                 "seasonEnd": "2019"
             },
             {
-                "teamId": "1610612745",
+                "teamId": "1610612748",
                 "seasonStart": "2020",
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612748",
+                "teamId": "1610612745",
                 "seasonStart": "2020",
                 "seasonEnd": "2020"
             },
@@ -2328,12 +2328,12 @@
                 "seasonEnd": "2019"
             },
             {
-                "teamId": "1610612755",
+                "teamId": "1610612760",
                 "seasonStart": "2020",
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612760",
+                "teamId": "1610612755",
                 "seasonStart": "2020",
                 "seasonEnd": "2020"
             },
@@ -2374,7 +2374,7 @@
             "playerCode": "ignas_brazdeikis",
             "posFull": "Forward",
             "displayAffiliation": "Michigan/Lithuania",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -2464,7 +2464,7 @@
             "playerCode": "miles_bridges",
             "posFull": "Forward",
             "displayAffiliation": "Michigan State/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -2679,7 +2679,7 @@
             "playerCode": "bruce_brown",
             "posFull": "Guard-Forward",
             "displayAffiliation": "Miami (Fla.)/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -2764,7 +2764,7 @@
             "playerCode": "moses_brown",
             "posFull": "Center",
             "displayAffiliation": "UCLA/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -2783,12 +2783,12 @@
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612742",
+                "teamId": "1610612739",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612739",
+                "teamId": "1610612742",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             }
@@ -2915,7 +2915,7 @@
         "lastName": "Brown Jr.",
         "temporaryDisplayName": "Brown Jr., Troy",
         "personId": "1628972",
-        "teamId": "1610612741",
+        "teamId": "1610612747",
         "jersey": "7",
         "isActive": true,
         "pos": "G-F",
@@ -2974,7 +2974,7 @@
             "playerCode": "jalen_brunson",
             "posFull": "Guard",
             "displayAffiliation": "Villanova/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -3014,7 +3014,7 @@
             "playerCode": "thomas_bryant",
             "posFull": "Center-Forward",
             "displayAffiliation": "Indiana/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -3208,12 +3208,12 @@
                 "seasonEnd": "2018"
             },
             {
-                "teamId": "1610612755",
+                "teamId": "1610612744",
                 "seasonStart": "2019",
                 "seasonEnd": "2019"
             },
             {
-                "teamId": "1610612744",
+                "teamId": "1610612755",
                 "seasonStart": "2019",
                 "seasonEnd": "2019"
             },
@@ -3309,7 +3309,7 @@
             "playerCode": "davontae_cacok",
             "posFull": "Forward",
             "displayAffiliation": "North Carolina-Wilmington/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -3404,7 +3404,7 @@
             "playerCode": "facundo_campazzo",
             "posFull": "Guard",
             "displayAffiliation": "Argentina",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -3444,7 +3444,7 @@
             "playerCode": "vlatko_cancar",
             "posFull": "Forward",
             "displayAffiliation": "Slovenia",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -3614,7 +3614,7 @@
             "playerCode": "jevon_carter",
             "posFull": "Guard",
             "displayAffiliation": "West Virginia/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -3759,7 +3759,7 @@
             "playerCode": "chris_chiozza",
             "posFull": "Guard",
             "displayAffiliation": "Florida/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -3874,7 +3874,7 @@
             "playerCode": "gary_clark",
             "posFull": "Forward",
             "displayAffiliation": "Cincinnati/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -4024,7 +4024,7 @@
             "playerCode": "nicolas_claxton",
             "posFull": "Forward-Center",
             "displayAffiliation": "Georgia/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -4064,7 +4064,7 @@
             "playerCode": "amir_coffey",
             "posFull": "Guard-Forward",
             "displayAffiliation": "Minnesota/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -4279,16 +4279,16 @@
             "playerCode": "tyler_cook",
             "posFull": "Forward",
             "displayAffiliation": "Iowa/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
-                "teamId": "1610612743",
+                "teamId": "1610612739",
                 "seasonStart": "2019",
                 "seasonEnd": "2019"
             },
             {
-                "teamId": "1610612739",
+                "teamId": "1610612743",
                 "seasonStart": "2019",
                 "seasonEnd": "2019"
             },
@@ -4339,7 +4339,7 @@
             "playerCode": "demarcus_cousins",
             "posFull": "Center",
             "displayAffiliation": "Kentucky/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -4368,12 +4368,12 @@
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612743",
+                "teamId": "1610612749",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612749",
+                "teamId": "1610612743",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             }
@@ -4483,22 +4483,22 @@
                 "seasonEnd": "2019"
             },
             {
-                "teamId": "1610612756",
-                "seasonStart": "2020",
-                "seasonEnd": "2020"
-            },
-            {
                 "teamId": "1610612749",
                 "seasonStart": "2020",
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612754",
+                "teamId": "1610612756",
+                "seasonStart": "2020",
+                "seasonEnd": "2020"
+            },
+            {
+                "teamId": "1610612756",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612756",
+                "teamId": "1610612754",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             }
@@ -4558,12 +4558,12 @@
                 "seasonEnd": "2018"
             },
             {
-                "teamId": "1610612763",
+                "teamId": "1610612748",
                 "seasonStart": "2019",
                 "seasonEnd": "2019"
             },
             {
-                "teamId": "1610612748",
+                "teamId": "1610612763",
                 "seasonStart": "2019",
                 "seasonEnd": "2019"
             },
@@ -4604,7 +4604,7 @@
             "playerCode": "jarrett_culver",
             "posFull": "Guard-Forward",
             "displayAffiliation": "Texas Tech/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -4653,12 +4653,12 @@
         },
         "teams": [
             {
-                "teamId": "1610612763",
+                "teamId": "1610612739",
                 "seasonStart": "2013",
                 "seasonEnd": "2013"
             },
             {
-                "teamId": "1610612739",
+                "teamId": "1610612763",
                 "seasonStart": "2013",
                 "seasonEnd": "2013"
             },
@@ -4814,7 +4814,7 @@
             "playerCode": "ed_davis",
             "posFull": "Center-Forward",
             "displayAffiliation": "North Carolina/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -4934,16 +4934,16 @@
             "playerCode": "dewayne_dedmon",
             "posFull": "Center",
             "displayAffiliation": "USC/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
-                "teamId": "1610612744",
+                "teamId": "1610612755",
                 "seasonStart": "2013",
                 "seasonEnd": "2013"
             },
             {
-                "teamId": "1610612755",
+                "teamId": "1610612744",
                 "seasonStart": "2013",
                 "seasonEnd": "2013"
             },
@@ -4963,12 +4963,12 @@
                 "seasonEnd": "2018"
             },
             {
-                "teamId": "1610612737",
+                "teamId": "1610612758",
                 "seasonStart": "2019",
                 "seasonEnd": "2019"
             },
             {
-                "teamId": "1610612758",
+                "teamId": "1610612737",
                 "seasonStart": "2019",
                 "seasonEnd": "2019"
             },
@@ -5104,7 +5104,7 @@
             "playerCode": "gorgui_dieng",
             "posFull": "Center",
             "displayAffiliation": "Louisville/Senegal",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -5178,12 +5178,12 @@
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612742",
+                "teamId": "1610612764",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612764",
+                "teamId": "1610612742",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             }
@@ -5219,7 +5219,7 @@
             "playerCode": "donte_divincenzo",
             "posFull": "Guard",
             "displayAffiliation": "Villanova/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -5304,7 +5304,7 @@
             "playerCode": "luguentz_dort",
             "posFull": "Guard",
             "displayAffiliation": "Arizona State/Canada",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -5344,7 +5344,7 @@
             "playerCode": "goran_dragic",
             "posFull": "Guard",
             "displayAffiliation": "Union Olimpija/Slovenia/Slovenia",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -5409,7 +5409,7 @@
             "playerCode": "andre_drummond",
             "posFull": "Center",
             "displayAffiliation": "Connecticut/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -5559,7 +5559,7 @@
             "playerCode": "carsen_edwards",
             "posFull": "Guard",
             "displayAffiliation": "Purdue/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -5604,7 +5604,7 @@
             "playerCode": "cj_elleby",
             "posFull": "Forward-Guard",
             "displayAffiliation": "Washington State/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -5644,7 +5644,7 @@
             "playerCode": "wayne_ellington",
             "posFull": "Guard",
             "displayAffiliation": "North Carolina/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -5839,7 +5839,7 @@
             "playerCode": "bruno_fernando",
             "posFull": "Forward-Center",
             "displayAffiliation": "Maryland/Angola",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -5848,12 +5848,12 @@
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612738",
+                "teamId": "1610612745",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612745",
+                "teamId": "1610612738",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             }
@@ -6019,7 +6019,7 @@
             "playerCode": "bryn_forbes",
             "posFull": "Guard",
             "displayAffiliation": "Michigan State/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -6033,12 +6033,12 @@
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612759",
+                "teamId": "1610612743",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612743",
+                "teamId": "1610612759",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             }
@@ -6074,7 +6074,7 @@
             "playerCode": "trent_forrest",
             "posFull": "Guard",
             "displayAffiliation": "Florida State/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -6191,51 +6191,6 @@
         "country": "USA"
     },
     {
-        "firstName": "Melvin",
-        "lastName": "Frazier Jr.",
-        "temporaryDisplayName": "Frazier Jr., Melvin",
-        "personId": "1628982",
-        "teamId": "1610612760",
-        "jersey": "6",
-        "isActive": true,
-        "pos": "G-F",
-        "heightFeet": "6",
-        "heightInches": "5",
-        "heightMeters": "1.96",
-        "weightPounds": "215",
-        "weightKilograms": "97.5",
-        "dateOfBirthUTC": "1996-08-30",
-        "teamSitesOnly": {
-            "playerCode": "melvin_frazier_jr",
-            "posFull": "Guard-Forward",
-            "displayAffiliation": "Tulane/USA",
-            "freeAgentCode": ""
-        },
-        "teams": [
-            {
-                "teamId": "1610612753",
-                "seasonStart": "2018",
-                "seasonEnd": "2019"
-            },
-            {
-                "teamId": "1610612760",
-                "seasonStart": "2021",
-                "seasonEnd": "2021"
-            }
-        ],
-        "draft": {
-            "teamId": "1610612753",
-            "pickNum": "35",
-            "roundNum": "2",
-            "seasonYear": "2018"
-        },
-        "nbaDebutYear": "2018",
-        "yearsPro": "2",
-        "collegeName": "Tulane",
-        "lastAffiliation": "Tulane/USA",
-        "country": "USA"
-    },
-    {
         "firstName": "Markelle",
         "lastName": "Fultz",
         "temporaryDisplayName": "Fultz, Markelle",
@@ -6318,7 +6273,7 @@
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612746",
+                "teamId": "1610612747",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
@@ -6328,7 +6283,7 @@
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612747",
+                "teamId": "1610612746",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             }
@@ -6395,7 +6350,7 @@
         "lastName": "Gallinari",
         "temporaryDisplayName": "Gallinari, Danilo",
         "personId": "201568",
-        "teamId": "1610612737",
+        "teamId": "1610612759",
         "jersey": "8",
         "isActive": true,
         "pos": "F",
@@ -6799,7 +6754,7 @@
             "playerCode": "brandon_goodwin",
             "posFull": "Guard",
             "displayAffiliation": "Florida Gulf Coast/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -7228,12 +7183,12 @@
                 "seasonEnd": "2018"
             },
             {
-                "teamId": "1610612745",
+                "teamId": "1610612762",
                 "seasonStart": "2019",
                 "seasonEnd": "2019"
             },
             {
-                "teamId": "1610612762",
+                "teamId": "1610612745",
                 "seasonStart": "2019",
                 "seasonEnd": "2019"
             },
@@ -7319,7 +7274,7 @@
             "playerCode": "blake_griffin",
             "posFull": "Forward",
             "displayAffiliation": "Oklahoma/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -7554,7 +7509,7 @@
             "playerCode": "james_harden",
             "posFull": "Guard",
             "displayAffiliation": "Arizona State/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -7623,12 +7578,12 @@
                 "seasonEnd": "2018"
             },
             {
-                "teamId": "1610612746",
+                "teamId": "1610612752",
                 "seasonStart": "2019",
                 "seasonEnd": "2019"
             },
             {
-                "teamId": "1610612752",
+                "teamId": "1610612746",
                 "seasonStart": "2019",
                 "seasonEnd": "2019"
             },
@@ -7674,7 +7629,7 @@
             "playerCode": "jared_harper",
             "posFull": "Guard",
             "displayAffiliation": "Auburn/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -7724,7 +7679,7 @@
             "playerCode": "montrezl_harrell",
             "posFull": "Forward-Center",
             "displayAffiliation": "Louisville/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -7984,7 +7939,7 @@
             "playerCode": "isaiah_hartenstein",
             "posFull": "Center-Forward",
             "displayAffiliation": "USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -8039,7 +7994,7 @@
             "playerCode": "udonis_haslem",
             "posFull": "Forward",
             "displayAffiliation": "Florida/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -8189,66 +8144,6 @@
         "collegeName": "Butler",
         "lastAffiliation": "Butler/USA",
         "country": "USA"
-    },
-    {
-        "firstName": "Juancho",
-        "lastName": "Hernangomez",
-        "temporaryDisplayName": "Hernangomez, Juancho",
-        "personId": "1627823",
-        "teamId": "1610612762",
-        "jersey": "41",
-        "isActive": true,
-        "pos": "F",
-        "heightFeet": "6",
-        "heightInches": "9",
-        "heightMeters": "2.06",
-        "weightPounds": "214",
-        "weightKilograms": "97.1",
-        "dateOfBirthUTC": "1995-09-28",
-        "teamSitesOnly": {
-            "playerCode": "juan_hernangomez",
-            "posFull": "Forward",
-            "displayAffiliation": "Spain",
-            "freeAgentCode": ""
-        },
-        "teams": [
-            {
-                "teamId": "1610612743",
-                "seasonStart": "2016",
-                "seasonEnd": "2019"
-            },
-            {
-                "teamId": "1610612750",
-                "seasonStart": "2019",
-                "seasonEnd": "2020"
-            },
-            {
-                "teamId": "1610612762",
-                "seasonStart": "2021",
-                "seasonEnd": "2021"
-            },
-            {
-                "teamId": "1610612759",
-                "seasonStart": "2021",
-                "seasonEnd": "2021"
-            },
-            {
-                "teamId": "1610612738",
-                "seasonStart": "2021",
-                "seasonEnd": "2021"
-            }
-        ],
-        "draft": {
-            "teamId": "1610612743",
-            "pickNum": "15",
-            "roundNum": "1",
-            "seasonYear": "2016"
-        },
-        "nbaDebutYear": "2016",
-        "yearsPro": "5",
-        "collegeName": "Estudiantes",
-        "lastAffiliation": "Estudiantes/Spain",
-        "country": "Spain"
     },
     {
         "firstName": "Willy",
@@ -8488,12 +8383,12 @@
                 "seasonEnd": "2019"
             },
             {
-                "teamId": "1610612755",
+                "teamId": "1610612760",
                 "seasonStart": "2020",
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612760",
+                "teamId": "1610612755",
                 "seasonStart": "2020",
                 "seasonEnd": "2020"
             },
@@ -8534,7 +8429,7 @@
             "playerCode": "nate_hinton",
             "posFull": "Guard-Forward",
             "displayAffiliation": "Houston/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -8579,7 +8474,7 @@
             "playerCode": "aaron_holiday",
             "posFull": "Guard",
             "displayAffiliation": "UCLA/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -8809,7 +8704,7 @@
             "playerCode": "rodney_hood",
             "posFull": "Guard-Forward",
             "displayAffiliation": "Duke/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -8833,12 +8728,12 @@
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612746",
+                "teamId": "1610612749",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612749",
+                "teamId": "1610612746",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             }
@@ -8974,7 +8869,7 @@
             "playerCode": "danuel_house",
             "posFull": "Forward-Guard",
             "displayAffiliation": "Texas A&M/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -9034,7 +8929,7 @@
             "playerCode": "dwight_howard",
             "posFull": "Center-Forward",
             "displayAffiliation": "SW Atlanta Christian Academy (GA)/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -9114,7 +9009,7 @@
             "playerCode": "markus_howard",
             "posFull": "Guard",
             "displayAffiliation": "Marquette/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -9194,7 +9089,7 @@
             "playerCode": "elijah_hughes",
             "posFull": "Guard",
             "displayAffiliation": "Syracuse/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -9279,7 +9174,7 @@
             "playerCode": "serge_ibaka",
             "posFull": "Forward",
             "displayAffiliation": "Ricoh Manresa/Republic of the Congo",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -9339,7 +9234,7 @@
             "playerCode": "andre_iguodala",
             "posFull": "Guard-Forward",
             "displayAffiliation": "Arizona/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -9399,7 +9294,7 @@
             "playerCode": "joe_ingles",
             "posFull": "Forward-Guard",
             "displayAffiliation": "Australia",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -9579,7 +9474,7 @@
             "playerCode": "frank_jackson",
             "posFull": "Guard",
             "displayAffiliation": "Duke/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -9624,7 +9519,7 @@
             "playerCode": "josh_jackson",
             "posFull": "Guard-Forward",
             "displayAffiliation": "Kansas/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -10070,7 +9965,7 @@
         "lastName": "Jones",
         "temporaryDisplayName": "Jones, Damian",
         "personId": "1627745",
-        "teamId": "1610612758",
+        "teamId": "1610612747",
         "jersey": "30",
         "isActive": true,
         "pos": "C",
@@ -10144,16 +10039,16 @@
             "playerCode": "mason_jones",
             "posFull": "Guard",
             "displayAffiliation": "Arkansas/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
-                "teamId": "1610612745",
+                "teamId": "1610612755",
                 "seasonStart": "2020",
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612755",
+                "teamId": "1610612745",
                 "seasonStart": "2020",
                 "seasonEnd": "2020"
             },
@@ -10234,7 +10129,7 @@
             "playerCode": "tyus_jones",
             "posFull": "Guard",
             "displayAffiliation": "Duke/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -10279,7 +10174,7 @@
             "playerCode": "derrick_jones_jr",
             "posFull": "Forward",
             "displayAffiliation": "Nevada-Las Vegas/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -10334,7 +10229,7 @@
             "playerCode": "deandre_jordan",
             "posFull": "Center",
             "displayAffiliation": "Texas A&M/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -10343,12 +10238,12 @@
                 "seasonEnd": "2017"
             },
             {
-                "teamId": "1610612752",
+                "teamId": "1610612742",
                 "seasonStart": "2018",
                 "seasonEnd": "2018"
             },
             {
-                "teamId": "1610612742",
+                "teamId": "1610612752",
                 "seasonStart": "2018",
                 "seasonEnd": "2018"
             },
@@ -10358,12 +10253,12 @@
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612747",
+                "teamId": "1610612755",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612755",
+                "teamId": "1610612747",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             }
@@ -10544,7 +10439,7 @@
             "playerCode": "nathan_knight",
             "posFull": "Forward-Center",
             "displayAffiliation": "William & Mary/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -10589,7 +10484,7 @@
             "playerCode": "kevin_knox",
             "posFull": "Forward",
             "displayAffiliation": "Kentucky/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -10714,7 +10609,7 @@
             "playerCode": "luke_kornet",
             "posFull": "Center-Forward",
             "displayAffiliation": "Vanderbilt/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -10738,12 +10633,12 @@
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612738",
+                "teamId": "1610612749",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612749",
+                "teamId": "1610612738",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             }
@@ -10824,7 +10719,7 @@
             "playerCode": "anthony_lamb",
             "posFull": "Forward",
             "displayAffiliation": "Vermont/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -10833,12 +10728,12 @@
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612745",
+                "teamId": "1610612759",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612759",
+                "teamId": "1610612745",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             }
@@ -10874,7 +10769,7 @@
             "playerCode": "jeremy_lamb",
             "posFull": "Guard-Forward",
             "displayAffiliation": "Connecticut/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -10974,7 +10869,7 @@
             "playerCode": "zach_lavine",
             "posFull": "Guard-Forward",
             "displayAffiliation": "UCLA/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -11019,7 +10914,7 @@
             "playerCode": "jake_layman",
             "posFull": "Forward",
             "displayAffiliation": "Maryland/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -11050,7 +10945,7 @@
         "lastName": "Lee",
         "temporaryDisplayName": "Lee, Damion",
         "personId": "1627814",
-        "teamId": "1610612744",
+        "teamId": "1610612756",
         "jersey": "1",
         "isActive": true,
         "pos": "G-F",
@@ -11434,7 +11329,7 @@
             "playerCode": "kevon_looney",
             "posFull": "Forward",
             "displayAffiliation": "UCLA/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -11524,7 +11419,7 @@
             "playerCode": "robin_lopez",
             "posFull": "Center",
             "displayAffiliation": "Stanford/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -11744,7 +11639,7 @@
             "playerCode": "timothe_luwawu-cabarrot",
             "posFull": "Guard-Forward",
             "displayAffiliation": "France",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -11753,12 +11648,12 @@
                 "seasonEnd": "2017"
             },
             {
-                "teamId": "1610612741",
+                "teamId": "1610612760",
                 "seasonStart": "2018",
                 "seasonEnd": "2018"
             },
             {
-                "teamId": "1610612760",
+                "teamId": "1610612741",
                 "seasonStart": "2018",
                 "seasonEnd": "2018"
             },
@@ -11823,12 +11718,12 @@
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612758",
+                "teamId": "1610612765",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612765",
+                "teamId": "1610612758",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             }
@@ -12089,7 +11984,7 @@
             "playerCode": "caleb_martin",
             "posFull": "Forward",
             "displayAffiliation": "Nevada/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -12134,7 +12029,7 @@
             "playerCode": "cody_martin",
             "posFull": "Forward",
             "displayAffiliation": "Nevada/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -12259,7 +12154,7 @@
             "playerCode": "wesley_matthews",
             "posFull": "Guard",
             "displayAffiliation": "Marquette/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -12278,12 +12173,12 @@
                 "seasonEnd": "2018"
             },
             {
-                "teamId": "1610612754",
+                "teamId": "1610612752",
                 "seasonStart": "2018",
                 "seasonEnd": "2018"
             },
             {
-                "teamId": "1610612752",
+                "teamId": "1610612754",
                 "seasonStart": "2018",
                 "seasonEnd": "2018"
             },
@@ -12374,7 +12269,7 @@
             "playerCode": "skylar_mays",
             "posFull": "Guard",
             "displayAffiliation": "Louisiana State/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -12649,7 +12544,7 @@
             "playerCode": "javale_mcgee",
             "posFull": "Center-Forward",
             "displayAffiliation": "Nevada/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -12729,7 +12624,7 @@
             "playerCode": "rodney_mcgruder",
             "posFull": "Guard",
             "displayAffiliation": "Kansas State/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -12819,7 +12714,7 @@
             "playerCode": "ben_mclemore",
             "posFull": "Guard",
             "displayAffiliation": "Kansas/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -13019,7 +12914,7 @@
             "playerCode": "patty_mills",
             "posFull": "Guard",
             "displayAffiliation": "St. Mary's (CA)/Australia",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -13069,7 +12964,7 @@
             "playerCode": "paul_millsap",
             "posFull": "Forward",
             "displayAffiliation": "Louisiana Tech/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -13088,12 +12983,12 @@
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612755",
+                "teamId": "1610612751",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612751",
+                "teamId": "1610612755",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             }
@@ -13209,7 +13104,7 @@
             "playerCode": "malik_monk",
             "posFull": "Guard",
             "displayAffiliation": "Kentucky/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -13254,7 +13149,7 @@
             "playerCode": "greg_monroe",
             "posFull": "Forward-Center",
             "displayAffiliation": "Georgetown/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -13268,19 +13163,14 @@
                 "seasonEnd": "2017"
             },
             {
-                "teamId": "1610612738",
-                "seasonStart": "2017",
-                "seasonEnd": "2017"
-            },
-            {
                 "teamId": "1610612756",
                 "seasonStart": "2017",
                 "seasonEnd": "2017"
             },
             {
                 "teamId": "1610612738",
-                "seasonStart": "2018",
-                "seasonEnd": "2018"
+                "seasonStart": "2017",
+                "seasonEnd": "2017"
             },
             {
                 "teamId": "1610612755",
@@ -13293,17 +13183,22 @@
                 "seasonEnd": "2018"
             },
             {
+                "teamId": "1610612738",
+                "seasonStart": "2018",
+                "seasonEnd": "2018"
+            },
+            {
+                "teamId": "1610612749",
+                "seasonStart": "2021",
+                "seasonEnd": "2021"
+            },
+            {
                 "teamId": "1610612764",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
             {
                 "teamId": "1610612750",
-                "seasonStart": "2021",
-                "seasonEnd": "2021"
-            },
-            {
-                "teamId": "1610612749",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
@@ -13434,7 +13329,7 @@
             "playerCode": "markieff_morris",
             "posFull": "Forward",
             "displayAffiliation": "Kansas/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -13640,7 +13535,7 @@
         "lastName": "Murray",
         "temporaryDisplayName": "Murray, Dejounte",
         "personId": "1627749",
-        "teamId": "1610612759",
+        "teamId": "1610612737",
         "jersey": "5",
         "isActive": true,
         "pos": "G",
@@ -13734,7 +13629,7 @@
             "playerCode": "mike_muscala",
             "posFull": "Forward-Center",
             "displayAffiliation": "Bucknell/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -13858,12 +13753,12 @@
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612740",
+                "teamId": "1610612757",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612757",
+                "teamId": "1610612740",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             }
@@ -13939,7 +13834,7 @@
             "playerCode": "raul_neto",
             "posFull": "Guard",
             "displayAffiliation": "Brazil",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -14264,7 +14159,7 @@
             "playerCode": "jusuf_nurkic",
             "posFull": "Center",
             "displayAffiliation": "Cedevita Zagreb/Bosnia and Herzegovina",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -14369,7 +14264,7 @@
             "playerCode": "jordan_nwora",
             "posFull": "Forward",
             "displayAffiliation": "Louisville/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -14395,7 +14290,7 @@
         "lastName": "O'Neale",
         "temporaryDisplayName": "O'Neale, Royce",
         "personId": "1626220",
-        "teamId": "1610612762",
+        "teamId": "1610612751",
         "jersey": "23",
         "isActive": true,
         "pos": "F",
@@ -14489,7 +14384,7 @@
             "playerCode": "josh_okogie",
             "posFull": "Guard",
             "displayAffiliation": "Georgia Tech/Nigeria",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -14609,7 +14504,7 @@
             "playerCode": "victor_oladipo",
             "posFull": "Guard",
             "displayAffiliation": "Indiana/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -14819,7 +14714,7 @@
             "playerCode": "eric_paschall",
             "posFull": "Forward",
             "displayAffiliation": "Villanova/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -14979,7 +14874,7 @@
             "playerCode": "elfrid_payton",
             "posFull": "Guard",
             "displayAffiliation": "Louisiana-Lafayette/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -15039,7 +14934,7 @@
             "playerCode": "gary_payton_ii",
             "posFull": "Guard",
             "displayAffiliation": "Oregon State/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -15094,7 +14989,7 @@
             "playerCode": "theo_pinson",
             "posFull": "Guard-Forward",
             "displayAffiliation": "North Carolina/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -15414,7 +15309,7 @@
             "playerCode": "otto_porter_jr",
             "posFull": "Forward",
             "displayAffiliation": "Georgetown/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -15469,7 +15364,7 @@
             "playerCode": "bobby_portis",
             "posFull": "Forward",
             "displayAffiliation": "Arkansas/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -15899,7 +15794,7 @@
             "playerCode": "davon_reed",
             "posFull": "Guard",
             "displayAffiliation": "Miami (Fla.)/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -16088,12 +15983,12 @@
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612759",
+                "teamId": "1610612738",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612738",
+                "teamId": "1610612759",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             }
@@ -16129,7 +16024,7 @@
             "playerCode": "austin_rivers",
             "posFull": "Guard",
             "displayAffiliation": "Duke/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -16234,7 +16129,7 @@
             "playerCode": "mitchell_robinson",
             "posFull": "Center-Forward",
             "displayAffiliation": "Chalmette HS (LA)/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -16314,7 +16209,7 @@
             "playerCode": "rajon_rondo",
             "posFull": "Guard",
             "displayAffiliation": "Kentucky/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -16554,7 +16449,7 @@
             "playerCode": "ricky_rubio",
             "posFull": "Guard",
             "displayAffiliation": "FC Barcelona/Spain",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -16578,12 +16473,12 @@
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612754",
+                "teamId": "1610612739",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612739",
+                "teamId": "1610612754",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             }
@@ -16774,7 +16669,7 @@
             "playerCode": "tomas_satoransky",
             "posFull": "Guard",
             "displayAffiliation": "Barcelona (Spain)/Czech Republic",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -16834,7 +16729,7 @@
             "playerCode": "admiral_schofield",
             "posFull": "Forward",
             "displayAffiliation": "Tennessee/England",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -16879,7 +16774,7 @@
             "playerCode": "dennis_schroder",
             "posFull": "Guard",
             "displayAffiliation": "NY Phantoms Braunschweig/Germany",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -16898,12 +16793,12 @@
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612745",
+                "teamId": "1610612738",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612738",
+                "teamId": "1610612745",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             }
@@ -16939,7 +16834,7 @@
             "playerCode": "jay_scrubb",
             "posFull": "Guard",
             "displayAffiliation": "John A. Logan College/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -16979,7 +16874,7 @@
             "playerCode": "collin_sexton",
             "posFull": "Guard",
             "displayAffiliation": "Alabama/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -17159,7 +17054,7 @@
             "playerCode": "anfernee_simons",
             "posFull": "Guard",
             "displayAffiliation": "Edgewater HS (Orlando, FL)/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -17283,12 +17178,12 @@
                 "seasonEnd": "2014"
             },
             {
-                "teamId": "1610612755",
+                "teamId": "1610612740",
                 "seasonStart": "2015",
                 "seasonEnd": "2015"
             },
             {
-                "teamId": "1610612740",
+                "teamId": "1610612755",
                 "seasonStart": "2015",
                 "seasonEnd": "2015"
             },
@@ -17344,7 +17239,7 @@
             "playerCode": "jalen_smith",
             "posFull": "Forward-Center",
             "displayAffiliation": "Maryland/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -17389,7 +17284,7 @@
             "playerCode": "tony_snell",
             "posFull": "Guard",
             "displayAffiliation": "New Mexico/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -17473,12 +17368,12 @@
                 "seasonEnd": "2017"
             },
             {
-                "teamId": "1610612757",
+                "teamId": "1610612739",
                 "seasonStart": "2018",
                 "seasonEnd": "2018"
             },
             {
-                "teamId": "1610612739",
+                "teamId": "1610612757",
                 "seasonStart": "2018",
                 "seasonEnd": "2018"
             },
@@ -17524,7 +17419,7 @@
             "playerCode": "lance_stephenson",
             "posFull": "Forward",
             "displayAffiliation": "Cincinnati/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -17568,12 +17463,12 @@
                 "seasonEnd": "2018"
             },
             {
-                "teamId": "1610612754",
+                "teamId": "1610612737",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612737",
+                "teamId": "1610612754",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             }
@@ -17734,7 +17629,7 @@
             "playerCode": "jaesean_tate",
             "posFull": "Forward",
             "displayAffiliation": "Ohio State/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -17818,12 +17713,12 @@
         },
         "teams": [
             {
-                "teamId": "1610612745",
+                "teamId": "1610612758",
                 "seasonStart": "2009",
                 "seasonEnd": "2009"
             },
             {
-                "teamId": "1610612758",
+                "teamId": "1610612745",
                 "seasonStart": "2009",
                 "seasonEnd": "2009"
             },
@@ -17891,51 +17786,6 @@
         "country": "USA"
     },
     {
-        "firstName": "Tyrell",
-        "lastName": "Terry",
-        "temporaryDisplayName": "Terry, Tyrell",
-        "personId": "1630179",
-        "teamId": "1610612763",
-        "jersey": "3",
-        "isActive": true,
-        "pos": "G",
-        "heightFeet": "6",
-        "heightInches": "2",
-        "heightMeters": "1.88",
-        "weightPounds": "160",
-        "weightKilograms": "72.6",
-        "dateOfBirthUTC": "2000-09-28",
-        "teamSitesOnly": {
-            "playerCode": "tyrell_terry",
-            "posFull": "Guard",
-            "displayAffiliation": "Stanford/USA",
-            "freeAgentCode": ""
-        },
-        "teams": [
-            {
-                "teamId": "1610612742",
-                "seasonStart": "2020",
-                "seasonEnd": "2020"
-            },
-            {
-                "teamId": "1610612763",
-                "seasonStart": "2021",
-                "seasonEnd": "2021"
-            }
-        ],
-        "draft": {
-            "teamId": "1610612742",
-            "pickNum": "31",
-            "roundNum": "2",
-            "seasonYear": "2020"
-        },
-        "nbaDebutYear": "2020",
-        "yearsPro": "1",
-        "collegeName": "Stanford",
-        "lastAffiliation": "Stanford/USA",
-        "country": "USA"
-    },
-    {
         "firstName": "Daniel",
         "lastName": "Theis",
         "temporaryDisplayName": "Theis, Daniel",
@@ -17968,12 +17818,12 @@
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612738",
+                "teamId": "1610612745",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612745",
+                "teamId": "1610612738",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             }
@@ -18009,16 +17859,16 @@
             "playerCode": "brodric_thomas",
             "posFull": "Guard",
             "displayAffiliation": "Truman State/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
-                "teamId": "1610612739",
+                "teamId": "1610612745",
                 "seasonStart": "2020",
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612745",
+                "teamId": "1610612739",
                 "seasonStart": "2020",
                 "seasonEnd": "2020"
             },
@@ -18059,7 +17909,7 @@
             "playerCode": "isaiah_thomas",
             "posFull": "Guard",
             "displayAffiliation": "Washington/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -18103,17 +17953,17 @@
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612747",
-                "seasonStart": "2021",
-                "seasonEnd": "2021"
-            },
-            {
                 "teamId": "1610612742",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
             {
                 "teamId": "1610612766",
+                "seasonStart": "2021",
+                "seasonEnd": "2021"
+            },
+            {
+                "teamId": "1610612747",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             }
@@ -18149,7 +17999,7 @@
             "playerCode": "matt_thomas",
             "posFull": "Guard",
             "displayAffiliation": "Iowa State/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -18239,7 +18089,7 @@
             "playerCode": "tristan_thompson",
             "posFull": "Center-Forward",
             "displayAffiliation": "Texas/Canada",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -18445,7 +18295,7 @@
         "lastName": "Toscano-Anderson",
         "temporaryDisplayName": "Toscano-Anderson, Juan",
         "personId": "1629308",
-        "teamId": "1610612744",
+        "teamId": "1610612747",
         "jersey": "95",
         "isActive": true,
         "pos": "F",
@@ -18584,7 +18434,7 @@
             "playerCode": "pj_tucker",
             "posFull": "Forward",
             "displayAffiliation": "Texas/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -18663,12 +18513,12 @@
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612743",
+                "teamId": "1610612749",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612749",
+                "teamId": "1610612743",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             }
@@ -19159,7 +19009,7 @@
             "playerCode": "lonnie_walker",
             "posFull": "Guard-Forward",
             "displayAffiliation": "Miami (Fla.)/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -19181,51 +19031,6 @@
         "country": "USA"
     },
     {
-        "firstName": "John",
-        "lastName": "Wall",
-        "temporaryDisplayName": "Wall, John",
-        "personId": "202322",
-        "teamId": "1610612745",
-        "jersey": "1",
-        "isActive": true,
-        "pos": "G",
-        "heightFeet": "6",
-        "heightInches": "3",
-        "heightMeters": "1.9",
-        "weightPounds": "210",
-        "weightKilograms": "95.3",
-        "dateOfBirthUTC": "1990-09-06",
-        "teamSitesOnly": {
-            "playerCode": "john_wall",
-            "posFull": "Guard",
-            "displayAffiliation": "Kentucky/USA",
-            "freeAgentCode": ""
-        },
-        "teams": [
-            {
-                "teamId": "1610612764",
-                "seasonStart": "2010",
-                "seasonEnd": "2019"
-            },
-            {
-                "teamId": "1610612745",
-                "seasonStart": "2020",
-                "seasonEnd": "2021"
-            }
-        ],
-        "draft": {
-            "teamId": "1610612764",
-            "pickNum": "1",
-            "roundNum": "1",
-            "seasonYear": "2010"
-        },
-        "nbaDebutYear": "2010",
-        "yearsPro": "10",
-        "collegeName": "Kentucky",
-        "lastAffiliation": "Kentucky/USA",
-        "country": "USA"
-    },
-    {
         "firstName": "T.J.",
         "lastName": "Warren",
         "temporaryDisplayName": "Warren, T.J.",
@@ -19244,7 +19049,7 @@
             "playerCode": "tj_warren",
             "posFull": "Forward",
             "displayAffiliation": "North Carolina State/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -19329,7 +19134,7 @@
             "playerCode": "yuta_watanabe",
             "posFull": "Guard-Forward",
             "displayAffiliation": "George Washington/Japan",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -19374,7 +19179,7 @@
             "playerCode": "quinndary_weatherspoon",
             "posFull": "Guard",
             "displayAffiliation": "Mississippi State/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -19559,7 +19364,7 @@
             "playerCode": "hassan_whiteside",
             "posFull": "Center",
             "displayAffiliation": "Marshall/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -19749,7 +19554,7 @@
             "playerCode": "lou_williams",
             "posFull": "Guard",
             "displayAffiliation": "South Gwinnett HS (Snellville, GA)/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -20034,7 +19839,7 @@
             "playerCode": "cassius_winston",
             "posFull": "Guard",
             "displayAffiliation": "Michigan State/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -20128,12 +19933,12 @@
                 "seasonEnd": "2016"
             },
             {
-                "teamId": "1610612749",
+                "teamId": "1610612740",
                 "seasonStart": "2018",
                 "seasonEnd": "2018"
             },
             {
-                "teamId": "1610612740",
+                "teamId": "1610612749",
                 "seasonStart": "2018",
                 "seasonEnd": "2018"
             },
@@ -20179,7 +19984,7 @@
             "playerCode": "robert_woodard_ii",
             "posFull": "Forward",
             "displayAffiliation": "Mississippi State/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -20224,7 +20029,7 @@
             "playerCode": "delon_wright",
             "posFull": "Guard",
             "displayAffiliation": "Utah/USA",
-            "freeAgentCode": ""
+            "freeAgentCode": "(FA)"
         },
         "teams": [
             {
@@ -20243,12 +20048,12 @@
                 "seasonEnd": "2019"
             },
             {
-                "teamId": "1610612765",
+                "teamId": "1610612758",
                 "seasonStart": "2020",
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612758",
+                "teamId": "1610612765",
                 "seasonStart": "2020",
                 "seasonEnd": "2020"
             },
@@ -20318,12 +20123,12 @@
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612761",
+                "teamId": "1610612759",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612759",
+                "teamId": "1610612761",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             }
@@ -20398,7 +20203,7 @@
         "teamSitesOnly": {
             "playerCode": "ivica_zubac",
             "posFull": "Center",
-            "displayAffiliation": "Bosnia & Herzegovina",
+            "displayAffiliation": "osnia and Herzegovina",
             "freeAgentCode": ""
         },
         "teams": [
