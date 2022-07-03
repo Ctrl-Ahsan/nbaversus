@@ -95,10 +95,6 @@ const Settings = (props) => {
 
         & .headingText {
             cursor: pointer;
-            transition: all 0.3s;
-            :hover {
-                color: dodgerblue;
-            }
         }
 
         & .form {

@@ -58,6 +58,7 @@ const Login = (props) => {
             <form className="form" onSubmit={onSubmit}>
                 <div className="form-item">
                     <input
+                        required
                         type="text"
                         id="name"
                         name="name"
@@ -68,6 +69,7 @@ const Login = (props) => {
                 </div>
                 <div className="form-item">
                     <input
+                        required
                         type="password"
                         id="password"
                         name="password"

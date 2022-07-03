@@ -36,6 +36,12 @@ const Title = (props) => {
             img {
                 margin-top: -30px;
                 width: 1.2em;
+                -webkit-touch-callout: none;
+                -webkit-tap-highlight-color: transparent;
+                -moz-user-select: none;
+                -webkit-user-select: none;
+                user-select: none;
+                -webkit-user-drag: none;
             }
         }
 
