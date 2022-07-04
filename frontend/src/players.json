@@ -678,12 +678,12 @@
                 "seasonEnd": "2012"
             },
             {
-                "teamId": "1610612741",
+                "teamId": "1610612761",
                 "seasonStart": "2013",
                 "seasonEnd": "2013"
             },
             {
-                "teamId": "1610612761",
+                "teamId": "1610612741",
                 "seasonStart": "2013",
                 "seasonEnd": "2013"
             },
@@ -1744,7 +1744,7 @@
             "playerCode": "bismack_biyombo",
             "posFull": "Center",
             "displayAffiliation": "Baloncesto Fuenlabrada/DRC",
-            "freeAgentCode": "(FA)"
+            "freeAgentCode": ""
         },
         "teams": [
             {
@@ -1883,12 +1883,12 @@
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612757",
+                "teamId": "1610612746",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612746",
+                "teamId": "1610612757",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             }
@@ -2328,12 +2328,12 @@
                 "seasonEnd": "2019"
             },
             {
-                "teamId": "1610612760",
+                "teamId": "1610612755",
                 "seasonStart": "2020",
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612755",
+                "teamId": "1610612760",
                 "seasonStart": "2020",
                 "seasonEnd": "2020"
             },
@@ -2783,12 +2783,12 @@
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612739",
+                "teamId": "1610612742",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612742",
+                "teamId": "1610612739",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             }
@@ -2888,12 +2888,12 @@
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612742",
+                "teamId": "1610612755",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612755",
+                "teamId": "1610612742",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             }
@@ -3198,12 +3198,12 @@
                 "seasonEnd": "2018"
             },
             {
-                "teamId": "1610612739",
+                "teamId": "1610612758",
                 "seasonStart": "2018",
                 "seasonEnd": "2018"
             },
             {
-                "teamId": "1610612758",
+                "teamId": "1610612739",
                 "seasonStart": "2018",
                 "seasonEnd": "2018"
             },
@@ -3628,12 +3628,12 @@
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612751",
+                "teamId": "1610612749",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612749",
+                "teamId": "1610612751",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             }
@@ -3888,12 +3888,12 @@
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612755",
+                "teamId": "1610612743",
                 "seasonStart": "2020",
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612743",
+                "teamId": "1610612755",
                 "seasonStart": "2020",
                 "seasonEnd": "2020"
             },
@@ -4283,22 +4283,22 @@
         },
         "teams": [
             {
-                "teamId": "1610612739",
-                "seasonStart": "2019",
-                "seasonEnd": "2019"
-            },
-            {
                 "teamId": "1610612743",
                 "seasonStart": "2019",
                 "seasonEnd": "2019"
             },
             {
-                "teamId": "1610612765",
+                "teamId": "1610612739",
+                "seasonStart": "2019",
+                "seasonEnd": "2019"
+            },
+            {
+                "teamId": "1610612751",
                 "seasonStart": "2020",
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612751",
+                "teamId": "1610612765",
                 "seasonStart": "2020",
                 "seasonEnd": "2020"
             },
@@ -4368,12 +4368,12 @@
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612749",
+                "teamId": "1610612743",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612743",
+                "teamId": "1610612749",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             }
@@ -4558,12 +4558,12 @@
                 "seasonEnd": "2018"
             },
             {
-                "teamId": "1610612748",
+                "teamId": "1610612763",
                 "seasonStart": "2019",
                 "seasonEnd": "2019"
             },
             {
-                "teamId": "1610612763",
+                "teamId": "1610612748",
                 "seasonStart": "2019",
                 "seasonEnd": "2019"
             },
@@ -4653,12 +4653,12 @@
         },
         "teams": [
             {
-                "teamId": "1610612739",
+                "teamId": "1610612763",
                 "seasonStart": "2013",
                 "seasonEnd": "2013"
             },
             {
-                "teamId": "1610612763",
+                "teamId": "1610612739",
                 "seasonStart": "2013",
                 "seasonEnd": "2013"
             },
@@ -4938,12 +4938,12 @@
         },
         "teams": [
             {
-                "teamId": "1610612755",
+                "teamId": "1610612744",
                 "seasonStart": "2013",
                 "seasonEnd": "2013"
             },
             {
-                "teamId": "1610612744",
+                "teamId": "1610612755",
                 "seasonStart": "2013",
                 "seasonEnd": "2013"
             },
@@ -4963,12 +4963,12 @@
                 "seasonEnd": "2018"
             },
             {
-                "teamId": "1610612758",
+                "teamId": "1610612737",
                 "seasonStart": "2019",
                 "seasonEnd": "2019"
             },
             {
-                "teamId": "1610612737",
+                "teamId": "1610612758",
                 "seasonStart": "2019",
                 "seasonEnd": "2019"
             },
@@ -5178,12 +5178,12 @@
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612764",
+                "teamId": "1610612742",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612742",
+                "teamId": "1610612764",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             }
@@ -5368,12 +5368,12 @@
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612761",
+                "teamId": "1610612751",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612751",
+                "teamId": "1610612761",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             }
@@ -5428,12 +5428,12 @@
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612751",
+                "teamId": "1610612755",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612755",
+                "teamId": "1610612751",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             }
@@ -5653,22 +5653,22 @@
                 "seasonEnd": "2011"
             },
             {
-                "teamId": "1610612739",
-                "seasonStart": "2012",
-                "seasonEnd": "2012"
-            },
-            {
                 "teamId": "1610612763",
                 "seasonStart": "2012",
                 "seasonEnd": "2012"
             },
             {
-                "teamId": "1610612752",
+                "teamId": "1610612739",
+                "seasonStart": "2012",
+                "seasonEnd": "2012"
+            },
+            {
+                "teamId": "1610612742",
                 "seasonStart": "2013",
                 "seasonEnd": "2013"
             },
             {
-                "teamId": "1610612742",
+                "teamId": "1610612752",
                 "seasonStart": "2013",
                 "seasonEnd": "2013"
             },
@@ -5938,12 +5938,12 @@
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612738",
+                "teamId": "1610612762",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612762",
+                "teamId": "1610612738",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             }
@@ -6033,12 +6033,12 @@
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612743",
+                "teamId": "1610612759",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612759",
+                "teamId": "1610612743",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             }
@@ -6273,7 +6273,7 @@
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612747",
+                "teamId": "1610612746",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
@@ -6283,7 +6283,7 @@
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612746",
+                "teamId": "1610612747",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             }
@@ -7578,12 +7578,12 @@
                 "seasonEnd": "2018"
             },
             {
-                "teamId": "1610612752",
+                "teamId": "1610612746",
                 "seasonStart": "2019",
                 "seasonEnd": "2019"
             },
             {
-                "teamId": "1610612746",
+                "teamId": "1610612752",
                 "seasonStart": "2019",
                 "seasonEnd": "2019"
             },
@@ -7948,12 +7948,12 @@
                 "seasonEnd": "2019"
             },
             {
-                "teamId": "1610612743",
+                "teamId": "1610612739",
                 "seasonStart": "2020",
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612739",
+                "teamId": "1610612743",
                 "seasonStart": "2020",
                 "seasonEnd": "2020"
             },
@@ -8483,12 +8483,12 @@
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612764",
+                "teamId": "1610612756",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612756",
+                "teamId": "1610612764",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             }
@@ -8888,12 +8888,12 @@
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612762",
+                "teamId": "1610612752",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612752",
+                "teamId": "1610612762",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             }
@@ -10043,12 +10043,12 @@
         },
         "teams": [
             {
-                "teamId": "1610612755",
+                "teamId": "1610612745",
                 "seasonStart": "2020",
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612745",
+                "teamId": "1610612755",
                 "seasonStart": "2020",
                 "seasonEnd": "2020"
             },
@@ -10238,12 +10238,12 @@
                 "seasonEnd": "2017"
             },
             {
-                "teamId": "1610612742",
+                "teamId": "1610612752",
                 "seasonStart": "2018",
                 "seasonEnd": "2018"
             },
             {
-                "teamId": "1610612752",
+                "teamId": "1610612742",
                 "seasonStart": "2018",
                 "seasonEnd": "2018"
             },
@@ -10253,12 +10253,12 @@
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612755",
+                "teamId": "1610612747",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612747",
+                "teamId": "1610612755",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             }
@@ -10628,17 +10628,17 @@
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612739",
-                "seasonStart": "2021",
-                "seasonEnd": "2021"
-            },
-            {
                 "teamId": "1610612749",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
             {
                 "teamId": "1610612738",
+                "seasonStart": "2021",
+                "seasonEnd": "2021"
+            },
+            {
+                "teamId": "1610612739",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             }
@@ -10728,12 +10728,12 @@
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612759",
+                "teamId": "1610612745",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612745",
+                "teamId": "1610612759",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             }
@@ -11648,12 +11648,12 @@
                 "seasonEnd": "2017"
             },
             {
-                "teamId": "1610612760",
+                "teamId": "1610612741",
                 "seasonStart": "2018",
                 "seasonEnd": "2018"
             },
             {
-                "teamId": "1610612741",
+                "teamId": "1610612760",
                 "seasonStart": "2018",
                 "seasonEnd": "2018"
             },
@@ -12493,12 +12493,12 @@
                 "seasonEnd": "2016"
             },
             {
-                "teamId": "1610612752",
+                "teamId": "1610612742",
                 "seasonStart": "2017",
                 "seasonEnd": "2017"
             },
             {
-                "teamId": "1610612742",
+                "teamId": "1610612752",
                 "seasonStart": "2017",
                 "seasonEnd": "2017"
             },
@@ -12578,12 +12578,12 @@
                 "seasonEnd": "2019"
             },
             {
-                "teamId": "1610612739",
+                "teamId": "1610612743",
                 "seasonStart": "2020",
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612743",
+                "teamId": "1610612739",
                 "seasonStart": "2020",
                 "seasonEnd": "2020"
             },
@@ -13173,11 +13173,6 @@
                 "seasonEnd": "2017"
             },
             {
-                "teamId": "1610612755",
-                "seasonStart": "2018",
-                "seasonEnd": "2018"
-            },
-            {
                 "teamId": "1610612761",
                 "seasonStart": "2018",
                 "seasonEnd": "2018"
@@ -13188,17 +13183,22 @@
                 "seasonEnd": "2018"
             },
             {
+                "teamId": "1610612755",
+                "seasonStart": "2018",
+                "seasonEnd": "2018"
+            },
+            {
                 "teamId": "1610612749",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612764",
+                "teamId": "1610612750",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612750",
+                "teamId": "1610612764",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
@@ -13288,12 +13288,12 @@
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612761",
+                "teamId": "1610612738",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612738",
+                "teamId": "1610612761",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             }
@@ -14370,7 +14370,7 @@
         "lastName": "Okogie",
         "temporaryDisplayName": "Okogie, Josh",
         "personId": "1629006",
-        "teamId": "1610612750",
+        "teamId": "1610612756",
         "jersey": "20",
         "isActive": true,
         "pos": "G",
@@ -14384,7 +14384,7 @@
             "playerCode": "josh_okogie",
             "posFull": "Guard",
             "displayAffiliation": "Georgia Tech/Nigeria",
-            "freeAgentCode": "(FA)"
+            "freeAgentCode": ""
         },
         "teams": [
             {
@@ -16151,46 +16151,6 @@
         "country": "USA"
     },
     {
-        "firstName": "Isaiah",
-        "lastName": "Roby",
-        "temporaryDisplayName": "Roby, Isaiah",
-        "personId": "1629676",
-        "teamId": "1610612760",
-        "jersey": "22",
-        "isActive": true,
-        "pos": "F",
-        "heightFeet": "6",
-        "heightInches": "8",
-        "heightMeters": "2.03",
-        "weightPounds": "230",
-        "weightKilograms": "104.3",
-        "dateOfBirthUTC": "1998-02-03",
-        "teamSitesOnly": {
-            "playerCode": "roby_isaiah",
-            "posFull": "Forward",
-            "displayAffiliation": "Nebraska/USA",
-            "freeAgentCode": ""
-        },
-        "teams": [
-            {
-                "teamId": "1610612760",
-                "seasonStart": "2019",
-                "seasonEnd": "2021"
-            }
-        ],
-        "draft": {
-            "teamId": "1610612765",
-            "pickNum": "45",
-            "roundNum": "2",
-            "seasonYear": "2019"
-        },
-        "nbaDebutYear": "2019",
-        "yearsPro": "2",
-        "collegeName": "Nebraska-Lincoln",
-        "lastAffiliation": "Nebraska-Lincoln/USA",
-        "country": "USA"
-    },
-    {
         "firstName": "Rajon",
         "lastName": "Rondo",
         "temporaryDisplayName": "Rondo, Rajon",
@@ -16253,12 +16213,12 @@
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612739",
+                "teamId": "1610612747",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612747",
+                "teamId": "1610612739",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             }
@@ -16473,12 +16433,12 @@
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612739",
+                "teamId": "1610612754",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612754",
+                "teamId": "1610612739",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             }
@@ -16683,17 +16643,17 @@
                 "seasonEnd": "2020"
             },
             {
+                "teamId": "1610612740",
+                "seasonStart": "2021",
+                "seasonEnd": "2021"
+            },
+            {
                 "teamId": "1610612759",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
             {
                 "teamId": "1610612764",
-                "seasonStart": "2021",
-                "seasonEnd": "2021"
-            },
-            {
-                "teamId": "1610612740",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             }
@@ -17368,12 +17328,12 @@
                 "seasonEnd": "2017"
             },
             {
-                "teamId": "1610612739",
+                "teamId": "1610612757",
                 "seasonStart": "2018",
                 "seasonEnd": "2018"
             },
             {
-                "teamId": "1610612757",
+                "teamId": "1610612739",
                 "seasonStart": "2018",
                 "seasonEnd": "2018"
             },
@@ -17443,12 +17403,12 @@
                 "seasonEnd": "2015"
             },
             {
-                "teamId": "1610612750",
+                "teamId": "1610612740",
                 "seasonStart": "2016",
                 "seasonEnd": "2016"
             },
             {
-                "teamId": "1610612740",
+                "teamId": "1610612750",
                 "seasonStart": "2016",
                 "seasonEnd": "2016"
             },
@@ -17463,12 +17423,12 @@
                 "seasonEnd": "2018"
             },
             {
-                "teamId": "1610612737",
+                "teamId": "1610612754",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612754",
+                "teamId": "1610612737",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             }
@@ -17713,12 +17673,12 @@
         },
         "teams": [
             {
-                "teamId": "1610612758",
+                "teamId": "1610612745",
                 "seasonStart": "2009",
                 "seasonEnd": "2009"
             },
             {
-                "teamId": "1610612745",
+                "teamId": "1610612758",
                 "seasonStart": "2009",
                 "seasonEnd": "2009"
             },
@@ -17748,12 +17708,12 @@
                 "seasonEnd": "2017"
             },
             {
-                "teamId": "1610612763",
+                "teamId": "1610612746",
                 "seasonStart": "2018",
                 "seasonEnd": "2018"
             },
             {
-                "teamId": "1610612746",
+                "teamId": "1610612763",
                 "seasonStart": "2018",
                 "seasonEnd": "2018"
             },
@@ -17818,12 +17778,12 @@
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612745",
+                "teamId": "1610612738",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612738",
+                "teamId": "1610612745",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             }
@@ -17928,12 +17888,12 @@
                 "seasonEnd": "2016"
             },
             {
-                "teamId": "1610612739",
+                "teamId": "1610612747",
                 "seasonStart": "2017",
                 "seasonEnd": "2017"
             },
             {
-                "teamId": "1610612747",
+                "teamId": "1610612739",
                 "seasonStart": "2017",
                 "seasonEnd": "2017"
             },
@@ -17958,12 +17918,12 @@
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612766",
+                "teamId": "1610612747",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612747",
+                "teamId": "1610612766",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             }
@@ -18103,12 +18063,12 @@
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612758",
+                "teamId": "1610612741",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612741",
+                "teamId": "1610612758",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
@@ -19798,12 +19758,12 @@
                 "seasonEnd": "2020"
             },
             {
-                "teamId": "1610612746",
+                "teamId": "1610612757",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             },
             {
-                "teamId": "1610612757",
+                "teamId": "1610612746",
                 "seasonStart": "2021",
                 "seasonEnd": "2021"
             }
