@@ -626,6 +626,46 @@
         "country": "USA"
     },
     {
+        "firstName": "Scottie",
+        "lastName": "Barnes",
+        "temporaryDisplayName": "Barnes, Scottie",
+        "personId": "1630567",
+        "teamId": "1610612761",
+        "jersey": "4",
+        "isActive": true,
+        "pos": "F",
+        "heightFeet": "6",
+        "heightInches": "7",
+        "heightMeters": "2.01",
+        "weightPounds": "225",
+        "weightKilograms": "102.1",
+        "dateOfBirthUTC": "2001-08-01",
+        "teamSitesOnly": {
+            "playerCode": "scottie_barnes",
+            "posFull": "Forward",
+            "displayAffiliation": "Florida State/USA",
+            "freeAgentCode": ""
+        },
+        "teams": [
+            {
+                "teamId": "1610612761",
+                "seasonStart": "2021",
+                "seasonEnd": "2021"
+            }
+        ],
+        "draft": {
+            "teamId": "1610612761",
+            "pickNum": "4",
+            "roundNum": "1",
+            "seasonYear": "2021"
+        },
+        "nbaDebutYear": "2021",
+        "yearsPro": "0",
+        "collegeName": "Florida State",
+        "lastAffiliation": "Florida State/USA",
+        "country": "USA"
+    },
+    {
         "firstName": "RJ",
         "lastName": "Barrett",
         "temporaryDisplayName": "Barrett, RJ",
@@ -1821,6 +1861,46 @@
         "country": "USA"
     },
     {
+        "firstName": "Cade",
+        "lastName": "Cunningham",
+        "temporaryDisplayName": "Cunningham, Cade",
+        "personId": "1630595",
+        "teamId": "1610612765",
+        "jersey": "2",
+        "isActive": true,
+        "pos": "G",
+        "heightFeet": "6",
+        "heightInches": "6",
+        "heightMeters": "1.98",
+        "weightPounds": "220",
+        "weightKilograms": "99.8",
+        "dateOfBirthUTC": "2001-09-25",
+        "teamSitesOnly": {
+            "playerCode": "cade_cunningham",
+            "posFull": "Guard",
+            "displayAffiliation": "Oklahoma State/USA",
+            "freeAgentCode": ""
+        },
+        "teams": [
+            {
+                "teamId": "1610612765",
+                "seasonStart": "2021",
+                "seasonEnd": "2021"
+            }
+        ],
+        "draft": {
+            "teamId": "1610612765",
+            "pickNum": "1",
+            "roundNum": "1",
+            "seasonYear": "2021"
+        },
+        "nbaDebutYear": "2021",
+        "yearsPro": "0",
+        "collegeName": "Oklahoma State",
+        "lastAffiliation": "Oklahoma State/USA",
+        "country": "USA"
+    },
+    {
         "firstName": "Seth",
         "lastName": "Curry",
         "temporaryDisplayName": "Curry, Seth",
@@ -2134,6 +2214,46 @@
         "collegeName": "Real Madrid",
         "lastAffiliation": "Real Madrid/Slovenia",
         "country": "Slovenia"
+    },
+    {
+        "firstName": "Ayo",
+        "lastName": "Dosunmu",
+        "temporaryDisplayName": "Dosunmu, Ayo",
+        "personId": "1630245",
+        "teamId": "1610612741",
+        "jersey": "12",
+        "isActive": true,
+        "pos": "G",
+        "heightFeet": "6",
+        "heightInches": "4",
+        "heightMeters": "1.93",
+        "weightPounds": "200",
+        "weightKilograms": "90.7",
+        "dateOfBirthUTC": "2000-01-17",
+        "teamSitesOnly": {
+            "playerCode": "ayo_dosunmu",
+            "posFull": "Guard",
+            "displayAffiliation": "Illinois/USA",
+            "freeAgentCode": ""
+        },
+        "teams": [
+            {
+                "teamId": "1610612741",
+                "seasonStart": "2021",
+                "seasonEnd": "2021"
+            }
+        ],
+        "draft": {
+            "teamId": "1610612741",
+            "pickNum": "38",
+            "roundNum": "2",
+            "seasonYear": "2021"
+        },
+        "nbaDebutYear": "2021",
+        "yearsPro": "0",
+        "collegeName": "Illinois",
+        "lastAffiliation": "Illinois/USA",
+        "country": "USA"
     },
     {
         "firstName": "Goran",
@@ -2848,6 +2968,46 @@
         "yearsPro": "9",
         "collegeName": "Michigan State",
         "lastAffiliation": "Michigan State/USA",
+        "country": "USA"
+    },
+    {
+        "firstName": "Jalen",
+        "lastName": "Green",
+        "temporaryDisplayName": "Green, Jalen",
+        "personId": "1630224",
+        "teamId": "1610612745",
+        "jersey": "0",
+        "isActive": true,
+        "pos": "G",
+        "heightFeet": "6",
+        "heightInches": "4",
+        "heightMeters": "1.93",
+        "weightPounds": "186",
+        "weightKilograms": "84.4",
+        "dateOfBirthUTC": "2002-02-09",
+        "teamSitesOnly": {
+            "playerCode": "jalen_green",
+            "posFull": "Guard",
+            "displayAffiliation": "USA",
+            "freeAgentCode": ""
+        },
+        "teams": [
+            {
+                "teamId": "1610612745",
+                "seasonStart": "2021",
+                "seasonEnd": "2021"
+            }
+        ],
+        "draft": {
+            "teamId": "1610612745",
+            "pickNum": "2",
+            "roundNum": "1",
+            "seasonYear": "2021"
+        },
+        "nbaDebutYear": "2021",
+        "yearsPro": "0",
+        "collegeName": "NBA G League Ignite",
+        "lastAffiliation": "NBA G League Ignite/USA",
         "country": "USA"
     },
     {
@@ -5176,6 +5336,46 @@
         "country": "Australia"
     },
     {
+        "firstName": "Davion",
+        "lastName": "Mitchell",
+        "temporaryDisplayName": "Mitchell, Davion",
+        "personId": "1630558",
+        "teamId": "1610612758",
+        "jersey": "15",
+        "isActive": true,
+        "pos": "G",
+        "heightFeet": "6",
+        "heightInches": "0",
+        "heightMeters": "1.83",
+        "weightPounds": "202",
+        "weightKilograms": "91.6",
+        "dateOfBirthUTC": "1998-09-05",
+        "teamSitesOnly": {
+            "playerCode": "davion_mitchell",
+            "posFull": "Guard",
+            "displayAffiliation": "Baylor/USA",
+            "freeAgentCode": ""
+        },
+        "teams": [
+            {
+                "teamId": "1610612758",
+                "seasonStart": "2021",
+                "seasonEnd": "2021"
+            }
+        ],
+        "draft": {
+            "teamId": "1610612758",
+            "pickNum": "9",
+            "roundNum": "1",
+            "seasonYear": "2021"
+        },
+        "nbaDebutYear": "2021",
+        "yearsPro": "0",
+        "collegeName": "Baylor",
+        "lastAffiliation": "Baylor/USA",
+        "country": "USA"
+    },
+    {
         "firstName": "Donovan",
         "lastName": "Mitchell",
         "temporaryDisplayName": "Mitchell, Donovan",
@@ -5213,6 +5413,46 @@
         "yearsPro": "4",
         "collegeName": "Louisville",
         "lastAffiliation": "Louisville/USA",
+        "country": "USA"
+    },
+    {
+        "firstName": "Evan",
+        "lastName": "Mobley",
+        "temporaryDisplayName": "Mobley, Evan",
+        "personId": "1630596",
+        "teamId": "1610612739",
+        "jersey": "4",
+        "isActive": true,
+        "pos": "C",
+        "heightFeet": "6",
+        "heightInches": "11",
+        "heightMeters": "2.11",
+        "weightPounds": "215",
+        "weightKilograms": "97.5",
+        "dateOfBirthUTC": "2001-06-18",
+        "teamSitesOnly": {
+            "playerCode": "evan_mobley",
+            "posFull": "Center",
+            "displayAffiliation": "USC/USA",
+            "freeAgentCode": ""
+        },
+        "teams": [
+            {
+                "teamId": "1610612739",
+                "seasonStart": "2021",
+                "seasonEnd": "2021"
+            }
+        ],
+        "draft": {
+            "teamId": "1610612739",
+            "pickNum": "3",
+            "roundNum": "1",
+            "seasonYear": "2021"
+        },
+        "nbaDebutYear": "2021",
+        "yearsPro": "0",
+        "collegeName": "Southern California",
+        "lastAffiliation": "Southern California/USA",
         "country": "USA"
     },
     {
@@ -7639,6 +7879,46 @@
         "collegeName": "Southern California",
         "lastAffiliation": "Southern California/Montenegro",
         "country": "Montenegro"
+    },
+    {
+        "firstName": "Franz",
+        "lastName": "Wagner",
+        "temporaryDisplayName": "Wagner, Franz",
+        "personId": "1630532",
+        "teamId": "1610612753",
+        "jersey": "22",
+        "isActive": true,
+        "pos": "F",
+        "heightFeet": "6",
+        "heightInches": "10",
+        "heightMeters": "2.08",
+        "weightPounds": "220",
+        "weightKilograms": "99.8",
+        "dateOfBirthUTC": "2001-08-27",
+        "teamSitesOnly": {
+            "playerCode": "franz_wagner",
+            "posFull": "Forward",
+            "displayAffiliation": "Michigan/Germany",
+            "freeAgentCode": ""
+        },
+        "teams": [
+            {
+                "teamId": "1610612753",
+                "seasonStart": "2021",
+                "seasonEnd": "2021"
+            }
+        ],
+        "draft": {
+            "teamId": "1610612753",
+            "pickNum": "8",
+            "roundNum": "1",
+            "seasonYear": "2021"
+        },
+        "nbaDebutYear": "2021",
+        "yearsPro": "0",
+        "collegeName": "Michigan",
+        "lastAffiliation": "Michigan/Germany",
+        "country": "Germany"
     },
     {
         "firstName": "Kemba",
