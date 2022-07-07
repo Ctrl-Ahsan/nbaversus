@@ -11,9 +11,9 @@ const Profile = () => {
     const [favorite, setFavorite] = useState()
     const [favoriteURL, setFavoriteURL] = useState()
     const [favoriteVotes, setFavoriteVotes] = useState()
-    const [notFavorite, setNotFavorite] = useState()
-    const [notFavoriteURL, setNotFavoriteURL] = useState()
-    const [notFavoriteVotes, setNotFavoriteVotes] = useState()
+    const [favoriteTeam, setFavoriteTeam] = useState()
+    const [favoriteTeamURL, setFavoriteTeamURL] = useState()
+    const [favoriteTeamVotes, setFavoriteTeamVotes] = useState()
 
     useEffect(() => {
         if (localStorage.getItem("user") !== null) {
@@ -40,6 +40,7 @@ const Profile = () => {
                         }
                         // count winners
                         let winnerCount = {}
+                        let teamCount = {}
                         for (let i = 0; i < myVotes.length; i++) {
                             let property = myVotes[i].winner
                             if (winnerCount.hasOwnProperty(property)) {
@@ -47,29 +48,26 @@ const Profile = () => {
                             } else {
                                 winnerCount[property] = 1
                             }
+
+                            property = myVotes[i].winnerTeam
+                            if (teamCount.hasOwnProperty(property)) {
+                                teamCount[property] += 1
+                            } else {
+                                teamCount[property] = 1
+                            }
                         }
                         const winnerArray = Object.entries(winnerCount).sort(
                             (a, b) => b[1] - a[1]
                         )
-                        // count losers
-                        let loserCount = {}
-                        for (let i = 0; i < myVotes.length; i++) {
-                            let property = myVotes[i].loser
-                            if (loserCount.hasOwnProperty(property)) {
-                                loserCount[property] += 1
-                            } else {
-                                loserCount[property] = 1
-                            }
-                        }
-                        const loserArray = Object.entries(loserCount).sort(
-                            (a, b) => a[1] - b[1]
+                        const teamArray = Object.entries(teamCount).sort(
+                            (a, b) => b[1] - a[1]
                         )
 
                         setFavoriteURL(
                             `https://cdn.nba.com/headshots/nba/latest/1040x760/${winnerArray[0][0]}.png`
                         )
-                        setNotFavoriteURL(
-                            `https://cdn.nba.com/headshots/nba/latest/1040x760/${loserArray[0][0]}.png`
+                        setFavoriteTeamURL(
+                            `https://cdn.nba.com/logos/nba/${teamArray[0][0]}/global/L/logo.svg`
                         )
                         // get real names
                         for (let j = 0; j < Players.playersArray.length; j++) {
@@ -80,18 +78,125 @@ const Profile = () => {
                                 winnerArray[0][0] =
                                     Players.playersArray[j].lastName
                             }
-                            if (
-                                loserArray[0][0] ===
-                                Players.playersArray[j].personId
+                        }
+                        while (parseInt(winnerArray[0][0])) {
+                            console.log("in while statement")
+                            winnerArray.shift()
+                            for (
+                                let j = 0;
+                                j < Players.playersArray.length;
+                                j++
                             ) {
-                                loserArray[0][0] =
-                                    Players.playersArray[j].lastName
+                                if (
+                                    winnerArray[0][0] ===
+                                    Players.playersArray[j].personId
+                                ) {
+                                    setFavoriteURL(
+                                        `https://cdn.nba.com/headshots/nba/latest/1040x760/${winnerArray[0][0]}.png`
+                                    )
+                                    winnerArray[0][0] =
+                                        Players.playersArray[j].lastName
+                                }
                             }
                         }
+                        switch (teamArray[0][0]) {
+                            case "1610612738":
+                                teamArray[0][0] = "Celtics"
+                                break
+                            case "1610612751":
+                                teamArray[0][0] = "Nets"
+                                break
+                            case "1610612752":
+                                teamArray[0][0] = "Knicks"
+                                break
+                            case "1610612755":
+                                teamArray[0][0] = "Sixers"
+                                break
+                            case "1610612761":
+                                teamArray[0][0] = "Raptors"
+                                break
+                            case "1610612741":
+                                teamArray[0][0] = "Bulls"
+                                break
+                            case "1610612739":
+                                teamArray[0][0] = "Cavaliers"
+                                break
+                            case "1610612765":
+                                teamArray[0][0] = "Pistons"
+                                break
+                            case "1610612754":
+                                teamArray[0][0] = "Pacers"
+                                break
+                            case "1610612749":
+                                teamArray[0][0] = "Bucks"
+                                break
+                            case "1610612737":
+                                teamArray[0][0] = "Hawks"
+                                break
+                            case "1610612766":
+                                teamArray[0][0] = "Hornets"
+                                break
+                            case "1610612748":
+                                teamArray[0][0] = "Heat"
+                                break
+                            case "1610612753":
+                                teamArray[0][0] = "Magic"
+                                break
+                            case "1610612764":
+                                teamArray[0][0] = "Wizards"
+                                break
+                            case "1610612743":
+                                teamArray[0][0] = "Nuggets"
+                                break
+                            case "1610612750":
+                                teamArray[0][0] = "Timberwolves"
+                                break
+                            case "1610612760":
+                                teamArray[0][0] = "Thunder"
+                                break
+                            case "1610612757":
+                                teamArray[0][0] = "Trail Blazers"
+                                break
+                            case "1610612762":
+                                teamArray[0][0] = "Jazz"
+                                break
+                            case "1610612744":
+                                teamArray[0][0] = "Warriors"
+                                break
+                            case "1610612746":
+                                teamArray[0][0] = "Clippers"
+                                break
+                            case "1610612747":
+                                teamArray[0][0] = "Lakers"
+                                break
+                            case "1610612756":
+                                teamArray[0][0] = "Suns"
+                                break
+                            case "1610612758":
+                                teamArray[0][0] = "Kings"
+                                break
+                            case "1610612742":
+                                teamArray[0][0] = "Mavericks"
+                                break
+                            case "1610612745":
+                                teamArray[0][0] = "Rockets"
+                                break
+                            case "1610612763":
+                                teamArray[0][0] = "Grizzlies"
+                                break
+                            case "1610612740":
+                                teamArray[0][0] = "Pelicans"
+                                break
+                            case "1610612759":
+                                teamArray[0][0] = "Spurs"
+                                break
+                            default:
+                                break
+                        }
                         setFavorite(winnerArray[0][0])
-                        setNotFavorite(loserArray[0][0])
+                        setFavoriteTeam(teamArray[0][0])
                         setFavoriteVotes(winnerArray[0][1])
-                        setNotFavoriteVotes(loserArray[0][1])
+                        setFavoriteTeamVotes(teamArray[0][1])
                     })
                 })
         }
@@ -144,7 +249,7 @@ const Profile = () => {
 
         & .playerImg {
             display: flex;
-            height: 1em;
+            width: 7em;
         }
 
         & .logout {
@@ -161,7 +266,11 @@ const Profile = () => {
                 <div className="panel" style={{ marginBottom: "0.5em" }}>
                     <div>
                         {favoriteURL && (
-                            <img src={favoriteURL} alt="favorite" />
+                            <img
+                                src={favoriteURL}
+                                alt="favorite player"
+                                className="playerImg"
+                            />
                         )}
                     </div>
                     <div>
@@ -176,18 +285,22 @@ const Profile = () => {
                 </div>
                 <div className="panel">
                     <div>
-                        {notFavoriteURL && (
-                            <img src={notFavoriteURL} alt="least favorite" />
+                        {favoriteTeamURL && (
+                            <img
+                                src={favoriteTeamURL}
+                                alt="favorite team"
+                                className="playerImg"
+                            />
                         )}
                     </div>
                     <div>
-                        <span className="heading">Disliked Player</span>
+                        <span className="heading">Favorite Team</span>
                         <br />
-                        {notFavorite}
+                        {favoriteTeam}
                         <br />
-                        <span className="heading">Against</span>
+                        <span className="heading">Votes</span>
                         <br />
-                        {notFavoriteVotes}
+                        {favoriteTeamVotes}
                     </div>
                 </div>
             </div>
