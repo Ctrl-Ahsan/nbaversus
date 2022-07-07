@@ -50,7 +50,7 @@ const Menu = (props) => {
             }
             :active {
                 scale: 0.9;
-                color: grey !important;
+                color: #bd7b00 !important;
             }
         }
     `

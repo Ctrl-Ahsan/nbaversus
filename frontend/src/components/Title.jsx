@@ -88,7 +88,7 @@ const Title = (props) => {
         <TitleContainer className="movingGradient">
             <div className="vs">
                 NBA
-                <img src="/vs.png" alt="" />
+                <img src="/nbaversus.png" alt="" />
                 <button
                     onClick={() => {
                         props.setToggleSettings(true)

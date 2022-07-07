@@ -29,6 +29,10 @@ const Leaderboard = (props) => {
                         break
                     }
                 }
+                if (parseInt(countArray[i][0])) {
+                    countArray.splice(i, 1)
+                    i--
+                }
             }
             setWinners(countArray)
         }
