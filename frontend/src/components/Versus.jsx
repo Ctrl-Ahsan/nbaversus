@@ -45,9 +45,9 @@ const Versus = () => {
     let formatted = ""
 
     // set player info
-    formatted = `#${player1.jersey} | ${player1.pos} | ${player1.heightFeet}"${player1.heightInches} | ${player1.weightPounds} lbs`
+    formatted = `#${player1.jersey} | ${player1.pos} | ${player1.heightFeet}'${player1.heightInches}" | ${player1.weightPounds} lbs`
     const stats1 = formatted
-    formatted = `#${player2.jersey} | ${player2.pos} | ${player2.heightFeet}"${player2.heightInches} | ${player2.weightPounds} lbs`
+    formatted = `#${player2.jersey} | ${player2.pos} | ${player2.heightFeet}'${player2.heightInches}" | ${player2.weightPounds} lbs`
     const stats2 = formatted
 
     const img1 = `https://cdn.nba.com/headshots/nba/latest/1040x760/${player1.personId}.png`
@@ -473,7 +473,6 @@ const Versus = () => {
             {toggleSettings && (
                 <Settings
                     setMenuOpen={setMenuOpen}
-                    menuClosed={menuClosed}
                     setMenuClosed={setMenuClosed}
                     toggleSettings={toggleSettings}
                     setToggleSettings={setToggleSettings}

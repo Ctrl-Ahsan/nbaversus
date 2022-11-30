@@ -10,6 +10,7 @@ const Leaderboard = (props) => {
     useEffect(() => {
         const setLeaderboard = async () => {
             const votesJSON = await axios.get("/api/votes")
+            // count individual votes
             let count = {}
             for (let i = 0; i < votesJSON.data.length; i++) {
                 let property = votesJSON.data[i].winner
@@ -20,6 +21,7 @@ const Leaderboard = (props) => {
                 }
             }
             const countArray = Object.entries(count).sort((a, b) => b[1] - a[1])
+            // convert IDs to names
             for (let i = 0; i < countArray.length; i++) {
                 for (let j = 0; j < Players.playersArray.length; j++) {
                     if (countArray[i][0] === Players.playersArray[j].personId) {
@@ -34,6 +36,7 @@ const Leaderboard = (props) => {
                     i--
                 }
             }
+            countArray.length = 50
             setWinners(countArray)
         }
         setLeaderboard()
@@ -64,7 +67,7 @@ const Leaderboard = (props) => {
         height: 50%;
         width: 70%;
         max-width: 740px;
-        min-height: 50%;
+        min-height: 70%;
         padding: 1em;
 
         display: flex;
