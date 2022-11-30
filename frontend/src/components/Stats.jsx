@@ -1,29 +1,8 @@
-import { useState, useEffect } from "react"
 import styled from "styled-components"
 import { AiOutlineClose } from "react-icons/ai"
 import { IoIosStats } from "react-icons/io"
 
 const Stats = (props) => {
-    const [stats1, setStats1] = useState(null)
-    const [stats2, setStats2] = useState(null)
-
-    useEffect(() => {
-        const fetchStats = () => {
-            Promise.all([
-                fetch(
-                    `https://data.nba.net/data/10s/prod/v1/2022/players/${props.p1.personId}_profile.json`
-                ).then((value) => value.json()),
-                fetch(
-                    `https://data.nba.net/data/10s/prod/v1/2022/players/${props.p2.personId}_profile.json`
-                ).then((value) => value.json()),
-            ]).then(([json1, json2]) => {
-                setStats1(json1)
-                setStats2(json2)
-            })
-        }
-        fetchStats()
-    }, [props.p1, props.p2, props.toggleStats])
-
     const Row = (props) => {
         return (
             <>
@@ -100,7 +79,7 @@ const Stats = (props) => {
             padding: 0.4em;
         }
     `
-
+    console.log(props)
     return (
         <StatsContainer>
             <div className="close" onClick={handleClick}>
@@ -117,29 +96,29 @@ const Stats = (props) => {
                 />
 
                 <Row
-                    left={stats1?.league?.standard?.stats?.careerSummary.ppg}
+                    left={(props.p1.stats?.ppg).toFixed(1)}
                     middle="PPG"
-                    right={stats2?.league?.standard?.stats?.careerSummary.ppg}
+                    right={(props.p2.stats?.ppg).toFixed(1)}
                 />
                 <Row
-                    left={stats1?.league?.standard?.stats?.careerSummary.apg}
+                    left={(props.p1.stats?.apg).toFixed(1)}
                     middle="APG"
-                    right={stats2?.league?.standard?.stats?.careerSummary.apg}
+                    right={(props.p2.stats?.apg).toFixed(1)}
                 />
                 <Row
-                    left={stats1?.league?.standard?.stats?.careerSummary.rpg}
+                    left={(props.p1.stats?.rpg).toFixed(1)}
                     middle="RPG"
-                    right={stats2?.league?.standard?.stats?.careerSummary.rpg}
+                    right={(props.p2.stats?.rpg).toFixed(1)}
                 />
                 <Row
-                    left={stats1?.league?.standard?.stats?.careerSummary.fgp}
+                    left={(props.p1.stats?.fgp * 100).toFixed(1)}
                     middle="FG%"
-                    right={stats2?.league?.standard?.stats?.careerSummary.fgp}
+                    right={(props.p2.stats?.fgp * 100).toFixed(1)}
                 />
                 <Row
-                    left={stats1?.league?.standard?.stats?.careerSummary.tpp}
+                    left={(props.p1.stats?.tpp * 100).toFixed(1)}
                     middle="3P%"
-                    right={stats2?.league?.standard?.stats?.careerSummary.tpp}
+                    right={(props.p2.stats?.tpp * 100).toFixed(1)}
                 />
             </div>
         </StatsContainer>
