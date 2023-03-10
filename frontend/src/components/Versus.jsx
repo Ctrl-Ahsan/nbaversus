@@ -6,7 +6,7 @@ import Menu from "./Menu"
 import Stats from "./Stats"
 import Leaderboard from "./Leaderboard"
 import Settings from "./Settings"
-import playersFile from "../players.json"
+import playerArray from "../players.json"
 
 const Versus = () => {
     const [toggleTitle, setToggleTitle] = useState(true)
@@ -21,8 +21,6 @@ const Versus = () => {
     const [toggleStats, setToggleStats] = useState(false)
     const [toggleLeaderboard, setToggleLeaderboard] = useState(false)
     const [toggleSettings, setToggleSettings] = useState(false)
-
-    const playerArray = playersFile.playersArray
 
     useEffect(() => {
         // reset states
@@ -45,9 +43,13 @@ const Versus = () => {
     let formatted = ""
 
     // set player info
-    formatted = `#${player1.jersey} | ${player1.pos} | ${player1.heightFeet}'${player1.heightInches}" | ${player1.weightPounds} lbs`
+    formatted = `${player1.age} yrs | ${
+        player1.height.replace("-", "'") + '"'
+    } | ${player1.weight} lbs`
     const stats1 = formatted
-    formatted = `#${player2.jersey} | ${player2.pos} | ${player2.heightFeet}'${player2.heightInches}" | ${player2.weightPounds} lbs`
+    formatted = `${player2.age} yrs | ${
+        player2.height.replace("-", "'") + '"'
+    } | ${player2.weight} lbs`
     const stats2 = formatted
 
     const img1 = `https://cdn.nba.com/headshots/nba/latest/1040x760/${player1.personId}.png`
@@ -58,7 +60,7 @@ const Versus = () => {
 
     let bg1 = ""
     let bg2 = ""
-    switch (player1.teamId) {
+    switch (player1.teamId.toString()) {
         case "1610612737":
             bg1 = "#DF393E"
             break
@@ -152,7 +154,7 @@ const Versus = () => {
         default:
             bg1 = "#051D2D"
     }
-    switch (player2.teamId) {
+    switch (player2.teamId.toString()) {
         case "1610612737":
             bg2 = "#DF393E"
             break
@@ -397,9 +399,7 @@ const Versus = () => {
             >
                 <div className="info">
                     <div>
-                        <div className="name">
-                            {player1.firstName} {player1.lastName}
-                        </div>
+                        <div className="name">{player1.name}</div>
                         <div className="stats">{stats1}</div>
                     </div>
                 </div>
@@ -422,9 +422,7 @@ const Versus = () => {
                 onClick={handleClick2}
             >
                 <div className="info">
-                    <div className="name">
-                        {player2.firstName} {player2.lastName}
-                    </div>
+                    <div className="name">{player2.name}</div>
                     <div className="stats">{stats2}</div>
                 </div>
                 {player2 && <img className="logoBG" src={logo2} alt="" />}
