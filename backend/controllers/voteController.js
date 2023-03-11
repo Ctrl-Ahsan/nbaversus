@@ -4,7 +4,6 @@ const Vote = require("../models/voteModel")
 const User = require("../models/userModel")
 
 const getVote = asyncHandler(async (req, res) => {
-    let now = new Date().toLocaleString("en-US", { timeZone: "UTC" })
     const votes = await Vote.find()
     res.status(200).json(votes)
 })

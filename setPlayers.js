@@ -33,9 +33,15 @@ const setPlayers = async () => {
     // filter for players that are i) Top 100 in points  ii) Top 75 in assists  iii) Top 50 in rebounds
     const leagueStats = playerStatsResponse.resultSets[0].rowSet
     const leagueBios = playerBiosResponse.resultSets[0].rowSet
-    const PTS = 60
-    const AST = 53
-    const REB = 52
+    const NAME = 1
+    const ID = 0
+    const TEAMID = 2
+    const AGE = 4
+    const HEIGHT = 5
+    const WEIGHT = 7
+    const PTS_RANK = 60
+    const AST_RANK = 53
+    const REB_RANK = 52
     let totalPlayers = 0
     let players = []
 
@@ -43,18 +49,19 @@ const setPlayers = async () => {
 
     for (player in leagueStats) {
         if (
-            leagueStats[player][PTS] <= 100 ||
-            leagueStats[player][AST] <= 75 ||
-            leagueStats[player][REB] <= 50
+            leagueStats[player][PTS_RANK] <= 100 ||
+            leagueStats[player][AST_RANK] <= 75 ||
+            leagueStats[player][REB_RANK] <= 50
         ) {
             // structure entries as objects
             let playerObj = {}
-            playerObj.name = leagueBios[player][1]
-            playerObj.personId = leagueBios[player][0]
-            playerObj.teamId = leagueBios[player][2]
-            playerObj.age = leagueBios[player][4]
-            playerObj.height = leagueBios[player][5]
-            playerObj.weight = leagueBios[player][7]
+            playerObj.name = leagueBios[player][NAME]
+            playerObj.personId = leagueBios[player][ID]
+            playerObj.teamId = leagueBios[player][TEAMID].toString()
+            playerObj.age = leagueBios[player][AGE]
+            playerObj.height =
+                leagueBios[player][HEIGHT].replace("-", "'") + '"'
+            playerObj.weight = leagueBios[player][WEIGHT]
             players.push(playerObj)
 
             totalPlayers += 1

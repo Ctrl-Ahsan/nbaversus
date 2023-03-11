@@ -1,9 +1,5 @@
 const express = require("express")
 const router = express.Router()
-const jwt = require("jsonwebtoken")
-const bcrypt = require("bcryptjs")
-const asycHandler = require("express-async-handler")
-const User = require("../models/userModel")
 const {
     registerUser,
     loginUser,
