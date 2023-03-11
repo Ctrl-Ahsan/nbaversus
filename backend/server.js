@@ -25,6 +25,7 @@ app.use(errorHandler)
 
 app.use("/api/votes", require("./routes/voteRoutes"))
 app.use("/api/users", require("./routes/userRoutes"))
+app.use("/api/stats", require("./routes/statRoutes"))
 
 // Serve frontend
 if (process.env.NODE_ENV === "production") {
