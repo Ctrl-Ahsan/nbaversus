@@ -57,7 +57,7 @@ const setPlayers = async () => {
             let playerObj = {}
             playerObj.name = leagueBios[player][NAME]
             playerObj.personId = leagueBios[player][ID]
-            playerObj.teamId = leagueBios[player][TEAMID].toString()
+            playerObj.teamId = leagueBios[player][TEAMID]
             playerObj.age = leagueBios[player][AGE]
             playerObj.height =
                 leagueBios[player][HEIGHT].replace("-", "'") + '"'

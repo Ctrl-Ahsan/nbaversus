@@ -4,7 +4,7 @@
         "personId": 203932,
         "teamId": 1610612743,
         "age": 27,
-        "height": "6-8",
+        "height": "6'8\"",
         "weight": "235"
     },
     {
@@ -12,15 +12,23 @@
         "personId": 1630578,
         "teamId": 1610612745,
         "age": 20,
-        "height": "6-11",
+        "height": "6'11\"",
         "weight": "243"
+    },
+    {
+        "name": "Andrew Nembhard",
+        "personId": 1629614,
+        "teamId": 1610612754,
+        "age": 23,
+        "height": "6'3\"",
+        "weight": "191"
     },
     {
         "name": "Andrew Wiggins",
         "personId": 203952,
         "teamId": 1610612744,
         "age": 28,
-        "height": "6-7",
+        "height": "6'7\"",
         "weight": "197"
     },
     {
@@ -28,15 +36,15 @@
         "personId": 1629014,
         "teamId": 1610612757,
         "age": 23,
-        "height": "6-3",
+        "height": "6'3\"",
         "weight": "181"
     },
     {
         "name": "Anthony Davis",
         "personId": 203076,
         "teamId": 1610612747,
-        "age": 29,
-        "height": "6-10",
+        "age": 30,
+        "height": "6'10\"",
         "weight": "253"
     },
     {
@@ -44,7 +52,7 @@
         "personId": 1630162,
         "teamId": 1610612750,
         "age": 21,
-        "height": "6-4",
+        "height": "6'4\"",
         "weight": "225"
     },
     {
@@ -52,7 +60,7 @@
         "personId": 1628389,
         "teamId": 1610612748,
         "age": 25,
-        "height": "6-9",
+        "height": "6'9\"",
         "weight": "255"
     },
     {
@@ -60,7 +68,7 @@
         "personId": 1627732,
         "teamId": 1610612751,
         "age": 26,
-        "height": "6-10",
+        "height": "6'10\"",
         "weight": "240"
     },
     {
@@ -68,7 +76,7 @@
         "personId": 1631097,
         "teamId": 1610612754,
         "age": 20,
-        "height": "6-5",
+        "height": "6'5\"",
         "weight": "210"
     },
     {
@@ -76,23 +84,15 @@
         "personId": 1626171,
         "teamId": 1610612749,
         "age": 28,
-        "height": "6-11",
+        "height": "6'11\"",
         "weight": "250"
-    },
-    {
-        "name": "Bogdan Bogdanovic",
-        "personId": 203992,
-        "teamId": 1610612737,
-        "age": 30,
-        "height": "6-5",
-        "weight": "225"
     },
     {
         "name": "Bojan Bogdanovic",
         "personId": 202711,
         "teamId": 1610612765,
         "age": 33,
-        "height": "6-7",
+        "height": "6'7\"",
         "weight": "226"
     },
     {
@@ -100,7 +100,7 @@
         "personId": 203078,
         "teamId": 1610612764,
         "age": 29,
-        "height": "6-4",
+        "height": "6'4\"",
         "weight": "207"
     },
     {
@@ -108,7 +108,7 @@
         "personId": 1627742,
         "teamId": 1610612740,
         "age": 25,
-        "height": "6-8",
+        "height": "6'8\"",
         "weight": "190"
     },
     {
@@ -116,7 +116,7 @@
         "personId": 201572,
         "teamId": 1610612749,
         "age": 34,
-        "height": "7-1",
+        "height": "7'1\"",
         "weight": "282"
     },
     {
@@ -124,7 +124,7 @@
         "personId": 1627741,
         "teamId": 1610612754,
         "age": 30,
-        "height": "6-4",
+        "height": "6'4\"",
         "weight": "220"
     },
     {
@@ -132,7 +132,7 @@
         "personId": 203468,
         "teamId": 1610612740,
         "age": 31,
-        "height": "6-3",
+        "height": "6'3\"",
         "weight": "190"
     },
     {
@@ -140,7 +140,7 @@
         "personId": 1630595,
         "teamId": 1610612765,
         "age": 21,
-        "height": "6-7",
+        "height": "6'7\"",
         "weight": "220"
     },
     {
@@ -148,7 +148,7 @@
         "personId": 1629661,
         "teamId": 1610612751,
         "age": 27,
-        "height": "6-8",
+        "height": "6'8\"",
         "weight": "210"
     },
     {
@@ -156,15 +156,23 @@
         "personId": 1626166,
         "teamId": 1610612756,
         "age": 28,
-        "height": "6-1",
+        "height": "6'1\"",
         "weight": "183"
+    },
+    {
+        "name": "Caris LeVert",
+        "personId": 1627747,
+        "teamId": 1610612739,
+        "age": 28,
+        "height": "6'6\"",
+        "weight": "205"
     },
     {
         "name": "Chris Paul",
         "personId": 101108,
         "teamId": 1610612756,
         "age": 37,
-        "height": "6-0",
+        "height": "6'0\"",
         "weight": "175"
     },
     {
@@ -172,7 +180,7 @@
         "personId": 1626174,
         "teamId": 1610612742,
         "age": 27,
-        "height": "6-9",
+        "height": "6'9\"",
         "weight": "214"
     },
     {
@@ -180,23 +188,23 @@
         "personId": 203991,
         "teamId": 1610612737,
         "age": 28,
-        "height": "6-10",
+        "height": "6'10\"",
         "weight": "256"
     },
     {
-        "name": "Cole Anthony",
-        "personId": 1630175,
-        "teamId": 1610612753,
-        "age": 22,
-        "height": "6-3",
-        "weight": "185"
+        "name": "Collin Sexton",
+        "personId": 1629012,
+        "teamId": 1610612762,
+        "age": 24,
+        "height": "6'2\"",
+        "weight": "190"
     },
     {
         "name": "D'Angelo Russell",
         "personId": 1626156,
         "teamId": 1610612747,
         "age": 27,
-        "height": "6-4",
+        "height": "6'4\"",
         "weight": "193"
     },
     {
@@ -204,7 +212,7 @@
         "personId": 203081,
         "teamId": 1610612757,
         "age": 32,
-        "height": "6-2",
+        "height": "6'2\"",
         "weight": "195"
     },
     {
@@ -212,7 +220,7 @@
         "personId": 1629636,
         "teamId": 1610612739,
         "age": 23,
-        "height": "6-1",
+        "height": "6'1\"",
         "weight": "192"
     },
     {
@@ -220,7 +228,7 @@
         "personId": 1628368,
         "teamId": 1610612758,
         "age": 25,
-        "height": "6-3",
+        "height": "6'3\"",
         "weight": "185"
     },
     {
@@ -228,7 +236,7 @@
         "personId": 1629631,
         "teamId": 1610612737,
         "age": 25,
-        "height": "6-8",
+        "height": "6'8\"",
         "weight": "221"
     },
     {
@@ -236,7 +244,7 @@
         "personId": 201942,
         "teamId": 1610612741,
         "age": 33,
-        "height": "6-6",
+        "height": "6'6\"",
         "weight": "220"
     },
     {
@@ -244,7 +252,7 @@
         "personId": 1629028,
         "teamId": 1610612756,
         "age": 24,
-        "height": "7-0",
+        "height": "7'0\"",
         "weight": "250"
     },
     {
@@ -252,23 +260,15 @@
         "personId": 1627749,
         "teamId": 1610612737,
         "age": 26,
-        "height": "6-5",
+        "height": "6'5\"",
         "weight": "180"
-    },
-    {
-        "name": "Delon Wright",
-        "personId": 1626153,
-        "teamId": 1610612764,
-        "age": 30,
-        "height": "6-5",
-        "weight": "185"
     },
     {
         "name": "Dennis Schroder",
         "personId": 203471,
         "teamId": 1610612747,
         "age": 29,
-        "height": "6-1",
+        "height": "6'1\"",
         "weight": "172"
     },
     {
@@ -276,7 +276,7 @@
         "personId": 1628372,
         "teamId": 1610612766,
         "age": 25,
-        "height": "6-2",
+        "height": "6'2\"",
         "weight": "205"
     },
     {
@@ -284,7 +284,7 @@
         "personId": 1630217,
         "teamId": 1610612763,
         "age": 24,
-        "height": "6-5",
+        "height": "6'5\"",
         "weight": "215"
     },
     {
@@ -292,7 +292,7 @@
         "personId": 1626164,
         "teamId": 1610612756,
         "age": 26,
-        "height": "6-5",
+        "height": "6'5\"",
         "weight": "206"
     },
     {
@@ -300,7 +300,7 @@
         "personId": 1630170,
         "teamId": 1610612759,
         "age": 22,
-        "height": "6-5",
+        "height": "6'5\"",
         "weight": "200"
     },
     {
@@ -308,7 +308,7 @@
         "personId": 1628415,
         "teamId": 1610612763,
         "age": 27,
-        "height": "6-6",
+        "height": "6'6\"",
         "weight": "225"
     },
     {
@@ -316,7 +316,7 @@
         "personId": 1627734,
         "teamId": 1610612758,
         "age": 26,
-        "height": "7-1",
+        "height": "7'1\"",
         "weight": "240"
     },
     {
@@ -324,7 +324,7 @@
         "personId": 1628378,
         "teamId": 1610612739,
         "age": 26,
-        "height": "6-1",
+        "height": "6'1\"",
         "weight": "215"
     },
     {
@@ -332,7 +332,7 @@
         "personId": 203110,
         "teamId": 1610612744,
         "age": 33,
-        "height": "6-6",
+        "height": "6'6\"",
         "weight": "230"
     },
     {
@@ -340,7 +340,7 @@
         "personId": 1630596,
         "teamId": 1610612739,
         "age": 21,
-        "height": "6-11",
+        "height": "6'11\"",
         "weight": "215"
     },
     {
@@ -348,7 +348,7 @@
         "personId": 1630532,
         "teamId": 1610612753,
         "age": 21,
-        "height": "6-10",
+        "height": "6'10\"",
         "weight": "220"
     },
     {
@@ -356,7 +356,7 @@
         "personId": 1627832,
         "teamId": 1610612761,
         "age": 29,
-        "height": "6-0",
+        "height": "6'0\"",
         "weight": "197"
     },
     {
@@ -364,7 +364,7 @@
         "personId": 1629018,
         "teamId": 1610612761,
         "age": 24,
-        "height": "6-5",
+        "height": "6'5\"",
         "weight": "209"
     },
     {
@@ -372,7 +372,7 @@
         "personId": 203507,
         "teamId": 1610612749,
         "age": 28,
-        "height": "7-0",
+        "height": "7'0\"",
         "weight": "243"
     },
     {
@@ -380,7 +380,7 @@
         "personId": 202330,
         "teamId": 1610612766,
         "age": 32,
-        "height": "6-7",
+        "height": "6'7\"",
         "weight": "225"
     },
     {
@@ -388,7 +388,7 @@
         "personId": 203084,
         "teamId": 1610612758,
         "age": 30,
-        "height": "6-8",
+        "height": "6'8\"",
         "weight": "225"
     },
     {
@@ -396,7 +396,7 @@
         "personId": 1630191,
         "teamId": 1610612765,
         "age": 21,
-        "height": "6-8",
+        "height": "6'8\"",
         "weight": "250"
     },
     {
@@ -404,7 +404,7 @@
         "personId": 1627826,
         "teamId": 1610612746,
         "age": 25,
-        "height": "7-0",
+        "height": "7'0\"",
         "weight": "240"
     },
     {
@@ -412,7 +412,7 @@
         "personId": 1629630,
         "teamId": 1610612763,
         "age": 23,
-        "height": "6-2",
+        "height": "6'2\"",
         "weight": "174"
     },
     {
@@ -420,7 +420,7 @@
         "personId": 1631095,
         "teamId": 1610612745,
         "age": 19,
-        "height": "6-11",
+        "height": "6'11\"",
         "weight": "220"
     },
     {
@@ -428,7 +428,7 @@
         "personId": 1631093,
         "teamId": 1610612765,
         "age": 21,
-        "height": "6-4",
+        "height": "6'4\"",
         "weight": "195"
     },
     {
@@ -436,7 +436,7 @@
         "personId": 1627751,
         "teamId": 1610612761,
         "age": 27,
-        "height": "7-1",
+        "height": "7'1\"",
         "weight": "245"
     },
     {
@@ -444,7 +444,7 @@
         "personId": 1628973,
         "teamId": 1610612752,
         "age": 26,
-        "height": "6-2",
+        "height": "6'2\"",
         "weight": "190"
     },
     {
@@ -452,7 +452,7 @@
         "personId": 1631105,
         "teamId": 1610612765,
         "age": 19,
-        "height": "6-11",
+        "height": "6'11\"",
         "weight": "250"
     },
     {
@@ -460,7 +460,7 @@
         "personId": 1630224,
         "teamId": 1610612745,
         "age": 21,
-        "height": "6-4",
+        "height": "6'4\"",
         "weight": "186"
     },
     {
@@ -468,7 +468,7 @@
         "personId": 1627750,
         "teamId": 1610612743,
         "age": 26,
-        "height": "6-4",
+        "height": "6'4\"",
         "weight": "215"
     },
     {
@@ -476,7 +476,7 @@
         "personId": 201935,
         "teamId": 1610612755,
         "age": 33,
-        "height": "6-5",
+        "height": "6'5\"",
         "weight": "220"
     },
     {
@@ -484,7 +484,7 @@
         "personId": 1628991,
         "teamId": 1610612763,
         "age": 23,
-        "height": "6-10",
+        "height": "6'10\"",
         "weight": "242"
     },
     {
@@ -492,7 +492,7 @@
         "personId": 1629020,
         "teamId": 1610612747,
         "age": 23,
-        "height": "6-8",
+        "height": "6'8\"",
         "weight": "214"
     },
     {
@@ -500,7 +500,7 @@
         "personId": 1628386,
         "teamId": 1610612739,
         "age": 24,
-        "height": "6-9",
+        "height": "6'9\"",
         "weight": "243"
     },
     {
@@ -508,7 +508,7 @@
         "personId": 1627759,
         "teamId": 1610612738,
         "age": 26,
-        "height": "6-6",
+        "height": "6'6\"",
         "weight": "223"
     },
     {
@@ -516,15 +516,15 @@
         "personId": 1628369,
         "teamId": 1610612738,
         "age": 25,
-        "height": "6-8",
+        "height": "6'8\"",
         "weight": "210"
     },
     {
         "name": "Jerami Grant",
         "personId": 203924,
         "teamId": 1610612757,
-        "age": 28,
-        "height": "6-8",
+        "age": 29,
+        "height": "6'8\"",
         "weight": "210"
     },
     {
@@ -532,7 +532,7 @@
         "personId": 202710,
         "teamId": 1610612748,
         "age": 33,
-        "height": "6-7",
+        "height": "6'7\"",
         "weight": "230"
     },
     {
@@ -540,7 +540,7 @@
         "personId": 203954,
         "teamId": 1610612755,
         "age": 28,
-        "height": "7-0",
+        "height": "7'0\"",
         "weight": "280"
     },
     {
@@ -548,7 +548,7 @@
         "personId": 202322,
         "teamId": 1610612746,
         "age": 32,
-        "height": "6-3",
+        "height": "6'3\"",
         "weight": "210"
     },
     {
@@ -556,7 +556,7 @@
         "personId": 202685,
         "teamId": 1610612740,
         "age": 30,
-        "height": "6-11",
+        "height": "6'11\"",
         "weight": "265"
     },
     {
@@ -564,7 +564,7 @@
         "personId": 203903,
         "teamId": 1610612762,
         "age": 30,
-        "height": "6-5",
+        "height": "6'5\"",
         "weight": "194"
     },
     {
@@ -572,7 +572,7 @@
         "personId": 1629673,
         "teamId": 1610612744,
         "age": 23,
-        "height": "6-4",
+        "height": "6'4\"",
         "weight": "194"
     },
     {
@@ -580,7 +580,7 @@
         "personId": 1630581,
         "teamId": 1610612760,
         "age": 20,
-        "height": "6-8",
+        "height": "6'8\"",
         "weight": "216"
     },
     {
@@ -588,7 +588,7 @@
         "personId": 1628404,
         "teamId": 1610612752,
         "age": 28,
-        "height": "6-4",
+        "height": "6'4\"",
         "weight": "215"
     },
     {
@@ -596,7 +596,7 @@
         "personId": 1630563,
         "teamId": 1610612759,
         "age": 20,
-        "height": "6-6",
+        "height": "6'6\"",
         "weight": "189"
     },
     {
@@ -604,7 +604,7 @@
         "personId": 201950,
         "teamId": 1610612749,
         "age": 32,
-        "height": "6-5",
+        "height": "6'5\"",
         "weight": "205"
     },
     {
@@ -612,7 +612,7 @@
         "personId": 203944,
         "teamId": 1610612752,
         "age": 28,
-        "height": "6-8",
+        "height": "6'8\"",
         "weight": "250"
     },
     {
@@ -620,7 +620,7 @@
         "personId": 203994,
         "teamId": 1610612757,
         "age": 28,
-        "height": "7-0",
+        "height": "7'0\"",
         "weight": "290"
     },
     {
@@ -628,7 +628,7 @@
         "personId": 1626157,
         "teamId": 1610612750,
         "age": 27,
-        "height": "7-0",
+        "height": "7'0\"",
         "weight": "248"
     },
     {
@@ -636,7 +636,7 @@
         "personId": 202695,
         "teamId": 1610612746,
         "age": 31,
-        "height": "6-7",
+        "height": "6'7\"",
         "weight": "225"
     },
     {
@@ -644,7 +644,7 @@
         "personId": 1629640,
         "teamId": 1610612759,
         "age": 23,
-        "height": "6-5",
+        "height": "6'5\"",
         "weight": "220"
     },
     {
@@ -652,7 +652,7 @@
         "personId": 1626162,
         "teamId": 1610612766,
         "age": 27,
-        "height": "6-6",
+        "height": "6'6\"",
         "weight": "203"
     },
     {
@@ -660,7 +660,7 @@
         "personId": 201142,
         "teamId": 1610612756,
         "age": 34,
-        "height": "6-10",
+        "height": "6'10\"",
         "weight": "240"
     },
     {
@@ -668,7 +668,7 @@
         "personId": 1628989,
         "teamId": 1610612758,
         "age": 24,
-        "height": "6-7",
+        "height": "6'7\"",
         "weight": "198"
     },
     {
@@ -676,7 +676,7 @@
         "personId": 201567,
         "teamId": 1610612748,
         "age": 34,
-        "height": "6-8",
+        "height": "6'8\"",
         "weight": "251"
     },
     {
@@ -684,7 +684,7 @@
         "personId": 1629645,
         "teamId": 1610612745,
         "age": 22,
-        "height": "6-4",
+        "height": "6'4\"",
         "weight": "203"
     },
     {
@@ -692,7 +692,7 @@
         "personId": 1626172,
         "teamId": 1610612744,
         "age": 27,
-        "height": "6-9",
+        "height": "6'9\"",
         "weight": "222"
     },
     {
@@ -700,7 +700,7 @@
         "personId": 203114,
         "teamId": 1610612749,
         "age": 31,
-        "height": "6-7",
+        "height": "6'7\"",
         "weight": "222"
     },
     {
@@ -708,7 +708,7 @@
         "personId": 1630165,
         "teamId": 1610612765,
         "age": 21,
-        "height": "6-5",
+        "height": "6'5\"",
         "weight": "195"
     },
     {
@@ -716,7 +716,7 @@
         "personId": 202691,
         "teamId": 1610612744,
         "age": 33,
-        "height": "6-6",
+        "height": "6'6\"",
         "weight": "220"
     },
     {
@@ -724,7 +724,7 @@
         "personId": 1627739,
         "teamId": 1610612762,
         "age": 28,
-        "height": "6-3",
+        "height": "6'3\"",
         "weight": "205"
     },
     {
@@ -732,7 +732,7 @@
         "personId": 204001,
         "teamId": 1610612764,
         "age": 27,
-        "height": "7-3",
+        "height": "7'3\"",
         "weight": "240"
     },
     {
@@ -740,7 +740,7 @@
         "personId": 203937,
         "teamId": 1610612750,
         "age": 29,
-        "height": "6-9",
+        "height": "6'9\"",
         "weight": "230"
     },
     {
@@ -748,7 +748,7 @@
         "personId": 1628398,
         "teamId": 1610612764,
         "age": 27,
-        "height": "6-9",
+        "height": "6'9\"",
         "weight": "221"
     },
     {
@@ -756,7 +756,7 @@
         "personId": 200768,
         "teamId": 1610612748,
         "age": 36,
-        "height": "6-0",
+        "height": "6'0\"",
         "weight": "196"
     },
     {
@@ -764,7 +764,7 @@
         "personId": 202681,
         "teamId": 1610612742,
         "age": 30,
-        "height": "6-2",
+        "height": "6'2\"",
         "weight": "195"
     },
     {
@@ -772,7 +772,7 @@
         "personId": 1630163,
         "teamId": 1610612766,
         "age": 21,
-        "height": "6-7",
+        "height": "6'7\"",
         "weight": "180"
     },
     {
@@ -780,7 +780,7 @@
         "personId": 1628374,
         "teamId": 1610612762,
         "age": 25,
-        "height": "7-0",
+        "height": "7'0\"",
         "weight": "240"
     },
     {
@@ -788,7 +788,7 @@
         "personId": 2544,
         "teamId": 1610612747,
         "age": 38,
-        "height": "6-9",
+        "height": "6'9\"",
         "weight": "250"
     },
     {
@@ -796,7 +796,7 @@
         "personId": 1629029,
         "teamId": 1610612742,
         "age": 24,
-        "height": "6-7",
+        "height": "6'7\"",
         "weight": "230"
     },
     {
@@ -804,7 +804,7 @@
         "personId": 1627763,
         "teamId": 1610612738,
         "age": 30,
-        "height": "6-4",
+        "height": "6'4\"",
         "weight": "229"
     },
     {
@@ -812,7 +812,7 @@
         "personId": 203935,
         "teamId": 1610612738,
         "age": 29,
-        "height": "6-4",
+        "height": "6'4\"",
         "weight": "220"
     },
     {
@@ -820,7 +820,7 @@
         "personId": 1628365,
         "teamId": 1610612753,
         "age": 24,
-        "height": "6-4",
+        "height": "6'4\"",
         "weight": "209"
     },
     {
@@ -828,7 +828,7 @@
         "personId": 203486,
         "teamId": 1610612746,
         "age": 33,
-        "height": "7-0",
+        "height": "7'0\"",
         "weight": "254"
     },
     {
@@ -836,7 +836,7 @@
         "personId": 1629008,
         "teamId": 1610612743,
         "age": 24,
-        "height": "6-10",
+        "height": "6'10\"",
         "weight": "218"
     },
     {
@@ -844,7 +844,7 @@
         "personId": 1628969,
         "teamId": 1610612751,
         "age": 26,
-        "height": "6-6",
+        "height": "6'6\"",
         "weight": "209"
     },
     {
@@ -852,7 +852,7 @@
         "personId": 201144,
         "teamId": 1610612750,
         "age": 35,
-        "height": "6-1",
+        "height": "6'1\"",
         "weight": "175"
     },
     {
@@ -860,7 +860,7 @@
         "personId": 1629011,
         "teamId": 1610612752,
         "age": 24,
-        "height": "7-0",
+        "height": "7'0\"",
         "weight": "240"
     },
     {
@@ -868,7 +868,7 @@
         "personId": 1628420,
         "teamId": 1610612764,
         "age": 27,
-        "height": "6-2",
+        "height": "6'2\"",
         "weight": "183"
     },
     {
@@ -876,7 +876,7 @@
         "personId": 1626167,
         "teamId": 1610612754,
         "age": 26,
-        "height": "6-11",
+        "height": "6'11\"",
         "weight": "250"
     },
     {
@@ -884,7 +884,7 @@
         "personId": 1629651,
         "teamId": 1610612751,
         "age": 23,
-        "height": "6-11",
+        "height": "6'11\"",
         "weight": "215"
     },
     {
@@ -892,7 +892,7 @@
         "personId": 203999,
         "teamId": 1610612743,
         "age": 28,
-        "height": "6-11",
+        "height": "6'11\"",
         "weight": "284"
     },
     {
@@ -900,7 +900,7 @@
         "personId": 202696,
         "teamId": 1610612741,
         "age": 32,
-        "height": "6-10",
+        "height": "6'10\"",
         "weight": "260"
     },
     {
@@ -908,7 +908,7 @@
         "personId": 1626181,
         "teamId": 1610612746,
         "age": 29,
-        "height": "6-4",
+        "height": "6'4\"",
         "weight": "215"
     },
     {
@@ -916,7 +916,7 @@
         "personId": 1628384,
         "teamId": 1610612761,
         "age": 25,
-        "height": "6-7",
+        "height": "6'7\"",
         "weight": "232"
     },
     {
@@ -924,7 +924,7 @@
         "personId": 1630168,
         "teamId": 1610612737,
         "age": 22,
-        "height": "6-9",
+        "height": "6'9\"",
         "weight": "240"
     },
     {
@@ -932,7 +932,7 @@
         "personId": 1629023,
         "teamId": 1610612766,
         "age": 24,
-        "height": "6-7",
+        "height": "6'7\"",
         "weight": "230"
     },
     {
@@ -940,7 +940,7 @@
         "personId": 1631094,
         "teamId": 1610612753,
         "age": 20,
-        "height": "6-10",
+        "height": "6'10\"",
         "weight": "250"
     },
     {
@@ -948,7 +948,7 @@
         "personId": 1627783,
         "teamId": 1610612761,
         "age": 28,
-        "height": "6-8",
+        "height": "6'8\"",
         "weight": "230"
     },
     {
@@ -956,7 +956,7 @@
         "personId": 202331,
         "teamId": 1610612746,
         "age": 32,
-        "height": "6-8",
+        "height": "6'8\"",
         "weight": "220"
     },
     {
@@ -964,7 +964,7 @@
         "personId": 1629628,
         "teamId": 1610612752,
         "age": 22,
-        "height": "6-6",
+        "height": "6'6\"",
         "weight": "214"
     },
     {
@@ -972,7 +972,7 @@
         "personId": 1629057,
         "teamId": 1610612738,
         "age": 25,
-        "height": "6-9",
+        "height": "6'9\"",
         "weight": "237"
     },
     {
@@ -980,7 +980,7 @@
         "personId": 203497,
         "teamId": 1610612750,
         "age": 30,
-        "height": "7-1",
+        "height": "7'1\"",
         "weight": "258"
     },
     {
@@ -988,23 +988,15 @@
         "personId": 201566,
         "teamId": 1610612746,
         "age": 34,
-        "height": "6-3",
+        "height": "6'3\"",
         "weight": "200"
-    },
-    {
-        "name": "Saddiq Bey",
-        "personId": 1630180,
-        "teamId": 1610612737,
-        "age": 23,
-        "height": "6-7",
-        "weight": "215"
     },
     {
         "name": "Scottie Barnes",
         "personId": 1630567,
         "teamId": 1610612761,
         "age": 21,
-        "height": "6-8",
+        "height": "6'8\"",
         "weight": "225"
     },
     {
@@ -1012,7 +1004,7 @@
         "personId": 1628983,
         "teamId": 1610612760,
         "age": 24,
-        "height": "6-6",
+        "height": "6'6\"",
         "weight": "195"
     },
     {
@@ -1020,15 +1012,15 @@
         "personId": 203915,
         "teamId": 1610612751,
         "age": 29,
-        "height": "6-5",
+        "height": "6'5\"",
         "weight": "215"
     },
     {
         "name": "Stephen Curry",
         "personId": 201939,
         "teamId": 1610612744,
-        "age": 34,
-        "height": "6-2",
+        "age": 35,
+        "height": "6'2\"",
         "weight": "185"
     },
     {
@@ -1036,7 +1028,7 @@
         "personId": 203500,
         "teamId": 1610612763,
         "age": 29,
-        "height": "6-11",
+        "height": "6'11\"",
         "weight": "265"
     },
     {
@@ -1044,7 +1036,7 @@
         "personId": 204456,
         "teamId": 1610612754,
         "age": 30,
-        "height": "6-1",
+        "height": "6'1\"",
         "weight": "190"
     },
     {
@@ -1052,7 +1044,7 @@
         "personId": 1626179,
         "teamId": 1610612766,
         "age": 28,
-        "height": "6-1",
+        "height": "6'1\"",
         "weight": "190"
     },
     {
@@ -1060,7 +1052,7 @@
         "personId": 202699,
         "teamId": 1610612755,
         "age": 30,
-        "height": "6-7",
+        "height": "6'7\"",
         "weight": "226"
     },
     {
@@ -1068,7 +1060,7 @@
         "personId": 1629027,
         "teamId": 1610612737,
         "age": 24,
-        "height": "6-1",
+        "height": "6'1\"",
         "weight": "164"
     },
     {
@@ -1076,7 +1068,7 @@
         "personId": 1630200,
         "teamId": 1610612759,
         "age": 23,
-        "height": "6-1",
+        "height": "6'1\"",
         "weight": "185"
     },
     {
@@ -1084,7 +1076,7 @@
         "personId": 1629639,
         "teamId": 1610612748,
         "age": 23,
-        "height": "6-5",
+        "height": "6'5\"",
         "weight": "195"
     },
     {
@@ -1092,7 +1084,7 @@
         "personId": 1630169,
         "teamId": 1610612754,
         "age": 23,
-        "height": "6-5",
+        "height": "6'5\"",
         "weight": "185"
     },
     {
@@ -1100,7 +1092,7 @@
         "personId": 1630178,
         "teamId": 1610612755,
         "age": 22,
-        "height": "6-2",
+        "height": "6'2\"",
         "weight": "200"
     },
     {
@@ -1108,7 +1100,7 @@
         "personId": 1626145,
         "teamId": 1610612763,
         "age": 26,
-        "height": "6-2",
+        "height": "6'2\"",
         "weight": "196"
     },
     {
@@ -1116,7 +1108,7 @@
         "personId": 1631117,
         "teamId": 1610612762,
         "age": 21,
-        "height": "7-0",
+        "height": "7'0\"",
         "weight": "245"
     },
     {
@@ -1124,7 +1116,7 @@
         "personId": 1628976,
         "teamId": 1610612753,
         "age": 23,
-        "height": "6-10",
+        "height": "6'10\"",
         "weight": "270"
     },
     {
@@ -1132,7 +1124,7 @@
         "personId": 203897,
         "teamId": 1610612741,
         "age": 28,
-        "height": "6-5",
+        "height": "6'5\"",
         "weight": "200"
     },
     {
@@ -1140,7 +1132,7 @@
         "personId": 1629627,
         "teamId": 1610612740,
         "age": 22,
-        "height": "6-6",
+        "height": "6'6\"",
         "weight": "284"
     }
 ]
