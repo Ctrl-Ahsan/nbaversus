@@ -2,42 +2,14 @@ import axios from "axios"
 import React, { useEffect, useState } from "react"
 import styled from "styled-components"
 import { AiOutlineClose } from "react-icons/ai"
-import { FaMedal } from "react-icons/fa"
-import Players from "../players.json"
+import { FaMedal, FaCrown } from "react-icons/fa"
 
 const Leaderboard = (props) => {
     const [winners, setWinners] = useState([])
     useEffect(() => {
         const setLeaderboard = async () => {
-            const votesJSON = await axios.get("/api/votes")
-            // count individual votes
-            let count = {}
-            for (let i = 0; i < votesJSON.data.length; i++) {
-                let property = votesJSON.data[i].winner
-                if (count.hasOwnProperty(property)) {
-                    count[property] += 1
-                } else {
-                    count[property] = 1
-                }
-            }
-            const countArray = Object.entries(count).sort((a, b) => b[1] - a[1])
-            // convert IDs to names
-            for (let i = 0; i < countArray.length; i++) {
-                for (let j = 0; j < Players.playersArray.length; j++) {
-                    if (countArray[i][0] === Players.playersArray[j].personId) {
-                        countArray[
-                            i
-                        ][0] = `${Players.playersArray[j].firstName} ${Players.playersArray[j].lastName}`
-                        break
-                    }
-                }
-                if (parseInt(countArray[i][0])) {
-                    countArray.splice(i, 1)
-                    i--
-                }
-            }
-            countArray.length = 50
-            setWinners(countArray)
+            const votes = await axios.get("/api/votes")
+            setWinners(votes.data)
         }
         setLeaderboard()
     }, [])
@@ -95,21 +67,31 @@ const Leaderboard = (props) => {
         & .leaderboard {
             background-color: #0000007a;
             border: solid 1px #21212179;
-            border-radius: 5px;
+            border-top: none;
+            border-radius: 0px 0px 5px 5px;
             padding: 1em 10px;
+            padding-top: 0;
             display: grid;
             grid-template-columns: 1fr 2fr 1fr;
+            height: 100%;
             overflow-x: hidden;
             overflow-y: scroll;
         }
 
-        & .heading {
-            font-weight: 300;
+        & .headers {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            background-color: #0000007a;
+            border: solid 1px #21212179;
+            border-bottom: none;
+            border-radius: 5px 5px 0px 0px;
+            padding: 1em 10px;
             font-family: Roboto Condensed, Roboto, Arial;
+            font-weight: 700;
         }
 
         & .entry {
-            font-weight: 700;
+            font-weight: 400;
             padding: 10px;
         }
     `
@@ -122,19 +104,25 @@ const Leaderboard = (props) => {
             <div className="title">
                 <FaMedal /> Leaderboard
             </div>
+            <div className="headers">
+                <div>Rank</div>
+                <div></div>
+                <div>Votes</div>
+            </div>
             <div className="leaderboard">
-                <div className="heading">Rank</div>
-                <div className="heading">Player</div>
-                <div className="heading">Votes</div>
-                <hr style={{ width: "1em" }} />
-                <hr style={{ width: "1em" }} />
-                <hr style={{ width: "1em" }} />
                 {winners !== [] &&
                     winners.map((winner, i) => {
                         return (
                             <React.Fragment key={i}>
-                                <div className="entry">{i + 1}</div>
-                                <div className="entry">{winner[0]}</div>
+                                <div className="entry">
+                                    {i === 0 ? <FaCrown color="gold" /> : i + 1}
+                                </div>
+                                <div
+                                    className="entry"
+                                    style={{ fontWeight: 700 }}
+                                >
+                                    {winner[0]}
+                                </div>
                                 <div className="entry">{winner[1]}</div>
                             </React.Fragment>
                         )
