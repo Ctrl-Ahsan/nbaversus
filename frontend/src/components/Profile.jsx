@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux"
 import { FaSignOutAlt, FaUser } from "react-icons/fa"
 import { logout, reset } from "../features/auth/authSlice"
 import { useEffect, useState } from "react"
-import Players from "../players.json"
 
 const Profile = () => {
     const [user, setUser] = useState()
@@ -17,187 +16,24 @@ const Profile = () => {
 
     useEffect(() => {
         if (localStorage.getItem("user") !== null) {
-            const token = JSON.parse(localStorage.getItem("user")).Token
-            let myVotes
+            setUser(JSON.parse(localStorage.getItem("user")).Name)
             // get me
+            const token = JSON.parse(localStorage.getItem("user")).Token
             axios
                 .get("/api/users/me", {
                     headers: { Authorization: "Bearer " + token },
                 })
                 .then((response) => {
-                    setUser(response.data.name)
-                    myVotes = response.data.votes
-                })
-                .then(() => {
-                    // get votes
-                    axios.get("/api/votes").then((res) => {
-                        for (let i = 0; i < myVotes.length; i++) {
-                            for (let j = 0; j < res.data.length; j++) {
-                                if (myVotes[i] === res.data[j]._id) {
-                                    myVotes[i] = res.data[j]
-                                }
-                            }
-                        }
-                        // count winners
-                        let winnerCount = {}
-                        let teamCount = {}
-                        for (let i = 0; i < myVotes.length; i++) {
-                            let property = myVotes[i].winner
-                            if (winnerCount.hasOwnProperty(property)) {
-                                winnerCount[property] += 1
-                            } else {
-                                winnerCount[property] = 1
-                            }
-
-                            property = myVotes[i].winnerTeam
-                            if (teamCount.hasOwnProperty(property)) {
-                                teamCount[property] += 1
-                            } else {
-                                teamCount[property] = 1
-                            }
-                        }
-                        const winnerArray = Object.entries(winnerCount).sort(
-                            (a, b) => b[1] - a[1]
-                        )
-                        const teamArray = Object.entries(teamCount).sort(
-                            (a, b) => b[1] - a[1]
-                        )
-
-                        setFavoriteURL(
-                            `https://cdn.nba.com/headshots/nba/latest/1040x760/${winnerArray[0][0]}.png`
-                        )
-                        setFavoriteTeamURL(
-                            `https://cdn.nba.com/logos/nba/${teamArray[0][0]}/global/L/logo.svg`
-                        )
-                        // get real names
-                        for (let j = 0; j < Players.playersArray.length; j++) {
-                            if (
-                                winnerArray[0][0] ===
-                                Players.playersArray[j].personId
-                            ) {
-                                winnerArray[0][0] =
-                                    Players.playersArray[j].lastName
-                            }
-                        }
-                        while (parseInt(winnerArray[0][0])) {
-                            console.log("in while statement")
-                            winnerArray.shift()
-                            for (
-                                let j = 0;
-                                j < Players.playersArray.length;
-                                j++
-                            ) {
-                                if (
-                                    winnerArray[0][0] ===
-                                    Players.playersArray[j].personId
-                                ) {
-                                    setFavoriteURL(
-                                        `https://cdn.nba.com/headshots/nba/latest/1040x760/${winnerArray[0][0]}.png`
-                                    )
-                                    winnerArray[0][0] =
-                                        Players.playersArray[j].lastName
-                                }
-                            }
-                        }
-                        switch (teamArray[0][0]) {
-                            case "1610612738":
-                                teamArray[0][0] = "Celtics"
-                                break
-                            case "1610612751":
-                                teamArray[0][0] = "Nets"
-                                break
-                            case "1610612752":
-                                teamArray[0][0] = "Knicks"
-                                break
-                            case "1610612755":
-                                teamArray[0][0] = "Sixers"
-                                break
-                            case "1610612761":
-                                teamArray[0][0] = "Raptors"
-                                break
-                            case "1610612741":
-                                teamArray[0][0] = "Bulls"
-                                break
-                            case "1610612739":
-                                teamArray[0][0] = "Cavaliers"
-                                break
-                            case "1610612765":
-                                teamArray[0][0] = "Pistons"
-                                break
-                            case "1610612754":
-                                teamArray[0][0] = "Pacers"
-                                break
-                            case "1610612749":
-                                teamArray[0][0] = "Bucks"
-                                break
-                            case "1610612737":
-                                teamArray[0][0] = "Hawks"
-                                break
-                            case "1610612766":
-                                teamArray[0][0] = "Hornets"
-                                break
-                            case "1610612748":
-                                teamArray[0][0] = "Heat"
-                                break
-                            case "1610612753":
-                                teamArray[0][0] = "Magic"
-                                break
-                            case "1610612764":
-                                teamArray[0][0] = "Wizards"
-                                break
-                            case "1610612743":
-                                teamArray[0][0] = "Nuggets"
-                                break
-                            case "1610612750":
-                                teamArray[0][0] = "Timberwolves"
-                                break
-                            case "1610612760":
-                                teamArray[0][0] = "Thunder"
-                                break
-                            case "1610612757":
-                                teamArray[0][0] = "Trail Blazers"
-                                break
-                            case "1610612762":
-                                teamArray[0][0] = "Jazz"
-                                break
-                            case "1610612744":
-                                teamArray[0][0] = "Warriors"
-                                break
-                            case "1610612746":
-                                teamArray[0][0] = "Clippers"
-                                break
-                            case "1610612747":
-                                teamArray[0][0] = "Lakers"
-                                break
-                            case "1610612756":
-                                teamArray[0][0] = "Suns"
-                                break
-                            case "1610612758":
-                                teamArray[0][0] = "Kings"
-                                break
-                            case "1610612742":
-                                teamArray[0][0] = "Mavericks"
-                                break
-                            case "1610612745":
-                                teamArray[0][0] = "Rockets"
-                                break
-                            case "1610612763":
-                                teamArray[0][0] = "Grizzlies"
-                                break
-                            case "1610612740":
-                                teamArray[0][0] = "Pelicans"
-                                break
-                            case "1610612759":
-                                teamArray[0][0] = "Spurs"
-                                break
-                            default:
-                                break
-                        }
-                        setFavorite(winnerArray[0][0])
-                        setFavoriteTeam(teamArray[0][0])
-                        setFavoriteVotes(winnerArray[0][1])
-                        setFavoriteTeamVotes(teamArray[0][1])
-                    })
+                    setFavorite(response.data.favoritePlayer)
+                    setFavoriteTeam(response.data.favoriteTeam)
+                    setFavoriteVotes(response.data.favoritePlayerVotes)
+                    setFavoriteTeamVotes(response.data.favoriteTeamVotes)
+                    setFavoriteURL(
+                        `https://cdn.nba.com/headshots/nba/latest/1040x760/${response.data.favoritePlayerID}.png`
+                    )
+                    setFavoriteTeamURL(
+                        `https://cdn.nba.com/logos/nba/${response.data.favoriteTeamID}/global/L/logo.svg`
+                    )
                 })
         }
     }, [])
@@ -210,6 +46,10 @@ const Profile = () => {
     }
 
     const ProfileContainer = styled.div`
+        background-color: #0000007a;
+        border: solid 1px #21212179;
+        border-radius: 5px;
+        padding: 1em 10px;
         & .me {
             padding: 1em;
             padding-top: 0;
@@ -247,6 +87,10 @@ const Profile = () => {
             font-family: Roboto Condensed, Roboto, Arial;
         }
 
+        & .image {
+            height: 5em;
+        }
+
         & .playerImg {
             display: flex;
             width: 7em;
@@ -264,7 +108,7 @@ const Profile = () => {
                     <FaUser /> {user}
                 </div>
                 <div className="panel" style={{ marginBottom: "0.5em" }}>
-                    <div>
+                    <div className="image">
                         {favoriteURL && (
                             <img
                                 src={favoriteURL}
@@ -284,7 +128,7 @@ const Profile = () => {
                     </div>
                 </div>
                 <div className="panel">
-                    <div>
+                    <div className="image">
                         {favoriteTeamURL && (
                             <img
                                 src={favoriteTeamURL}
