@@ -100,6 +100,16 @@ const Register = (props) => {
                         </button>
                     )}
                 </div>
+                <hr className="divider" />
+                <div className="form-item">
+                    <button
+                        onClick={() => {
+                            props.setToggleRegister()
+                        }}
+                    >
+                        Login
+                    </button>
+                </div>
             </form>
         )
     }
