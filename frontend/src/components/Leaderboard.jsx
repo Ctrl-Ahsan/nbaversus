@@ -71,7 +71,7 @@ const Leaderboard = (props) => {
             border-top: none;
             border-radius: 0px 0px 5px 5px;
             padding: 1em 10px;
-            padding-top: 0;
+            padding-top: 0.5em;
             display: grid;
             grid-template-columns: 1fr 2fr 1fr;
             height: 100%;
