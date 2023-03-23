@@ -12,6 +12,7 @@ const Register = (props) => {
             password: "",
             password2: "",
         })
+        const [loading, setLoading] = useState(false)
 
         const { name, password, password2 } = formData
 
@@ -25,10 +26,11 @@ const Register = (props) => {
         const onSubmit = (e) => {
             e.preventDefault()
             if (name === "" || password === "" || password2 === "") {
-                toast.error("Please fill in all register fields")
+                toast.error("Please fill in all fields")
             } else if (password !== password2) {
                 toast.error("Passwords do not match")
             } else {
+                setLoading(true)
                 const userData = {
                     name,
                     password,
@@ -43,9 +45,11 @@ const Register = (props) => {
                             )
                             props.setLoggedIn(true)
                         }
+                        setLoading(false)
                     })
                     .catch((error) => {
                         toast.error(error.response.data)
+                        setLoading(false)
                     })
             }
         }
@@ -54,6 +58,7 @@ const Register = (props) => {
             <form className="form" onSubmit={onSubmit}>
                 <div className="form-item">
                     <input
+                        required
                         type="text"
                         id="name"
                         name="name"
@@ -64,6 +69,7 @@ const Register = (props) => {
                 </div>
                 <div className="form-item">
                     <input
+                        required
                         type="password"
                         id="password"
                         name="password"
@@ -74,6 +80,7 @@ const Register = (props) => {
                 </div>
                 <div className="form-item">
                     <input
+                        required
                         type="password"
                         id="password2"
                         name="password2"
@@ -83,9 +90,15 @@ const Register = (props) => {
                     />
                 </div>
                 <div className="form-item">
-                    <button className="signup" type="submit">
-                        Sign Up
-                    </button>
+                    {loading ? (
+                        <div className="spinner-container">
+                            <Spinner size="small" />
+                        </div>
+                    ) : (
+                        <button className="signup" type="submit">
+                            Sign Up
+                        </button>
+                    )}
                 </div>
             </form>
         )
@@ -95,6 +108,16 @@ const Register = (props) => {
         display: flex;
         flex-direction: column;
         align-items: center;
+        background-color: #0000007a;
+        border: solid 1px #21212179;
+        border-radius: 5px;
+        padding: 1em 0;
+
+        & .spinner-container {
+            height: 30px;
+            position: relative;
+            margin-top: 10px;
+        }
     `
 
     return (

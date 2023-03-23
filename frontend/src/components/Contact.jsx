@@ -80,9 +80,15 @@ const Contact = () => {
                     />
                 </div>
                 <div className="form-item">
-                    <button type="submit" className="submit">
-                        Send
-                    </button>
+                    {submit ? (
+                        <div className="spinner-container">
+                            <Spinner size="small" />
+                        </div>
+                    ) : (
+                        <button type="submit" className="submit">
+                            Send
+                        </button>
+                    )}
                 </div>
             </form>
         )
@@ -92,6 +98,10 @@ const Contact = () => {
         display: flex;
         flex-direction: column;
         align-items: center;
+        background-color: #0000007a;
+        border: solid 1px #21212179;
+        border-radius: 5px;
+        padding: 1em 0;
 
         & .submit {
             background-color: #008cd2;
@@ -110,11 +120,13 @@ const Contact = () => {
             resize: none;
             overflow-y: scroll;
         }
-    `
 
-    if (submit) {
-        return <Spinner />
-    }
+        & .spinner-container {
+            height: 30px;
+            position: relative;
+            margin-top: 10px;
+        }
+    `
 
     return (
         <ContactContainer>

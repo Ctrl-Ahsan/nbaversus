@@ -11,6 +11,7 @@ const Login = (props) => {
             name: "",
             password: "",
         })
+        const [loading, setLoading] = useState(false)
 
         const { name, password } = formData
 
@@ -27,6 +28,7 @@ const Login = (props) => {
             if (name === "" || password === "") {
                 toast.error("Please fill in all fields")
             } else {
+                setLoading(true)
                 const userData = {
                     name,
                     password,
@@ -41,9 +43,11 @@ const Login = (props) => {
                             )
                             props.setLoggedIn(true)
                         }
+                        setLoading(false)
                     })
                     .catch((error) => {
                         toast.error(error.response.data)
+                        setLoading(false)
                     })
             }
         }
@@ -73,7 +77,13 @@ const Login = (props) => {
                     />
                 </div>
                 <div className="form-item">
-                    <button type="submit">Login</button>
+                    {loading ? (
+                        <div className="spinner-container">
+                            <Spinner size="small" />
+                        </div>
+                    ) : (
+                        <button type="submit">Login</button>
+                    )}
                 </div>
                 <hr className="divider" />
                 <div className="form-item">
@@ -92,6 +102,16 @@ const Login = (props) => {
         display: flex;
         flex-direction: column;
         align-items: center;
+        background-color: #0000007a;
+        border: solid 1px #21212179;
+        border-radius: 5px;
+        padding: 1em 0;
+
+        & .spinner-container {
+            height: 30px;
+            position: relative;
+            margin-top: 10px;
+        }
     `
 
     return (
