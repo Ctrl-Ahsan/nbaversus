@@ -48,12 +48,14 @@ const Versus = () => {
     formatted = `${player2.age} | ${player2.height} | ${player2.weight} lbs`
     const stats2 = formatted
 
+    // set player image and team logo
     const img1 = `https://cdn.nba.com/headshots/nba/latest/1040x760/${player1.personId}.png`
     const img2 = `https://cdn.nba.com/headshots/nba/latest/1040x760/${player2.personId}.png`
 
     const logo1 = `https://cdn.nba.com/logos/nba/${player1.teamId}/global/L/logo.svg`
     const logo2 = `https://cdn.nba.com/logos/nba/${player2.teamId}/global/L/logo.svg`
 
+    // set corresponding background colors
     let bg1 = ""
     let bg2 = ""
     switch (player1.teamId) {
@@ -251,29 +253,25 @@ const Versus = () => {
             setPlayerWon(true)
             if (localStorage.getItem("user") !== null) {
                 const token = JSON.parse(localStorage.getItem("user")).Token
-                axios
-                    .post(
-                        "/api/votes",
-                        {
-                            winner: player1.personId,
-                            loser: player2.personId,
-                            winnerTeam: player1.teamId,
-                            loserTeam: player2.teamId,
-                        },
-                        {
-                            headers: { Authorization: "Bearer " + token },
-                        }
-                    )
-                    .then((response) => console.log(response))
-            } else {
-                axios
-                    .post("/api/votes", {
+                axios.post(
+                    "/api/votes",
+                    {
                         winner: player1.personId,
                         loser: player2.personId,
                         winnerTeam: player1.teamId,
                         loserTeam: player2.teamId,
-                    })
-                    .then((response) => console.log(response))
+                    },
+                    {
+                        headers: { Authorization: "Bearer " + token },
+                    }
+                )
+            } else {
+                axios.post("/api/votes", {
+                    winner: player1.personId,
+                    loser: player2.personId,
+                    winnerTeam: player1.teamId,
+                    loserTeam: player2.teamId,
+                })
             }
         }
     }
@@ -283,29 +281,25 @@ const Versus = () => {
             setPlayerWon(true)
             if (localStorage.getItem("user") !== null) {
                 const token = JSON.parse(localStorage.getItem("user")).Token
-                axios
-                    .post(
-                        "/api/votes",
-                        {
-                            winner: player2.personId,
-                            loser: player1.personId,
-                            winnerTeam: player2.teamId,
-                            loserTeam: player1.teamId,
-                        },
-                        {
-                            headers: { Authorization: "Bearer " + token },
-                        }
-                    )
-                    .then((response) => console.log(response))
-            } else {
-                axios
-                    .post("/api/votes", {
+                axios.post(
+                    "/api/votes",
+                    {
                         winner: player2.personId,
                         loser: player1.personId,
                         winnerTeam: player2.teamId,
                         loserTeam: player1.teamId,
-                    })
-                    .then((response) => console.log(response))
+                    },
+                    {
+                        headers: { Authorization: "Bearer " + token },
+                    }
+                )
+            } else {
+                axios.post("/api/votes", {
+                    winner: player2.personId,
+                    loser: player1.personId,
+                    winnerTeam: player2.teamId,
+                    loserTeam: player1.teamId,
+                })
             }
         }
     }
@@ -315,7 +309,8 @@ const Versus = () => {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        height: ${window.innerHeight}px;
+        height: 100vh;
+        max-height: -webkit-fill-available;
 
         & #one {
             background-color: ${bg1};
@@ -339,13 +334,11 @@ const Versus = () => {
             ${!playerWon && !menuOpen
                 ? ":active{scale: 1.2;transition: scale 0.1s; z-index: 2;}"
                 : ""}
-            
-            & img,svg {
-                -webkit-touch-callout: none;
+
+
+            & img,
+            svg {
                 -webkit-tap-highlight-color: transparent;
-                -moz-user-select: none;
-                -webkit-user-select: none;
-                user-select: none;
                 -webkit-user-drag: none;
             }
 
@@ -353,6 +346,10 @@ const Versus = () => {
                 margin: auto;
                 z-index: 1;
                 position: relative;
+            }
+            & .image-container {
+                z-index: 1;
+                height: 30vh;
             }
             & .name {
                 font-size: 2em;
@@ -399,8 +396,10 @@ const Versus = () => {
                         <div className="stats">{stats1}</div>
                     </div>
                 </div>
+                <div className="image-container">
+                    {player1 && <img className="player" src={img1} alt="" />}
+                </div>
                 {player1 && <img className="logoBG" src={logo1} alt="" />}
-                {player1 && <img className="player" src={img1} alt="" />}
             </div>
         )
     }
@@ -421,8 +420,11 @@ const Versus = () => {
                     <div className="name">{player2.name}</div>
                     <div className="stats">{stats2}</div>
                 </div>
+
+                <div className="image-container">
+                    {player2 && <img className="player" src={img2} alt="" />}
+                </div>
                 {player2 && <img className="logoBG" src={logo2} alt="" />}
-                {player2 && <img className="player" src={img2} alt="" />}
             </div>
         )
     }

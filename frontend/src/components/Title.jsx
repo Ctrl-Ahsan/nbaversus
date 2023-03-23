@@ -17,12 +17,13 @@ const Title = (props) => {
     const TitleContainer = styled.section`
         display: flex;
         flex-direction: column;
-        height: ${window.innerHeight}px;
+        height: 100vh;
+        max-height: -webkit-fill-available;
         align-items: center;
 
         background: linear-gradient(270deg, #860000, #013a6b);
         font-family: Bebas Neue, Roboto, Arial, Helvetica, sans-serif;
-        font-size: 9em;
+        font-size: 8em;
         & .vs {
             display: flex;
             flex-direction: column;
@@ -50,7 +51,7 @@ const Title = (props) => {
             margin-top: 5px;
             padding: 10px;
             border: none;
-            border-radius: 0.7em;
+            border-radius: 10px;
             background: #000;
             color: #fff;
             font-family: Roboto, Arial;
@@ -85,7 +86,7 @@ const Title = (props) => {
     `
 
     return (
-        <TitleContainer className="movingGradient">
+        <TitleContainer>
             <div className="vs">
                 NBA
                 <img src="/nbaversus.png" alt="" />
