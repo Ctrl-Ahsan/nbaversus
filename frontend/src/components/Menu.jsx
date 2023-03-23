@@ -16,9 +16,9 @@ const Menu = (props) => {
         props.setMenuOpen(true)
         props.setToggleLeaderboard(true)
     }
-    const handleSettings = () => {
+    const handleUser = () => {
         props.setMenuOpen(true)
-        props.setToggleSettings(true)
+        props.setToggleUser(true)
     }
 
     const MenuContainer = styled.nav`
@@ -86,7 +86,7 @@ const Menu = (props) => {
                 style={{ fontSize: "2.5em" }}
             />
             <FaRegUserCircle
-                onClick={handleSettings}
+                onClick={handleUser}
                 style={{ fontSize: "2.2em", marginTop: "0.4em" }}
             />
         </MenuContainer>

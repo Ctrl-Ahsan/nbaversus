@@ -5,7 +5,7 @@ import Title from "./Title"
 import Menu from "./Menu"
 import Stats from "./Stats"
 import Leaderboard from "./Leaderboard"
-import Settings from "./Settings"
+import User from "./User"
 import playerArray from "../players.json"
 
 const Versus = () => {
@@ -20,7 +20,7 @@ const Versus = () => {
     const [menuClosed, setMenuClosed] = useState(false)
     const [toggleStats, setToggleStats] = useState(false)
     const [toggleLeaderboard, setToggleLeaderboard] = useState(false)
-    const [toggleSettings, setToggleSettings] = useState(false)
+    const [toggleUser, setToggleUser] = useState(false)
 
     useEffect(() => {
         // reset states
@@ -434,7 +434,7 @@ const Versus = () => {
             <Title
                 setToggleTitle={setToggleTitle}
                 setMenuOpen={setMenuOpen}
-                setToggleSettings={setToggleSettings}
+                setToggleUser={setToggleUser}
             />
         )
     }
@@ -448,7 +448,7 @@ const Versus = () => {
                 setMenuOpen={setMenuOpen}
                 setToggleStats={setToggleStats}
                 setToggleLeaderboard={setToggleLeaderboard}
-                setToggleSettings={setToggleSettings}
+                setToggleUser={setToggleUser}
             />
             {toggleStats && (
                 <Stats
@@ -466,12 +466,12 @@ const Versus = () => {
                     setToggleLeaderboard={setToggleLeaderboard}
                 />
             )}
-            {toggleSettings && (
-                <Settings
+            {toggleUser && (
+                <User
                     setMenuOpen={setMenuOpen}
                     setMenuClosed={setMenuClosed}
-                    toggleSettings={toggleSettings}
-                    setToggleSettings={setToggleSettings}
+                    toggleUser={toggleUser}
+                    setToggleUser={setToggleUser}
                 />
             )}
             <VersusContainer>

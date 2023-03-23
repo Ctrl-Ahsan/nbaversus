@@ -6,7 +6,7 @@ import Login from "./Login"
 import Profile from "./Profile"
 import Contact from "./Contact"
 
-const Settings = (props) => {
+const User = (props) => {
     const [category, setCategory] = useState("account")
     const [loggedIn, setLoggedIn] = useState(false)
     const [toggleRegister, setToggleRegister] = useState(false)
@@ -14,10 +14,10 @@ const Settings = (props) => {
     function handleClick() {
         props.setMenuOpen(false)
         props.setMenuClosed(true)
-        props.setToggleSettings(false)
+        props.setToggleUser(false)
     }
 
-    const SettingsContainer = styled.section`
+    const UserContainer = styled.section`
         position: absolute;
         top: 50%;
         left: 50%;
@@ -138,7 +138,7 @@ const Settings = (props) => {
         }
     `
     return (
-        <SettingsContainer>
+        <UserContainer>
             <div className="close" onClick={handleClick}>
                 <AiOutlineClose />
             </div>
@@ -179,8 +179,8 @@ const Settings = (props) => {
                 />
             )}
             {category === "support" && <Contact />}
-        </SettingsContainer>
+        </UserContainer>
     )
 }
 
-export default Settings
+export default User
