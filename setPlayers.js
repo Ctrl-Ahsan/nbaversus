@@ -49,9 +49,9 @@ const setPlayers = async () => {
 
     for (player in leagueStats) {
         if (
-            leagueStats[player][PTS_RANK] <= 100 ||
-            leagueStats[player][AST_RANK] <= 75 ||
-            leagueStats[player][REB_RANK] <= 50
+            leagueStats[player][PTS_RANK] <= 75 ||
+            leagueStats[player][AST_RANK] <= 50 ||
+            leagueStats[player][REB_RANK] <= 25
         ) {
             // structure entries as objects
             let playerObj = {}
