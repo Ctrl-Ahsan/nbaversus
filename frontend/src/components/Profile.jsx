@@ -1,11 +1,9 @@
 import styled from "styled-components"
 import axios from "axios"
-import { useDispatch } from "react-redux"
 import { FaSignOutAlt, FaUser } from "react-icons/fa"
-import { logout, reset } from "../features/auth/authSlice"
 import { useEffect, useState } from "react"
 
-const Profile = () => {
+const Profile = (props) => {
     const [user, setUser] = useState()
     const [favorite, setFavorite] = useState()
     const [favoriteURL, setFavoriteURL] = useState()
@@ -38,11 +36,9 @@ const Profile = () => {
         }
     }, [])
 
-    const dispatch = useDispatch()
-
     const onLogout = () => {
-        dispatch(logout())
-        dispatch(reset())
+        localStorage.removeItem("user")
+        props.setLoggedIn(false)
     }
 
     const ProfileContainer = styled.div`

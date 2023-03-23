@@ -1,6 +1,5 @@
 import styled from "styled-components"
 import { useState } from "react"
-import { useSelector } from "react-redux"
 import { AiOutlineClose } from "react-icons/ai"
 import Register from "./Register"
 import Login from "./Login"
@@ -9,8 +8,8 @@ import Contact from "./Contact"
 
 const Settings = (props) => {
     const [category, setCategory] = useState("account")
+    const [loggedIn, setLoggedIn] = useState(false)
     const [toggleRegister, setToggleRegister] = useState(false)
-    const { user } = useSelector((state) => state.auth)
 
     function handleClick() {
         props.setMenuOpen(false)
@@ -164,12 +163,20 @@ const Settings = (props) => {
                     <div className="headingText">Support</div>
                 </div>
             </div>
-            {category === "account" && user && <Profile />}
-            {category === "account" && !user && !toggleRegister && (
-                <Login setToggleRegister={setToggleRegister} />
+            {category === "account" && loggedIn && (
+                <Profile setLoggedIn={setLoggedIn} />
             )}
-            {category === "account" && !user && toggleRegister && (
-                <Register setToggleRegister={setToggleRegister} />
+            {category === "account" && !loggedIn && !toggleRegister && (
+                <Login
+                    setLoggedIn={setLoggedIn}
+                    setToggleRegister={setToggleRegister}
+                />
+            )}
+            {category === "account" && !loggedIn && toggleRegister && (
+                <Register
+                    setLoggedIn={setLoggedIn}
+                    setToggleRegister={setToggleRegister}
+                />
             )}
             {category === "support" && <Contact />}
         </SettingsContainer>

@@ -1,9 +1,8 @@
-import { useState, useEffect } from "react"
-import { useSelector, useDispatch } from "react-redux"
+import { useState } from "react"
 import styled from "styled-components"
 import { toast } from "react-toastify"
 import { FaUser } from "react-icons/fa"
-import { register, reset } from "../features/auth/authSlice"
+import axios from "axios"
 import Spinner from "../components/Spinner"
 
 const Register = (props) => {
@@ -15,20 +14,6 @@ const Register = (props) => {
         })
 
         const { name, password, password2 } = formData
-
-        const dispatch = useDispatch()
-
-        const { user, isLoading, isError, isSuccess, message } = useSelector(
-            (state) => state.auth
-        )
-
-        useEffect(() => {
-            if (isError) {
-                toast.error(message)
-            }
-
-            dispatch(reset())
-        }, [user, isError, isSuccess, message, dispatch])
 
         const onChange = (e) => {
             setFormData((prevState) => ({
@@ -48,13 +33,21 @@ const Register = (props) => {
                     name,
                     password,
                 }
-
-                dispatch(register(userData))
+                axios
+                    .post("/api/users", userData)
+                    .then((response) => {
+                        if (response.data) {
+                            localStorage.setItem(
+                                "user",
+                                JSON.stringify(response.data)
+                            )
+                            props.setLoggedIn(true)
+                        }
+                    })
+                    .catch((error) => {
+                        toast.error(error.response.data)
+                    })
             }
-        }
-
-        if (isLoading) {
-            return <Spinner />
         }
 
         return (
