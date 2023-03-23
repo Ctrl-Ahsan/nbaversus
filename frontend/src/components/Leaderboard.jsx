@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react"
 import styled from "styled-components"
 import { AiOutlineClose } from "react-icons/ai"
 import { FaMedal, FaCrown } from "react-icons/fa"
+import Spinner from "./Spinner"
 
 const Leaderboard = (props) => {
     const [winners, setWinners] = useState([])
@@ -37,7 +38,7 @@ const Leaderboard = (props) => {
         color: white;
         font-weight: 300;
         height: 50%;
-        width: 70%;
+        width: 75%;
         max-width: 740px;
         min-height: 70%;
         padding: 1em;
@@ -91,6 +92,9 @@ const Leaderboard = (props) => {
         }
 
         & .entry {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-weight: 400;
             padding: 10px;
         }
@@ -110,6 +114,7 @@ const Leaderboard = (props) => {
                 <div>Votes</div>
             </div>
             <div className="leaderboard">
+                {winners.length < 1 && <Spinner />}
                 {winners !== [] &&
                     winners.map((winner, i) => {
                         return (
