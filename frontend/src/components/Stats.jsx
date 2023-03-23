@@ -103,7 +103,8 @@ const Stats = (props) => {
         & .stats {
             display: grid;
             height: 55vh;
-            overflow: scroll;
+            overflow-x: hidden;
+            overflow-y: scroll;
             grid-template-columns: 2fr 1fr 2fr;
             grid-row-gap: 20px;
             background-color: #0000007a;
