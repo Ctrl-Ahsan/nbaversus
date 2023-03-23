@@ -2,9 +2,9 @@ import styled from "styled-components"
 import {
     IoReloadCircle,
     IoInformationCircle,
-    IoSettings,
     IoArrowForwardCircle,
 } from "react-icons/io5"
+import { FaRegUserCircle } from "react-icons/fa"
 import { GiPodium } from "react-icons/gi"
 
 const Menu = (props) => {
@@ -30,7 +30,7 @@ const Menu = (props) => {
         z-index: 3;
         align-items: center;
         margin-right: 0.5em;
-        margin-bottom: 2.5em;
+        margin-bottom: 2em;
         font-size: 0.8rem;
 
         @media screen and (min-width: 320px) {
@@ -41,7 +41,7 @@ const Menu = (props) => {
 
         & svg {
             cursor: pointer;
-            margin-bottom: 5px;
+            margin-bottom: 2.5px;
             transition: all 0.3s;
             -webkit-tap-highlight-color: transparent;
 
@@ -79,12 +79,15 @@ const Menu = (props) => {
             )}
             <IoInformationCircle
                 onClick={handleStats}
-                style={{ fontSize: "2em" }}
+                style={{ fontSize: "2.5em" }}
             />
-            <GiPodium onClick={handleLeaderboard} style={{ fontSize: "2em" }} />
-            <IoSettings
+            <GiPodium
+                onClick={handleLeaderboard}
+                style={{ fontSize: "2.5em" }}
+            />
+            <FaRegUserCircle
                 onClick={handleSettings}
-                style={{ fontSize: "1.8em", marginTop: "0.4em" }}
+                style={{ fontSize: "2.2em", marginTop: "0.4em" }}
             />
         </MenuContainer>
     )
