@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { AiOutlineClose } from "react-icons/ai"
 import { IoIosStats } from "react-icons/io"
 import axios from "axios"
+import Spinner from "./Spinner"
 
 const Stats = (props) => {
     const [stats1, setStats1] = useState(null)
@@ -74,7 +75,7 @@ const Stats = (props) => {
         color: white;
         font-weight: 00;
         overflow: hidden;
-        width: 70%;
+        width: 75%;
         max-width: 740px;
         padding: 20px;
         & .close {
@@ -101,7 +102,7 @@ const Stats = (props) => {
         }
         & .stats {
             display: grid;
-            height: 50vh;
+            height: 55vh;
             overflow: scroll;
             grid-template-columns: 2fr 1fr 2fr;
             grid-row-gap: 20px;
@@ -109,7 +110,7 @@ const Stats = (props) => {
             border: solid 1px #21212179;
             border-top: none;
             border-radius: 0px 0px 5px 5px;
-            padding: 0.5em 10px;
+            padding: 1em 10px;
         }
         & .headers {
             display: grid;
@@ -159,104 +160,109 @@ const Stats = (props) => {
                 />
             </div>
             <div className="stats">
-                <Row
-                    left={stats1?.GP}
-                    leftSub={stats1?.GP_RANK}
-                    middle="GP"
-                    right={stats2?.GP}
-                    rightSub={stats2?.GP_RANK}
-                />
-                <Row
-                    left={stats1?.MIN}
-                    leftSub={stats1?.MIN_RANK}
-                    middle="MIN"
-                    right={stats2?.MIN}
-                    rightSub={stats2?.MIN_RANK}
-                />
-                <Row
-                    left={stats1?.PTS}
-                    leftSub={stats1?.PTS_RANK}
-                    middle="PTS"
-                    right={stats2?.PTS}
-                    rightSub={stats2?.PTS_RANK}
-                />
-                <Row
-                    left={stats1?.AST}
-                    leftSub={stats1?.AST_RANK}
-                    middle="AST"
-                    right={stats2?.AST}
-                    rightSub={stats2?.AST_RANK}
-                />
-                <Row
-                    left={stats1?.REB}
-                    leftSub={stats1?.REB_RANK}
-                    middle="REB"
-                    right={stats2?.REB}
-                    rightSub={stats2?.REB_RANK}
-                />
-                <Row
-                    left={(stats1?.FG_PCT * 100).toFixed(1)}
-                    leftSub={stats1?.FG_PCT_RANK}
-                    middle="FG%"
-                    right={(stats2?.FG_PCT * 100).toFixed(1)}
-                    rightSub={stats2?.FG_PCT_RANK}
-                />
-                <Row
-                    left={(stats1?.FG3_PCT * 100).toFixed(1)}
-                    leftSub={stats1?.FG3_PCT_RANK}
-                    middle="3P%"
-                    right={(stats2?.FG3_PCT * 100).toFixed(1)}
-                    rightSub={stats2?.FG3_PCT_RANK}
-                />
-                <Row
-                    left={(stats1?.FT_PCT * 100).toFixed(1)}
-                    leftSub={stats1?.FT_PCT_RANK}
-                    middle="FT%"
-                    right={(stats2?.FT_PCT * 100).toFixed(1)}
-                    rightSub={stats2?.FT_PCT_RANK}
-                />
-                <Row
-                    left={stats1?.TOV}
-                    leftSub={stats1?.TOV_RANK}
-                    middle="TOV"
-                    right={stats2?.TOV}
-                    rightSub={stats2?.TOV_RANK}
-                />
-                <Row
-                    left={stats1?.STL}
-                    leftSub={stats1?.STL_RANK}
-                    middle="STL"
-                    right={stats2?.STL}
-                    rightSub={stats2?.STL_RANK}
-                />
-                <Row
-                    left={stats1?.BLK}
-                    leftSub={stats1?.BLK_RANK}
-                    middle="BLK"
-                    right={stats2?.BLK}
-                    rightSub={stats2?.BLK_RANK}
-                />
-                <Row
-                    left={stats1?.PF}
-                    leftSub={stats1?.PF_RANK}
-                    middle="PF"
-                    right={stats2?.PF}
-                    rightSub={stats2?.PF_RANK}
-                />
-                <Row
-                    left={stats1?.PFD}
-                    leftSub={stats1?.PFD_RANK}
-                    middle="PFD"
-                    right={stats2?.PFD}
-                    rightSub={stats2?.PFD_RANK}
-                />
-                <Row
-                    left={stats1?.PLUS_MINUS}
-                    leftSub={stats1?.PLUS_MINUS_RANK}
-                    middle="+/-"
-                    right={stats2?.PLUS_MINUS}
-                    rightSub={stats2?.PLUS_MINUS_RANK}
-                />
+                {!stats1 && <Spinner />}
+                {stats1 && (
+                    <>
+                        <Row
+                            left={stats1?.GP}
+                            leftSub={stats1?.GP_RANK}
+                            middle="GP"
+                            right={stats2?.GP}
+                            rightSub={stats2?.GP_RANK}
+                        />
+                        <Row
+                            left={stats1?.MIN}
+                            leftSub={stats1?.MIN_RANK}
+                            middle="MIN"
+                            right={stats2?.MIN}
+                            rightSub={stats2?.MIN_RANK}
+                        />
+                        <Row
+                            left={stats1?.PTS}
+                            leftSub={stats1?.PTS_RANK}
+                            middle="PTS"
+                            right={stats2?.PTS}
+                            rightSub={stats2?.PTS_RANK}
+                        />
+                        <Row
+                            left={stats1?.AST}
+                            leftSub={stats1?.AST_RANK}
+                            middle="AST"
+                            right={stats2?.AST}
+                            rightSub={stats2?.AST_RANK}
+                        />
+                        <Row
+                            left={stats1?.REB}
+                            leftSub={stats1?.REB_RANK}
+                            middle="REB"
+                            right={stats2?.REB}
+                            rightSub={stats2?.REB_RANK}
+                        />
+                        <Row
+                            left={(stats1?.FG_PCT * 100).toFixed(1)}
+                            leftSub={stats1?.FG_PCT_RANK}
+                            middle="FG%"
+                            right={(stats2?.FG_PCT * 100).toFixed(1)}
+                            rightSub={stats2?.FG_PCT_RANK}
+                        />
+                        <Row
+                            left={(stats1?.FG3_PCT * 100).toFixed(1)}
+                            leftSub={stats1?.FG3_PCT_RANK}
+                            middle="3P%"
+                            right={(stats2?.FG3_PCT * 100).toFixed(1)}
+                            rightSub={stats2?.FG3_PCT_RANK}
+                        />
+                        <Row
+                            left={(stats1?.FT_PCT * 100).toFixed(1)}
+                            leftSub={stats1?.FT_PCT_RANK}
+                            middle="FT%"
+                            right={(stats2?.FT_PCT * 100).toFixed(1)}
+                            rightSub={stats2?.FT_PCT_RANK}
+                        />
+                        <Row
+                            left={stats1?.TOV}
+                            leftSub={stats1?.TOV_RANK}
+                            middle="TOV"
+                            right={stats2?.TOV}
+                            rightSub={stats2?.TOV_RANK}
+                        />
+                        <Row
+                            left={stats1?.STL}
+                            leftSub={stats1?.STL_RANK}
+                            middle="STL"
+                            right={stats2?.STL}
+                            rightSub={stats2?.STL_RANK}
+                        />
+                        <Row
+                            left={stats1?.BLK}
+                            leftSub={stats1?.BLK_RANK}
+                            middle="BLK"
+                            right={stats2?.BLK}
+                            rightSub={stats2?.BLK_RANK}
+                        />
+                        <Row
+                            left={stats1?.PF}
+                            leftSub={stats1?.PF_RANK}
+                            middle="PF"
+                            right={stats2?.PF}
+                            rightSub={stats2?.PF_RANK}
+                        />
+                        <Row
+                            left={stats1?.PFD}
+                            leftSub={stats1?.PFD_RANK}
+                            middle="PFD"
+                            right={stats2?.PFD}
+                            rightSub={stats2?.PFD_RANK}
+                        />
+                        <Row
+                            left={stats1?.PLUS_MINUS}
+                            leftSub={stats1?.PLUS_MINUS_RANK}
+                            middle="+/-"
+                            right={stats2?.PLUS_MINUS}
+                            rightSub={stats2?.PLUS_MINUS_RANK}
+                        />
+                    </>
+                )}
             </div>
         </StatsContainer>
     )
