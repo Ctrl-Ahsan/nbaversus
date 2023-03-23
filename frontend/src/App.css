@@ -4,6 +4,11 @@
   color: white;
   background-color: black;
   overflow: hidden;
+  user-select: none; 
+  -webkit-touch-callout: none; /* Safari */
+  -webkit-user-select: none; /* Chrome */     
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
 }
 @media screen and (min-width: 540px) {
   .App{
