@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react"
 import styled from "styled-components"
 import axios from "axios"
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar"
+import "react-circular-progressbar/dist/styles.css"
 import Title from "./Title"
 import Menu from "./Menu"
 import Stats from "./Stats"
@@ -21,6 +23,7 @@ const Versus = () => {
     const [toggleStats, setToggleStats] = useState(false)
     const [toggleLeaderboard, setToggleLeaderboard] = useState(false)
     const [toggleUser, setToggleUser] = useState(false)
+    const [round, setRound] = useState(1)
 
     useEffect(() => {
         // reset states
@@ -375,6 +378,14 @@ const Versus = () => {
                 z-index: 1;
             }
         }
+        & .progress-stepper {
+            position: absolute;
+            bottom: 5%;
+            left: 5%;
+            z-index: 1;
+            height: 3em;
+            width: 3em;
+        }
     `
 
     const Panel1 = () => {
@@ -441,6 +452,29 @@ const Versus = () => {
 
     return (
         <>
+            <VersusContainer>
+                <Panel1 />
+                <Panel2 />
+                <div className="progress-stepper">
+                    <CircularProgressbar
+                        value={round}
+                        maxValue={5}
+                        text={`${round} / 5`}
+                        // styles={buildStyles({
+                        //     textColor: "white",
+                        //     pathColor: "",
+                        // })}
+                        background
+                        backgroundPadding={6}
+                        styles={buildStyles({
+                            backgroundColor: "rgba(365, 365, 365, 0.4)",
+                            textColor: "#fff",
+                            pathColor: "#fff",
+                            trailColor: "transparent",
+                        })}
+                    />
+                </div>
+            </VersusContainer>
             <Menu
                 reload={setReload}
                 pWon={playerWon}
@@ -474,10 +508,6 @@ const Versus = () => {
                     setToggleUser={setToggleUser}
                 />
             )}
-            <VersusContainer>
-                <Panel1 />
-                <Panel2 />
-            </VersusContainer>
         </>
     )
 }
