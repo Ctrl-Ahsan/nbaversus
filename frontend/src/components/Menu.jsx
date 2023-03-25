@@ -20,6 +20,8 @@ const Menu = () => {
         setP1Wins,
         p2Wins,
         setP2Wins,
+        setSameP1,
+        setSameP2,
         seenPlayers,
         setSeenPlayers,
         round,
@@ -36,6 +38,8 @@ const Menu = () => {
         setRound(1)
         setP1Wins(false)
         setP2Wins(false)
+        setSameP1(false)
+        setSameP2(false)
         setSeenPlayers([])
         setMenuOpen(false)
         setMenuClosed(false)
@@ -66,6 +70,8 @@ const Menu = () => {
             setPlayer2(playerArray[randomInt2])
             setP1Wins(false)
             setP2Wins(false)
+            setSameP1(false)
+            setSameP2(false)
             setSeenPlayers([])
         } else {
             if (p1Wins) {

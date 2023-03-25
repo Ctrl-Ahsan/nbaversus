@@ -3,6 +3,7 @@ import styled from "styled-components"
 import axios from "axios"
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar"
 import "react-circular-progressbar/dist/styles.css"
+import { FaCrown } from "react-icons/fa"
 import Title from "./Title"
 import Menu from "./Menu"
 import Stats from "./Stats"
@@ -21,6 +22,10 @@ const Versus = () => {
         setP1Wins,
         p2Wins,
         setP2Wins,
+        sameP1,
+        setSameP1,
+        sameP2,
+        setSameP2,
         seenPlayers,
         setSeenPlayers,
         round,
@@ -38,8 +43,10 @@ const Versus = () => {
         // reset states
         setP1Wins(false)
         setP2Wins(false)
-        setRound(1)
+        setSameP1(false)
+        setSameP2(false)
         setSeenPlayers([])
+        setRound(1)
         // set random players
         let randomInt1 = Math.floor(Math.random() * playerArray.length)
         let randomInt2 = Math.floor(Math.random() * playerArray.length)
@@ -261,6 +268,8 @@ const Versus = () => {
     const handleClick1 = () => {
         if (!p1Wins && !p2Wins && !menuOpen) {
             setP1Wins(true)
+            setSameP1(true)
+            setSameP2(false)
             setSeenPlayers([...seenPlayers, player2.personId.toString()])
             if (round === 5) {
                 if (localStorage.getItem("user") !== null) {
@@ -292,6 +301,8 @@ const Versus = () => {
     const handleClick2 = () => {
         if (!p1Wins && !p2Wins && !menuOpen) {
             setP2Wins(true)
+            setSameP2(true)
+            setSameP1(false)
             setSeenPlayers([...seenPlayers, player1.personId.toString()])
             if (round === 5) {
                 if (localStorage.getItem("user") !== null) {
@@ -399,7 +410,7 @@ const Versus = () => {
             <div
                 id="one"
                 className={
-                    !p1Wins && !p2Wins && !menuOpen && !menuClosed
+                    !sameP1 && !p1Wins && !p2Wins && !menuOpen && !menuClosed
                         ? "panel tilt-in-fwd-tr"
                         : p1Wins && !menuOpen
                         ? "panel shake-horizontal"
@@ -425,7 +436,7 @@ const Versus = () => {
             <div
                 id="two"
                 className={
-                    !p1Wins && !p2Wins && !menuOpen && !menuClosed
+                    !sameP2 && !p1Wins && !p2Wins && !menuOpen && !menuClosed
                         ? "panel tilt-in-fwd-bl"
                         : p2Wins && !menuOpen
                         ? "panel shake-horizontal"
@@ -447,7 +458,7 @@ const Versus = () => {
     }
 
     if (toggleTitle) {
-        return <Title />
+        return <Title setToggleTitle={setToggleTitle} />
     }
 
     return (

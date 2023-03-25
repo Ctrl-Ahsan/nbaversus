@@ -7,6 +7,8 @@ export const AppContextProvider = ({ children }) => {
     const [player2, setPlayer2] = useState({})
     const [p1Wins, setP1Wins] = useState(false)
     const [p2Wins, setP2Wins] = useState(false)
+    const [sameP1, setSameP1] = useState(false)
+    const [sameP2, setSameP2] = useState(false)
     const [seenPlayers, setSeenPlayers] = useState([])
     const [round, setRound] = useState(1)
     const [menuOpen, setMenuOpen] = useState(false)
@@ -24,6 +26,10 @@ export const AppContextProvider = ({ children }) => {
         setP1Wins,
         p2Wins,
         setP2Wins,
+        sameP1,
+        setSameP1,
+        sameP2,
+        setSameP2,
         seenPlayers,
         setSeenPlayers,
         round,
