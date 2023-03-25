@@ -420,6 +420,11 @@ const Versus = () => {
             >
                 <div className="info">
                     <div>
+                        {round === 5 && p1Wins && (
+                            <div className="fade-in">
+                                <FaCrown />
+                            </div>
+                        )}
                         <div className="name">{player1.name}</div>
                         <div className="stats">{stats1}</div>
                     </div>
@@ -445,6 +450,11 @@ const Versus = () => {
                 onClick={handleClick2}
             >
                 <div className="info">
+                    {round === 5 && p2Wins && (
+                        <div className="fade-in">
+                            <FaCrown />
+                        </div>
+                    )}
                     <div className="name">{player2.name}</div>
                     <div className="stats">{stats2}</div>
                 </div>
