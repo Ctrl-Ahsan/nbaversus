@@ -1,11 +1,14 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import styled from "styled-components"
 import { AiOutlineClose } from "react-icons/ai"
 import { IoIosStats } from "react-icons/io"
 import axios from "axios"
 import Spinner from "./Spinner"
+import { AppContext } from "../AppContext"
 
-const Stats = (props) => {
+const Stats = () => {
+    const { player1, player2, setMenuOpen, setMenuClosed, setToggleStats } =
+        useContext(AppContext)
     const [stats1, setStats1] = useState(null)
     const [stats2, setStats2] = useState(null)
     const suffix = (num) => {
@@ -26,13 +29,13 @@ const Stats = (props) => {
     useEffect(() => {
         const fetchStats = async () => {
             const statsResponse = await axios.post("/api/stats", {
-                ids: [props.player1.personId, props.player2.personId],
+                ids: [player1.personId, player2.personId],
             })
-            setStats1(statsResponse.data[props.player1.personId])
-            setStats2(statsResponse.data[props.player2.personId])
+            setStats1(statsResponse.data[player1.personId])
+            setStats2(statsResponse.data[player2.personId])
         }
         fetchStats()
-    }, [props.player1, props.player2, props.toggleStats])
+    }, [player1, player2])
     const Row = (props) => {
         return (
             <>
@@ -55,9 +58,9 @@ const Stats = (props) => {
         )
     }
     function handleClick() {
-        props.setMenuOpen(false)
-        props.setMenuClosed(true)
-        props.setToggleStats(false)
+        setMenuOpen(false)
+        setMenuClosed(true)
+        setToggleStats(false)
     }
     // styling
     const StatsContainer = styled.section`
@@ -143,19 +146,13 @@ const Stats = (props) => {
                 <Row
                     left={
                         <span className="heading">
-                            {props.player1.name
-                                .split(" ")
-                                .splice(1, 2)
-                                .join(" ")}
+                            {player1.name.split(" ").splice(1, 2).join(" ")}
                         </span>
                     }
                     middle=""
                     right={
                         <span className="heading">
-                            {props.player2.name
-                                .split(" ")
-                                .splice(1, 2)
-                                .join(" ")}
+                            {player2.name.split(" ").splice(1, 2).join(" ")}
                         </span>
                     }
                 />

@@ -1,11 +1,14 @@
 import axios from "axios"
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useContext } from "react"
 import styled from "styled-components"
 import { AiOutlineClose } from "react-icons/ai"
 import { FaMedal, FaCrown } from "react-icons/fa"
 import Spinner from "./Spinner"
+import { AppContext } from "../AppContext"
 
-const Leaderboard = (props) => {
+const Leaderboard = () => {
+    const { setMenuOpen, setMenuClosed, setToggleLeaderboard } =
+        useContext(AppContext)
     const [winners, setWinners] = useState([])
     useEffect(() => {
         const setLeaderboard = async () => {
@@ -16,9 +19,9 @@ const Leaderboard = (props) => {
     }, [])
 
     function handleClick() {
-        props.setMenuOpen(false)
-        props.setMenuClosed(true)
-        props.setToggleLeaderboard(false)
+        setMenuOpen(false)
+        setMenuClosed(true)
+        setToggleLeaderboard(false)
     }
 
     const LeaderboardContainer = styled.section`

@@ -1,3 +1,4 @@
+import { useContext } from "react"
 import styled from "styled-components"
 import {
     IoReloadCircle,
@@ -6,100 +7,108 @@ import {
 } from "react-icons/io5"
 import { FaRegUserCircle } from "react-icons/fa"
 import { GiPodium } from "react-icons/gi"
+import { AppContext } from "../AppContext"
+import playerArray from "../players.json"
 
-const Menu = (props) => {
+const Menu = () => {
+    const {
+        player1,
+        setPlayer1,
+        player2,
+        setPlayer2,
+        p1Wins,
+        setP1Wins,
+        p2Wins,
+        setP2Wins,
+        seenPlayers,
+        setSeenPlayers,
+        round,
+        setRound,
+        menuOpen,
+        setMenuOpen,
+        setMenuClosed,
+        setToggleStats,
+        setToggleLeaderboard,
+        setToggleUser,
+    } = useContext(AppContext)
     const handleReload = () => {
         // reset states
-        props.setRound(1)
-        props.setP1Wins(false)
-        props.setP2Wins(false)
-        props.setSeenPlayers([])
-        props.setMenuOpen(false)
-        props.setMenuClosed(false)
+        setRound(1)
+        setP1Wins(false)
+        setP2Wins(false)
+        setSeenPlayers([])
+        setMenuOpen(false)
+        setMenuClosed(false)
         // set random players
-        let randomInt1 = Math.floor(Math.random() * props.playerArray.length)
-        let randomInt2 = Math.floor(Math.random() * props.playerArray.length)
+        let randomInt1 = Math.floor(Math.random() * playerArray.length)
+        let randomInt2 = Math.floor(Math.random() * playerArray.length)
         while (randomInt2 === randomInt1) {
-            randomInt2 = Math.floor(Math.random() * props.playerArray.length)
+            randomInt2 = Math.floor(Math.random() * playerArray.length)
         }
-        props.setPlayer1(props.playerArray[randomInt1])
-        props.setPlayer2(props.playerArray[randomInt2])
+        setPlayer1(playerArray[randomInt1])
+        setPlayer2(playerArray[randomInt2])
     }
     const handleNext = () => {
         // reset states
-        props.setMenuOpen(false)
-        props.setMenuClosed(false)
+        setMenuOpen(false)
+        setMenuClosed(false)
         // increment round
-        if (props.round < 5) props.setRound((prevRound) => prevRound + 1)
-        else props.setRound(1)
+        if (round < 5) setRound((prevRound) => prevRound + 1)
+        else setRound(1)
         // set random player(s)
-        if (props.round === 5) {
-            let randomInt1 = Math.floor(
-                Math.random() * props.playerArray.length
-            )
-            let randomInt2 = Math.floor(
-                Math.random() * props.playerArray.length
-            )
+        if (round === 5) {
+            let randomInt1 = Math.floor(Math.random() * playerArray.length)
+            let randomInt2 = Math.floor(Math.random() * playerArray.length)
             while (randomInt2 === randomInt1) {
-                randomInt2 = Math.floor(
-                    Math.random() * props.playerArray.length
-                )
+                randomInt2 = Math.floor(Math.random() * playerArray.length)
             }
-            props.setPlayer1(props.playerArray[randomInt1])
-            props.setPlayer2(props.playerArray[randomInt2])
-            props.setP1Wins(false)
-            props.setP2Wins(false)
-            props.setSeenPlayers([])
+            setPlayer1(playerArray[randomInt1])
+            setPlayer2(playerArray[randomInt2])
+            setP1Wins(false)
+            setP2Wins(false)
+            setSeenPlayers([])
         } else {
-            if (props.p1Wins) {
-                let randomInt = Math.floor(
-                    Math.random() * props.playerArray.length
-                )
+            if (p1Wins) {
+                let randomInt = Math.floor(Math.random() * playerArray.length)
                 while (
-                    props.player1 === props.playerArray[randomInt] ||
-                    props.seenPlayers.includes(
-                        props.playerArray[randomInt].personId.toString()
+                    player1 === playerArray[randomInt] ||
+                    seenPlayers.includes(
+                        playerArray[randomInt].personId.toString()
                     )
                 ) {
-                    randomInt = Math.floor(
-                        Math.random() * props.playerArray.length
-                    )
+                    randomInt = Math.floor(Math.random() * playerArray.length)
                 }
-                props.setPlayer2(props.playerArray[randomInt])
-                props.setP1Wins(false)
-                props.setP2Wins(false)
-            } else if (props.p2Wins) {
-                let randomInt = Math.floor(
-                    Math.random() * props.playerArray.length
-                )
+                setPlayer2(playerArray[randomInt])
+                setP1Wins(false)
+                setP2Wins(false)
+            } else if (p2Wins) {
+                let randomInt = Math.floor(Math.random() * playerArray.length)
                 while (
-                    props.player2 === props.playerArray[randomInt] ||
-                    props.seenPlayers.includes(
-                        props.playerArray[randomInt].personId.toString()
+                    player2 === playerArray[randomInt] ||
+                    seenPlayers.includes(
+                        playerArray[randomInt].personId.toString()
                     )
                 ) {
-                    randomInt = Math.floor(
-                        Math.random() * props.playerArray.length
-                    )
+                    randomInt = Math.floor(Math.random() * playerArray.length)
                 }
-                props.setPlayer1(props.playerArray[randomInt])
-                props.setP1Wins(false)
-                props.setP2Wins(false)
+                setPlayer1(playerArray[randomInt])
+                setP1Wins(false)
+                setP2Wins(false)
             }
         }
     }
 
     const handleStats = () => {
-        props.setMenuOpen(true)
-        props.setToggleStats(true)
+        setMenuOpen(true)
+        setToggleStats(true)
     }
     const handleLeaderboard = () => {
-        props.setMenuOpen(true)
-        props.setToggleLeaderboard(true)
+        setMenuOpen(true)
+        setToggleLeaderboard(true)
     }
     const handleUser = () => {
-        props.setMenuOpen(true)
-        props.setToggleUser(true)
+        setMenuOpen(true)
+        setToggleUser(true)
     }
 
     const MenuContainer = styled.nav`
@@ -117,8 +126,6 @@ const Menu = (props) => {
         @media screen and (min-width: 320px) {
             font-size: 1em;
         }
-
-        ${props.menuOpen ? "display: none;" : ""}
 
         & svg {
             cursor: pointer;
@@ -138,7 +145,7 @@ const Menu = (props) => {
 
     return (
         <MenuContainer>
-            {!props.p1Wins && !props.p2Wins ? (
+            {!p1Wins && !p2Wins ? (
                 <IoReloadCircle
                     onClick={handleReload}
                     style={{

@@ -1,20 +1,22 @@
 import styled from "styled-components"
-import { useState } from "react"
+import { useState, useContext } from "react"
 import { AiOutlineClose } from "react-icons/ai"
 import Register from "./Register"
 import Login from "./Login"
 import Profile from "./Profile"
 import Contact from "./Contact"
+import { AppContext } from "../AppContext"
 
-const User = (props) => {
+const User = () => {
+    const { setMenuOpen, setMenuClosed, setToggleUser } = useContext(AppContext)
     const [category, setCategory] = useState("account")
     const [loggedIn, setLoggedIn] = useState(false)
     const [toggleRegister, setToggleRegister] = useState(false)
 
     function handleClick() {
-        props.setMenuOpen(false)
-        props.setMenuClosed(true)
-        props.setToggleUser(false)
+        setMenuOpen(false)
+        setMenuClosed(true)
+        setToggleUser(false)
     }
 
     const UserContainer = styled.section`

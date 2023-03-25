@@ -92,8 +92,6 @@ const Title = (props) => {
                 <img src="/nbaversus.png" alt="" />
                 <button
                     onClick={() => {
-                        props.setToggleUser(true)
-                        props.setMenuOpen(true)
                         props.setToggleTitle(false)
                     }}
                     className="button"

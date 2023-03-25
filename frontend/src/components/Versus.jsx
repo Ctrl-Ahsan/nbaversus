@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import styled from "styled-components"
 import axios from "axios"
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar"
@@ -8,22 +8,31 @@ import Menu from "./Menu"
 import Stats from "./Stats"
 import Leaderboard from "./Leaderboard"
 import User from "./User"
+import { AppContext } from "../AppContext"
 import playerArray from "../players.json"
 
 const Versus = () => {
+    const {
+        player1,
+        setPlayer1,
+        player2,
+        setPlayer2,
+        p1Wins,
+        setP1Wins,
+        p2Wins,
+        setP2Wins,
+        seenPlayers,
+        setSeenPlayers,
+        round,
+        setRound,
+        menuOpen,
+        menuClosed,
+        toggleStats,
+        toggleLeaderboard,
+        toggleUser,
+    } = useContext(AppContext)
     const [toggleTitle, setToggleTitle] = useState(true)
-    const [player1, setPlayer1] = useState({})
-    const [player2, setPlayer2] = useState({})
-    const [p1Wins, setP1Wins] = useState(false)
-    const [p2Wins, setP2Wins] = useState(false)
-    const [seenPlayers, setSeenPlayers] = useState([])
-    const [round, setRound] = useState(1)
     const [reload, setReload] = useState(false)
-    const [menuOpen, setMenuOpen] = useState(false)
-    const [menuClosed, setMenuClosed] = useState(false)
-    const [toggleStats, setToggleStats] = useState(false)
-    const [toggleLeaderboard, setToggleLeaderboard] = useState(false)
-    const [toggleUser, setToggleUser] = useState(false)
 
     useEffect(() => {
         // reset states
@@ -438,13 +447,7 @@ const Versus = () => {
     }
 
     if (toggleTitle) {
-        return (
-            <Title
-                setToggleTitle={setToggleTitle}
-                setMenuOpen={setMenuOpen}
-                setToggleUser={setToggleUser}
-            />
-        )
+        return <Title />
     }
 
     return (
@@ -470,51 +473,10 @@ const Versus = () => {
                     />
                 </div>
             )}
-            <Menu
-                playerArray={playerArray}
-                player1={player1}
-                player2={player2}
-                setPlayer1={setPlayer1}
-                setPlayer2={setPlayer2}
-                round={round}
-                setRound={setRound}
-                p1Wins={p1Wins}
-                p2Wins={p2Wins}
-                setP1Wins={setP1Wins}
-                setP2Wins={setP2Wins}
-                seenPlayers={seenPlayers}
-                setSeenPlayers={setSeenPlayers}
-                menuOpen={menuOpen}
-                setMenuOpen={setMenuOpen}
-                setMenuClosed={setMenuClosed}
-                setToggleStats={setToggleStats}
-                setToggleLeaderboard={setToggleLeaderboard}
-                setToggleUser={setToggleUser}
-            />
-            {toggleStats && (
-                <Stats
-                    setMenuOpen={setMenuOpen}
-                    setMenuClosed={setMenuClosed}
-                    setToggleStats={setToggleStats}
-                    player1={player1}
-                    player2={player2}
-                />
-            )}
-            {toggleLeaderboard && (
-                <Leaderboard
-                    setMenuOpen={setMenuOpen}
-                    setMenuClosed={setMenuClosed}
-                    setToggleLeaderboard={setToggleLeaderboard}
-                />
-            )}
-            {toggleUser && (
-                <User
-                    setMenuOpen={setMenuOpen}
-                    setMenuClosed={setMenuClosed}
-                    toggleUser={toggleUser}
-                    setToggleUser={setToggleUser}
-                />
-            )}
+            {!menuOpen && <Menu playerArray={playerArray} />}
+            {toggleStats && <Stats />}
+            {toggleLeaderboard && <Leaderboard />}
+            {toggleUser && <User />}
         </>
     )
 }
