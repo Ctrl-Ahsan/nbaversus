@@ -151,7 +151,7 @@ const Menu = () => {
 
     return (
         <MenuContainer>
-            {!p1Wins && !p2Wins ? (
+            {(!p1Wins && !p2Wins) || round === 5 ? (
                 <IoReloadCircle
                     onClick={handleReload}
                     style={{
