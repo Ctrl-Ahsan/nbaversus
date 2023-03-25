@@ -1,7 +1,11 @@
 import { useState, useEffect, useContext } from "react"
 import styled from "styled-components"
 import axios from "axios"
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar"
+import {
+    CircularProgressbar,
+    CircularProgressbarWithChildren,
+    buildStyles,
+} from "react-circular-progressbar"
 import "react-circular-progressbar/dist/styles.css"
 import { FaCrown } from "react-icons/fa"
 import Title from "./Title"
@@ -489,19 +493,30 @@ const Versus = () => {
                 </VersusContainer>
                 {!menuOpen && (
                     <div className="progress-stepper">
-                        <CircularProgressbar
+                        <CircularProgressbarWithChildren
                             value={round}
                             maxValue={5}
-                            text={`${round} / 5`}
                             background
-                            backgroundPadding={6}
                             styles={buildStyles({
                                 backgroundColor: "rgba(365, 365, 365, 0.4)",
                                 textColor: "#fff",
                                 pathColor: "#fff",
                                 trailColor: "transparent",
                             })}
-                        />
+                        >
+                            {round === 5 && (p1Wins || p2Wins) ? (
+                                <FaCrown className="fade-in" />
+                            ) : (
+                                <span
+                                    style={{
+                                        fontSize: "12px",
+                                        fontWeight: 700,
+                                    }}
+                                >
+                                    {round} / 5
+                                </span>
+                            )}
+                        </CircularProgressbarWithChildren>
                     </div>
                 )}
                 {!menuOpen && <Menu playerArray={playerArray} />}
