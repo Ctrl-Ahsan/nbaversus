@@ -5,14 +5,11 @@ const voteSchema = mongoose.Schema(
         winner: {
             type: String,
         },
-        loser: {
-            type: String,
-        },
         winnerTeam: {
             type: String,
         },
-        loserTeam: {
-            type: String,
+        losers: {
+            type: [String],
         },
     },
     {

@@ -47,29 +47,21 @@ const setVote = asyncHandler(async (req, res) => {
     let now = new Date().toLocaleString("en-US", { timeZone: "UTC" })
 
     // validate request
-    if (
-        !(
-            req.body.winner &&
-            req.body.loser &&
-            req.body.winnerTeam &&
-            req.body.loserTeam
-        )
-    ) {
+    if (!(req.body.winner && req.body.winnerTeam && req.body.losers)) {
         res.status(400)
         console.log(
             `${now} | Vote submitted without all parameters | ${req.ip}`.yellow
         )
         throw new Error(
-            "Please include winner ID, loser ID, winner team ID and loser team ID"
+            "Please include winner's player and team ID along with losers' player IDs"
         )
     }
 
     // create vote
     const vote = await Vote.create({
         winner: req.body.winner,
-        loser: req.body.loser,
         winnerTeam: req.body.winnerTeam,
-        loserTeam: req.body.loserTeam,
+        losers: req.body.losers,
     })
     if (req.headers.authorization) {
         token = req.headers.authorization.split(" ")[1]

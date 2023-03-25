@@ -8,6 +8,87 @@ import { FaRegUserCircle } from "react-icons/fa"
 import { GiPodium } from "react-icons/gi"
 
 const Menu = (props) => {
+    const handleReload = () => {
+        // reset states
+        props.setRound(1)
+        props.setP1Wins(false)
+        props.setP2Wins(false)
+        props.setSeenPlayers([])
+        props.setMenuOpen(false)
+        props.setMenuClosed(false)
+        // set random players
+        let randomInt1 = Math.floor(Math.random() * props.playerArray.length)
+        let randomInt2 = Math.floor(Math.random() * props.playerArray.length)
+        while (randomInt2 === randomInt1) {
+            randomInt2 = Math.floor(Math.random() * props.playerArray.length)
+        }
+        props.setPlayer1(props.playerArray[randomInt1])
+        props.setPlayer2(props.playerArray[randomInt2])
+    }
+    const handleNext = () => {
+        // reset states
+        props.setMenuOpen(false)
+        props.setMenuClosed(false)
+        // increment round
+        if (props.round < 5) props.setRound((prevRound) => prevRound + 1)
+        else props.setRound(1)
+        // set random player(s)
+        if (props.round === 5) {
+            let randomInt1 = Math.floor(
+                Math.random() * props.playerArray.length
+            )
+            let randomInt2 = Math.floor(
+                Math.random() * props.playerArray.length
+            )
+            while (randomInt2 === randomInt1) {
+                randomInt2 = Math.floor(
+                    Math.random() * props.playerArray.length
+                )
+            }
+            props.setPlayer1(props.playerArray[randomInt1])
+            props.setPlayer2(props.playerArray[randomInt2])
+            props.setP1Wins(false)
+            props.setP2Wins(false)
+            props.setSeenPlayers([])
+        } else {
+            if (props.p1Wins) {
+                let randomInt = Math.floor(
+                    Math.random() * props.playerArray.length
+                )
+                while (
+                    props.player1 === props.playerArray[randomInt] ||
+                    props.seenPlayers.includes(
+                        props.playerArray[randomInt].personId.toString()
+                    )
+                ) {
+                    randomInt = Math.floor(
+                        Math.random() * props.playerArray.length
+                    )
+                }
+                props.setPlayer2(props.playerArray[randomInt])
+                props.setP1Wins(false)
+                props.setP2Wins(false)
+            } else if (props.p2Wins) {
+                let randomInt = Math.floor(
+                    Math.random() * props.playerArray.length
+                )
+                while (
+                    props.player2 === props.playerArray[randomInt] ||
+                    props.seenPlayers.includes(
+                        props.playerArray[randomInt].personId.toString()
+                    )
+                ) {
+                    randomInt = Math.floor(
+                        Math.random() * props.playerArray.length
+                    )
+                }
+                props.setPlayer1(props.playerArray[randomInt])
+                props.setP1Wins(false)
+                props.setP2Wins(false)
+            }
+        }
+    }
+
     const handleStats = () => {
         props.setMenuOpen(true)
         props.setToggleStats(true)
@@ -57,9 +138,9 @@ const Menu = (props) => {
 
     return (
         <MenuContainer>
-            {!props.pWon ? (
+            {!props.p1Wins && !props.p2Wins ? (
                 <IoReloadCircle
-                    onClick={props.reload}
+                    onClick={handleReload}
                     style={{
                         color: "orange",
                         fontSize: "5em",
@@ -69,7 +150,7 @@ const Menu = (props) => {
             ) : (
                 <IoArrowForwardCircle
                     className="scale-in-center"
-                    onClick={props.reload}
+                    onClick={handleNext}
                     style={{
                         color: "orange",
                         fontSize: "5em",

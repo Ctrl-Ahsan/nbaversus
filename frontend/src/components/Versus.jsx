@@ -16,24 +16,22 @@ const Versus = () => {
     const [player2, setPlayer2] = useState({})
     const [p1Wins, setP1Wins] = useState(false)
     const [p2Wins, setP2Wins] = useState(false)
-    const [playerWon, setPlayerWon] = useState(false)
+    const [seenPlayers, setSeenPlayers] = useState([])
+    const [round, setRound] = useState(1)
     const [reload, setReload] = useState(false)
     const [menuOpen, setMenuOpen] = useState(false)
     const [menuClosed, setMenuClosed] = useState(false)
     const [toggleStats, setToggleStats] = useState(false)
     const [toggleLeaderboard, setToggleLeaderboard] = useState(false)
     const [toggleUser, setToggleUser] = useState(false)
-    const [round, setRound] = useState(1)
 
     useEffect(() => {
         // reset states
         setP1Wins(false)
         setP2Wins(false)
-        setPlayerWon(false)
-        setMenuOpen(false)
-        setMenuClosed(false)
-        setToggleStats(false)
-        // set random player
+        setRound(1)
+        setSeenPlayers([])
+        // set random players
         let randomInt1 = Math.floor(Math.random() * playerArray.length)
         let randomInt2 = Math.floor(Math.random() * playerArray.length)
         while (randomInt2 === randomInt1) {
@@ -250,59 +248,66 @@ const Versus = () => {
             bg2 = "#051D2D"
     }
 
+    // handle clicks
     const handleClick1 = () => {
-        if (!playerWon && !menuOpen) {
+        if (!p1Wins && !p2Wins && !menuOpen) {
             setP1Wins(true)
-            setPlayerWon(true)
-            if (localStorage.getItem("user") !== null) {
-                const token = JSON.parse(localStorage.getItem("user")).Token
-                axios.post(
-                    "/api/votes",
-                    {
+            setSeenPlayers([...seenPlayers, player2.personId.toString()])
+            if (round === 5) {
+                if (localStorage.getItem("user") !== null) {
+                    const token = JSON.parse(localStorage.getItem("user")).Token
+                    axios.post(
+                        "/api/votes",
+                        {
+                            winner: player1.personId,
+                            winnerTeam: player1.teamId,
+                            losers: [
+                                ...seenPlayers,
+                                player2.personId.toString(),
+                            ],
+                        },
+                        {
+                            headers: { Authorization: "Bearer " + token },
+                        }
+                    )
+                } else {
+                    axios.post("/api/votes", {
                         winner: player1.personId,
-                        loser: player2.personId,
                         winnerTeam: player1.teamId,
-                        loserTeam: player2.teamId,
-                    },
-                    {
-                        headers: { Authorization: "Bearer " + token },
-                    }
-                )
-            } else {
-                axios.post("/api/votes", {
-                    winner: player1.personId,
-                    loser: player2.personId,
-                    winnerTeam: player1.teamId,
-                    loserTeam: player2.teamId,
-                })
+                        losers: [...seenPlayers, player2.personId.toString()],
+                    })
+                }
             }
         }
     }
     const handleClick2 = () => {
-        if (!playerWon && !menuOpen) {
+        if (!p1Wins && !p2Wins && !menuOpen) {
             setP2Wins(true)
-            setPlayerWon(true)
-            if (localStorage.getItem("user") !== null) {
-                const token = JSON.parse(localStorage.getItem("user")).Token
-                axios.post(
-                    "/api/votes",
-                    {
+            setSeenPlayers([...seenPlayers, player1.personId.toString()])
+            if (round === 5) {
+                if (localStorage.getItem("user") !== null) {
+                    const token = JSON.parse(localStorage.getItem("user")).Token
+                    axios.post(
+                        "/api/votes",
+                        {
+                            winner: player2.personId,
+                            winnerTeam: player2.teamId,
+                            losers: [
+                                ...seenPlayers,
+                                player1.personId.toString(),
+                            ],
+                        },
+                        {
+                            headers: { Authorization: "Bearer " + token },
+                        }
+                    )
+                } else {
+                    axios.post("/api/votes", {
                         winner: player2.personId,
-                        loser: player1.personId,
                         winnerTeam: player2.teamId,
-                        loserTeam: player1.teamId,
-                    },
-                    {
-                        headers: { Authorization: "Bearer " + token },
-                    }
-                )
-            } else {
-                axios.post("/api/votes", {
-                    winner: player2.personId,
-                    loser: player1.personId,
-                    winnerTeam: player2.teamId,
-                    loserTeam: player1.teamId,
-                })
+                        losers: [...seenPlayers, player1.personId.toString()],
+                    })
+                }
             }
         }
     }
@@ -333,9 +338,9 @@ const Versus = () => {
             overflow: hidden;
             transition: all 0.3s;
 
-            ${!playerWon && !menuOpen ? "cursor: pointer;" : ""}
-            ${!playerWon && !menuOpen
-                ? ":active{scale: 1.2;transition: scale 0.1s; z-index: 2;}"
+            ${!p1Wins && !p2Wins && !menuOpen ? "cursor: pointer;" : ""}
+            ${!p1Wins && !p2Wins && !menuOpen
+                ? ":active{scale: 1.2; transition: scale 0.1s; z-index: 2;}"
                 : ""}
 
 
@@ -382,7 +387,7 @@ const Versus = () => {
             position: absolute;
             bottom: 5%;
             left: 5%;
-            z-index: 1;
+            z-index: 3;
             height: 3em;
             width: 3em;
         }
@@ -393,7 +398,7 @@ const Versus = () => {
             <div
                 id="one"
                 className={
-                    !playerWon && !menuOpen && !menuClosed
+                    !p1Wins && !p2Wins && !menuOpen && !menuClosed
                         ? "panel tilt-in-fwd-tr"
                         : p1Wins && !menuOpen
                         ? "panel shake-horizontal"
@@ -419,7 +424,7 @@ const Versus = () => {
             <div
                 id="two"
                 className={
-                    !playerWon && !menuOpen && !menuClosed
+                    !p1Wins && !p2Wins && !menuOpen && !menuClosed
                         ? "panel tilt-in-fwd-bl"
                         : p2Wins && !menuOpen
                         ? "panel shake-horizontal"
@@ -455,31 +460,41 @@ const Versus = () => {
             <VersusContainer>
                 <Panel1 />
                 <Panel2 />
-                <div className="progress-stepper">
-                    <CircularProgressbar
-                        value={round}
-                        maxValue={5}
-                        text={`${round} / 5`}
-                        // styles={buildStyles({
-                        //     textColor: "white",
-                        //     pathColor: "",
-                        // })}
-                        background
-                        backgroundPadding={6}
-                        styles={buildStyles({
-                            backgroundColor: "rgba(365, 365, 365, 0.4)",
-                            textColor: "#fff",
-                            pathColor: "#fff",
-                            trailColor: "transparent",
-                        })}
-                    />
-                </div>
+                {!menuOpen && (
+                    <div className="progress-stepper">
+                        <CircularProgressbar
+                            value={round}
+                            maxValue={5}
+                            text={`${round} / 5`}
+                            background
+                            backgroundPadding={6}
+                            styles={buildStyles({
+                                backgroundColor: "rgba(365, 365, 365, 0.4)",
+                                textColor: "#fff",
+                                pathColor: "#fff",
+                                trailColor: "transparent",
+                            })}
+                        />
+                    </div>
+                )}
             </VersusContainer>
             <Menu
-                reload={setReload}
-                pWon={playerWon}
+                playerArray={playerArray}
+                player1={player1}
+                player2={player2}
+                setPlayer1={setPlayer1}
+                setPlayer2={setPlayer2}
+                round={round}
+                setRound={setRound}
+                p1Wins={p1Wins}
+                p2Wins={p2Wins}
+                setP1Wins={setP1Wins}
+                setP2Wins={setP2Wins}
+                seenPlayers={seenPlayers}
+                setSeenPlayers={setSeenPlayers}
                 menuOpen={menuOpen}
                 setMenuOpen={setMenuOpen}
+                setMenuClosed={setMenuClosed}
                 setToggleStats={setToggleStats}
                 setToggleLeaderboard={setToggleLeaderboard}
                 setToggleUser={setToggleUser}
