@@ -85,7 +85,7 @@ const Register = (props) => {
                         id="password2"
                         name="password2"
                         value={password2}
-                        placeholder="Confirm password"
+                        placeholder="Confirm Password"
                         onChange={onChange}
                     />
                 </div>
@@ -95,7 +95,7 @@ const Register = (props) => {
                             <Spinner size="small" />
                         </div>
                     ) : (
-                        <button className="signup" type="submit">
+                        <button className="green" type="submit">
                             Sign Up
                         </button>
                     )}

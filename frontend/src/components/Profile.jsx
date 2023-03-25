@@ -144,7 +144,7 @@ const Profile = (props) => {
                     </div>
                 </div>
             </div>
-            <button className="logout" onClick={onLogout}>
+            <button className="logout red" onClick={onLogout}>
                 <FaSignOutAlt /> Logout
             </button>
         </ProfileContainer>

@@ -64,14 +64,24 @@ const User = () => {
                 padding: 15px;
             }
         }
-        & .signup {
-            background: green;
-            border: none;
-        }
 
-        & .logout {
+        & .red {
             background: #900000;
-            border: none;
+            :hover {
+                background: #780000;
+            }
+        }
+        & .green {
+            background: green;
+            :hover {
+                background: #006c00;
+            }
+        }
+        & .blue {
+            background: #008cd2;
+            :hover {
+                background: #006da3;
+            }
         }
 
         & .close {
@@ -99,7 +109,7 @@ const User = () => {
         }
 
         & .form {
-            width: 80%;
+            width: 70%;
             height: 100%;
         }
 
@@ -118,9 +128,9 @@ const User = () => {
 
             & input {
                 width: 100%;
-                font-size: 0.7em;
+                font-size: 0.75em;
                 font-family: inherit;
-                padding: 10px;
+                padding: 10px 15px;
                 border: 0.1px solid #2a2a2a;
                 border-radius: 5px;
                 background-color: #333333;

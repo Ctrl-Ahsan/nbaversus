@@ -87,10 +87,7 @@ const Login = (props) => {
                 </div>
                 <hr className="divider" />
                 <div className="form-item">
-                    <button
-                        className="signup"
-                        onClick={props.setToggleRegister}
-                    >
+                    <button className="green" onClick={props.setToggleRegister}>
                         Sign Up
                     </button>
                 </div>

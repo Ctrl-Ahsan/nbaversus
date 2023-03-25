@@ -10,6 +10,19 @@
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
 }
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
+button {
+  transition: all 0.3s;
+}
+button:active {
+  scale: 0.975;
+}
 @media screen and (min-width: 540px) {
   .App{
     font-size: 1.2rem;

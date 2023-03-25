@@ -46,7 +46,7 @@ const Contact = () => {
         }
 
         return (
-            <form className="form" onSubmit={onSubmit}>
+            <form className="form" style={{ width: "80%" }} onSubmit={onSubmit}>
                 <div className="form-item">
                     <input
                         required
@@ -85,7 +85,7 @@ const Contact = () => {
                             <Spinner size="small" />
                         </div>
                     ) : (
-                        <button type="submit" className="submit">
+                        <button type="submit" className="blue">
                             Send
                         </button>
                     )}
@@ -102,10 +102,6 @@ const Contact = () => {
         border: solid 1px #21212179;
         border-radius: 5px;
         padding: 1em 0;
-
-        & .submit {
-            background-color: #008cd2;
-        }
 
         & textarea {
             width: 100%;
