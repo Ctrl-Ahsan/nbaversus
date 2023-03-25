@@ -26,6 +26,15 @@
   }
 }
 
+.progress-stepper {
+  position: absolute;
+  bottom: 5%;
+  left: 5%;
+  z-index: 2;
+  height: 3em;
+  width: 3em;
+}
+
 /* Animations */
 
 .tilt-in-fwd-tr {

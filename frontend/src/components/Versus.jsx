@@ -383,14 +383,6 @@ const Versus = () => {
                 z-index: 1;
             }
         }
-        & .progress-stepper {
-            position: absolute;
-            bottom: 5%;
-            left: 5%;
-            z-index: 3;
-            height: 3em;
-            width: 3em;
-        }
     `
 
     const Panel1 = () => {
@@ -460,24 +452,24 @@ const Versus = () => {
             <VersusContainer>
                 <Panel1 />
                 <Panel2 />
-                {!menuOpen && (
-                    <div className="progress-stepper">
-                        <CircularProgressbar
-                            value={round}
-                            maxValue={5}
-                            text={`${round} / 5`}
-                            background
-                            backgroundPadding={6}
-                            styles={buildStyles({
-                                backgroundColor: "rgba(365, 365, 365, 0.4)",
-                                textColor: "#fff",
-                                pathColor: "#fff",
-                                trailColor: "transparent",
-                            })}
-                        />
-                    </div>
-                )}
             </VersusContainer>
+            {!menuOpen && (
+                <div className="progress-stepper">
+                    <CircularProgressbar
+                        value={round}
+                        maxValue={5}
+                        text={`${round} / 5`}
+                        background
+                        backgroundPadding={6}
+                        styles={buildStyles({
+                            backgroundColor: "rgba(365, 365, 365, 0.4)",
+                            textColor: "#fff",
+                            pathColor: "#fff",
+                            trailColor: "transparent",
+                        })}
+                    />
+                </div>
+            )}
             <Menu
                 playerArray={playerArray}
                 player1={player1}
