@@ -9,6 +9,7 @@ import Menu from "./Menu"
 import Stats from "./Stats"
 import Leaderboard from "./Leaderboard"
 import User from "./User"
+import Compare from "./Compare"
 import { AppContext } from "../AppContext"
 import playerArray from "../players.json"
 
@@ -37,6 +38,8 @@ const Versus = () => {
         toggleUser,
     } = useContext(AppContext)
     const [toggleTitle, setToggleTitle] = useState(true)
+    const [toggleVersus, setToggleVersus] = useState(false)
+    const [toggleCompare, setToggleCompare] = useState(false)
     const [reload, setReload] = useState(false)
 
     useEffect(() => {
@@ -468,38 +471,48 @@ const Versus = () => {
     }
 
     if (toggleTitle) {
-        return <Title setToggleTitle={setToggleTitle} />
+        return (
+            <Title
+                setToggleTitle={setToggleTitle}
+                setToggleVersus={setToggleVersus}
+                setToggleCompare={setToggleCompare}
+            />
+        )
     }
 
-    return (
-        <>
-            <VersusContainer>
-                <Panel1 />
-                <Panel2 />
-            </VersusContainer>
-            {!menuOpen && (
-                <div className="progress-stepper">
-                    <CircularProgressbar
-                        value={round}
-                        maxValue={5}
-                        text={`${round} / 5`}
-                        background
-                        backgroundPadding={6}
-                        styles={buildStyles({
-                            backgroundColor: "rgba(365, 365, 365, 0.4)",
-                            textColor: "#fff",
-                            pathColor: "#fff",
-                            trailColor: "transparent",
-                        })}
-                    />
-                </div>
-            )}
-            {!menuOpen && <Menu playerArray={playerArray} />}
-            {toggleStats && <Stats />}
-            {toggleLeaderboard && <Leaderboard />}
-            {toggleUser && <User />}
-        </>
-    )
+    if (toggleVersus) {
+        return (
+            <>
+                <VersusContainer>
+                    <Panel1 />
+                    <Panel2 />
+                </VersusContainer>
+                {!menuOpen && (
+                    <div className="progress-stepper">
+                        <CircularProgressbar
+                            value={round}
+                            maxValue={5}
+                            text={`${round} / 5`}
+                            background
+                            backgroundPadding={6}
+                            styles={buildStyles({
+                                backgroundColor: "rgba(365, 365, 365, 0.4)",
+                                textColor: "#fff",
+                                pathColor: "#fff",
+                                trailColor: "transparent",
+                            })}
+                        />
+                    </div>
+                )}
+                {!menuOpen && <Menu playerArray={playerArray} />}
+                {toggleStats && <Stats />}
+                {toggleLeaderboard && <Leaderboard />}
+                {toggleUser && <User />}
+            </>
+        )
+    }
+
+    if (toggleCompare) return <Compare />
 }
 
 export default Versus

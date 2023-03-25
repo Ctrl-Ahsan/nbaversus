@@ -19,6 +19,7 @@ button:focus {
 
 button {
   transition: all 0.3s;
+  font: inherit;
 }
 button:active {
   scale: 0.975;

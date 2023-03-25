@@ -1,25 +1,14 @@
 import styled from "styled-components"
-import {
-    FaSignInAlt,
-    FaBasketballBall,
-    FaHeart,
-    FaGithub,
-} from "react-icons/fa"
+import { FaBasketballBall, FaSearch, FaHeart, FaGithub } from "react-icons/fa"
 import { useEffect } from "react"
 
 const Title = (props) => {
-    useEffect(() => {
-        if (localStorage.getItem("user")) {
-            props.setToggleTitle(false)
-        }
-    }, [props])
-
     const TitleContainer = styled.section`
         display: flex;
         flex-direction: column;
+        align-items: center;
         height: 100vh;
         max-height: -webkit-fill-available;
-        align-items: center;
 
         background: linear-gradient(270deg, #860000, #013a6b);
         font-family: Bebas Neue, Roboto, Arial, Helvetica, sans-serif;
@@ -71,6 +60,13 @@ const Title = (props) => {
             }
         }
 
+        & .green {
+            background: green;
+            :hover {
+                background: #006c00;
+            }
+        }
+
         & .footer {
             font-size: 1rem;
             color: #5e5e5e;
@@ -93,20 +89,24 @@ const Title = (props) => {
                 <button
                     onClick={() => {
                         props.setToggleTitle(false)
+                        props.setToggleVersus(true)
                     }}
-                    className="button"
-                    style={{ marginTop: "30px", marginBottom: "0.2em" }}
+                    className="button green"
+                    style={{
+                        marginTop: "30px",
+                        marginBottom: "0.2em",
+                    }}
                 >
-                    <FaSignInAlt /> Sign In
+                    <FaBasketballBall /> Play
                 </button>
                 <button
                     onClick={() => {
                         props.setToggleTitle(false)
+                        props.setToggleCompare(true)
                     }}
                     className="button"
-                    style={{ backgroundColor: "green" }}
                 >
-                    <FaBasketballBall /> Play as Guest
+                    <FaSearch /> Compare
                 </button>
             </div>
             <div className="footer">
