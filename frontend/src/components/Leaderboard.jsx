@@ -83,6 +83,7 @@ const Leaderboard = () => {
             height: 100%;
             overflow-x: hidden;
             overflow-y: scroll;
+            position: relative;
         }
 
         & .headers {

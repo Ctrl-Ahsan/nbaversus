@@ -108,6 +108,7 @@ const Stats = () => {
         }
         & .stats {
             display: grid;
+            position: relative;
             height: 55vh;
             overflow-x: hidden;
             overflow-y: scroll;
