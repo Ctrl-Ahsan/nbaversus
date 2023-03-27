@@ -58,6 +58,10 @@ const Title = (props) => {
                 font-size: 0.8em;
                 padding-top: 2px;
             }
+
+            :hover {
+                color: #dbdbdb;
+            }
         }
 
         & .green {

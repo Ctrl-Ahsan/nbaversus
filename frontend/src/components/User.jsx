@@ -63,6 +63,9 @@ const User = () => {
             @media screen and (min-width: 740px) {
                 padding: 15px;
             }
+            :hover {
+                color: #dbdbdb;
+            }
         }
 
         & .red {
