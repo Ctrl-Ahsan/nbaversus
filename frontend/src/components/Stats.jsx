@@ -222,13 +222,6 @@ const Stats = () => {
                             rightSub={stats2?.FT_PCT_RANK}
                         />
                         <Row
-                            left={stats1?.TOV}
-                            leftSub={stats1?.TOV_RANK}
-                            middle="TOV"
-                            right={stats2?.TOV}
-                            rightSub={stats2?.TOV_RANK}
-                        />
-                        <Row
                             left={stats1?.STL}
                             leftSub={stats1?.STL_RANK}
                             middle="STL"
@@ -241,6 +234,13 @@ const Stats = () => {
                             middle="BLK"
                             right={stats2?.BLK}
                             rightSub={stats2?.BLK_RANK}
+                        />
+                        <Row
+                            left={stats1?.TOV}
+                            leftSub={stats1?.TOV_RANK}
+                            middle="TOV"
+                            right={stats2?.TOV}
+                            rightSub={stats2?.TOV_RANK}
                         />
                         <Row
                             left={stats1?.PF}
