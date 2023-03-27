@@ -118,6 +118,12 @@ const User = () => {
             font-weight: 700;
             padding: 10px 20px;
             margin-bottom: 0.5em;
+            display: flex;
+            align-items: center;
+            & svg {
+                font-size: 1em;
+                margin-right: 0.2em;
+            }
         }
 
         & .form-item {

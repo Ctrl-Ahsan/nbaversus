@@ -57,14 +57,17 @@ const Leaderboard = () => {
         }
 
         & .title {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             font-size: 1.5em;
             font-weight: 700;
             padding: 10px 20px;
             margin-bottom: 0.5em;
 
             svg {
-                font-size: 0.7em;
-                margin-right: 5px;
+                font-size: 0.8em;
+                margin-right: 0.3em;
             }
         }
 
