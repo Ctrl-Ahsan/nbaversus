@@ -509,7 +509,7 @@ const Versus = () => {
                             ) : (
                                 <span
                                     style={{
-                                        fontSize: "12px",
+                                        fontSize: "0.7em",
                                         fontWeight: 700,
                                     }}
                                 >
