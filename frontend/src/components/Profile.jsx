@@ -11,10 +11,12 @@ const Profile = (props) => {
     const [favoriteTeam, setFavoriteTeam] = useState()
     const [favoriteTeamURL, setFavoriteTeamURL] = useState()
     const [favoriteTeamVotes, setFavoriteTeamVotes] = useState()
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
         if (localStorage.getItem("user") !== null) {
             setUser(JSON.parse(localStorage.getItem("user")).Name)
+            setLoading(true)
             // get me
             const token = JSON.parse(localStorage.getItem("user")).Token
             axios
@@ -22,6 +24,7 @@ const Profile = (props) => {
                     headers: { Authorization: "Bearer " + token },
                 })
                 .then((response) => {
+                    setLoading(false)
                     setFavorite(response.data.favoritePlayer)
                     setFavoriteTeam(response.data.favoriteTeam)
                     setFavoriteVotes(response.data.favoritePlayerVotes)
@@ -103,7 +106,10 @@ const Profile = (props) => {
                 <div className="title">
                     <FaUser /> {user}
                 </div>
-                <div className="panel" style={{ marginBottom: "0.5em" }}>
+                <div
+                    className={loading ? "panel shimmerBG" : "panel"}
+                    style={{ marginBottom: "0.5em" }}
+                >
                     <div className="image">
                         {favoriteURL && (
                             <img
@@ -113,19 +119,21 @@ const Profile = (props) => {
                             />
                         )}
                     </div>
-                    <div>
-                        <span className="heading">Favorite Player</span>
-                        <br />
-                        {favorite}
-                        <br />
-                        <span className="heading">Votes</span>
-                        <br />
-                        {favoriteVotes}
-                    </div>
+                    {!loading && (
+                        <div>
+                            <span className="heading">Favorite Player</span>
+                            <br />
+                            {favorite}
+                            <br />
+                            <span className="heading">Votes</span>
+                            <br />
+                            {favoriteVotes}
+                        </div>
+                    )}
                 </div>
-                <div className="panel">
+                <div className={loading ? "panel shimmerBG" : "panel"}>
                     <div className="image">
-                        {favoriteTeamURL && (
+                        {favoriteTeamURL && !loading && (
                             <img
                                 src={favoriteTeamURL}
                                 alt="favorite team"
@@ -133,15 +141,17 @@ const Profile = (props) => {
                             />
                         )}
                     </div>
-                    <div>
-                        <span className="heading">Favorite Team</span>
-                        <br />
-                        {favoriteTeam}
-                        <br />
-                        <span className="heading">Votes</span>
-                        <br />
-                        {favoriteTeamVotes}
-                    </div>
+                    {!loading && (
+                        <div>
+                            <span className="heading">Favorite Team</span>
+                            <br />
+                            {favoriteTeam}
+                            <br />
+                            <span className="heading">Votes</span>
+                            <br />
+                            {favoriteTeamVotes}
+                        </div>
+                    )}
                 </div>
             </div>
             <button className="logout red" onClick={onLogout}>

@@ -76,7 +76,6 @@ const Stats = () => {
         -webkit-backdrop-filter: blur(10px);
         border: 1px solid rgba(148, 148, 148, 0.3);
         color: white;
-        font-weight: 00;
         overflow: hidden;
         width: 75%;
         max-width: 740px;

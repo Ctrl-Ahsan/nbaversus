@@ -50,6 +50,36 @@ button:active {
   width: 3em;
 }
 
+.shimmerBG {
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: shimmer;
+  animation-timing-function: linear;
+  background: #ddd;
+  background: linear-gradient(to right, #6f6f6f52 8%, #44444452 18%, #6f6f6f52 33%);
+  background-size: 1200px 100%;
+}
+
+
+@-webkit-keyframes shimmer {
+  0% {
+      background-position: -100% 0;
+  }
+  100% {
+      background-position: 100% 0;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+      background-position: -1200px 0;
+  }
+  100% {
+      background-position: 1200px 0;
+  }
+}
+
 /* Animations */
 
 .tilt-in-fwd-tr {
