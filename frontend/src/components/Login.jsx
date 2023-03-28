@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import styled from "styled-components"
 import { toast } from "react-toastify"
 import { FaSignInAlt } from "react-icons/fa"
@@ -6,6 +6,11 @@ import axios from "axios"
 import Spinner from "../components/Spinner"
 
 const Login = (props) => {
+    useEffect(() => {
+        if (localStorage.getItem("user") !== null) {
+            props.setLoggedIn(true)
+        }
+    })
     const Form = () => {
         const [formData, setFormData] = useState({
             name: "",
