@@ -2,7 +2,6 @@ import { useState, useEffect, useContext } from "react"
 import styled from "styled-components"
 import axios from "axios"
 import {
-    CircularProgressbar,
     CircularProgressbarWithChildren,
     buildStyles,
 } from "react-circular-progressbar"
@@ -36,7 +35,9 @@ const Versus = () => {
         round,
         setRound,
         menuOpen,
+        setMenuOpen,
         menuClosed,
+        setMenuClosed,
         toggleStats,
         toggleLeaderboard,
         toggleUser,
@@ -278,6 +279,8 @@ const Versus = () => {
             setSameP1(true)
             setSameP2(false)
             setSeenPlayers([...seenPlayers, player2.personId.toString()])
+            setMenuOpen(false)
+            setMenuClosed(false)
             if (round === 5) {
                 if (localStorage.getItem("user") !== null) {
                     const token = JSON.parse(localStorage.getItem("user")).Token
@@ -311,6 +314,9 @@ const Versus = () => {
             setSameP2(true)
             setSameP1(false)
             setSeenPlayers([...seenPlayers, player1.personId.toString()])
+            setMenuOpen(false)
+            setMenuClosed(false)
+
             if (round === 5) {
                 if (localStorage.getItem("user") !== null) {
                     const token = JSON.parse(localStorage.getItem("user")).Token
@@ -419,7 +425,7 @@ const Versus = () => {
                 className={
                     !sameP1 && !p1Wins && !p2Wins && !menuOpen && !menuClosed
                         ? "panel tilt-in-fwd-tr"
-                        : p1Wins && !menuOpen
+                        : p1Wins && !menuOpen && !menuClosed
                         ? "panel shake-horizontal"
                         : "panel"
                 }
@@ -428,7 +434,11 @@ const Versus = () => {
                 <div className="info">
                     <div>
                         {round === 5 && p1Wins && (
-                            <div className="fade-in">
+                            <div
+                                className={
+                                    !menuOpen && !menuClosed ? "fade-in" : ""
+                                }
+                            >
                                 <FaCrown />
                             </div>
                         )}
@@ -450,7 +460,7 @@ const Versus = () => {
                 className={
                     !sameP2 && !p1Wins && !p2Wins && !menuOpen && !menuClosed
                         ? "panel tilt-in-fwd-bl"
-                        : p2Wins && !menuOpen
+                        : p2Wins && !menuOpen && !menuClosed
                         ? "panel shake-horizontal"
                         : "panel"
                 }
@@ -458,7 +468,11 @@ const Versus = () => {
             >
                 <div className="info">
                     {round === 5 && p2Wins && (
-                        <div className="fade-in">
+                        <div
+                            className={
+                                !menuOpen && !menuClosed ? "fade-in" : ""
+                            }
+                        >
                             <FaCrown />
                         </div>
                     )}
@@ -505,7 +519,13 @@ const Versus = () => {
                             })}
                         >
                             {round === 5 && (p1Wins || p2Wins) ? (
-                                <FaCrown className="fade-in" />
+                                <FaCrown
+                                    className={
+                                        !menuOpen && !menuClosed
+                                            ? "fade-in"
+                                            : ""
+                                    }
+                                />
                             ) : (
                                 <span
                                     style={{

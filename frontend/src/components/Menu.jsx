@@ -27,6 +27,7 @@ const Menu = () => {
         round,
         setRound,
         menuOpen,
+        menuClosed,
         setMenuOpen,
         setMenuClosed,
         setToggleStats,
@@ -162,7 +163,9 @@ const Menu = () => {
                 />
             ) : (
                 <IoArrowForwardCircle
-                    className="scale-in-center"
+                    className={
+                        !menuOpen && !menuClosed ? "scale-in-center" : ""
+                    }
                     onClick={handleNext}
                     style={{
                         color: "orange",
