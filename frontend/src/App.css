@@ -57,7 +57,7 @@ button:active {
   animation-name: shimmer;
   animation-timing-function: linear;
   background: #ddd;
-  background: linear-gradient(to right, #6f6f6f52 8%, #44444452 18%, #6f6f6f52 33%);
+  background: linear-gradient(to left, #6f6f6f52 8%, #44444452 18%, #6f6f6f52 33%);
   background-size: 1200px 100%;
 }
 
