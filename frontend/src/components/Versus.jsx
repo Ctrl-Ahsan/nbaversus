@@ -45,7 +45,6 @@ const Versus = () => {
     const [toggleTitle, setToggleTitle] = useState(true)
     const [toggleVersus, setToggleVersus] = useState(false)
     const [toggleCompare, setToggleCompare] = useState(false)
-    const [reload, setReload] = useState(false)
 
     useEffect(() => {
         // reset states
@@ -63,7 +62,7 @@ const Versus = () => {
         }
         setPlayer1(playerArray[randomInt1])
         setPlayer2(playerArray[randomInt2])
-    }, [reload])
+    }, [])
 
     let formatted = ""
 

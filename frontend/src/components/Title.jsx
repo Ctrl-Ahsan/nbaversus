@@ -1,6 +1,5 @@
 import styled from "styled-components"
 import { FaBasketballBall, FaSearch, FaHeart, FaGithub } from "react-icons/fa"
-import { useEffect } from "react"
 
 const Title = (props) => {
     const TitleContainer = styled.section`
