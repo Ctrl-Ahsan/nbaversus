@@ -92,6 +92,10 @@ const User = () => {
             top: 1em;
             right: 1em;
             cursor: pointer;
+            transition: all 0.3s;
+            :active {
+                scale: 0.9;
+            }
         }
 
         & .nav {
@@ -105,6 +109,10 @@ const User = () => {
             font-weight: 700;
             margin-top: 1em;
             padding: 10px 20px;
+            transition: all 0.3s;
+            :active {
+                scale: 0.95;
+            }
         }
 
         & .headingText {

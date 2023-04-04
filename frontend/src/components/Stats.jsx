@@ -85,6 +85,10 @@ const Stats = () => {
             top: 1em;
             right: 1em;
             cursor: pointer;
+            transition: all 0.3s;
+            :active {
+                scale: 0.9;
+            }
         }
         & .title {
             display: flex;
