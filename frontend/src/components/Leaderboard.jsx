@@ -1,6 +1,7 @@
 import axios from "axios"
 import React, { useEffect, useState, useContext } from "react"
 import styled from "styled-components"
+import { toast } from "react-toastify"
 import { AiOutlineClose } from "react-icons/ai"
 import { FaMedal, FaCrown } from "react-icons/fa"
 import Spinner from "./Spinner"
@@ -10,10 +11,16 @@ const Leaderboard = () => {
     const { setMenuOpen, setMenuClosed, setToggleLeaderboard } =
         useContext(AppContext)
     const [winners, setWinners] = useState([])
+    const [loading, setLoading] = useState(false)
     useEffect(() => {
+        setLoading(true)
         const setLeaderboard = async () => {
-            const votes = await axios.get("/api/votes")
+            const votes = await axios.get("/api/votes").catch((error) => {
+                toast.error(error.response.data)
+                setLoading(false)
+            })
             setWinners(votes.data)
+            setLoading(false)
         }
         setLeaderboard()
     }, [])
@@ -103,7 +110,7 @@ const Leaderboard = () => {
             align-items: center;
             justify-content: center;
             font-weight: 400;
-            padding: 10px;
+            padding: 0.6em;
         }
     `
 
@@ -121,8 +128,8 @@ const Leaderboard = () => {
                 <div>Votes</div>
             </div>
             <div className="leaderboard">
-                {winners.length < 1 && <Spinner />}
-                {winners !== [] &&
+                {loading && <Spinner />}
+                {!loading &&
                     winners.map((winner, i) => {
                         return (
                             <React.Fragment key={i}>

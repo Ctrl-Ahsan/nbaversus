@@ -2,6 +2,7 @@ import styled from "styled-components"
 import axios from "axios"
 import { FaSignOutAlt, FaUser } from "react-icons/fa"
 import { useEffect, useState } from "react"
+import { toast } from "react-toastify"
 
 const Profile = (props) => {
     const [user, setUser] = useState()
@@ -25,16 +26,23 @@ const Profile = (props) => {
                 })
                 .then((response) => {
                     setLoading(false)
-                    setFavorite(response.data.favoritePlayer)
-                    setFavoriteTeam(response.data.favoriteTeam)
-                    setFavoriteVotes(response.data.favoritePlayerVotes)
-                    setFavoriteTeamVotes(response.data.favoriteTeamVotes)
-                    setFavoriteURL(
-                        `https://cdn.nba.com/headshots/nba/latest/1040x760/${response.data.favoritePlayerID}.png`
-                    )
-                    setFavoriteTeamURL(
-                        `https://cdn.nba.com/logos/nba/${response.data.favoriteTeamID}/global/L/logo.svg`
-                    )
+                    if (response.data.favoritePlayer) {
+                        setFavorite(response.data.favoritePlayer)
+                        setFavoriteTeam(response.data.favoriteTeam)
+                        setFavoriteVotes(response.data.favoritePlayerVotes)
+                        setFavoriteTeamVotes(response.data.favoriteTeamVotes)
+                        setFavoriteURL(
+                            `https://cdn.nba.com/headshots/nba/latest/1040x760/${response.data.favoritePlayerID}.png`
+                        )
+                        setFavoriteTeamURL(
+                            `https://cdn.nba.com/logos/nba/${response.data.favoriteTeamID}/global/L/logo.svg`
+                        )
+                    }
+                })
+                .catch((error) => {
+                    setLoading(false)
+                    console.log(error)
+                    toast.error(error.response.data)
                 })
         }
     }, [])
