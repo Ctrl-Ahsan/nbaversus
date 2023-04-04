@@ -93,7 +93,6 @@ const getMe = asycHandler(async (req, res) => {
         // get user votes
         let userVotes = []
         const voteIDs = req.user.votes
-        console.log(voteIDs)
         if (voteIDs.length > 0) {
             const allVotes = await Vote.find()
             for (ID of voteIDs) {
