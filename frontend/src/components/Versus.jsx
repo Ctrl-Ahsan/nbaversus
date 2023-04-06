@@ -14,7 +14,7 @@ import Leaderboard from "./Leaderboard"
 import User from "./User"
 import Compare from "./Compare"
 import { AppContext } from "../AppContext"
-import playerArray from "../players.json"
+import roster from "../players.json"
 
 const Versus = () => {
     const {
@@ -45,6 +45,8 @@ const Versus = () => {
     const [toggleTitle, setToggleTitle] = useState(true)
     const [toggleVersus, setToggleVersus] = useState(false)
     const [toggleCompare, setToggleCompare] = useState(false)
+
+    const playerArray = roster.filteredPlayers
 
     useEffect(() => {
         // reset states

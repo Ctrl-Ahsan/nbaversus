@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs")
 const asycHandler = require("express-async-handler")
 const User = require("../models/userModel")
 const Vote = require("../models/voteModel")
-const Players = require("../../frontend/src/players.json")
+const Players = require("../allPlayers.json")
 
 const registerUser = asycHandler(async (req, res) => {
     try {

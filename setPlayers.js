@@ -42,8 +42,9 @@ const setPlayers = async () => {
     const PTS_RANK = 60
     const AST_RANK = 53
     const REB_RANK = 52
-    let totalPlayers = 0
-    let players = []
+    let filteredPlayerCount = 0
+    let filteredPlayers = []
+    let allPlayers = []
 
     console.log("\nProcessing data...")
 
@@ -62,23 +63,45 @@ const setPlayers = async () => {
             playerObj.height =
                 leagueBios[player][HEIGHT].replace("-", "'") + '"'
             playerObj.weight = leagueBios[player][WEIGHT]
-            players.push(playerObj)
+            filteredPlayers.push(playerObj)
 
-            totalPlayers += 1
+            filteredPlayerCount += 1
         }
+        // structure entries as objects
+        let playerObj = {}
+        playerObj.id = player
+        playerObj.name = leagueBios[player][NAME]
+        playerObj.personId = leagueBios[player][ID]
+        playerObj.teamId = leagueBios[player][TEAMID]
+        playerObj.age = leagueBios[player][AGE]
+        playerObj.height = leagueBios[player][HEIGHT].replace("-", "'") + '"'
+        playerObj.weight = leagueBios[player][WEIGHT]
+        allPlayers.push(playerObj)
     }
 
     console.log(`Total players: ${leagueStats.length}`)
-    console.log(`Players filtered: ${leagueStats.length - players.length}`)
-    console.log(`Remaining players: ${players.length}\n`)
+    console.log(
+        `Players filtered: ${leagueStats.length - filteredPlayers.length}`
+    )
+    console.log(`Remaining players: ${filteredPlayers.length}\n`)
 
     // Update players.json file with new data
-    console.log("Updating file in src folder...\n")
+    const playerArrays = {
+        filteredPlayers: filteredPlayers,
+        allPlayers: allPlayers,
+    }
+    console.log("Updating project files...")
     writeFileSync(
         "./frontend/src/players.json",
-        `${JSON.stringify(players, null, 4)}`,
+        `${JSON.stringify(playerArrays, null, 4)}`,
         "utf-8"
     )
+    writeFileSync(
+        "./backend/allPlayers.json",
+        `${JSON.stringify(playerArrays.allPlayers, null, 4)}`,
+        "utf-8"
+    )
+    console.log("Done!\n")
 }
 
 setPlayers()

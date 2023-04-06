@@ -8,7 +8,7 @@ import {
 import { FaRegUserCircle } from "react-icons/fa"
 import { GiPodium } from "react-icons/gi"
 import { AppContext } from "../AppContext"
-import playerArray from "../players.json"
+import roster from "../players.json"
 
 const Menu = () => {
     const {
@@ -34,6 +34,9 @@ const Menu = () => {
         setToggleLeaderboard,
         setToggleUser,
     } = useContext(AppContext)
+
+    const playerArray = roster.filteredPlayers
+
     const handleReload = () => {
         // reset states
         setRound(1)
