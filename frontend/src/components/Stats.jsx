@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { AiOutlineClose } from "react-icons/ai"
 import { IoIosStats } from "react-icons/io"
 import axios from "axios"
+import { toast } from "react-toastify"
 import Spinner from "./Spinner"
 import { AppContext } from "../AppContext"
 
@@ -11,6 +12,32 @@ const Stats = () => {
         useContext(AppContext)
     const [stats1, setStats1] = useState(null)
     const [stats2, setStats2] = useState(null)
+    const [loading, setLoading] = useState(false)
+
+    useEffect(() => {
+        setLoading(true)
+        const fetchStats = async () => {
+            const statsResponse = await axios
+                .post("/api/stats", {
+                    ids: [player1.personId, player2.personId],
+                })
+                .catch((error) => {
+                    toast.error(error.response.data)
+                    setLoading(false)
+                })
+            setLoading(false)
+            setStats1(statsResponse.data[player1.personId])
+            setStats2(statsResponse.data[player2.personId])
+        }
+        fetchStats()
+    }, [player1, player2])
+
+    function handleClick() {
+        setMenuOpen(false)
+        setMenuClosed(true)
+        setToggleStats(false)
+    }
+
     const suffix = (num) => {
         if (num > 3 && num < 14) return "th"
         const lastChar = num.toString().slice(-1)
@@ -26,42 +53,6 @@ const Stats = () => {
         }
     }
 
-    useEffect(() => {
-        const fetchStats = async () => {
-            const statsResponse = await axios.post("/api/stats", {
-                ids: [player1.personId, player2.personId],
-            })
-            setStats1(statsResponse.data[player1.personId])
-            setStats2(statsResponse.data[player2.personId])
-        }
-        fetchStats()
-    }, [player1, player2])
-    const Row = (props) => {
-        return (
-            <>
-                <div className="cell">
-                    <div>{props.left}</div>
-                    <div className="subtitle">
-                        {props.leftSub ? `(${props.leftSub}` : ""}
-                        {props.leftSub ? `${suffix(props.leftSub)})` : ""}
-                    </div>
-                </div>
-                <div className="heading cell">{props.middle}</div>
-                <div className="cell">
-                    <div>{props.right}</div>
-                    <div className="subtitle">
-                        {props.leftSub ? `(${props.rightSub}` : ""}
-                        {props.leftSub ? `${suffix(props.rightSub)})` : ""}
-                    </div>
-                </div>
-            </>
-        )
-    }
-    function handleClick() {
-        setMenuOpen(false)
-        setMenuClosed(true)
-        setToggleStats(false)
-    }
     // styling
     const StatsContainer = styled.section`
         position: absolute;
@@ -141,6 +132,28 @@ const Stats = () => {
             padding: 0.3em;
         }
     `
+    const Row = (props) => {
+        return (
+            <>
+                <div className="cell">
+                    <div>{props.left}</div>
+                    <div className="subtitle">
+                        {props.leftSub ? `(${props.leftSub}` : ""}
+                        {props.leftSub ? `${suffix(props.leftSub)})` : ""}
+                    </div>
+                </div>
+                <div className="heading cell">{props.middle}</div>
+                <div className="cell">
+                    <div>{props.right}</div>
+                    <div className="subtitle">
+                        {props.leftSub ? `(${props.rightSub}` : ""}
+                        {props.leftSub ? `${suffix(props.rightSub)})` : ""}
+                    </div>
+                </div>
+            </>
+        )
+    }
+
     return (
         <StatsContainer>
             <div className="close" onClick={handleClick}>
@@ -165,7 +178,7 @@ const Stats = () => {
                 />
             </div>
             <div className="stats">
-                {!stats1 && <Spinner />}
+                {loading && <Spinner />}
                 {stats1 && (
                     <>
                         <Row
@@ -190,6 +203,13 @@ const Stats = () => {
                             rightSub={stats2?.PTS_RANK}
                         />
                         <Row
+                            left={stats1?.REB}
+                            leftSub={stats1?.REB_RANK}
+                            middle="REB"
+                            right={stats2?.REB}
+                            rightSub={stats2?.REB_RANK}
+                        />
+                        <Row
                             left={stats1?.AST}
                             leftSub={stats1?.AST_RANK}
                             middle="AST"
@@ -197,11 +217,18 @@ const Stats = () => {
                             rightSub={stats2?.AST_RANK}
                         />
                         <Row
-                            left={stats1?.REB}
-                            leftSub={stats1?.REB_RANK}
-                            middle="REB"
-                            right={stats2?.REB}
-                            rightSub={stats2?.REB_RANK}
+                            left={stats1?.STL}
+                            leftSub={stats1?.STL_RANK}
+                            middle="STL"
+                            right={stats2?.STL}
+                            rightSub={stats2?.STL_RANK}
+                        />
+                        <Row
+                            left={stats1?.BLK}
+                            leftSub={stats1?.BLK_RANK}
+                            middle="BLK"
+                            right={stats2?.BLK}
+                            rightSub={stats2?.BLK_RANK}
                         />
                         <Row
                             left={(stats1?.FG_PCT * 100).toFixed(1)}
@@ -223,20 +250,6 @@ const Stats = () => {
                             middle="FT%"
                             right={(stats2?.FT_PCT * 100).toFixed(1)}
                             rightSub={stats2?.FT_PCT_RANK}
-                        />
-                        <Row
-                            left={stats1?.STL}
-                            leftSub={stats1?.STL_RANK}
-                            middle="STL"
-                            right={stats2?.STL}
-                            rightSub={stats2?.STL_RANK}
-                        />
-                        <Row
-                            left={stats1?.BLK}
-                            leftSub={stats1?.BLK_RANK}
-                            middle="BLK"
-                            right={stats2?.BLK}
-                            rightSub={stats2?.BLK_RANK}
                         />
                         <Row
                             left={stats1?.TOV}
