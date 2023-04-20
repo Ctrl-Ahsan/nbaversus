@@ -55,7 +55,7 @@ const Title = (props) => {
 
             & svg {
                 font-size: 0.8em;
-                padding-top: 2px;
+                margin-right: 0.2em;
             }
 
             :hover {
@@ -63,6 +63,11 @@ const Title = (props) => {
             }
         }
 
+        & .button-text {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
         & .green {
             background: green;
             :hover {
@@ -100,7 +105,9 @@ const Title = (props) => {
                         marginBottom: "0.2em",
                     }}
                 >
-                    <FaBasketballBall /> Play
+                    <div className="button-text">
+                        <FaBasketballBall /> Play
+                    </div>
                 </button>
                 <button
                     onClick={() => {
@@ -109,7 +116,9 @@ const Title = (props) => {
                     }}
                     className="button"
                 >
-                    <FaSearch /> Compare
+                    <div className="button-text">
+                        <FaSearch /> Compare
+                    </div>
                 </button>
             </div>
             <div className="footer">

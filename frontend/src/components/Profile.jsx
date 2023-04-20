@@ -106,6 +106,14 @@ const Profile = (props) => {
         & .logout {
             width: 90%;
         }
+        & .button-text {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            & svg {
+                margin-right: 0.2em;
+            }
+        }
     `
 
     return (
@@ -163,7 +171,9 @@ const Profile = (props) => {
                 </div>
             </div>
             <button className="logout red" onClick={onLogout}>
-                <FaSignOutAlt /> Logout
+                <div className="button-text">
+                    <FaSignOutAlt /> Logout
+                </div>
             </button>
         </ProfileContainer>
     )
