@@ -1,7 +1,7 @@
 import { useState } from "react"
 import styled from "styled-components"
 import { toast } from "react-toastify"
-import { FaUser } from "react-icons/fa"
+import { IoPersonAdd } from "react-icons/io5"
 import axios from "axios"
 import Spinner from "../components/Spinner"
 
@@ -133,7 +133,7 @@ const Register = (props) => {
     return (
         <RegisterContainer>
             <div className="form-title">
-                <FaUser /> Register
+                <IoPersonAdd /> Register
             </div>
             <Form />
         </RegisterContainer>
