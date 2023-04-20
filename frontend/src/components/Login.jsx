@@ -87,13 +87,13 @@ const Login = (props) => {
                             <Spinner size="small" />
                         </div>
                     ) : (
-                        <button type="submit">Login</button>
+                        <button type="submit">Sign In</button>
                     )}
                 </div>
                 <hr className="divider" />
                 <div className="form-item">
                     <button className="green" onClick={props.setToggleRegister}>
-                        Sign Up
+                        Register
                     </button>
                 </div>
             </form>

@@ -172,7 +172,7 @@ const Profile = (props) => {
             </div>
             <button className="logout red" onClick={onLogout}>
                 <div className="button-text">
-                    <FaSignOutAlt /> Logout
+                    <FaSignOutAlt /> Sign Out
                 </div>
             </button>
         </ProfileContainer>
