@@ -506,6 +506,7 @@ const Versus = () => {
                     <Panel1 />
                     <Panel2 />
                 </VersusContainer>
+                {!menuOpen && <Menu playerArray={playerArray} />}
                 {!menuOpen && (
                     <div className="progress-stepper">
                         <CircularProgressbarWithChildren
@@ -540,7 +541,6 @@ const Versus = () => {
                         </CircularProgressbarWithChildren>
                     </div>
                 )}
-                {!menuOpen && <Menu playerArray={playerArray} />}
                 {toggleStats && <Stats />}
                 {toggleLeaderboard && <Leaderboard />}
                 {toggleUser && <User />}
@@ -548,7 +548,13 @@ const Versus = () => {
         )
     }
 
-    if (toggleCompare) return <Compare />
+    if (toggleCompare)
+        return (
+            <Compare
+                setToggleCompare={setToggleCompare}
+                setToggleTitle={setToggleTitle}
+            />
+        )
 }
 
 export default Versus
