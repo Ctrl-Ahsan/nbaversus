@@ -377,13 +377,6 @@ const Versus = () => {
                 ? ":active{scale: 1.2; transition: scale 0.1s; z-index: 2;}"
                 : ""}
 
-
-            & img,
-            svg {
-                -webkit-tap-highlight-color: transparent;
-                -webkit-user-drag: none;
-            }
-
             & .info {
                 margin: auto;
                 z-index: 1;
