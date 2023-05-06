@@ -8,12 +8,12 @@ import { AiOutlineClose } from "react-icons/ai"
 import { toast } from "react-toastify"
 import { IoIosArrowBack } from "react-icons/io"
 import { IoReloadCircle, IoPersonAdd } from "react-icons/io5"
-import { useEffect } from "react"
 
 const Compare = (props) => {
     const [selectedPlayers, setSelectedPlayers] = useState([])
+    const [selectedScopes, setSelectedScopes] = useState([])
     const [loading, setLoading] = useState(false)
-    const [players, setPlayers] = useState([...roster.allPlayers])
+    const players = [...roster.allPlayers]
 
     const getTeamColor = (color) => {
         switch (color) {
@@ -115,35 +115,28 @@ const Compare = (props) => {
     const onSelect = async (player) => {
         setLoading(true)
         const statsResponse = await axios
-            .post("/api/stats", {
-                ids: [player.personId],
+            .post("/api/stats/career", {
+                id: player.personId,
             })
             .catch((error) => {
                 setLoading(false)
                 toast.error(error.response.data)
             })
         if (statsResponse) {
-            const playerIndex = players.findIndex(
-                (entry) => entry.personId === player.personId
-            )
-            setPlayers((prev) => {
-                prev.splice(playerIndex, 1)
-                return prev
-            })
-            player.stats = statsResponse.data[player.personId]
+            player.stats = statsResponse.data
             setSelectedPlayers((prev) => [...prev, player])
+            setSelectedScopes((prev) => [...prev, "CareerS"])
             setLoading(false)
         }
     }
 
     const onRemove = (player) => {
         let remainingPlayers = selectedPlayers
+        let remainingScopes = selectedScopes
+        selectedScopes.splice(selectedPlayers.indexOf(player), 1)
         remainingPlayers.splice(selectedPlayers.indexOf(player), 1)
         setSelectedPlayers([...remainingPlayers])
-        setPlayers((prev) => {
-            prev.push(player)
-            return prev
-        })
+        setSelectedScopes([...remainingScopes])
     }
 
     const suffix = (num) => {
@@ -321,9 +314,29 @@ const Compare = (props) => {
                             color: white;
                         }
                     }
+
+                    & .scope {
+                        & select {
+                            -webkit-appearance: none;
+                            -moz-appearance: none;
+                            appearance: none;
+                            background-color: #0000007a;
+                            border-radius: 1em;
+                            border-color: #808080d6;
+                            padding: 0.2em 0;
+                            font-family: Roboto Condensed, Roboto, Arial;
+                            font-weight: 700;
+                            font-size: 0.8em;
+                            color: #e0e0e0;
+                            text-indent: 0.5em;
+                            cursor: pointer;
+                        }
+                    }
+
                     & .stat {
                         display: flex;
                         flex-direction: column;
+                        height: 3em;
                         width: 7em;
                         padding: 0.4em;
 
@@ -337,6 +350,7 @@ const Compare = (props) => {
                             font-size: 0.6em;
                             font-weight: 300;
                             color: darkgray;
+                            margin-top: 0.1em;
                         }
                     }
                 }
@@ -371,6 +385,7 @@ const Compare = (props) => {
                                         players.push(player)
                                     })
                                     setSelectedPlayers([])
+                                    setSelectedScopes([])
                                 }}
                                 style={{
                                     color: "orange",
@@ -384,13 +399,881 @@ const Compare = (props) => {
         )
     }
 
+    const PlayerCard = (props) => {
+        const [scope, setScope] = useState(selectedScopes[props.index])
+        const player = props.player
+
+        const SeasonTotalsRegularSeason = player.stats[0].rowSet
+        const SeasonRankingsRegularSeason = player.stats[10].rowSet
+        const CareerTotalsRegularSeason = player.stats[1].rowSet
+        const SeasonTotalsPostSeason = player.stats[2].rowSet
+        const SeasonRankingsPostSeason = player.stats[11].rowSet
+        const CareerTotalsPostSeason = player.stats[3].rowSet
+
+        const GP = 6
+        const MIN = 8
+        const RANK_MIN = 8
+        const PTS = 26
+        const RANK_PTS = 25
+        const REB = 20
+        const RANK_REB = 20
+        const AST = 21
+        const RANK_AST = 21
+        const STL = 22
+        const RANK_STL = 22
+        const BLK = 23
+        const RANK_BLK = 23
+        const FGP = 11
+        const RANK_FGP = 11
+        const TPP = 14
+        const RANK_TPP = 14
+        const FTP = 17
+        const RANK_FTP = 17
+        const TOV = 24
+        const RANK_TOV = 24
+        const PF = 25
+
+        return (
+            <div
+                className="column"
+                style={{
+                    backgroundColor: getTeamColor(player.teamId),
+                }}
+            >
+                <div
+                    className="close"
+                    onClick={() => {
+                        onRemove(player)
+                    }}
+                >
+                    <AiOutlineClose />
+                </div>
+                <div className="player">
+                    <div>
+                        <img
+                            src={`https://cdn.nba.com/headshots/nba/latest/1040x760/${player.personId}.png`}
+                            alt=""
+                        />
+                    </div>
+                    <div className="name">{player.name}</div>
+                    <div className="info">{`${player.age} | ${player.height} | ${player.weight}lbs`}</div>
+                </div>
+                <div className="scope">
+                    <select
+                        value={scope}
+                        style={
+                            scope.slice(0, 1) === "C"
+                                ? { textIndent: "0.8em" }
+                                : {}
+                        }
+                        onChange={(e) => {
+                            setSelectedScopes((prev) => {
+                                prev[props.index] = e.target.value
+                                return prev
+                            })
+                            setScope(selectedScopes[props.index])
+                        }}
+                    >
+                        <optgroup label="Regular Season">
+                            <option value={"CareerS"}>Career</option>
+                            {SeasonTotalsRegularSeason.map((item, index) => (
+                                <option value={`${index}S`}>{item[1]}</option>
+                            ))}
+                        </optgroup>
+                        <optgroup label="Playoffs">
+                            <option value={"CareerP"}>Career</option>
+                            {SeasonTotalsPostSeason.map((item, index) => (
+                                <option value={`${index}P`}>{item[1]}</option>
+                            ))}
+                        </optgroup>
+                    </select>
+                </div>
+                {scope.slice(-1) === "S" &&
+                    (scope.slice(0, 1) === "C" ? (
+                        <>
+                            <div className="stat">
+                                <div className="heading">GP</div>
+                                <div>{CareerTotalsRegularSeason[0][3]}</div>
+                            </div>
+                            <div className="stat">
+                                <div className="heading">MIN</div>
+                                <div>{CareerTotalsRegularSeason[0][5]}</div>
+                            </div>
+                            <div className="stat">
+                                <div className="heading">PTS</div>
+                                <div>{CareerTotalsRegularSeason[0][23]}</div>
+                            </div>
+                            <div className="stat">
+                                <div className="heading">REB</div>
+                                <div>{CareerTotalsRegularSeason[0][17]}</div>
+                            </div>
+                            <div className="stat">
+                                <div className="heading">AST</div>
+                                <div>{CareerTotalsRegularSeason[0][18]}</div>
+                            </div>
+                            <div className="stat">
+                                <div className="heading">STL</div>
+                                <div>{CareerTotalsRegularSeason[0][19]}</div>
+                            </div>
+                            <div className="stat">
+                                <div className="heading">BLK</div>
+                                <div>{CareerTotalsRegularSeason[0][20]}</div>
+                            </div>
+                            <div className="stat">
+                                <div className="heading">FG%</div>
+                                <div>
+                                    {(
+                                        CareerTotalsRegularSeason[0][8] * 100
+                                    ).toFixed(1)}
+                                </div>
+                            </div>
+                            <div className="stat">
+                                <div className="heading">3P%</div>
+                                <div>
+                                    {(
+                                        CareerTotalsRegularSeason[0][11] * 100
+                                    ).toFixed(1)}
+                                </div>
+                            </div>
+                            <div className="stat">
+                                <div className="heading">FT%</div>
+                                <div>
+                                    {(
+                                        CareerTotalsRegularSeason[0][14] * 100
+                                    ).toFixed(1)}
+                                </div>
+                            </div>
+                            <div className="stat">
+                                <div className="heading">TOV</div>
+                                <div>{CareerTotalsRegularSeason[0][21]}</div>
+                            </div>
+                            <div className="stat">
+                                <div className="heading">PF</div>
+                                <div>{CareerTotalsRegularSeason[0][22]}</div>
+                            </div>
+                        </>
+                    ) : (
+                        <>
+                            <div className="stat">
+                                <div className="heading">GP</div>
+                                <div>
+                                    {
+                                        SeasonTotalsRegularSeason[
+                                            scope.slice(0, -1)
+                                        ][GP]
+                                    }
+                                </div>
+                            </div>
+                            <div className="stat">
+                                <div className="heading">MIN</div>
+                                <div>
+                                    {
+                                        SeasonTotalsRegularSeason[
+                                            scope.slice(0, -1)
+                                        ][MIN]
+                                    }
+                                    {SeasonRankingsRegularSeason[
+                                        scope.slice(0, -1)
+                                    ][RANK_MIN] && (
+                                        <div className="subtitle">
+                                            (
+                                            {
+                                                SeasonRankingsRegularSeason[
+                                                    scope.slice(0, -1)
+                                                ][RANK_MIN]
+                                            }
+                                            {suffix(
+                                                parseInt(
+                                                    SeasonRankingsRegularSeason[
+                                                        scope.slice(0, -1)
+                                                    ][RANK_MIN]
+                                                )
+                                            )}
+                                            )
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                            <div className="stat">
+                                <div className="heading">PTS</div>
+                                <div>
+                                    {
+                                        SeasonTotalsRegularSeason[
+                                            scope.slice(0, -1)
+                                        ][PTS]
+                                    }
+                                    {SeasonRankingsRegularSeason[
+                                        scope.slice(0, -1)
+                                    ][RANK_PTS] && (
+                                        <div className="subtitle">
+                                            (
+                                            {
+                                                SeasonRankingsRegularSeason[
+                                                    scope.slice(0, -1)
+                                                ][RANK_PTS]
+                                            }
+                                            {suffix(
+                                                parseInt(
+                                                    SeasonRankingsRegularSeason[
+                                                        scope.slice(0, -1)
+                                                    ][RANK_PTS]
+                                                )
+                                            )}
+                                            )
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                            <div className="stat">
+                                <div className="heading">REB</div>
+                                <div>
+                                    {
+                                        SeasonTotalsRegularSeason[
+                                            scope.slice(0, -1)
+                                        ][REB]
+                                    }
+                                    {SeasonRankingsRegularSeason[
+                                        scope.slice(0, -1)
+                                    ][RANK_REB] && (
+                                        <div className="subtitle">
+                                            (
+                                            {
+                                                SeasonRankingsRegularSeason[
+                                                    scope.slice(0, -1)
+                                                ][RANK_REB]
+                                            }
+                                            {suffix(
+                                                parseInt(
+                                                    SeasonRankingsRegularSeason[
+                                                        scope.slice(0, -1)
+                                                    ][RANK_REB]
+                                                )
+                                            )}
+                                            )
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                            <div className="stat">
+                                <div className="heading">AST</div>
+                                <div>
+                                    {
+                                        SeasonTotalsRegularSeason[
+                                            scope.slice(0, -1)
+                                        ][AST]
+                                    }
+                                    {SeasonRankingsRegularSeason[
+                                        scope.slice(0, -1)
+                                    ][RANK_AST] && (
+                                        <div className="subtitle">
+                                            (
+                                            {
+                                                SeasonRankingsRegularSeason[
+                                                    scope.slice(0, -1)
+                                                ][RANK_AST]
+                                            }
+                                            {suffix(
+                                                parseInt(
+                                                    SeasonRankingsRegularSeason[
+                                                        scope.slice(0, -1)
+                                                    ][RANK_AST]
+                                                )
+                                            )}
+                                            )
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                            <div className="stat">
+                                <div className="heading">STL</div>
+                                <div>
+                                    {
+                                        SeasonTotalsRegularSeason[
+                                            scope.slice(0, -1)
+                                        ][STL]
+                                    }
+                                    {SeasonRankingsRegularSeason[
+                                        scope.slice(0, -1)
+                                    ][RANK_STL] && (
+                                        <div className="subtitle">
+                                            (
+                                            {
+                                                SeasonRankingsRegularSeason[
+                                                    scope.slice(0, -1)
+                                                ][RANK_STL]
+                                            }
+                                            {suffix(
+                                                parseInt(
+                                                    SeasonRankingsRegularSeason[
+                                                        scope.slice(0, -1)
+                                                    ][RANK_STL]
+                                                )
+                                            )}
+                                            )
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                            <div className="stat">
+                                <div className="heading">BLK</div>
+                                <div>
+                                    {
+                                        SeasonTotalsRegularSeason[
+                                            scope.slice(0, -1)
+                                        ][BLK]
+                                    }
+                                    {SeasonRankingsRegularSeason[
+                                        scope.slice(0, -1)
+                                    ][RANK_BLK] && (
+                                        <div className="subtitle">
+                                            (
+                                            {
+                                                SeasonRankingsRegularSeason[
+                                                    scope.slice(0, -1)
+                                                ][RANK_BLK]
+                                            }
+                                            {suffix(
+                                                parseInt(
+                                                    SeasonRankingsRegularSeason[
+                                                        scope.slice(0, -1)
+                                                    ][RANK_BLK]
+                                                )
+                                            )}
+                                            )
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                            <div className="stat">
+                                <div className="heading">FG%</div>
+                                <div>
+                                    {(
+                                        SeasonTotalsRegularSeason[
+                                            scope.slice(0, -1)
+                                        ][FGP] * 100
+                                    ).toFixed(1)}
+                                    {SeasonRankingsRegularSeason[
+                                        scope.slice(0, -1)
+                                    ][RANK_FGP] && (
+                                        <div className="subtitle">
+                                            (
+                                            {
+                                                SeasonRankingsRegularSeason[
+                                                    scope.slice(0, -1)
+                                                ][RANK_FGP]
+                                            }
+                                            {suffix(
+                                                parseInt(
+                                                    SeasonRankingsRegularSeason[
+                                                        scope.slice(0, -1)
+                                                    ][RANK_FGP]
+                                                )
+                                            )}
+                                            )
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                            <div className="stat">
+                                <div className="heading">3P%</div>
+                                <div>
+                                    {(
+                                        SeasonTotalsRegularSeason[
+                                            scope.slice(0, -1)
+                                        ][TPP] * 100
+                                    ).toFixed(1)}
+                                    {SeasonRankingsRegularSeason[
+                                        scope.slice(0, -1)
+                                    ][RANK_TPP] && (
+                                        <div className="subtitle">
+                                            (
+                                            {
+                                                SeasonRankingsRegularSeason[
+                                                    scope.slice(0, -1)
+                                                ][RANK_TPP]
+                                            }
+                                            {suffix(
+                                                parseInt(
+                                                    SeasonRankingsRegularSeason[
+                                                        scope.slice(0, -1)
+                                                    ][RANK_TPP]
+                                                )
+                                            )}
+                                            )
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                            <div className="stat">
+                                <div className="heading">FT%</div>
+                                <div>
+                                    {(
+                                        SeasonTotalsRegularSeason[
+                                            scope.slice(0, -1)
+                                        ][FTP] * 100
+                                    ).toFixed(1)}
+                                    {SeasonRankingsRegularSeason[
+                                        scope.slice(0, -1)
+                                    ][RANK_FTP] && (
+                                        <div className="subtitle">
+                                            (
+                                            {
+                                                SeasonRankingsRegularSeason[
+                                                    scope.slice(0, -1)
+                                                ][RANK_FTP]
+                                            }
+                                            {suffix(
+                                                parseInt(
+                                                    SeasonRankingsRegularSeason[
+                                                        scope.slice(0, -1)
+                                                    ][RANK_FTP]
+                                                )
+                                            )}
+                                            )
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                            <div className="stat">
+                                <div className="heading">TOV</div>
+                                <div>
+                                    {
+                                        SeasonTotalsRegularSeason[
+                                            scope.slice(0, -1)
+                                        ][TOV]
+                                    }
+                                    {SeasonRankingsRegularSeason[
+                                        scope.slice(0, -1)
+                                    ][RANK_TOV] && (
+                                        <div className="subtitle">
+                                            (
+                                            {
+                                                SeasonRankingsRegularSeason[
+                                                    scope.slice(0, -1)
+                                                ][RANK_TOV]
+                                            }
+                                            {suffix(
+                                                parseInt(
+                                                    SeasonRankingsRegularSeason[
+                                                        scope.slice(0, -1)
+                                                    ][RANK_TOV]
+                                                )
+                                            )}
+                                            )
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                            <div className="stat">
+                                <div className="heading">PF</div>
+                                <div>
+                                    {
+                                        SeasonTotalsRegularSeason[
+                                            scope.slice(0, -1)
+                                        ][PF]
+                                    }
+                                </div>
+                            </div>
+                        </>
+                    ))}
+                {scope.slice(-1) === "P" &&
+                    (scope.slice(0, 1) === "C" ? (
+                        <>
+                            <div className="stat">
+                                <div className="heading">GP</div>
+                                <div>{CareerTotalsPostSeason[0][3]}</div>
+                            </div>
+                            <div className="stat">
+                                <div className="heading">MIN</div>
+                                <div>{CareerTotalsPostSeason[0][5]}</div>
+                            </div>
+                            <div className="stat">
+                                <div className="heading">PTS</div>
+                                <div>{CareerTotalsPostSeason[0][23]}</div>
+                            </div>
+                            <div className="stat">
+                                <div className="heading">REB</div>
+                                <div>{CareerTotalsPostSeason[0][17]}</div>
+                            </div>
+                            <div className="stat">
+                                <div className="heading">AST</div>
+                                <div>{CareerTotalsPostSeason[0][18]}</div>
+                            </div>
+                            <div className="stat">
+                                <div className="heading">STL</div>
+                                <div>{CareerTotalsPostSeason[0][19]}</div>
+                            </div>
+                            <div className="stat">
+                                <div className="heading">BLK</div>
+                                <div>{CareerTotalsPostSeason[0][20]}</div>
+                            </div>
+                            <div className="stat">
+                                <div className="heading">FG%</div>
+                                <div>
+                                    {(
+                                        CareerTotalsPostSeason[0][8] * 100
+                                    ).toFixed(1)}
+                                </div>
+                            </div>
+                            <div className="stat">
+                                <div className="heading">3P%</div>
+                                <div>
+                                    {(
+                                        CareerTotalsPostSeason[0][11] * 100
+                                    ).toFixed(1)}
+                                </div>
+                            </div>
+                            <div className="stat">
+                                <div className="heading">FT%</div>
+                                <div>
+                                    {(
+                                        CareerTotalsPostSeason[0][14] * 100
+                                    ).toFixed(1)}
+                                </div>
+                            </div>
+                            <div className="stat">
+                                <div className="heading">TOV</div>
+                                <div>{CareerTotalsPostSeason[0][21]}</div>
+                            </div>
+                            <div className="stat">
+                                <div className="heading">PF</div>
+                                <div>{CareerTotalsPostSeason[0][22]}</div>
+                            </div>
+                        </>
+                    ) : (
+                        <>
+                            <div className="stat">
+                                <div className="heading">GP</div>
+                                <div>
+                                    {
+                                        SeasonTotalsPostSeason[
+                                            scope.slice(0, -1)
+                                        ][GP]
+                                    }
+                                </div>
+                            </div>
+                            <div className="stat">
+                                <div className="heading">MIN</div>
+                                <div>
+                                    {
+                                        SeasonTotalsPostSeason[
+                                            scope.slice(0, -1)
+                                        ][MIN]
+                                    }
+                                    {SeasonRankingsPostSeason[
+                                        scope.slice(0, -1)
+                                    ][RANK_MIN] && (
+                                        <div className="subtitle">
+                                            (
+                                            {
+                                                SeasonRankingsPostSeason[
+                                                    scope.slice(0, -1)
+                                                ][RANK_MIN]
+                                            }
+                                            {suffix(
+                                                parseInt(
+                                                    SeasonRankingsPostSeason[
+                                                        scope.slice(0, -1)
+                                                    ][RANK_MIN]
+                                                )
+                                            )}
+                                            )
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                            <div className="stat">
+                                <div className="heading">PTS</div>
+                                <div>
+                                    {
+                                        SeasonTotalsPostSeason[
+                                            scope.slice(0, -1)
+                                        ][PTS]
+                                    }
+                                    {SeasonRankingsPostSeason[
+                                        scope.slice(0, -1)
+                                    ][RANK_PTS] && (
+                                        <div className="subtitle">
+                                            (
+                                            {
+                                                SeasonRankingsPostSeason[
+                                                    scope.slice(0, -1)
+                                                ][RANK_PTS]
+                                            }
+                                            {suffix(
+                                                parseInt(
+                                                    SeasonRankingsPostSeason[
+                                                        scope.slice(0, -1)
+                                                    ][RANK_PTS]
+                                                )
+                                            )}
+                                            )
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                            <div className="stat">
+                                <div className="heading">REB</div>
+                                <div>
+                                    {
+                                        SeasonTotalsPostSeason[
+                                            scope.slice(0, -1)
+                                        ][REB]
+                                    }
+                                    {SeasonRankingsPostSeason[
+                                        scope.slice(0, -1)
+                                    ][RANK_REB] && (
+                                        <div className="subtitle">
+                                            (
+                                            {
+                                                SeasonRankingsPostSeason[
+                                                    scope.slice(0, -1)
+                                                ][RANK_REB]
+                                            }
+                                            {suffix(
+                                                parseInt(
+                                                    SeasonRankingsPostSeason[
+                                                        scope.slice(0, -1)
+                                                    ][RANK_REB]
+                                                )
+                                            )}
+                                            )
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                            <div className="stat">
+                                <div className="heading">AST</div>
+                                <div>
+                                    {
+                                        SeasonTotalsPostSeason[
+                                            scope.slice(0, -1)
+                                        ][AST]
+                                    }
+                                    {SeasonRankingsPostSeason[
+                                        scope.slice(0, -1)
+                                    ][RANK_AST] && (
+                                        <div className="subtitle">
+                                            (
+                                            {
+                                                SeasonRankingsPostSeason[
+                                                    scope.slice(0, -1)
+                                                ][RANK_AST]
+                                            }
+                                            {suffix(
+                                                parseInt(
+                                                    SeasonRankingsPostSeason[
+                                                        scope.slice(0, -1)
+                                                    ][RANK_AST]
+                                                )
+                                            )}
+                                            )
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                            <div className="stat">
+                                <div className="heading">STL</div>
+                                <div>
+                                    {
+                                        SeasonTotalsPostSeason[
+                                            scope.slice(0, -1)
+                                        ][STL]
+                                    }
+                                    {SeasonRankingsPostSeason[
+                                        scope.slice(0, -1)
+                                    ][RANK_STL] && (
+                                        <div className="subtitle">
+                                            (
+                                            {
+                                                SeasonRankingsPostSeason[
+                                                    scope.slice(0, -1)
+                                                ][RANK_STL]
+                                            }
+                                            {suffix(
+                                                parseInt(
+                                                    SeasonRankingsPostSeason[
+                                                        scope.slice(0, -1)
+                                                    ][RANK_STL]
+                                                )
+                                            )}
+                                            )
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                            <div className="stat">
+                                <div className="heading">BLK</div>
+                                <div>
+                                    {
+                                        SeasonTotalsPostSeason[
+                                            scope.slice(0, -1)
+                                        ][BLK]
+                                    }
+                                    {SeasonRankingsPostSeason[
+                                        scope.slice(0, -1)
+                                    ][RANK_BLK] && (
+                                        <div className="subtitle">
+                                            (
+                                            {
+                                                SeasonRankingsPostSeason[
+                                                    scope.slice(0, -1)
+                                                ][RANK_BLK]
+                                            }
+                                            {suffix(
+                                                parseInt(
+                                                    SeasonRankingsPostSeason[
+                                                        scope.slice(0, -1)
+                                                    ][RANK_BLK]
+                                                )
+                                            )}
+                                            )
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                            <div className="stat">
+                                <div className="heading">FG%</div>
+                                <div>
+                                    {(
+                                        SeasonTotalsPostSeason[
+                                            scope.slice(0, -1)
+                                        ][FGP] * 100
+                                    ).toFixed(1)}
+                                    {SeasonRankingsPostSeason[
+                                        scope.slice(0, -1)
+                                    ][RANK_FGP] && (
+                                        <div className="subtitle">
+                                            (
+                                            {
+                                                SeasonRankingsPostSeason[
+                                                    scope.slice(0, -1)
+                                                ][RANK_FGP]
+                                            }
+                                            {suffix(
+                                                parseInt(
+                                                    SeasonRankingsPostSeason[
+                                                        scope.slice(0, -1)
+                                                    ][RANK_FGP]
+                                                )
+                                            )}
+                                            )
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                            <div className="stat">
+                                <div className="heading">3P%</div>
+                                <div>
+                                    {(
+                                        SeasonTotalsPostSeason[
+                                            scope.slice(0, -1)
+                                        ][TPP] * 100
+                                    ).toFixed(1)}
+                                    {SeasonRankingsPostSeason[
+                                        scope.slice(0, -1)
+                                    ][RANK_TPP] && (
+                                        <div className="subtitle">
+                                            (
+                                            {
+                                                SeasonRankingsPostSeason[
+                                                    scope.slice(0, -1)
+                                                ][RANK_TPP]
+                                            }
+                                            {suffix(
+                                                parseInt(
+                                                    SeasonRankingsPostSeason[
+                                                        scope.slice(0, -1)
+                                                    ][RANK_TPP]
+                                                )
+                                            )}
+                                            )
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                            <div className="stat">
+                                <div className="heading">FT%</div>
+                                <div>
+                                    {(
+                                        SeasonTotalsPostSeason[
+                                            scope.slice(0, -1)
+                                        ][FTP] * 100
+                                    ).toFixed(1)}
+                                    {SeasonRankingsPostSeason[
+                                        scope.slice(0, -1)
+                                    ][RANK_FTP] && (
+                                        <div className="subtitle">
+                                            (
+                                            {
+                                                SeasonRankingsPostSeason[
+                                                    scope.slice(0, -1)
+                                                ][RANK_FTP]
+                                            }
+                                            {suffix(
+                                                parseInt(
+                                                    SeasonRankingsPostSeason[
+                                                        scope.slice(0, -1)
+                                                    ][RANK_FTP]
+                                                )
+                                            )}
+                                            )
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                            <div className="stat">
+                                <div className="heading">TOV</div>
+                                <div>
+                                    {
+                                        SeasonTotalsPostSeason[
+                                            scope.slice(0, -1)
+                                        ][TOV]
+                                    }
+                                    {SeasonRankingsPostSeason[
+                                        scope.slice(0, -1)
+                                    ][RANK_TOV] && (
+                                        <div className="subtitle">
+                                            (
+                                            {
+                                                SeasonRankingsPostSeason[
+                                                    scope.slice(0, -1)
+                                                ][RANK_TOV]
+                                            }
+                                            {suffix(
+                                                parseInt(
+                                                    SeasonRankingsPostSeason[
+                                                        scope.slice(0, -1)
+                                                    ][RANK_TOV]
+                                                )
+                                            )}
+                                            )
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                            <div className="stat">
+                                <div className="heading">PF</div>
+                                <div>
+                                    {
+                                        SeasonTotalsPostSeason[
+                                            scope.slice(0, -1)
+                                        ][PF]
+                                    }
+                                </div>
+                            </div>
+                        </>
+                    ))}
+            </div>
+        )
+    }
+
     return (
         <CompareContainer>
             <div className="back">
                 <IoIosArrowBack
                     fontSize={"2.5em"}
                     onClick={() => {
-                        setPlayers([...roster.allPlayers])
                         props.setToggleTitle(true)
                         props.setToggleCompare(false)
                     }}
@@ -411,157 +1294,8 @@ const Compare = (props) => {
                 )}
 
                 <div className="players">
-                    {selectedPlayers.map((player) => {
-                        return (
-                            <div
-                                key={JSON.stringify(player.id)}
-                                className="column"
-                                style={{
-                                    backgroundColor: getTeamColor(
-                                        player.teamId
-                                    ),
-                                }}
-                            >
-                                <div
-                                    className="close"
-                                    onClick={() => {
-                                        onRemove(player)
-                                    }}
-                                >
-                                    <AiOutlineClose />
-                                </div>
-                                <div className="player">
-                                    <div>
-                                        <img
-                                            src={`https://cdn.nba.com/headshots/nba/latest/1040x760/${player.personId}.png`}
-                                            alt=""
-                                        />
-                                    </div>
-                                    <div className="name">{player.name}</div>
-                                    <div className="info">{`${player.age} | ${player.height} | ${player.weight}lbs`}</div>
-                                </div>
-                                <div className="stat">
-                                    <div className="heading">GP</div>
-                                    <div>{player.stats.GP}</div>
-                                    <div className="subtitle">
-                                        ({player.stats.GP_RANK}
-                                        {suffix(player.stats.GP_RANK)})
-                                    </div>
-                                </div>
-                                <div className="stat">
-                                    <div className="heading">MIN</div>
-                                    <div>{player.stats.MIN}</div>
-                                    <div className="subtitle">
-                                        ({player.stats.MIN_RANK}
-                                        {suffix(player.stats.MIN_RANK)})
-                                    </div>
-                                </div>
-                                <div className="stat">
-                                    <div className="heading">PTS</div>
-                                    <div>{player.stats.PTS}</div>
-                                    <div className="subtitle">
-                                        ({player.stats.PTS_RANK}
-                                        {suffix(player.stats.PTS_RANK)})
-                                    </div>
-                                </div>
-                                <div className="stat">
-                                    <div className="heading">REB</div>
-                                    <div>{player.stats.REB}</div>
-                                    <div className="subtitle">
-                                        ({player.stats.REB_RANK}
-                                        {suffix(player.stats.REB_RANK)})
-                                    </div>
-                                </div>
-                                <div className="stat">
-                                    <div className="heading">AST</div>
-                                    <div>{player.stats.AST}</div>
-                                    <div className="subtitle">
-                                        ({player.stats.AST_RANK}
-                                        {suffix(player.stats.AST_RANK)})
-                                    </div>
-                                </div>
-                                <div className="stat">
-                                    <div className="heading">STL</div>
-                                    <div>{player.stats.STL}</div>
-                                    <div className="subtitle">
-                                        ({player.stats.STL_RANK}
-                                        {suffix(player.stats.STL_RANK)})
-                                    </div>
-                                </div>
-                                <div className="stat">
-                                    <div className="heading">BLK</div>
-                                    <div>{player.stats.BLK}</div>
-                                    <div className="subtitle">
-                                        ({player.stats.BLK_RANK}
-                                        {suffix(player.stats.BLK_RANK)})
-                                    </div>
-                                </div>
-                                <div className="stat">
-                                    <div className="heading">FG%</div>
-                                    <div>
-                                        {(player.stats.FG_PCT * 100).toFixed(1)}
-                                    </div>
-                                    <div className="subtitle">
-                                        ({player.stats.FG_PCT_RANK}
-                                        {suffix(player.stats.FG_PCT_RANK)})
-                                    </div>
-                                </div>
-                                <div className="stat">
-                                    <div className="heading">3P%</div>
-                                    <div>
-                                        {(player.stats.FG3_PCT * 100).toFixed(
-                                            1
-                                        )}
-                                    </div>
-                                    <div className="subtitle">
-                                        ({player.stats.FG3_PCT_RANK}
-                                        {suffix(player.stats.FG3_PCT_RANK)})
-                                    </div>
-                                </div>
-                                <div className="stat">
-                                    <div className="heading">FT%</div>
-                                    <div>
-                                        {(player.stats.FT_PCT * 100).toFixed(1)}
-                                    </div>
-                                    <div className="subtitle">
-                                        ({player.stats.FT_PCT_RANK}
-                                        {suffix(player.stats.FT_PCT_RANK)})
-                                    </div>
-                                </div>
-                                <div className="stat">
-                                    <div className="heading">TOV</div>
-                                    <div>{player.stats.TOV}</div>
-                                    <div className="subtitle">
-                                        ({player.stats.TOV_RANK}
-                                        {suffix(player.stats.TOV_RANK)})
-                                    </div>
-                                </div>
-                                <div className="stat">
-                                    <div className="heading">PF</div>
-                                    <div>{player.stats.PF}</div>
-                                    <div className="subtitle">
-                                        ({player.stats.PF_RANK}
-                                        {suffix(player.stats.PF_RANK)})
-                                    </div>
-                                </div>
-                                <div className="stat">
-                                    <div className="heading">PFD</div>
-                                    <div>{player.stats.PFD}</div>
-                                    <div className="subtitle">
-                                        ({player.stats.PFD_RANK}
-                                        {suffix(player.stats.PFD_RANK)})
-                                    </div>
-                                </div>
-                                <div className="stat">
-                                    <div className="heading">+/-</div>
-                                    <div>{player.stats.PLUS_MINUS}</div>
-                                    <div className="subtitle">
-                                        ({player.stats.PLUS_MINUS_RANK}
-                                        {suffix(player.stats.PLUS_MINUS_RANK)})
-                                    </div>
-                                </div>
-                            </div>
-                        )
+                    {selectedPlayers.map((player, index) => {
+                        return <PlayerCard player={player} index={index} />
                     })}
                     {loading && (
                         <div

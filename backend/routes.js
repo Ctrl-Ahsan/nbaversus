@@ -1,6 +1,9 @@
 const express = require("express")
 const router = express.Router()
-const { getStats } = require("./controllers/statController")
+const {
+    getSeasonStats,
+    getCareerStats,
+} = require("./controllers/statController")
 const { getVote, setVote } = require("./controllers/voteController")
 const {
     registerUser,
@@ -21,6 +24,7 @@ router.get("/votes", getVote)
 router.post("/votes", setVote)
 
 // stats route
-router.post("/stats", getStats)
+router.post("/stats", getSeasonStats)
+router.post("/stats/career", getCareerStats)
 
 module.exports = router
