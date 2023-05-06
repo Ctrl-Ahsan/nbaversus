@@ -15,8 +15,8 @@ const Compare = (props) => {
     const [loading, setLoading] = useState(false)
     const players = [...roster.allPlayers]
 
-    const getTeamColor = (color) => {
-        switch (color) {
+    const getTeamColor = (teamID) => {
+        switch (teamID) {
             case 1610612737:
                 return "#df393fd0"
 
@@ -202,7 +202,7 @@ const Compare = (props) => {
             align-items: center;
             width: 80%;
             max-width: 500px;
-            ${!!selectedPlayers.length ? "margin-left: 1em;" : ""}
+            ${selectedPlayers.length > 1 ? "margin-left: 1em;" : ""}
 
             & .search-bar {
                 width: 100%;
@@ -270,6 +270,14 @@ const Compare = (props) => {
                     margin: 1em 0.5em;
                     padding-bottom: 0.5em;
                     border: solid 0.5px gray;
+
+                    & .team {
+                        position: absolute;
+                        top: 0.4em;
+                        left: 0.5em;
+                        height: 1.5em;
+                        width: 1.5em;
+                    }
 
                     & .close {
                         font-size: 0.9em;
@@ -433,13 +441,45 @@ const Compare = (props) => {
         const RANK_TOV = 24
         const PF = 25
 
+        const getPlayerAge = () => {
+            if (scope.slice(0, 1) !== "C") {
+                if (scope.slice(-1) === "S") {
+                    return SeasonTotalsRegularSeason[scope.slice(0, -1)][5]
+                } else if (scope.slice(-1) === "P") {
+                    return SeasonTotalsRegularSeason[scope.slice(0, -1)][5]
+                }
+            } else {
+                return player.age
+            }
+        }
+        const getTeamID = () => {
+            if (scope.slice(0, 1) !== "C") {
+                if (scope.slice(-1) === "S") {
+                    if (SeasonTotalsRegularSeason[scope.slice(0, -1)][3] !== 0)
+                        return SeasonTotalsRegularSeason[scope.slice(0, -1)][3]
+                    else return player.teamId
+                } else if (scope.slice(-1) === "P") {
+                    if (SeasonTotalsPostSeason[scope.slice(0, -1)][3] !== 0)
+                        return SeasonTotalsRegularSeason[scope.slice(0, -1)][3]
+                    else return player.teamId
+                }
+            } else {
+                return player.teamId
+            }
+        }
+
         return (
             <div
                 className="column"
                 style={{
-                    backgroundColor: getTeamColor(player.teamId),
+                    backgroundColor: getTeamColor(getTeamID()),
                 }}
             >
+                <div className="team">
+                    <img
+                        src={`https://cdn.nba.com/logos/nba/${getTeamID()}/primary/L/logo.svg`}
+                    />
+                </div>
                 <div
                     className="close"
                     onClick={() => {
@@ -452,11 +492,12 @@ const Compare = (props) => {
                     <div>
                         <img
                             src={`https://cdn.nba.com/headshots/nba/latest/1040x760/${player.personId}.png`}
-                            alt=""
                         />
                     </div>
                     <div className="name">{player.name}</div>
-                    <div className="info">{`${player.age} | ${player.height} | ${player.weight}lbs`}</div>
+                    <div className="info">{`${getPlayerAge()} | ${
+                        player.height
+                    } | ${player.weight}lbs`}</div>
                 </div>
                 <div className="scope">
                     <select
