@@ -68,7 +68,7 @@ const Profile = (props) => {
             align-items: center;
             background-color: #d3d3d352;
             border-radius: 20px;
-            padding: 0.4em;
+            padding: 0.5em;
             font-weight: 700;
 
             img {
@@ -88,7 +88,7 @@ const Profile = (props) => {
             }
         }
 
-        & .heading {
+        & .profile-heading {
             font-weight: 300;
             font-size: 0.7em;
             font-family: Roboto Condensed, Roboto, Arial;
@@ -137,12 +137,16 @@ const Profile = (props) => {
                     </div>
                     {!loading && (
                         <div>
-                            <span className="heading">Favorite Player</span>
-                            <br />
-                            {favorite}
-                            <br />
-                            <span className="heading">Votes</span>
-                            <br />
+                            <div className="profile-heading">
+                                Favorite Player
+                            </div>
+                            <div>{favorite}</div>
+                            <div
+                                className="profile-heading"
+                                style={{ marginTop: "0.5em" }}
+                            >
+                                Votes
+                            </div>
                             {favoriteVotes}
                         </div>
                     )}
@@ -159,12 +163,14 @@ const Profile = (props) => {
                     </div>
                     {!loading && (
                         <div>
-                            <span className="heading">Favorite Team</span>
-                            <br />
+                            <div className="profile-heading">Favorite Team</div>
                             {favoriteTeam}
-                            <br />
-                            <span className="heading">Votes</span>
-                            <br />
+                            <div
+                                className="profile-heading"
+                                style={{ marginTop: "0.5em" }}
+                            >
+                                Votes
+                            </div>
                             {favoriteTeamVotes}
                         </div>
                     )}

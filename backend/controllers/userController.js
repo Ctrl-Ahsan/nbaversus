@@ -132,6 +132,9 @@ const getMe = asycHandler(async (req, res) => {
                 for (player of Players) {
                     if (entry[0] == player.personId) {
                         response.favoritePlayer = player.name
+                            .split(" ")
+                            .splice(1, 2)
+                            .join(" ")
                         response.favoritePlayerID = entry[0]
                         response.favoritePlayerVotes = entry[1]
                         break
