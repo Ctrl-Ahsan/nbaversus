@@ -10,7 +10,9 @@ import { AppContext } from "../AppContext"
 const User = () => {
     const { setMenuOpen, setMenuClosed, setToggleUser } = useContext(AppContext)
     const [category, setCategory] = useState("account")
-    const [loggedIn, setLoggedIn] = useState(false)
+    const [loggedIn, setLoggedIn] = useState(
+        localStorage.getItem("user") !== null
+    )
     const [toggleRegister, setToggleRegister] = useState(false)
 
     function handleClick() {

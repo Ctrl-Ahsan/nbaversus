@@ -6,11 +6,6 @@ import axios from "axios"
 import Spinner from "../components/Spinner"
 
 const Login = (props) => {
-    useEffect(() => {
-        if (localStorage.getItem("user") !== null) {
-            props.setLoggedIn(true)
-        }
-    })
     const Form = () => {
         const [formData, setFormData] = useState({
             name: "",
