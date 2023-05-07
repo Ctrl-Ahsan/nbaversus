@@ -460,7 +460,7 @@ const Compare = (props) => {
                     else return player.teamId
                 } else if (scope.slice(-1) === "P") {
                     if (SeasonTotalsPostSeason[scope.slice(0, -1)][3] !== 0)
-                        return SeasonTotalsRegularSeason[scope.slice(0, -1)][3]
+                        return SeasonTotalsPostSeason[scope.slice(0, -1)][3]
                     else return player.teamId
                 }
             } else {
