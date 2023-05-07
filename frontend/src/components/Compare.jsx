@@ -479,6 +479,7 @@ const Compare = (props) => {
                 <div className="team">
                     <img
                         src={`https://cdn.nba.com/logos/nba/${getTeamID()}/primary/L/logo.svg`}
+                        alt=""
                     />
                 </div>
                 <div
@@ -493,6 +494,7 @@ const Compare = (props) => {
                     <div>
                         <img
                             src={`https://cdn.nba.com/headshots/nba/latest/1040x760/${player.personId}.png`}
+                            alt=""
                         />
                     </div>
                     <div className="name">{player.name}</div>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import styled from "styled-components"
 import { toast } from "react-toastify"
 import { FaSignInAlt } from "react-icons/fa"
