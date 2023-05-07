@@ -473,6 +473,7 @@ const Compare = (props) => {
                 className="column"
                 style={{
                     backgroundColor: getTeamColor(getTeamID()),
+                    borderColor: scope.slice(-1) === "P" ? "#b49900" : "",
                 }}
             >
                 <div className="team">
