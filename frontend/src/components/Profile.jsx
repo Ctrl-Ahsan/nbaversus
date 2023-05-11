@@ -6,6 +6,7 @@ import { toast } from "react-toastify"
 
 const Profile = (props) => {
     const [user, setUser] = useState()
+    const [voteCount, setVoteCount] = useState()
     const [favorite, setFavorite] = useState()
     const [favoriteURL, setFavoriteURL] = useState()
     const [favoriteVotes, setFavoriteVotes] = useState()
@@ -27,6 +28,7 @@ const Profile = (props) => {
                 .then((response) => {
                     setLoading(false)
                     if (response.data.favoritePlayer) {
+                        setVoteCount(response.data.voteCount)
                         setFavorite(response.data.favoritePlayer)
                         setFavoriteTeam(response.data.favoriteTeam)
                         setFavoriteVotes(response.data.favoritePlayerVotes)
@@ -84,7 +86,14 @@ const Profile = (props) => {
 
             svg {
                 font-size: 0.7em;
-                margin-right: 5px;
+            }
+
+            & .votes {
+                margin-top: 0.25em;
+                height: 1em;
+                font-family: Roboto Condensed, Roboto, Arial;
+                font-size: 0.5em;
+                font-weight: 300;
             }
         }
 
@@ -121,6 +130,9 @@ const Profile = (props) => {
             <div className="me">
                 <div className="title">
                     <FaUser /> {user}
+                    <div className="votes">
+                        {!loading && `Total Votes: ${voteCount}`}
+                    </div>
                 </div>
                 <div
                     className={loading ? "panel shimmerBG" : "panel"}
