@@ -17,12 +17,10 @@ const registerUser = asycHandler(async (req, res) => {
         }
 
         // Check if user already exists
-        const userExists = await User.findOne({ name })
-        if (userExists) {
-            console.log(
-                `${now} | A user tried taking a taken name: " +
-                name | ${req.ip}`
-            )
+        const userExists = await User.find({
+            name: new RegExp(`^${name}$`, "i"),
+        })
+        if (userExists.length > 0) {
             res.status(400).send("This name is already taken")
             return
         }

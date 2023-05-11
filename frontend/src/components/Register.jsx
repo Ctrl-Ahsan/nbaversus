@@ -27,9 +27,11 @@ const Register = (props) => {
             e.preventDefault()
             if (name === "" || password === "" || password2 === "") {
                 toast.error("Please fill in all fields")
-            } else if (password !== password2) {
+            } else if (name.length > 16)
+                toast.error("Username exceeds 16 character limit")
+            else if (password !== password2)
                 toast.error("Passwords do not match")
-            } else {
+            else {
                 setLoading(true)
                 const userData = {
                     name,
@@ -44,6 +46,7 @@ const Register = (props) => {
                                 JSON.stringify(response.data)
                             )
                             props.setLoggedIn(true)
+                            props.setToggleRegister(false)
                         }
                         setLoading(false)
                     })
