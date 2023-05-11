@@ -125,12 +125,10 @@ const Menu = () => {
         display: flex;
         flex-direction: column;
         position: absolute;
-        bottom: 0;
-        right: 0;
+        bottom: 2em;
+        right: 0.5em;
         z-index: 3;
         align-items: center;
-        margin-right: 0.5em;
-        margin-bottom: 2em;
         font-size: 0.8rem;
 
         @media screen and (min-width: 320px) {

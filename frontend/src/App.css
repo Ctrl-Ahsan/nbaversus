@@ -48,11 +48,34 @@ button:active {
   }
 }
 
-.progress-stepper {
+.versus-nav {
   position: absolute;
-  bottom: 5%;
-  left: 5%;
+  bottom: 2em;
+  left: 1.5em;
   z-index: 2;
+}
+
+.home {
+  font-size: 2em;
+  margin-left: 0.15em;
+  margin-bottom: 0.25em;
+  cursor: pointer;
+  transition: scale 0.3s;
+}
+.home svg {
+  margin-bottom: 2.5px;
+  -webkit-tap-highlight-color: transparent;
+  transition: all 0.3s;
+}
+.home:hover > svg {
+  scale: 1.1;
+}
+.home:active > svg {
+  scale: 0.9;
+  color: #bd7b00 !important;
+}
+
+.progress-stepper {
   height: 3em;
   width: 3em;
 }

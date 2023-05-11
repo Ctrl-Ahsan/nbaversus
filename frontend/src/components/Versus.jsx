@@ -15,6 +15,7 @@ import User from "./User"
 import Compare from "./Compare"
 import { AppContext } from "../AppContext"
 import roster from "../players.json"
+import { ImExit } from "react-icons/im"
 
 const Versus = () => {
     const {
@@ -501,37 +502,48 @@ const Versus = () => {
                 </VersusContainer>
                 {!menuOpen && <Menu playerArray={playerArray} />}
                 {!menuOpen && (
-                    <div className="progress-stepper">
-                        <CircularProgressbarWithChildren
-                            value={round}
-                            maxValue={5}
-                            background
-                            styles={buildStyles({
-                                backgroundColor: "rgba(365, 365, 365, 0.4)",
-                                textColor: "#fff",
-                                pathColor: "#fff",
-                                trailColor: "transparent",
-                            })}
-                        >
-                            {round === 5 && (p1Wins || p2Wins) ? (
-                                <FaCrown
-                                    className={
-                                        !menuOpen && !menuClosed
-                                            ? "fade-in"
-                                            : ""
-                                    }
-                                />
-                            ) : (
-                                <span
-                                    style={{
-                                        fontSize: "0.7em",
-                                        fontWeight: 700,
-                                    }}
-                                >
-                                    {round} / 5
-                                </span>
-                            )}
-                        </CircularProgressbarWithChildren>
+                    <div className="versus-nav">
+                        <div className="home">
+                            <ImExit
+                                onClick={() => {
+                                    setMenuClosed(false)
+                                    setToggleVersus(false)
+                                    setToggleTitle(true)
+                                }}
+                            />
+                        </div>
+                        <div className="progress-stepper">
+                            <CircularProgressbarWithChildren
+                                value={round}
+                                maxValue={5}
+                                background
+                                styles={buildStyles({
+                                    backgroundColor: "rgba(365, 365, 365, 0.4)",
+                                    textColor: "#fff",
+                                    pathColor: "#fff",
+                                    trailColor: "transparent",
+                                })}
+                            >
+                                {round === 5 && (p1Wins || p2Wins) ? (
+                                    <FaCrown
+                                        className={
+                                            !menuOpen && !menuClosed
+                                                ? "fade-in"
+                                                : ""
+                                        }
+                                    />
+                                ) : (
+                                    <span
+                                        style={{
+                                            fontSize: "0.7em",
+                                            fontWeight: 700,
+                                        }}
+                                    >
+                                        {round} / 5
+                                    </span>
+                                )}
+                            </CircularProgressbarWithChildren>
+                        </div>
                     </div>
                 )}
                 {toggleStats && <Stats />}
