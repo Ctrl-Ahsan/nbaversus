@@ -249,10 +249,12 @@ const Compare = (props) => {
             overflow: scroll;
 
             & .message {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+                width: 100%;
                 color: gray;
             }
             & .players {
@@ -1329,7 +1331,7 @@ const Compare = (props) => {
             <SearchBar />
             <div className="compare">
                 {selectedPlayers.length === 0 && !loading && (
-                    <div className="message fade-in">
+                    <div className="message scale-in-center">
                         <div>
                             <IoPersonAdd fontSize={"4em"} />
                         </div>
