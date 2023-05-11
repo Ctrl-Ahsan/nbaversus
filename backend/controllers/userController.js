@@ -1,9 +1,30 @@
 const jwt = require("jsonwebtoken")
 const bcrypt = require("bcryptjs")
+const geoip = require("geoip-lite")
 const asycHandler = require("express-async-handler")
 const User = require("../models/userModel")
 const Vote = require("../models/voteModel")
 const Players = require("../allPlayers.json")
+
+let usersVisited = []
+
+const userVisit = asycHandler(async (req, res) => {
+    try {
+        let now = new Date().toLocaleString("en-US", { timeZone: "UTC" })
+        if (!usersVisited.includes(req.ip)) {
+            const location = geoip.lookup(req.ip)
+            console.log(
+                `${now} | A new visitor from ${location?.city}, ${location?.country} | ${req.ip}`
+            )
+            usersVisited.push(req.ip)
+            console.log(`${usersVisited.length} visits today`)
+        }
+        res.status(200)
+    } catch (error) {
+        console.error(error)
+        res.status(500)
+    }
+})
 
 const registerUser = asycHandler(async (req, res) => {
     try {
@@ -36,7 +57,10 @@ const registerUser = asycHandler(async (req, res) => {
         })
 
         if (user) {
-            console.log(`${now} ${user} created`.green)
+            console.log(
+                `${now} | ${user.name} has created their account | ${req.ip}`
+                    .green
+            )
             res.status(201).json({
                 _id: user.id,
                 Name: user.name,
@@ -276,6 +300,7 @@ const generateToken = (id) => {
 }
 
 module.exports = {
+    userVisit,
     registerUser,
     loginUser,
     getMe,

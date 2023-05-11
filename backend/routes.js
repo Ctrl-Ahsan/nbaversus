@@ -6,6 +6,7 @@ const {
 } = require("./controllers/statController")
 const { getVote, setVote } = require("./controllers/voteController")
 const {
+    userVisit,
     registerUser,
     loginUser,
     getMe,
@@ -14,6 +15,7 @@ const {
 const { protect } = require("./middleware/authMiddleware")
 
 // user routes
+router.post("/users/visit", userVisit)
 router.post("/users", registerUser)
 router.post("/users/login", loginUser)
 router.get("/users/me", protect, getMe)
@@ -23,7 +25,7 @@ router.put("/users/me", protect, updateMe)
 router.get("/votes", getVote)
 router.post("/votes", setVote)
 
-// stats route
+// stats routes
 router.post("/stats", getSeasonStats)
 router.post("/stats/career", getCareerStats)
 

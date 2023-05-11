@@ -50,6 +50,8 @@ const Versus = () => {
     const playerArray = roster.filteredPlayers
 
     useEffect(() => {
+        // log visit
+        axios.post("/api/users/visit")
         // reset states
         setP1Wins(false)
         setP2Wins(false)
