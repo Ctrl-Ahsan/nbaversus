@@ -15,12 +15,10 @@ const Title = (props) => {
         & .vs {
             display: flex;
             flex-direction: column;
+            justify-content: center;
             align-items: center;
             object-fit: contain;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            height: 100%;
 
             img {
                 margin-top: -30px;
@@ -55,7 +53,7 @@ const Title = (props) => {
 
             & svg {
                 font-size: 0.8em;
-                margin-right: 0.2em;
+                margin-right: 0.5em;
             }
 
             :hover {
@@ -91,7 +89,7 @@ const Title = (props) => {
 
     return (
         <TitleContainer>
-            <div className="vs">
+            <div className="vs fade-in">
                 NBA
                 <img src="/nbaversus.png" alt="" />
                 <button
