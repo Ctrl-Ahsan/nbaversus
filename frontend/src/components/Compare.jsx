@@ -1346,7 +1346,7 @@ const Compare = (props) => {
                     {loading && (
                         <div
                             className="column shimmerBG"
-                            style={{ height: "71em", width: "7em" }}
+                            style={{ height: "62.25em", width: "7em" }}
                         ></div>
                     )}
                 </div>
