@@ -131,7 +131,8 @@ const Profile = (props) => {
                 <div className="title">
                     <FaUser /> {user}
                     <div className="votes">
-                        {!loading && `Total Votes: ${voteCount}`}
+                        {!loading &&
+                            `Total Votes: ${voteCount ? voteCount : 0}`}
                     </div>
                 </div>
                 <div
