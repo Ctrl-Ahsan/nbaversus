@@ -1,4 +1,5 @@
 const express = require("express")
+const cors = require("cors")
 const rateLimit = require("express-rate-limit")
 const path = require("path")
 require("dotenv").config()
@@ -19,6 +20,7 @@ const limiter = rateLimit({
 
 // configure
 app.enable("trust proxy")
+app.use(cors())
 app.use(limiter)
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
