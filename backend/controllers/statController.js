@@ -1,8 +1,7 @@
 const asyncHandler = require("express-async-handler")
 const fetch = require("node-fetch")
-
-let leagueStats = {}
-let playerStats = {}
+const Players = require("../players.json")
+const LeagueStats = require("../league.json")
 
 const ID = 0
 const NAME = 1
@@ -49,20 +48,8 @@ const getSeasonStats = asyncHandler(async (req, res) => {
         }
         const ids = req.body.ids
 
-        // fetch stats if they haven't been fetched in over 24 hours
-        if (JSON.stringify(leagueStats) === "{}") {
-            leagueStats = await fetch(LeagueDashPlayerStats, {
-                headers: {
-                    "User-Agent":
-                        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15",
-                    "Accept-Language": "en-CA,en-US;q=0.9,en;q=0.8",
-                    Referer: "https://www.nba.com/",
-                },
-            }).then((res) => res.json())
-        }
-
         // get stats for the requested players
-        for (player of leagueStats.resultSets[0].rowSet) {
+        for (player of LeagueStats) {
             if (ids.includes(player[ID])) {
                 response[player[ID]] = {
                     Name: player[NAME],
@@ -115,38 +102,10 @@ const getCareerStats = asyncHandler(async (req, res) => {
         }
         const id = req.body.id
 
-        // fetch stats if they haven't been fetched in over 24 hours
-        if (!playerStats[id]) {
-            const careerStats = await fetch(
-                `https://stats.nba.com/stats/playercareerstats?LeagueID=&PerMode=PerGame&PlayerID=${id}`,
-                {
-                    headers: {
-                        "User-Agent":
-                            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15",
-                        "Accept-Language": "en-CA,en-US;q=0.9,en;q=0.8",
-                        Referer: "https://www.nba.com/",
-                    },
-                }
-            ).then((res) => res.json())
-            // remove multiple stats entries for same season (players traded mid-season)
-            careerStats.resultSets[0].rowSet =
-                careerStats.resultSets[0].rowSet.filter((item, index, self) => {
-                    if (index < self.length - 1)
-                        return item[1] !== self[index + 1][1]
-                    else return true
-                })
-
-            // reverse season order to descending
-            careerStats.resultSets[0].rowSet.reverse()
-            careerStats.resultSets[2].rowSet.reverse()
-            careerStats.resultSets[10].rowSet.reverse()
-            careerStats.resultSets[11].rowSet.reverse()
-
-            // store stats until dyno is restarted / 24 hours
-            playerStats[id] = careerStats.resultSets
+        // get career stats for requested player
+        for (player of Players) {
+            if (player.personId === id) response = player.stats
         }
-
-        response = playerStats[id]
     } catch (error) {
         console.error(error)
         res.status(500).json("Could not fetch stats")
