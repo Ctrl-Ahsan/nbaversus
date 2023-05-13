@@ -139,6 +139,41 @@ const Compare = (props) => {
         setSelectedScopes([...remainingScopes])
     }
 
+    const formatResult = (player) => {
+        if (
+            roster.filteredPlayers.filter((item) => {
+                if (item.personId === player.personId) return true
+            }).length > 0
+        ) {
+            return (
+                <>
+                    <span
+                        style={{
+                            display: "block",
+                            textAlign: "left",
+                            fontWeight: 700,
+                        }}
+                    >
+                        {player.name}
+                    </span>
+                </>
+            )
+        } else {
+            return (
+                <>
+                    <span
+                        style={{
+                            display: "block",
+                            textAlign: "left",
+                        }}
+                    >
+                        {player.name}
+                    </span>
+                </>
+            )
+        }
+    }
+
     const suffix = (num) => {
         if (num > 3 && num < 14) return "th"
         const lastChar = num.toString().slice(-1)
@@ -271,7 +306,7 @@ const Compare = (props) => {
                     border-radius: 10px;
                     margin: 1em 0.5em;
                     padding-bottom: 0.5em;
-                    border: solid 0.5px gray;
+                    border: solid 1px gray;
 
                     & .team {
                         position: absolute;
@@ -385,6 +420,7 @@ const Compare = (props) => {
                                 border: "1px solid rgba(148, 148, 148, 0.3)",
                             }}
                             onSelect={onSelect}
+                            formatResult={formatResult}
                         />
                     </div>
                     {selectedPlayers.length > 1 && (
