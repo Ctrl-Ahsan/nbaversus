@@ -143,6 +143,7 @@ const Compare = (props) => {
         if (
             roster.filteredPlayers.filter((item) => {
                 if (item.personId === player.personId) return true
+                else return false
             }).length > 0
         ) {
             return (
