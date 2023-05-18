@@ -50,8 +50,6 @@ const getVote = asyncHandler(async (req, res) => {
 
 const setVote = asyncHandler(async (req, res) => {
     try {
-        let now = new Date().toLocaleString("en-US", { timeZone: "UTC" })
-
         // validate request
         if (!(req.body.winner && req.body.winnerTeam && req.body.losers)) {
             res.status(400).json(
@@ -66,6 +64,13 @@ const setVote = asyncHandler(async (req, res) => {
             winnerTeam: req.body.winnerTeam,
             losers: req.body.losers,
         })
+        let winnerName = ""
+        for (player of Players) {
+            if (req.body.winner == player.personId) {
+                winnerName = player.name
+                break
+            }
+        }
         if (req.headers.authorization) {
             token = req.headers.authorization.split(" ")[1]
 
@@ -75,10 +80,16 @@ const setVote = asyncHandler(async (req, res) => {
             userToUpdate = await User.findById(decoded.id)
             userToUpdate.votes.push(vote)
             userToUpdate.save()
+
+            console.log(
+                `${userToUpdate.name} voted for ${winnerName} | ${req.ip}`
+            )
+        } else {
+            console.log(`A user voted for ${winnerName} | ${req.ip}`)
         }
         res.status(200).json(vote)
     } catch (error) {
-        res.status(500).json("Could not post vote")
+        res.status(500).json("Could not cast vote")
     }
 })
 
