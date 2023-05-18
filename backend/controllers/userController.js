@@ -18,10 +18,10 @@ const userVisit = asycHandler(async (req, res) => {
             usersVisited.push(req.ip)
             console.log(`${usersVisited.length} visits today`)
         }
-        res.status(200)
+        res.status(200).json({})
     } catch (error) {
         console.error(error)
-        res.status(500)
+        res.status(500).json({})
     }
 })
 
