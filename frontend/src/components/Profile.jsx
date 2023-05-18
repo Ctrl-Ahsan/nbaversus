@@ -43,7 +43,6 @@ const Profile = (props) => {
                 })
                 .catch((error) => {
                     setLoading(false)
-                    console.log(error)
                     toast.error(error.response.data)
                 })
         }

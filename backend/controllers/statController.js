@@ -1,5 +1,4 @@
 const asyncHandler = require("express-async-handler")
-const fetch = require("node-fetch")
 const Players = require("../players.json")
 const LeagueStats = require("../league.json")
 
@@ -33,9 +32,6 @@ const PF_RANK = 58
 const PFD_RANK = 59
 const PTS_RANK = 60
 const PLUS_MINUS_RANK = 61
-
-const LeagueDashPlayerStats =
-    "https://stats.nba.com/stats/leaguedashplayerstats?LastNGames=0&LeagueID=00&MeasureType=Base&Month=0&OpponentTeamID=0&PORound=0&PerMode=PerGame&Period=0&PlusMinus=N&Rank=N&Season=2022-23&SeasonType=Regular%20Season&TeamID=0"
 
 const getSeasonStats = asyncHandler(async (req, res) => {
     let response = {}
