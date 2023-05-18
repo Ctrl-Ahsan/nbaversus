@@ -226,7 +226,7 @@ const Compare = (props) => {
             margin-top: 1em;
             margin-bottom: 0.5em;
             svg {
-                font-size: 0.8em;
+                font-size: 0.7em;
                 margin-right: 0.3em;
             }
         }
