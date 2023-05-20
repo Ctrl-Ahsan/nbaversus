@@ -138,7 +138,13 @@ const Leaderboard = () => {
                         return (
                             <React.Fragment key={i}>
                                 <div className="entry">
-                                    {i === 0 ? <FaCrown color="gold" /> : i + 1}
+                                    {i === 0 ? (
+                                        <FaCrown color="gold" />
+                                    ) : winner[0] === "Jayson Tatum" ? (
+                                        <FaCrown color="#2dc603" />
+                                    ) : (
+                                        i + 1
+                                    )}
                                 </div>
                                 <div
                                     className="entry"
