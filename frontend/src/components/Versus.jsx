@@ -51,7 +51,14 @@ const Versus = () => {
 
     useEffect(() => {
         // log visit
-        axios.post("/api/users/visit")
+        if (localStorage.getItem("user") !== null) {
+            const token = JSON.parse(localStorage.getItem("user")).Token
+            axios.post("/api/users/visit", undefined, {
+                headers: { Authorization: "Bearer " + token },
+            })
+        } else {
+            axios.post("/api/users/visit")
+        }
         // reset states
         setP1Wins(false)
         setP2Wins(false)
