@@ -140,8 +140,8 @@ const Leaderboard = () => {
                                 <div className="entry">
                                     {i === 0 ? (
                                         <FaCrown color="gold" />
-                                    ) : winner[0] === "Jayson Tatum" ? (
-                                        <FaCrown color="#2dc603" />
+                                    ) : winner[0] === "Jimmy Butler" ? (
+                                        <FaCrown color="#c60303" />
                                     ) : (
                                         i + 1
                                     )}
