@@ -282,7 +282,7 @@ const Compare = (props) => {
             background-color: #0000007a;
             border: solid 1px #21212179;
             margin-top: 1em;
-            overflow: scroll;
+            overflow: auto;
 
             & .message {
                 display: flex;
