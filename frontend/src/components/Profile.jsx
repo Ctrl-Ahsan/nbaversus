@@ -41,9 +41,11 @@ const Profile = (props) => {
                         )
                     }
                 })
-                .catch((error) => {
+                .catch(() => {
                     setLoading(false)
-                    toast.error(error.response.data)
+                    toast.error("You have been signed out")
+                    localStorage.removeItem("user")
+                    props.setLoggedIn(false)
                 })
         }
     }, [])
