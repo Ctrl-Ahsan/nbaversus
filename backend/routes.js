@@ -3,6 +3,7 @@ const router = express.Router()
 const {
     getSeasonStats,
     getCareerStats,
+    getGameLogs,
 } = require("./controllers/statController")
 const { getVote, setVote } = require("./controllers/voteController")
 const {
@@ -28,5 +29,6 @@ router.post("/votes", setVote)
 // stats routes
 router.post("/stats", getSeasonStats)
 router.post("/stats/career", getCareerStats)
+router.post("/stats/gamelogs", getGameLogs)
 
 module.exports = router

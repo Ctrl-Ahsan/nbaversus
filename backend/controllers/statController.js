@@ -109,7 +109,31 @@ const getCareerStats = asyncHandler(async (req, res) => {
     res.status(200).json(response)
 })
 
+const getGameLogs = asyncHandler(async (req, res) => {
+    let response = {}
+
+    try {
+        // validate request
+        if (!req.body.id) {
+            res.status(400).json("Please include player ID")
+            return
+        }
+        const id = req.body.id
+
+        // get career stats for requested player
+        for (player of Players) {
+            if (player.personId == id) response = player.games
+        }
+        console.log(id)
+    } catch (error) {
+        console.error(error)
+        res.status(500).json("Could not fetch stats")
+    }
+    res.status(200).json(response)
+})
+
 module.exports = {
     getSeasonStats,
     getCareerStats,
+    getGameLogs,
 }

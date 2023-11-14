@@ -2,60 +2,51 @@
     "allPlayers": [
         {
             "id": "0",
-            "name": "A.J. Lawson",
-            "personId": 1630639,
-            "teamId": 1610612742,
-            "age": 22,
-            "height": "6'6\"",
-            "weight": "179"
-        },
-        {
-            "id": "1",
             "name": "AJ Green",
             "personId": 1631260,
             "teamId": 1610612749,
-            "age": 23,
-            "height": "6'5\"",
+            "age": 24,
+            "height": "6'4\"",
             "weight": "190"
         },
         {
-            "id": "2",
+            "id": "1",
             "name": "AJ Griffin",
             "personId": 1631100,
             "teamId": 1610612737,
-            "age": 19,
+            "age": 20,
             "height": "6'6\"",
             "weight": "220"
         },
         {
-            "id": "3",
+            "id": "2",
             "name": "Aaron Gordon",
             "personId": 203932,
             "teamId": 1610612743,
-            "age": 27,
+            "age": 28,
             "height": "6'8\"",
             "weight": "235"
         },
         {
-            "id": "4",
+            "id": "3",
             "name": "Aaron Holiday",
             "personId": 1628988,
-            "teamId": 1610612737,
-            "age": 26,
+            "teamId": 1610612745,
+            "age": 27,
             "height": "6'0\"",
             "weight": "185"
         },
         {
-            "id": "5",
+            "id": "4",
             "name": "Aaron Nesmith",
             "personId": 1630174,
             "teamId": 1610612754,
-            "age": 23,
-            "height": "6'5\"",
+            "age": 24,
+            "height": "6'6\"",
             "weight": "215"
         },
         {
-            "id": "6",
+            "id": "5",
             "name": "Aaron Wiggins",
             "personId": 1630598,
             "teamId": 1610612760,
@@ -64,7 +55,7 @@
             "weight": "190"
         },
         {
-            "id": "7",
+            "id": "6",
             "name": "Admiral Schofield",
             "personId": 1629678,
             "teamId": 1610612753,
@@ -73,25 +64,25 @@
             "weight": "241"
         },
         {
-            "id": "8",
+            "id": "7",
             "name": "Al Horford",
             "personId": 201143,
             "teamId": 1610612738,
-            "age": 36,
+            "age": 37,
             "height": "6'9\"",
             "weight": "240"
         },
         {
-            "id": "9",
+            "id": "8",
             "name": "Alec Burks",
             "personId": 202692,
             "teamId": 1610612765,
-            "age": 31,
-            "height": "6'6\"",
+            "age": 32,
+            "height": "6'5\"",
             "weight": "214"
         },
         {
-            "id": "10",
+            "id": "9",
             "name": "Aleksej Pokusevski",
             "personId": 1630197,
             "teamId": 1610612760,
@@ -100,7 +91,7 @@
             "weight": "210"
         },
         {
-            "id": "11",
+            "id": "10",
             "name": "Alex Caruso",
             "personId": 1627936,
             "teamId": 1610612741,
@@ -109,79 +100,79 @@
             "weight": "186"
         },
         {
+            "id": "11",
+            "name": "Alex Fudge",
+            "personId": 1641788,
+            "teamId": 1610612747,
+            "age": 20,
+            "height": "6'8\"",
+            "weight": "200"
+        },
+        {
             "id": "12",
             "name": "Alex Len",
             "personId": 203458,
             "teamId": 1610612758,
-            "age": 29,
-            "height": "7'2\"",
+            "age": 30,
+            "height": "7'0\"",
             "weight": "250"
         },
         {
             "id": "13",
-            "name": "Alize Johnson",
-            "personId": 1628993,
-            "teamId": 1610612759,
-            "age": 27,
-            "height": "6'8\"",
-            "weight": "212"
-        },
-        {
-            "id": "14",
-            "name": "Alondes Williams",
-            "personId": 1631214,
-            "teamId": 1610612751,
-            "age": 23,
-            "height": "6'4\"",
-            "weight": "210"
-        },
-        {
-            "id": "15",
             "name": "Alperen Sengun",
             "personId": 1630578,
             "teamId": 1610612745,
-            "age": 20,
+            "age": 21,
             "height": "6'11\"",
             "weight": "243"
         },
         {
-            "id": "16",
+            "id": "14",
+            "name": "Amen Thompson",
+            "personId": 1641708,
+            "teamId": 1610612745,
+            "age": 20,
+            "height": "6'7\"",
+            "weight": "200"
+        },
+        {
+            "id": "15",
             "name": "Amir Coffey",
             "personId": 1629599,
             "teamId": 1610612746,
-            "age": 25,
+            "age": 26,
             "height": "6'7\"",
             "weight": "210"
         },
         {
-            "id": "17",
+            "id": "16",
             "name": "Andre Drummond",
             "personId": 203083,
             "teamId": 1610612741,
-            "age": 29,
+            "age": 30,
             "height": "6'11\"",
             "weight": "279"
         },
         {
-            "id": "18",
-            "name": "Andre Iguodala",
-            "personId": 2738,
-            "teamId": 1610612744,
-            "age": 39,
+            "id": "17",
+            "name": "Andre Jackson Jr.",
+            "personId": 1641748,
+            "teamId": 1610612749,
+            "age": 21,
             "height": "6'6\"",
-            "weight": "215"
+            "weight": "209"
         },
         {
-            "id": "19",
+            "id": "18",
             "name": "Andrew Nembhard",
             "personId": 1629614,
             "teamId": 1610612754,
             "age": 23,
-            "height": "6'3\"",
+            "height": "6'4\"",
             "weight": "191"
         },
         {
-            "id": "20",
+            "id": "19",
             "name": "Andrew Wiggins",
             "personId": 203952,
             "teamId": 1610612744,
@@ -190,13 +181,22 @@
             "weight": "197"
         },
         {
-            "id": "21",
+            "id": "20",
             "name": "Anfernee Simons",
             "personId": 1629014,
             "teamId": 1610612757,
-            "age": 23,
+            "age": 24,
             "height": "6'3\"",
-            "weight": "181"
+            "weight": "193"
+        },
+        {
+            "id": "21",
+            "name": "Anthony Black",
+            "personId": 1641710,
+            "teamId": 1610612753,
+            "age": 19,
+            "height": "6'7\"",
+            "weight": "200"
         },
         {
             "id": "22",
@@ -212,7 +212,7 @@
             "name": "Anthony Edwards",
             "personId": 1630162,
             "teamId": 1610612750,
-            "age": 21,
+            "age": 22,
             "height": "6'4\"",
             "weight": "225"
         },
@@ -221,36 +221,36 @@
             "name": "Anthony Gill",
             "personId": 1630264,
             "teamId": 1610612764,
-            "age": 30,
+            "age": 31,
             "height": "6'8\"",
             "weight": "230"
         },
         {
             "id": "25",
-            "name": "Anthony Lamb",
-            "personId": 1630237,
-            "teamId": 1610612744,
+            "name": "Armoni Brooks",
+            "personId": 1629717,
+            "teamId": 1610612751,
             "age": 25,
-            "height": "6'6\"",
-            "weight": "227"
+            "height": "6'3\"",
+            "weight": "195"
         },
         {
             "id": "26",
+            "name": "Ausar Thompson",
+            "personId": 1641709,
+            "teamId": 1610612765,
+            "age": 20,
+            "height": "6'6\"",
+            "weight": "205"
+        },
+        {
+            "id": "27",
             "name": "Austin Reaves",
             "personId": 1630559,
             "teamId": 1610612747,
             "age": 25,
             "height": "6'5\"",
             "weight": "197"
-        },
-        {
-            "id": "27",
-            "name": "Austin Rivers",
-            "personId": 203085,
-            "teamId": 1610612750,
-            "age": 30,
-            "height": "6'4\"",
-            "weight": "200"
         },
         {
             "id": "28",
@@ -266,98 +266,98 @@
             "name": "Bam Adebayo",
             "personId": 1628389,
             "teamId": 1610612748,
-            "age": 25,
+            "age": 26,
             "height": "6'9\"",
             "weight": "255"
         },
         {
             "id": "30",
+            "name": "Ben Sheppard",
+            "personId": 1641767,
+            "teamId": 1610612754,
+            "age": 22,
+            "height": "6'6\"",
+            "weight": "190"
+        },
+        {
+            "id": "31",
             "name": "Ben Simmons",
             "personId": 1627732,
             "teamId": 1610612751,
-            "age": 26,
+            "age": 27,
             "height": "6'10\"",
             "weight": "240"
         },
         {
-            "id": "31",
+            "id": "32",
             "name": "Bennedict Mathurin",
             "personId": 1631097,
             "teamId": 1610612754,
-            "age": 20,
+            "age": 21,
             "height": "6'5\"",
             "weight": "210"
         },
         {
-            "id": "32",
+            "id": "33",
+            "name": "Bilal Coulibaly",
+            "personId": 1641731,
+            "teamId": 1610612764,
+            "age": 19,
+            "height": "6'8\"",
+            "weight": "195"
+        },
+        {
+            "id": "34",
             "name": "Bismack Biyombo",
             "personId": 202687,
-            "teamId": 1610612756,
-            "age": 30,
+            "teamId": 1610612763,
+            "age": 31,
             "height": "6'8\"",
             "weight": "255"
         },
         {
-            "id": "33",
-            "name": "Blake Griffin",
-            "personId": 201933,
-            "teamId": 1610612738,
-            "age": 34,
-            "height": "6'9\"",
-            "weight": "250"
-        },
-        {
-            "id": "34",
+            "id": "35",
             "name": "Blake Wesley",
             "personId": 1631104,
             "teamId": 1610612759,
             "age": 20,
-            "height": "6'4\"",
+            "height": "6'3\"",
             "weight": "185"
         },
         {
-            "id": "35",
+            "id": "36",
             "name": "Boban Marjanovic",
             "personId": 1626246,
             "teamId": 1610612745,
-            "age": 34,
+            "age": 35,
             "height": "7'4\"",
             "weight": "290"
         },
         {
-            "id": "36",
+            "id": "37",
             "name": "Bobby Portis",
             "personId": 1626171,
             "teamId": 1610612749,
             "age": 28,
-            "height": "6'11\"",
+            "height": "6'10\"",
             "weight": "250"
         },
         {
-            "id": "37",
+            "id": "38",
             "name": "Bogdan Bogdanovic",
             "personId": 203992,
             "teamId": 1610612737,
-            "age": 30,
+            "age": 31,
             "height": "6'5\"",
             "weight": "225"
-        },
-        {
-            "id": "38",
-            "name": "Bojan Bogdanovic",
-            "personId": 202711,
-            "teamId": 1610612765,
-            "age": 34,
-            "height": "6'7\"",
-            "weight": "226"
         },
         {
             "id": "39",
             "name": "Bol Bol",
             "personId": 1629626,
-            "teamId": 1610612753,
+            "teamId": 1610612756,
             "age": 23,
-            "height": "7'2\"",
+            "height": "7'3\"",
             "weight": "220"
         },
         {
@@ -365,7 +365,7 @@
             "name": "Bones Hyland",
             "personId": 1630538,
             "teamId": 1610612746,
-            "age": 22,
+            "age": 23,
             "height": "6'2\"",
             "weight": "169"
         },
@@ -373,49 +373,58 @@
             "id": "41",
             "name": "Bradley Beal",
             "personId": 203078,
-            "teamId": 1610612764,
-            "age": 29,
+            "teamId": 1610612756,
+            "age": 30,
             "height": "6'4\"",
             "weight": "207"
         },
         {
             "id": "42",
-            "name": "Brandon Boston Jr.",
-            "personId": 1630527,
-            "teamId": 1610612746,
-            "age": 21,
-            "height": "6'6\"",
-            "weight": "188"
+            "name": "Brandin Podziemski",
+            "personId": 1641764,
+            "teamId": 1610612744,
+            "age": 20,
+            "height": "6'4\"",
+            "weight": "205"
         },
         {
             "id": "43",
-            "name": "Brandon Clarke",
-            "personId": 1629634,
-            "teamId": 1610612763,
-            "age": 26,
-            "height": "6'8\"",
-            "weight": "215"
-        },
-        {
-            "id": "44",
             "name": "Brandon Ingram",
             "personId": 1627742,
             "teamId": 1610612740,
-            "age": 25,
+            "age": 26,
             "height": "6'8\"",
             "weight": "190"
+        },
+        {
+            "id": "44",
+            "name": "Brandon Miller",
+            "personId": 1641706,
+            "teamId": 1610612766,
+            "age": 20,
+            "height": "6'7\"",
+            "weight": "200"
         },
         {
             "id": "45",
             "name": "Braxton Key",
             "personId": 1630296,
-            "teamId": 1610612765,
+            "teamId": 1610612743,
             "age": 26,
             "height": "6'8\"",
             "weight": "225"
         },
         {
             "id": "46",
+            "name": "Brice Sensabaugh",
+            "personId": 1641729,
+            "teamId": 1610612762,
+            "age": 20,
+            "height": "6'5\"",
+            "weight": "235"
+        },
+        {
+            "id": "47",
             "name": "Brook Lopez",
             "personId": 201572,
             "teamId": 1610612749,
@@ -424,52 +433,34 @@
             "weight": "282"
         },
         {
-            "id": "47",
+            "id": "48",
             "name": "Bruce Brown",
             "personId": 1628971,
-            "teamId": 1610612743,
-            "age": 26,
+            "teamId": 1610612754,
+            "age": 27,
             "height": "6'4\"",
             "weight": "202"
         },
         {
-            "id": "48",
+            "id": "49",
             "name": "Bruno Fernando",
             "personId": 1628981,
             "teamId": 1610612737,
-            "age": 24,
-            "height": "6'10\"",
+            "age": 25,
+            "height": "6'9\"",
             "weight": "240"
         },
         {
-            "id": "49",
+            "id": "50",
             "name": "Bryce McGowens",
             "personId": 1631121,
             "teamId": 1610612766,
-            "age": 20,
+            "age": 21,
             "height": "6'6\"",
             "weight": "175"
         },
         {
-            "id": "50",
-            "name": "Bryn Forbes",
-            "personId": 1627854,
-            "teamId": 1610612750,
-            "age": 29,
-            "height": "6'2\"",
-            "weight": "205"
-        },
-        {
             "id": "51",
-            "name": "Buddy Boeheim",
-            "personId": 1631205,
-            "teamId": 1610612765,
-            "age": 23,
-            "height": "6'6\"",
-            "weight": "205"
-        },
-        {
-            "id": "52",
             "name": "Buddy Hield",
             "personId": 1627741,
             "teamId": 1610612754,
@@ -478,25 +469,25 @@
             "weight": "220"
         },
         {
-            "id": "53",
+            "id": "52",
             "name": "CJ McCollum",
             "personId": 203468,
             "teamId": 1610612740,
-            "age": 31,
+            "age": 32,
             "height": "6'3\"",
             "weight": "190"
         },
         {
-            "id": "54",
+            "id": "53",
             "name": "Cade Cunningham",
             "personId": 1630595,
             "teamId": 1610612765,
-            "age": 21,
-            "height": "6'7\"",
+            "age": 22,
+            "height": "6'6\"",
             "weight": "220"
         },
         {
-            "id": "55",
+            "id": "54",
             "name": "Caleb Houstan",
             "personId": 1631216,
             "teamId": 1610612753,
@@ -505,31 +496,40 @@
             "weight": "205"
         },
         {
-            "id": "56",
+            "id": "55",
             "name": "Caleb Martin",
             "personId": 1628997,
             "teamId": 1610612748,
-            "age": 27,
+            "age": 28,
             "height": "6'5\"",
             "weight": "205"
         },
         {
-            "id": "57",
+            "id": "56",
             "name": "Cam Reddish",
             "personId": 1629629,
-            "teamId": 1610612757,
-            "age": 23,
+            "teamId": 1610612747,
+            "age": 24,
             "height": "6'7\"",
             "weight": "217"
         },
         {
-            "id": "58",
+            "id": "57",
             "name": "Cam Thomas",
             "personId": 1630560,
             "teamId": 1610612751,
-            "age": 21,
+            "age": 22,
             "height": "6'3\"",
             "weight": "210"
+        },
+        {
+            "id": "58",
+            "name": "Cam Whitmore",
+            "personId": 1641715,
+            "teamId": 1610612745,
+            "age": 19,
+            "height": "6'7\"",
+            "weight": "230"
         },
         {
             "id": "59",
@@ -544,9 +544,9 @@
             "id": "60",
             "name": "Cameron Payne",
             "personId": 1626166,
-            "teamId": 1610612756,
-            "age": 28,
-            "height": "6'1\"",
+            "teamId": 1610612749,
+            "age": 29,
+            "height": "6'3\"",
             "weight": "183"
         },
         {
@@ -554,66 +554,57 @@
             "name": "Caris LeVert",
             "personId": 1627747,
             "teamId": 1610612739,
-            "age": 28,
+            "age": 29,
             "height": "6'6\"",
             "weight": "205"
         },
         {
             "id": "62",
-            "name": "Carlik Jones",
-            "personId": 1630637,
-            "teamId": 1610612741,
-            "age": 25,
-            "height": "6'0\"",
-            "weight": "174"
+            "name": "Cason Wallace",
+            "personId": 1641717,
+            "teamId": 1610612760,
+            "age": 20,
+            "height": "6'3\"",
+            "weight": "195"
         },
         {
             "id": "63",
             "name": "Cedi Osman",
             "personId": 1626224,
-            "teamId": 1610612739,
+            "teamId": 1610612759,
             "age": 28,
             "height": "6'7\"",
             "weight": "230"
         },
         {
             "id": "64",
-            "name": "Chance Comanche",
-            "personId": 1628435,
-            "teamId": 1610612757,
-            "age": 27,
-            "height": "6'10\"",
-            "weight": "210"
-        },
-        {
-            "id": "65",
             "name": "Charles Bassey",
             "personId": 1629646,
             "teamId": 1610612759,
-            "age": 22,
-            "height": "6'9\"",
+            "age": 23,
+            "height": "6'10\"",
             "weight": "230"
         },
         {
-            "id": "66",
-            "name": "Chima Moneke",
-            "personId": 1631320,
-            "teamId": 1610612758,
-            "age": 27,
-            "height": "6'5\"",
-            "weight": "223"
+            "id": "65",
+            "name": "Chet Holmgren",
+            "personId": 1631096,
+            "teamId": 1610612760,
+            "age": 21,
+            "height": "7'1\"",
+            "weight": "195"
         },
         {
-            "id": "67",
+            "id": "66",
             "name": "Chimezie Metu",
             "personId": 1629002,
-            "teamId": 1610612758,
+            "teamId": 1610612756,
             "age": 26,
-            "height": "6'9\"",
+            "height": "6'10\"",
             "weight": "225"
         },
         {
-            "id": "68",
+            "id": "67",
             "name": "Chris Boucher",
             "personId": 1628449,
             "teamId": 1610612761,
@@ -622,34 +613,34 @@
             "weight": "200"
         },
         {
-            "id": "69",
+            "id": "68",
             "name": "Chris Duarte",
             "personId": 1630537,
-            "teamId": 1610612754,
-            "age": 25,
+            "teamId": 1610612758,
+            "age": 26,
             "height": "6'5\"",
             "weight": "190"
+        },
+        {
+            "id": "69",
+            "name": "Chris Livingston",
+            "personId": 1641753,
+            "teamId": 1610612749,
+            "age": 20,
+            "height": "6'6\"",
+            "weight": "220"
         },
         {
             "id": "70",
             "name": "Chris Paul",
             "personId": 101108,
-            "teamId": 1610612756,
+            "teamId": 1610612744,
             "age": 38,
             "height": "6'0\"",
             "weight": "175"
         },
         {
             "id": "71",
-            "name": "Chris Silva",
-            "personId": 1629735,
-            "teamId": 1610612742,
-            "age": 26,
-            "height": "6'8\"",
-            "weight": "234"
-        },
-        {
-            "id": "72",
             "name": "Christian Braun",
             "personId": 1631128,
             "teamId": 1610612743,
@@ -658,34 +649,25 @@
             "weight": "220"
         },
         {
-            "id": "73",
-            "name": "Christian Koloko",
-            "personId": 1631132,
-            "teamId": 1610612761,
-            "age": 22,
-            "height": "7'0\"",
-            "weight": "230"
-        },
-        {
-            "id": "74",
+            "id": "72",
             "name": "Christian Wood",
             "personId": 1626174,
-            "teamId": 1610612742,
-            "age": 27,
-            "height": "6'9\"",
+            "teamId": 1610612747,
+            "age": 28,
+            "height": "6'8\"",
             "weight": "214"
         },
         {
-            "id": "75",
+            "id": "73",
             "name": "Chuma Okeke",
             "personId": 1629643,
             "teamId": 1610612753,
-            "age": 24,
-            "height": "6'8\"",
+            "age": 25,
+            "height": "6'7\"",
             "weight": "229"
         },
         {
-            "id": "76",
+            "id": "74",
             "name": "Clint Capela",
             "personId": 203991,
             "teamId": 1610612737,
@@ -694,7 +676,7 @@
             "weight": "256"
         },
         {
-            "id": "77",
+            "id": "75",
             "name": "Coby White",
             "personId": 1629632,
             "teamId": 1610612741,
@@ -703,40 +685,58 @@
             "weight": "195"
         },
         {
-            "id": "78",
-            "name": "Cody Martin",
-            "personId": 1628998,
-            "teamId": 1610612766,
-            "age": 27,
-            "height": "6'6\"",
-            "weight": "205"
-        },
-        {
-            "id": "79",
+            "id": "76",
             "name": "Cody Zeller",
             "personId": 203469,
-            "teamId": 1610612748,
-            "age": 30,
+            "teamId": 1610612740,
+            "age": 31,
             "height": "6'11\"",
             "weight": "240"
         },
         {
-            "id": "80",
+            "id": "77",
+            "name": "Colby Jones",
+            "personId": 1641732,
+            "teamId": 1610612758,
+            "age": 21,
+            "height": "6'6\"",
+            "weight": "207"
+        },
+        {
+            "id": "78",
             "name": "Cole Anthony",
             "personId": 1630175,
             "teamId": 1610612753,
             "age": 23,
-            "height": "6'3\"",
+            "height": "6'2\"",
             "weight": "185"
         },
         {
-            "id": "81",
+            "id": "79",
             "name": "Cole Swider",
             "personId": 1631306,
-            "teamId": 1610612747,
+            "teamId": 1610612748,
             "age": 24,
-            "height": "6'9\"",
+            "height": "6'8\"",
             "weight": "220"
+        },
+        {
+            "id": "80",
+            "name": "Colin Castleton",
+            "personId": 1630658,
+            "teamId": 1610612747,
+            "age": 23,
+            "height": "6'10\"",
+            "weight": "250"
+        },
+        {
+            "id": "81",
+            "name": "Collin Gillespie",
+            "personId": 1631221,
+            "teamId": 1610612743,
+            "age": 24,
+            "height": "6'1\"",
+            "weight": "195"
         },
         {
             "id": "82",
@@ -744,7 +744,7 @@
             "personId": 1629012,
             "teamId": 1610612762,
             "age": 24,
-            "height": "6'2\"",
+            "height": "6'3\"",
             "weight": "190"
         },
         {
@@ -760,85 +760,103 @@
             "id": "84",
             "name": "Cory Joseph",
             "personId": 202709,
-            "teamId": 1610612765,
-            "age": 31,
-            "height": "6'3\"",
+            "teamId": 1610612744,
+            "age": 32,
+            "height": "6'2\"",
             "weight": "200"
         },
         {
             "id": "85",
+            "name": "Craig Porter",
+            "personId": 1641854,
+            "teamId": 1610612739,
+            "age": 23,
+            "height": "6'1\"",
+            "weight": "180"
+        },
+        {
+            "id": "86",
             "name": "D'Angelo Russell",
             "personId": 1626156,
             "teamId": 1610612747,
             "age": 27,
-            "height": "6'4\"",
+            "height": "6'3\"",
             "weight": "193"
         },
         {
-            "id": "86",
-            "name": "Daishen Nix",
-            "personId": 1630227,
-            "teamId": 1610612745,
-            "age": 21,
-            "height": "6'4\"",
-            "weight": "226"
-        },
-        {
             "id": "87",
-            "name": "Dalano Banton",
-            "personId": 1630625,
-            "teamId": 1610612761,
-            "age": 23,
-            "height": "6'7\"",
-            "weight": "204"
+            "name": "D'Moi Hodge",
+            "personId": 1641793,
+            "teamId": 1610612747,
+            "age": 24,
+            "height": "6'3\"",
+            "weight": "188"
         },
         {
             "id": "88",
+            "name": "DaQuan Jeffries",
+            "personId": 1629610,
+            "teamId": 1610612752,
+            "age": 26,
+            "height": "6'5\"",
+            "weight": "222"
+        },
+        {
+            "id": "89",
+            "name": "Daishen Nix",
+            "personId": 1630227,
+            "teamId": 1610612750,
+            "age": 21,
+            "height": "6'3\"",
+            "weight": "226"
+        },
+        {
+            "id": "90",
+            "name": "Dalano Banton",
+            "personId": 1630625,
+            "teamId": 1610612738,
+            "age": 24,
+            "height": "6'8\"",
+            "weight": "204"
+        },
+        {
+            "id": "91",
             "name": "Dalen Terry",
             "personId": 1631207,
             "teamId": 1610612741,
-            "age": 20,
+            "age": 21,
             "height": "6'7\"",
             "weight": "195"
         },
         {
-            "id": "89",
+            "id": "92",
             "name": "Damian Jones",
             "personId": 1627745,
-            "teamId": 1610612762,
-            "age": 27,
-            "height": "6'11\"",
+            "teamId": 1610612739,
+            "age": 28,
+            "height": "6'10\"",
             "weight": "245"
         },
         {
-            "id": "90",
+            "id": "93",
             "name": "Damian Lillard",
             "personId": 203081,
-            "teamId": 1610612757,
-            "age": 32,
+            "teamId": 1610612749,
+            "age": 33,
             "height": "6'2\"",
             "weight": "195"
         },
         {
-            "id": "91",
-            "name": "Damion Lee",
-            "personId": 1627814,
-            "teamId": 1610612756,
-            "age": 30,
-            "height": "6'5\"",
-            "weight": "210"
-        },
-        {
-            "id": "92",
+            "id": "94",
             "name": "Daniel Gafford",
             "personId": 1629655,
             "teamId": 1610612764,
-            "age": 24,
+            "age": 25,
             "height": "6'10\"",
             "weight": "234"
         },
         {
-            "id": "93",
+            "id": "95",
             "name": "Daniel Theis",
             "personId": 1628464,
             "teamId": 1610612754,
@@ -847,52 +865,52 @@
             "weight": "245"
         },
         {
-            "id": "94",
+            "id": "96",
+            "name": "Danilo Gallinari",
+            "personId": 201568,
+            "teamId": 1610612764,
+            "age": 35,
+            "height": "6'10\"",
+            "weight": "236"
+        },
+        {
+            "id": "97",
             "name": "Danny Green",
             "personId": 201980,
-            "teamId": 1610612739,
-            "age": 35,
+            "teamId": 1610612755,
+            "age": 36,
             "height": "6'6\"",
             "weight": "215"
         },
         {
-            "id": "95",
+            "id": "98",
+            "name": "Dante Exum",
+            "personId": 203957,
+            "teamId": 1610612742,
+            "age": 28,
+            "height": "6'5\"",
+            "weight": "214"
+        },
+        {
+            "id": "99",
             "name": "Danuel House Jr.",
             "personId": 1627863,
             "teamId": 1610612755,
-            "age": 29,
+            "age": 30,
             "height": "6'6\"",
             "weight": "220"
         },
         {
-            "id": "96",
+            "id": "100",
             "name": "Dario Saric",
             "personId": 203967,
-            "teamId": 1610612760,
+            "teamId": 1610612744,
             "age": 29,
             "height": "6'10\"",
             "weight": "225"
         },
         {
-            "id": "97",
-            "name": "Darius Bazley",
-            "personId": 1629647,
-            "teamId": 1610612756,
-            "age": 22,
-            "height": "6'9\"",
-            "weight": "216"
-        },
-        {
-            "id": "98",
-            "name": "Darius Days",
-            "personId": 1630620,
-            "teamId": 1610612745,
-            "age": 23,
-            "height": "6'7\"",
-            "weight": "245"
-        },
-        {
-            "id": "99",
+            "id": "101",
             "name": "Darius Garland",
             "personId": 1629636,
             "teamId": 1610612739,
@@ -901,16 +919,7 @@
             "weight": "192"
         },
         {
-            "id": "100",
-            "name": "David Duke Jr.",
-            "personId": 1630561,
-            "teamId": 1610612751,
-            "age": 23,
-            "height": "6'4\"",
-            "weight": "204"
-        },
-        {
-            "id": "101",
+            "id": "102",
             "name": "David Roddy",
             "personId": 1631223,
             "teamId": 1610612763,
@@ -919,38 +928,29 @@
             "weight": "255"
         },
         {
-            "id": "102",
+            "id": "103",
             "name": "Davion Mitchell",
             "personId": 1630558,
             "teamId": 1610612758,
-            "age": 24,
+            "age": 25,
             "height": "6'0\"",
             "weight": "202"
         },
         {
-            "id": "103",
+            "id": "104",
             "name": "Davis Bertans",
             "personId": 202722,
-            "teamId": 1610612742,
+            "teamId": 1610612760,
             "age": 30,
             "height": "6'10\"",
             "weight": "225"
-        },
-        {
-            "id": "104",
-            "name": "Davon Reed",
-            "personId": 1628432,
-            "teamId": 1610612747,
-            "age": 27,
-            "height": "6'5\"",
-            "weight": "206"
         },
         {
             "id": "105",
             "name": "Day'Ron Sharpe",
             "personId": 1630549,
             "teamId": 1610612751,
-            "age": 21,
+            "age": 22,
             "height": "6'9\"",
             "weight": "265"
         },
@@ -978,7 +978,7 @@
             "personId": 1629001,
             "teamId": 1610612755,
             "age": 25,
-            "height": "6'2\"",
+            "height": "6'3\"",
             "weight": "200"
         },
         {
@@ -986,7 +986,7 @@
             "name": "DeAndre Jordan",
             "personId": 201599,
             "teamId": 1610612743,
-            "age": 34,
+            "age": 35,
             "height": "6'11\"",
             "weight": "265"
         },
@@ -995,7 +995,7 @@
             "name": "DeMar DeRozan",
             "personId": 201942,
             "teamId": 1610612741,
-            "age": 33,
+            "age": 34,
             "height": "6'6\"",
             "weight": "220"
         },
@@ -1012,17 +1012,17 @@
             "id": "112",
             "name": "Deandre Ayton",
             "personId": 1629028,
-            "teamId": 1610612756,
-            "age": 24,
+            "teamId": 1610612757,
+            "age": 25,
             "height": "7'0\"",
-            "weight": "250"
+            "weight": "247"
         },
         {
             "id": "113",
             "name": "Dejounte Murray",
             "personId": 1627749,
             "teamId": 1610612737,
-            "age": 26,
+            "age": 27,
             "height": "6'5\"",
             "weight": "180"
         },
@@ -1048,8 +1048,8 @@
             "id": "116",
             "name": "Dennis Schroder",
             "personId": 203471,
-            "teamId": 1610612747,
-            "age": 29,
+            "teamId": 1610612761,
+            "age": 30,
             "height": "6'1\"",
             "weight": "172"
         },
@@ -1057,19 +1057,19 @@
             "id": "117",
             "name": "Dennis Smith Jr.",
             "personId": 1628372,
-            "teamId": 1610612766,
+            "teamId": 1610612751,
             "age": 25,
-            "height": "6'2\"",
+            "height": "6'3\"",
             "weight": "205"
         },
         {
             "id": "118",
-            "name": "Deonte Burton",
-            "personId": 1629126,
-            "teamId": 1610612758,
-            "age": 29,
-            "height": "6'4\"",
-            "weight": "240"
+            "name": "Dereck Lively II",
+            "personId": 1641726,
+            "teamId": 1610612742,
+            "age": 19,
+            "height": "7'1\"",
+            "weight": "230"
         },
         {
             "id": "119",
@@ -1084,7 +1084,7 @@
             "id": "120",
             "name": "Derrick Jones Jr.",
             "personId": 1627884,
-            "teamId": 1610612741,
+            "teamId": 1610612742,
             "age": 26,
             "height": "6'6\"",
             "weight": "210"
@@ -1093,8 +1093,8 @@
             "id": "121",
             "name": "Derrick Rose",
             "personId": 201565,
-            "teamId": 1610612752,
-            "age": 34,
+            "teamId": 1610612763,
+            "age": 35,
             "height": "6'3\"",
             "weight": "200"
         },
@@ -1103,7 +1103,7 @@
             "name": "Derrick White",
             "personId": 1628401,
             "teamId": 1610612738,
-            "age": 28,
+            "age": 29,
             "height": "6'4\"",
             "weight": "190"
         },
@@ -1112,7 +1112,7 @@
             "name": "Desmond Bane",
             "personId": 1630217,
             "teamId": 1610612763,
-            "age": 24,
+            "age": 25,
             "height": "6'5\"",
             "weight": "215"
         },
@@ -1121,8 +1121,8 @@
             "name": "Devin Booker",
             "personId": 1626164,
             "teamId": 1610612756,
-            "age": 26,
-            "height": "6'5\"",
+            "age": 27,
+            "height": "6'6\"",
             "weight": "206"
         },
         {
@@ -1130,21 +1130,12 @@
             "name": "Devin Vassell",
             "personId": 1630170,
             "teamId": 1610612759,
-            "age": 22,
+            "age": 23,
             "height": "6'5\"",
             "weight": "200"
         },
         {
             "id": "126",
-            "name": "Devon Dotson",
-            "personId": 1629653,
-            "teamId": 1610612764,
-            "age": 23,
-            "height": "6'1\"",
-            "weight": "185"
-        },
-        {
-            "id": "127",
             "name": "Devonte' Graham",
             "personId": 1628984,
             "teamId": 1610612759,
@@ -1153,34 +1144,25 @@
             "weight": "195"
         },
         {
-            "id": "128",
-            "name": "Dewayne Dedmon",
-            "personId": 203473,
-            "teamId": 1610612755,
-            "age": 33,
-            "height": "6'10\"",
-            "weight": "245"
-        },
-        {
-            "id": "129",
+            "id": "127",
             "name": "Dillon Brooks",
             "personId": 1628415,
-            "teamId": 1610612763,
+            "teamId": 1610612745,
             "age": 27,
             "height": "6'6\"",
             "weight": "225"
         },
         {
-            "id": "130",
+            "id": "128",
             "name": "Domantas Sabonis",
             "personId": 1627734,
             "teamId": 1610612758,
             "age": 27,
-            "height": "7'1\"",
+            "height": "6'10\"",
             "weight": "240"
         },
         {
-            "id": "131",
+            "id": "129",
             "name": "Dominick Barlow",
             "personId": 1631230,
             "teamId": 1610612759,
@@ -1189,34 +1171,25 @@
             "weight": "215"
         },
         {
-            "id": "132",
+            "id": "130",
             "name": "Donovan Mitchell",
             "personId": 1628378,
             "teamId": 1610612739,
-            "age": 26,
-            "height": "6'1\"",
+            "age": 27,
+            "height": "6'3\"",
             "weight": "215"
         },
         {
-            "id": "133",
-            "name": "Donovan Williams",
-            "personId": 1631495,
-            "teamId": 1610612737,
-            "age": 21,
-            "height": "6'6\"",
-            "weight": "190"
-        },
-        {
-            "id": "134",
+            "id": "131",
             "name": "Donte DiVincenzo",
             "personId": 1628978,
-            "teamId": 1610612744,
+            "teamId": 1610612752,
             "age": 26,
             "height": "6'4\"",
             "weight": "203"
         },
         {
-            "id": "135",
+            "id": "132",
             "name": "Dorian Finney-Smith",
             "personId": 1627827,
             "teamId": 1610612751,
@@ -1225,7 +1198,7 @@
             "weight": "220"
         },
         {
-            "id": "136",
+            "id": "133",
             "name": "Doug McDermott",
             "personId": 203926,
             "teamId": 1610612759,
@@ -1234,7 +1207,7 @@
             "weight": "225"
         },
         {
-            "id": "137",
+            "id": "134",
             "name": "Draymond Green",
             "personId": 203110,
             "teamId": 1610612744,
@@ -1243,34 +1216,25 @@
             "weight": "230"
         },
         {
-            "id": "138",
+            "id": "135",
             "name": "Drew Eubanks",
             "personId": 1629234,
-            "teamId": 1610612757,
+            "teamId": 1610612756,
             "age": 26,
             "height": "6'10\"",
             "weight": "245"
         },
         {
-            "id": "139",
+            "id": "136",
             "name": "Dru Smith",
             "personId": 1630696,
-            "teamId": 1610612751,
+            "teamId": 1610612748,
             "age": 25,
-            "height": "6'3\"",
+            "height": "6'2\"",
             "weight": "203"
         },
         {
-            "id": "140",
-            "name": "Duane Washington Jr.",
-            "personId": 1630613,
-            "teamId": 1610612752,
-            "age": 23,
-            "height": "6'2\"",
-            "weight": "197"
-        },
-        {
-            "id": "141",
+            "id": "137",
             "name": "Duncan Robinson",
             "personId": 1629130,
             "teamId": 1610612748,
@@ -1279,25 +1243,25 @@
             "weight": "215"
         },
         {
-            "id": "142",
+            "id": "138",
             "name": "Dwight Powell",
             "personId": 203939,
             "teamId": 1610612742,
-            "age": 31,
+            "age": 32,
             "height": "6'10\"",
             "weight": "240"
         },
         {
-            "id": "143",
+            "id": "139",
             "name": "Dylan Windler",
             "personId": 1629685,
-            "teamId": 1610612739,
-            "age": 26,
+            "teamId": 1610612752,
+            "age": 27,
             "height": "6'7\"",
             "weight": "196"
         },
         {
-            "id": "144",
+            "id": "140",
             "name": "Dyson Daniels",
             "personId": 1630700,
             "teamId": 1610612740,
@@ -1306,160 +1270,133 @@
             "weight": "199"
         },
         {
-            "id": "145",
-            "name": "Edmond Sumner",
-            "personId": 1628410,
-            "teamId": 1610612751,
-            "age": 27,
-            "height": "6'4\"",
-            "weight": "196"
+            "id": "141",
+            "name": "E.J. Liddell",
+            "personId": 1630604,
+            "teamId": 1610612740,
+            "age": 22,
+            "height": "6'6\"",
+            "weight": "240"
         },
         {
-            "id": "146",
+            "id": "142",
+            "name": "Emoni Bates",
+            "personId": 1641734,
+            "teamId": 1610612739,
+            "age": 19,
+            "height": "6'8\"",
+            "weight": "170"
+        },
+        {
+            "id": "143",
             "name": "Eric Gordon",
             "personId": 201569,
-            "teamId": 1610612746,
+            "teamId": 1610612756,
             "age": 34,
             "height": "6'3\"",
             "weight": "215"
         },
         {
-            "id": "147",
+            "id": "144",
             "name": "Eugene Omoruyi",
             "personId": 1630647,
-            "teamId": 1610612765,
+            "teamId": 1610612764,
             "age": 26,
             "height": "6'6\"",
             "weight": "235"
         },
         {
-            "id": "148",
-            "name": "Evan Fournier",
-            "personId": 203095,
-            "teamId": 1610612752,
-            "age": 30,
-            "height": "6'6\"",
-            "weight": "205"
-        },
-        {
-            "id": "149",
+            "id": "145",
             "name": "Evan Mobley",
             "personId": 1630596,
             "teamId": 1610612739,
-            "age": 21,
+            "age": 22,
             "height": "6'11\"",
             "weight": "215"
         },
         {
-            "id": "150",
-            "name": "Facundo Campazzo",
-            "personId": 1630267,
-            "teamId": 1610612742,
-            "age": 32,
-            "height": "5'10\"",
-            "weight": "195"
+            "id": "146",
+            "name": "Filip Petrusev",
+            "personId": 1630196,
+            "teamId": 1610612758,
+            "age": 23,
+            "height": "6'11\"",
+            "weight": "225"
         },
         {
-            "id": "151",
-            "name": "Frank Jackson",
-            "personId": 1628402,
-            "teamId": 1610612762,
-            "age": 25,
-            "height": "6'3\"",
-            "weight": "205"
-        },
-        {
-            "id": "152",
-            "name": "Frank Kaminsky",
-            "personId": 1626163,
-            "teamId": 1610612745,
-            "age": 30,
-            "height": "7'0\"",
-            "weight": "240"
-        },
-        {
-            "id": "153",
-            "name": "Frank Ntilikina",
-            "personId": 1628373,
-            "teamId": 1610612742,
-            "age": 24,
-            "height": "6'4\"",
-            "weight": "200"
-        },
-        {
-            "id": "154",
+            "id": "147",
             "name": "Franz Wagner",
             "personId": 1630532,
             "teamId": 1610612753,
-            "age": 21,
+            "age": 22,
             "height": "6'10\"",
             "weight": "220"
         },
         {
-            "id": "155",
+            "id": "148",
             "name": "Fred VanVleet",
             "personId": 1627832,
-            "teamId": 1610612761,
+            "teamId": 1610612745,
             "age": 29,
             "height": "6'0\"",
             "weight": "197"
         },
         {
-            "id": "156",
+            "id": "149",
             "name": "Furkan Korkmaz",
             "personId": 1627788,
             "teamId": 1610612755,
-            "age": 25,
+            "age": 26,
             "height": "6'7\"",
             "weight": "202"
         },
         {
-            "id": "157",
+            "id": "150",
+            "name": "GG Jackson",
+            "personId": 1641713,
+            "teamId": 1610612763,
+            "age": 18,
+            "height": "6'9\"",
+            "weight": "210"
+        },
+        {
+            "id": "151",
             "name": "Gabe Vincent",
             "personId": 1629216,
-            "teamId": 1610612748,
-            "age": 26,
+            "teamId": 1610612747,
+            "age": 27,
             "height": "6'2\"",
             "weight": "200"
         },
         {
-            "id": "158",
-            "name": "Gabe York",
-            "personId": 1628221,
-            "teamId": 1610612754,
-            "age": 29,
-            "height": "6'3\"",
-            "weight": "190"
-        },
-        {
-            "id": "159",
+            "id": "152",
             "name": "Garrett Temple",
             "personId": 202066,
-            "teamId": 1610612740,
+            "teamId": 1610612761,
             "age": 37,
-            "height": "6'6\"",
+            "height": "6'5\"",
             "weight": "195"
         },
         {
-            "id": "160",
+            "id": "153",
             "name": "Garrison Mathews",
             "personId": 1629726,
             "teamId": 1610612737,
-            "age": 26,
+            "age": 27,
             "height": "6'6\"",
             "weight": "215"
         },
         {
-            "id": "161",
+            "id": "154",
             "name": "Gary Harris",
             "personId": 203914,
             "teamId": 1610612753,
-            "age": 28,
+            "age": 29,
             "height": "6'4\"",
             "weight": "210"
         },
         {
-            "id": "162",
+            "id": "155",
             "name": "Gary Payton II",
             "personId": 1627780,
             "teamId": 1610612744,
@@ -1468,7 +1405,7 @@
             "weight": "195"
         },
         {
-            "id": "163",
+            "id": "156",
             "name": "Gary Trent Jr.",
             "personId": 1629018,
             "teamId": 1610612761,
@@ -1477,52 +1414,34 @@
             "weight": "209"
         },
         {
-            "id": "164",
-            "name": "George Hill",
-            "personId": 201588,
-            "teamId": 1610612754,
-            "age": 37,
-            "height": "6'4\"",
-            "weight": "188"
-        },
-        {
-            "id": "165",
+            "id": "157",
             "name": "Georges Niang",
             "personId": 1627777,
-            "teamId": 1610612755,
-            "age": 29,
+            "teamId": 1610612739,
+            "age": 30,
             "height": "6'7\"",
             "weight": "230"
         },
         {
-            "id": "166",
+            "id": "158",
             "name": "Giannis Antetokounmpo",
             "personId": 203507,
             "teamId": 1610612749,
             "age": 28,
-            "height": "7'0\"",
+            "height": "6'11\"",
             "weight": "243"
         },
         {
-            "id": "167",
+            "id": "159",
             "name": "Goga Bitadze",
             "personId": 1629048,
             "teamId": 1610612753,
-            "age": 23,
-            "height": "6'11\"",
+            "age": 24,
+            "height": "6'10\"",
             "weight": "250"
         },
         {
-            "id": "168",
-            "name": "Goran Dragic",
-            "personId": 201609,
-            "teamId": 1610612749,
-            "age": 37,
-            "height": "6'4\"",
-            "weight": "190"
-        },
-        {
-            "id": "169",
+            "id": "160",
             "name": "Gordon Hayward",
             "personId": 202330,
             "teamId": 1610612766,
@@ -1531,52 +1450,34 @@
             "weight": "225"
         },
         {
-            "id": "170",
-            "name": "Gorgui Dieng",
-            "personId": 203476,
-            "teamId": 1610612759,
-            "age": 33,
-            "height": "6'10\"",
-            "weight": "248"
+            "id": "161",
+            "name": "Gradey Dick",
+            "personId": 1641711,
+            "teamId": 1610612761,
+            "age": 19,
+            "height": "6'6\"",
+            "weight": "205"
         },
         {
-            "id": "171",
+            "id": "162",
             "name": "Grant Williams",
             "personId": 1629684,
-            "teamId": 1610612738,
+            "teamId": 1610612742,
             "age": 24,
             "height": "6'6\"",
             "weight": "236"
         },
         {
-            "id": "172",
+            "id": "163",
             "name": "Grayson Allen",
             "personId": 1628960,
-            "teamId": 1610612749,
-            "age": 27,
+            "teamId": 1610612756,
+            "age": 28,
             "height": "6'4\"",
             "weight": "198"
         },
         {
-            "id": "173",
-            "name": "Greg Brown III",
-            "personId": 1630535,
-            "teamId": 1610612757,
-            "age": 21,
-            "height": "6'7\"",
-            "weight": "206"
-        },
-        {
-            "id": "174",
-            "name": "Hamidou Diallo",
-            "personId": 1628977,
-            "teamId": 1610612765,
-            "age": 24,
-            "height": "6'5\"",
-            "weight": "202"
-        },
-        {
-            "id": "175",
+            "id": "164",
             "name": "Harrison Barnes",
             "personId": 203084,
             "teamId": 1610612758,
@@ -1585,7 +1486,7 @@
             "weight": "225"
         },
         {
-            "id": "176",
+            "id": "165",
             "name": "Haywood Highsmith",
             "personId": 1629312,
             "teamId": 1610612748,
@@ -1594,25 +1495,34 @@
             "weight": "220"
         },
         {
-            "id": "177",
+            "id": "166",
             "name": "Herbert Jones",
             "personId": 1630529,
             "teamId": 1610612740,
-            "age": 24,
+            "age": 25,
             "height": "6'7\"",
             "weight": "206"
         },
         {
-            "id": "178",
+            "id": "167",
+            "name": "Hunter Tyson",
+            "personId": 1641816,
+            "teamId": 1610612743,
+            "age": 23,
+            "height": "6'8\"",
+            "weight": "215"
+        },
+        {
+            "id": "168",
             "name": "Immanuel Quickley",
             "personId": 1630193,
             "teamId": 1610612752,
-            "age": 23,
+            "age": 24,
             "height": "6'2\"",
             "weight": "190"
         },
         {
-            "id": "179",
+            "id": "169",
             "name": "Isaac Okoro",
             "personId": 1630171,
             "teamId": 1610612739,
@@ -1621,7 +1531,7 @@
             "weight": "225"
         },
         {
-            "id": "180",
+            "id": "170",
             "name": "Isaiah Hartenstein",
             "personId": 1628392,
             "teamId": 1610612752,
@@ -1630,7 +1540,7 @@
             "weight": "250"
         },
         {
-            "id": "181",
+            "id": "171",
             "name": "Isaiah Jackson",
             "personId": 1630543,
             "teamId": 1610612754,
@@ -1639,43 +1549,25 @@
             "weight": "205"
         },
         {
-            "id": "182",
+            "id": "172",
             "name": "Isaiah Joe",
             "personId": 1630198,
             "teamId": 1610612760,
-            "age": 23,
+            "age": 24,
             "height": "6'3\"",
             "weight": "165"
         },
         {
-            "id": "183",
-            "name": "Isaiah Livers",
-            "personId": 1630587,
-            "teamId": 1610612765,
-            "age": 24,
-            "height": "6'6\"",
-            "weight": "232"
-        },
-        {
-            "id": "184",
+            "id": "173",
             "name": "Isaiah Mobley",
             "personId": 1630600,
             "teamId": 1610612739,
-            "age": 23,
+            "age": 24,
             "height": "6'8\"",
             "weight": "238"
         },
         {
-            "id": "185",
-            "name": "Isaiah Roby",
-            "personId": 1629676,
-            "teamId": 1610612752,
-            "age": 25,
-            "height": "6'8\"",
-            "weight": "230"
-        },
-        {
-            "id": "186",
+            "id": "174",
             "name": "Isaiah Stewart",
             "personId": 1630191,
             "teamId": 1610612765,
@@ -1684,34 +1576,16 @@
             "weight": "250"
         },
         {
-            "id": "187",
-            "name": "Isaiah Todd",
-            "personId": 1630225,
-            "teamId": 1610612764,
-            "age": 21,
-            "height": "6'9\"",
-            "weight": "219"
-        },
-        {
-            "id": "188",
+            "id": "175",
             "name": "Ish Smith",
             "personId": 202397,
-            "teamId": 1610612743,
-            "age": 34,
+            "teamId": 1610612766,
+            "age": 35,
             "height": "6'0\"",
             "weight": "175"
         },
         {
-            "id": "189",
-            "name": "Ish Wainright",
-            "personId": 1630688,
-            "teamId": 1610612756,
-            "age": 28,
-            "height": "6'5\"",
-            "weight": "250"
-        },
-        {
-            "id": "190",
+            "id": "176",
             "name": "Ivica Zubac",
             "personId": 1627826,
             "teamId": 1610612746,
@@ -1720,52 +1594,25 @@
             "weight": "240"
         },
         {
-            "id": "191",
-            "name": "JD Davison",
-            "personId": 1631120,
-            "teamId": 1610612738,
-            "age": 20,
-            "height": "6'1\"",
-            "weight": "195"
-        },
-        {
-            "id": "192",
+            "id": "177",
             "name": "JT Thor",
             "personId": 1630550,
             "teamId": 1610612766,
-            "age": 20,
+            "age": 21,
             "height": "6'9\"",
             "weight": "203"
         },
         {
-            "id": "193",
-            "name": "Ja Morant",
-            "personId": 1629630,
-            "teamId": 1610612763,
-            "age": 23,
-            "height": "6'2\"",
-            "weight": "174"
-        },
-        {
-            "id": "194",
-            "name": "JaMychal Green",
-            "personId": 203210,
-            "teamId": 1610612744,
-            "age": 32,
-            "height": "6'9\"",
-            "weight": "227"
-        },
-        {
-            "id": "195",
+            "id": "178",
             "name": "JaVale McGee",
             "personId": 201580,
-            "teamId": 1610612742,
+            "teamId": 1610612758,
             "age": 35,
             "height": "7'0\"",
             "weight": "270"
         },
         {
-            "id": "196",
+            "id": "179",
             "name": "Jabari Smith Jr.",
             "personId": 1631095,
             "teamId": 1610612745,
@@ -1774,43 +1621,34 @@
             "weight": "220"
         },
         {
-            "id": "197",
+            "id": "180",
             "name": "Jabari Walker",
             "personId": 1631133,
             "teamId": 1610612757,
-            "age": 20,
+            "age": 21,
             "height": "6'7\"",
-            "weight": "200"
+            "weight": "227"
         },
         {
-            "id": "198",
-            "name": "Jack White",
-            "personId": 1631298,
-            "teamId": 1610612743,
-            "age": 25,
-            "height": "6'7\"",
-            "weight": "225"
-        },
-        {
-            "id": "199",
+            "id": "181",
             "name": "Jacob Gilyard",
             "personId": 1631367,
             "teamId": 1610612763,
-            "age": 24,
-            "height": "5'9\"",
+            "age": 25,
+            "height": "5'8\"",
             "weight": "160"
         },
         {
-            "id": "200",
+            "id": "182",
             "name": "Jaden Hardy",
             "personId": 1630702,
             "teamId": 1610612742,
-            "age": 20,
+            "age": 21,
             "height": "6'3\"",
             "weight": "198"
         },
         {
-            "id": "201",
+            "id": "183",
             "name": "Jaden Ivey",
             "personId": 1631093,
             "teamId": 1610612765,
@@ -1819,79 +1657,88 @@
             "weight": "195"
         },
         {
-            "id": "202",
+            "id": "184",
             "name": "Jaden McDaniels",
             "personId": 1630183,
             "teamId": 1610612750,
-            "age": 22,
+            "age": 23,
             "height": "6'9\"",
             "weight": "185"
         },
         {
-            "id": "203",
+            "id": "185",
             "name": "Jaden Springer",
             "personId": 1630531,
             "teamId": 1610612755,
-            "age": 20,
+            "age": 21,
             "height": "6'4\"",
             "weight": "202"
         },
         {
-            "id": "204",
+            "id": "186",
             "name": "Jae Crowder",
             "personId": 203109,
             "teamId": 1610612749,
-            "age": 32,
+            "age": 33,
             "height": "6'6\"",
             "weight": "235"
         },
         {
-            "id": "205",
+            "id": "187",
             "name": "Jae'Sean Tate",
             "personId": 1630256,
             "teamId": 1610612745,
-            "age": 27,
-            "height": "6'5\"",
+            "age": 28,
+            "height": "6'4\"",
             "weight": "230"
         },
         {
-            "id": "206",
+            "id": "188",
+            "name": "Jaime Jaquez Jr.",
+            "personId": 1631170,
+            "teamId": 1610612748,
+            "age": 22,
+            "height": "6'6\"",
+            "weight": "225"
+        },
+        {
+            "id": "189",
             "name": "Jake LaRavia",
             "personId": 1631222,
             "teamId": 1610612763,
-            "age": 21,
+            "age": 22,
             "height": "6'7\"",
             "weight": "235"
         },
         {
-            "id": "207",
+            "id": "190",
             "name": "Jakob Poeltl",
             "personId": 1627751,
             "teamId": 1610612761,
-            "age": 27,
-            "height": "7'1\"",
+            "age": 28,
+            "height": "7'0\"",
             "weight": "245"
         },
         {
-            "id": "208",
+            "id": "191",
             "name": "Jalen Brunson",
             "personId": 1628973,
             "teamId": 1610612752,
-            "age": 26,
+            "age": 27,
             "height": "6'2\"",
             "weight": "190"
         },
         {
-            "id": "209",
+            "id": "192",
             "name": "Jalen Duren",
             "personId": 1631105,
             "teamId": 1610612765,
             "age": 19,
-            "height": "6'11\"",
+            "height": "6'10\"",
             "weight": "250"
         },
         {
-            "id": "210",
+            "id": "193",
             "name": "Jalen Green",
             "personId": 1630224,
             "teamId": 1610612745,
@@ -1900,7 +1747,7 @@
             "weight": "186"
         },
         {
-            "id": "211",
+            "id": "194",
             "name": "Jalen Johnson",
             "personId": 1630552,
             "teamId": 1610612737,
@@ -1909,16 +1756,25 @@
             "weight": "219"
         },
         {
-            "id": "212",
+            "id": "195",
             "name": "Jalen McDaniels",
             "personId": 1629667,
-            "teamId": 1610612755,
+            "teamId": 1610612761,
             "age": 25,
             "height": "6'9\"",
             "weight": "205"
         },
         {
-            "id": "213",
+            "id": "196",
+            "name": "Jalen Pickett",
+            "personId": 1629618,
+            "teamId": 1610612743,
+            "age": 24,
+            "height": "6'2\"",
+            "weight": "202"
+        },
+        {
+            "id": "197",
             "name": "Jalen Smith",
             "personId": 1630188,
             "teamId": 1610612754,
@@ -1927,16 +1783,16 @@
             "weight": "215"
         },
         {
-            "id": "214",
+            "id": "198",
             "name": "Jalen Suggs",
             "personId": 1630591,
             "teamId": 1610612753,
-            "age": 21,
+            "age": 22,
             "height": "6'5\"",
             "weight": "205"
         },
         {
-            "id": "215",
+            "id": "199",
             "name": "Jalen Williams",
             "personId": 1631114,
             "teamId": 1610612760,
@@ -1945,7 +1801,16 @@
             "weight": "211"
         },
         {
-            "id": "216",
+            "id": "200",
+            "name": "Jalen Wilson",
+            "personId": 1630592,
+            "teamId": 1610612751,
+            "age": 23,
+            "height": "6'6\"",
+            "weight": "220"
+        },
+        {
+            "id": "201",
             "name": "Jamal Cain",
             "personId": 1631288,
             "teamId": 1610612748,
@@ -1954,7 +1819,7 @@
             "weight": "191"
         },
         {
-            "id": "217",
+            "id": "202",
             "name": "Jamal Murray",
             "personId": 1627750,
             "teamId": 1610612743,
@@ -1963,97 +1828,61 @@
             "weight": "215"
         },
         {
-            "id": "218",
-            "name": "Jamaree Bouyea",
-            "personId": 1631123,
-            "teamId": 1610612764,
-            "age": 23,
-            "height": "6'2\"",
-            "weight": "180"
-        },
-        {
-            "id": "219",
-            "name": "James Bouknight",
-            "personId": 1630547,
-            "teamId": 1610612766,
-            "age": 22,
-            "height": "6'4\"",
-            "weight": "190"
-        },
-        {
-            "id": "220",
+            "id": "203",
             "name": "James Harden",
             "personId": 201935,
-            "teamId": 1610612755,
-            "age": 33,
+            "teamId": 1610612746,
+            "age": 34,
             "height": "6'5\"",
             "weight": "220"
         },
         {
-            "id": "221",
-            "name": "James Johnson",
-            "personId": 201949,
-            "teamId": 1610612754,
-            "age": 36,
-            "height": "6'7\"",
-            "weight": "240"
-        },
-        {
-            "id": "222",
+            "id": "204",
             "name": "James Wiseman",
             "personId": 1630164,
             "teamId": 1610612765,
             "age": 22,
-            "height": "7'0\"",
+            "height": "6'11\"",
             "weight": "240"
         },
         {
-            "id": "223",
+            "id": "205",
+            "name": "Jarace Walker",
+            "personId": 1641716,
+            "teamId": 1610612754,
+            "age": 20,
+            "height": "6'7\"",
+            "weight": "235"
+        },
+        {
+            "id": "206",
             "name": "Jared Butler",
             "personId": 1630215,
-            "teamId": 1610612760,
-            "age": 22,
+            "teamId": 1610612764,
+            "age": 23,
             "height": "6'3\"",
             "weight": "193"
         },
         {
-            "id": "224",
+            "id": "207",
             "name": "Jared Rhoden",
             "personId": 1631197,
             "teamId": 1610612765,
-            "age": 23,
-            "height": "6'6\"",
+            "age": 24,
+            "height": "6'5\"",
             "weight": "210"
         },
         {
-            "id": "225",
+            "id": "208",
             "name": "Jaren Jackson Jr.",
             "personId": 1628991,
             "teamId": 1610612763,
-            "age": 23,
+            "age": 24,
             "height": "6'10\"",
             "weight": "242"
         },
         {
-            "id": "226",
-            "name": "Jarred Vanderbilt",
-            "personId": 1629020,
-            "teamId": 1610612747,
-            "age": 24,
-            "height": "6'8\"",
-            "weight": "214"
-        },
-        {
-            "id": "227",
-            "name": "Jarrell Brantley",
-            "personId": 1629714,
-            "teamId": 1610612762,
-            "age": 26,
-            "height": "6'5\"",
-            "weight": "250"
-        },
-        {
-            "id": "228",
+            "id": "209",
             "name": "Jarrett Allen",
             "personId": 1628386,
             "teamId": 1610612739,
@@ -2062,88 +1891,34 @@
             "weight": "243"
         },
         {
-            "id": "229",
-            "name": "Jarrett Culver",
-            "personId": 1629633,
-            "teamId": 1610612737,
-            "age": 24,
-            "height": "6'6\"",
-            "weight": "195"
-        },
-        {
-            "id": "230",
-            "name": "Jason Preston",
-            "personId": 1630554,
-            "teamId": 1610612746,
-            "age": 23,
-            "height": "6'3\"",
-            "weight": "181"
-        },
-        {
-            "id": "231",
-            "name": "Javonte Green",
-            "personId": 1629750,
-            "teamId": 1610612741,
-            "age": 29,
-            "height": "6'5\"",
-            "weight": "205"
-        },
-        {
-            "id": "232",
+            "id": "210",
             "name": "Jaxson Hayes",
             "personId": 1629637,
-            "teamId": 1610612740,
+            "teamId": 1610612747,
             "age": 23,
             "height": "7'0\"",
             "weight": "220"
         },
         {
-            "id": "233",
-            "name": "Jay Huff",
-            "personId": 1630643,
-            "teamId": 1610612764,
-            "age": 25,
-            "height": "7'1\"",
-            "weight": "240"
-        },
-        {
-            "id": "234",
-            "name": "Jay Scrubb",
-            "personId": 1630206,
-            "teamId": 1610612753,
-            "age": 22,
-            "height": "6'5\"",
-            "weight": "220"
-        },
-        {
-            "id": "235",
+            "id": "211",
             "name": "Jaylen Brown",
             "personId": 1627759,
             "teamId": 1610612738,
-            "age": 26,
+            "age": 27,
             "height": "6'6\"",
             "weight": "223"
         },
         {
-            "id": "236",
-            "name": "Jaylen Nowell",
-            "personId": 1629669,
-            "teamId": 1610612750,
-            "age": 23,
-            "height": "6'4\"",
-            "weight": "201"
-        },
-        {
-            "id": "237",
+            "id": "212",
             "name": "Jaylin Williams",
             "personId": 1631119,
             "teamId": 1610612760,
-            "age": 20,
+            "age": 21,
             "height": "6'9\"",
             "weight": "240"
         },
         {
-            "id": "238",
+            "id": "213",
             "name": "Jayson Tatum",
             "personId": 1628369,
             "teamId": 1610612738,
@@ -2152,52 +1927,34 @@
             "weight": "210"
         },
         {
-            "id": "239",
-            "name": "Jeenathan Williams",
-            "personId": 1631466,
-            "teamId": 1610612757,
-            "age": 24,
-            "height": "6'5\"",
-            "weight": "205"
-        },
-        {
-            "id": "240",
-            "name": "Jeff Dowtin Jr.",
-            "personId": 1630288,
-            "teamId": 1610612761,
-            "age": 26,
-            "height": "6'3\"",
-            "weight": "177"
-        },
-        {
-            "id": "241",
+            "id": "214",
             "name": "Jeff Green",
             "personId": 201145,
-            "teamId": 1610612743,
-            "age": 36,
+            "teamId": 1610612745,
+            "age": 37,
             "height": "6'8\"",
             "weight": "235"
         },
         {
-            "id": "242",
+            "id": "215",
             "name": "Jerami Grant",
             "personId": 203924,
             "teamId": 1610612757,
             "age": 29,
-            "height": "6'8\"",
+            "height": "6'7\"",
             "weight": "210"
         },
         {
-            "id": "243",
+            "id": "216",
             "name": "Jeremiah Robinson-Earl",
             "personId": 1630526,
-            "teamId": 1610612760,
-            "age": 22,
+            "teamId": 1610612740,
+            "age": 23,
             "height": "6'8\"",
             "weight": "240"
         },
         {
-            "id": "244",
+            "id": "217",
             "name": "Jeremy Sochan",
             "personId": 1631110,
             "teamId": 1610612759,
@@ -2206,70 +1963,88 @@
             "weight": "230"
         },
         {
-            "id": "245",
+            "id": "218",
             "name": "Jericho Sims",
             "personId": 1630579,
             "teamId": 1610612752,
-            "age": 24,
+            "age": 25,
             "height": "6'10\"",
             "weight": "250"
         },
         {
-            "id": "246",
+            "id": "219",
+            "name": "Jermaine Samuels Jr.",
+            "personId": 1631257,
+            "teamId": 1610612745,
+            "age": 24,
+            "height": "6'6\"",
+            "weight": "230"
+        },
+        {
+            "id": "220",
+            "name": "Jerome Robinson",
+            "personId": 1629010,
+            "teamId": 1610612744,
+            "age": 26,
+            "height": "6'5\"",
+            "weight": "190"
+        },
+        {
+            "id": "221",
+            "name": "Jett Howard",
+            "personId": 1641724,
+            "teamId": 1610612753,
+            "age": 20,
+            "height": "6'6\"",
+            "weight": "215"
+        },
+        {
+            "id": "222",
             "name": "Jevon Carter",
             "personId": 1628975,
-            "teamId": 1610612749,
-            "age": 27,
+            "teamId": 1610612741,
+            "age": 28,
             "height": "6'1\"",
             "weight": "200"
         },
         {
-            "id": "247",
+            "id": "223",
             "name": "Jimmy Butler",
             "personId": 202710,
             "teamId": 1610612748,
-            "age": 33,
+            "age": 34,
             "height": "6'7\"",
             "weight": "230"
         },
         {
-            "id": "248",
+            "id": "224",
             "name": "Jock Landale",
             "personId": 1629111,
-            "teamId": 1610612756,
-            "age": 27,
+            "teamId": 1610612745,
+            "age": 28,
             "height": "6'11\"",
             "weight": "255"
         },
         {
-            "id": "249",
+            "id": "225",
             "name": "Joe Harris",
             "personId": 203925,
-            "teamId": 1610612751,
-            "age": 31,
+            "teamId": 1610612765,
+            "age": 32,
             "height": "6'6\"",
             "weight": "220"
         },
         {
-            "id": "250",
+            "id": "226",
             "name": "Joe Ingles",
             "personId": 204060,
-            "teamId": 1610612749,
-            "age": 35,
+            "teamId": 1610612753,
+            "age": 36,
             "height": "6'9\"",
             "weight": "220"
         },
         {
-            "id": "251",
-            "name": "Joe Wieskamp",
-            "personId": 1630580,
-            "teamId": 1610612761,
-            "age": 23,
-            "height": "6'6\"",
-            "weight": "205"
-        },
-        {
-            "id": "252",
+            "id": "227",
             "name": "Joel Embiid",
             "personId": 203954,
             "teamId": 1610612755,
@@ -2278,25 +2053,16 @@
             "weight": "280"
         },
         {
-            "id": "253",
-            "name": "John Butler Jr.",
-            "personId": 1631219,
-            "teamId": 1610612757,
-            "age": 20,
-            "height": "7'0\"",
-            "weight": "190"
-        },
-        {
-            "id": "254",
+            "id": "228",
             "name": "John Collins",
             "personId": 1628381,
-            "teamId": 1610612737,
-            "age": 25,
+            "teamId": 1610612762,
+            "age": 26,
             "height": "6'9\"",
             "weight": "226"
         },
         {
-            "id": "255",
+            "id": "229",
             "name": "John Konchar",
             "personId": 1629723,
             "teamId": 1610612763,
@@ -2305,16 +2071,7 @@
             "weight": "210"
         },
         {
-            "id": "256",
-            "name": "John Wall",
-            "personId": 202322,
-            "teamId": 1610612746,
-            "age": 32,
-            "height": "6'3\"",
-            "weight": "210"
-        },
-        {
-            "id": "257",
+            "id": "230",
             "name": "Johnny Davis",
             "personId": 1631098,
             "teamId": 1610612764,
@@ -2323,16 +2080,7 @@
             "weight": "195"
         },
         {
-            "id": "258",
-            "name": "Johnny Juzang",
-            "personId": 1630548,
-            "teamId": 1610612762,
-            "age": 22,
-            "height": "6'6\"",
-            "weight": "209"
-        },
-        {
-            "id": "259",
+            "id": "231",
             "name": "Jonas Valanciunas",
             "personId": 202685,
             "teamId": 1610612740,
@@ -2341,52 +2089,61 @@
             "weight": "265"
         },
         {
-            "id": "260",
+            "id": "232",
             "name": "Jonathan Isaac",
             "personId": 1628371,
             "teamId": 1610612753,
-            "age": 25,
+            "age": 26,
             "height": "6'10\"",
             "weight": "230"
         },
         {
-            "id": "261",
+            "id": "233",
             "name": "Jonathan Kuminga",
             "personId": 1630228,
             "teamId": 1610612744,
-            "age": 20,
+            "age": 21,
             "height": "6'7\"",
             "weight": "225"
         },
         {
-            "id": "262",
+            "id": "234",
             "name": "Jordan Clarkson",
             "personId": 203903,
             "teamId": 1610612762,
-            "age": 30,
-            "height": "6'5\"",
+            "age": 31,
+            "height": "6'3\"",
             "weight": "194"
         },
         {
-            "id": "263",
+            "id": "235",
+            "name": "Jordan Ford",
+            "personId": 1630259,
+            "teamId": 1610612758,
+            "age": 25,
+            "height": "6'1\"",
+            "weight": "175"
+        },
+        {
+            "id": "236",
             "name": "Jordan Goodwin",
             "personId": 1630692,
-            "teamId": 1610612764,
-            "age": 24,
-            "height": "6'3\"",
+            "teamId": 1610612756,
+            "age": 25,
+            "height": "6'4\"",
             "weight": "200"
         },
         {
-            "id": "264",
-            "name": "Jordan Hall",
-            "personId": 1631160,
-            "teamId": 1610612759,
+            "id": "237",
+            "name": "Jordan Hawkins",
+            "personId": 1641722,
+            "teamId": 1610612740,
             "age": 21,
-            "height": "6'7\"",
-            "weight": "215"
+            "height": "6'5\"",
+            "weight": "190"
         },
         {
-            "id": "265",
+            "id": "238",
             "name": "Jordan McLaughlin",
             "personId": 1629162,
             "teamId": 1610612750,
@@ -2395,70 +2152,52 @@
             "weight": "185"
         },
         {
-            "id": "266",
+            "id": "239",
+            "name": "Jordan Miller",
+            "personId": 1641757,
+            "teamId": 1610612746,
+            "age": 23,
+            "height": "6'5\"",
+            "weight": "194"
+        },
+        {
+            "id": "240",
             "name": "Jordan Nwora",
             "personId": 1629670,
             "teamId": 1610612754,
-            "age": 24,
-            "height": "6'9\"",
+            "age": 25,
+            "height": "6'8\"",
             "weight": "225"
         },
         {
-            "id": "267",
+            "id": "241",
             "name": "Jordan Poole",
             "personId": 1629673,
-            "teamId": 1610612744,
-            "age": 23,
+            "teamId": 1610612764,
+            "age": 24,
             "height": "6'4\"",
             "weight": "194"
         },
         {
-            "id": "268",
-            "name": "Jordan Schakel",
-            "personId": 1630648,
-            "teamId": 1610612764,
-            "age": 24,
-            "height": "6'6\"",
-            "weight": "200"
-        },
-        {
-            "id": "269",
-            "name": "Jose Alvarado",
-            "personId": 1630631,
-            "teamId": 1610612740,
-            "age": 25,
-            "height": "6'0\"",
-            "weight": "179"
-        },
-        {
-            "id": "270",
-            "name": "Josh Christopher",
-            "personId": 1630528,
-            "teamId": 1610612745,
-            "age": 21,
-            "height": "6'4\"",
-            "weight": "215"
-        },
-        {
-            "id": "271",
+            "id": "242",
             "name": "Josh Giddey",
             "personId": 1630581,
             "teamId": 1610612760,
-            "age": 20,
+            "age": 21,
             "height": "6'8\"",
             "weight": "216"
         },
         {
-            "id": "272",
+            "id": "243",
             "name": "Josh Green",
             "personId": 1630182,
             "teamId": 1610612742,
             "age": 22,
-            "height": "6'7\"",
+            "height": "6'5\"",
             "weight": "200"
         },
         {
-            "id": "273",
+            "id": "244",
             "name": "Josh Hart",
             "personId": 1628404,
             "teamId": 1610612752,
@@ -2467,7 +2206,7 @@
             "weight": "215"
         },
         {
-            "id": "274",
+            "id": "245",
             "name": "Josh Minott",
             "personId": 1631169,
             "teamId": 1610612750,
@@ -2476,70 +2215,61 @@
             "weight": "205"
         },
         {
-            "id": "275",
+            "id": "246",
             "name": "Josh Okogie",
             "personId": 1629006,
             "teamId": 1610612756,
-            "age": 24,
+            "age": 25,
             "height": "6'4\"",
             "weight": "213"
         },
         {
-            "id": "276",
+            "id": "247",
             "name": "Josh Richardson",
             "personId": 1626196,
-            "teamId": 1610612740,
-            "age": 29,
-            "height": "6'6\"",
+            "teamId": 1610612748,
+            "age": 30,
+            "height": "6'5\"",
             "weight": "200"
         },
         {
-            "id": "277",
-            "name": "Joshua Primo",
-            "personId": 1630563,
-            "teamId": 1610612759,
-            "age": 20,
-            "height": "6'6\"",
-            "weight": "189"
-        },
-        {
-            "id": "278",
+            "id": "248",
             "name": "Jrue Holiday",
             "personId": 201950,
-            "teamId": 1610612749,
-            "age": 32,
-            "height": "6'5\"",
+            "teamId": 1610612738,
+            "age": 33,
+            "height": "6'4\"",
             "weight": "205"
         },
         {
-            "id": "279",
-            "name": "Juan Toscano-Anderson",
-            "personId": 1629308,
-            "teamId": 1610612762,
-            "age": 30,
-            "height": "6'6\"",
-            "weight": "209"
-        },
-        {
-            "id": "280",
-            "name": "Juancho Hernangomez",
-            "personId": 1627823,
-            "teamId": 1610612761,
-            "age": 27,
-            "height": "6'9\"",
-            "weight": "214"
-        },
-        {
-            "id": "281",
+            "id": "249",
             "name": "Julian Champagnie",
             "personId": 1630577,
             "teamId": 1610612759,
-            "age": 21,
+            "age": 22,
             "height": "6'7\"",
             "weight": "217"
         },
         {
-            "id": "282",
+            "id": "250",
+            "name": "Julian Phillips",
+            "personId": 1641763,
+            "teamId": 1610612741,
+            "age": 20,
+            "height": "6'8\"",
+            "weight": "198"
+        },
+        {
+            "id": "251",
+            "name": "Julian Strawther",
+            "personId": 1631124,
+            "teamId": 1610612743,
+            "age": 21,
+            "height": "6'6\"",
+            "weight": "205"
+        },
+        {
+            "id": "252",
             "name": "Julius Randle",
             "personId": 203944,
             "teamId": 1610612752,
@@ -2548,79 +2278,52 @@
             "weight": "250"
         },
         {
-            "id": "283",
-            "name": "Justin Champagnie",
-            "personId": 1630551,
-            "teamId": 1610612738,
-            "age": 21,
-            "height": "6'6\"",
-            "weight": "206"
-        },
-        {
-            "id": "284",
+            "id": "253",
             "name": "Justin Holiday",
             "personId": 203200,
-            "teamId": 1610612742,
+            "teamId": 1610612743,
             "age": 34,
             "height": "6'6\"",
             "weight": "180"
         },
         {
-            "id": "285",
-            "name": "Justin Jackson",
-            "personId": 1628382,
-            "teamId": 1610612738,
-            "age": 28,
-            "height": "6'8\"",
-            "weight": "220"
-        },
-        {
-            "id": "286",
+            "id": "254",
             "name": "Justin Minaya",
             "personId": 1631303,
             "teamId": 1610612757,
             "age": 24,
-            "height": "6'7\"",
-            "weight": "210"
+            "height": "6'5\"",
+            "weight": "205"
         },
         {
-            "id": "287",
-            "name": "Justise Winslow",
-            "personId": 1626159,
-            "teamId": 1610612757,
-            "age": 27,
-            "height": "6'6\"",
-            "weight": "222"
-        },
-        {
-            "id": "288",
+            "id": "255",
             "name": "Jusuf Nurkic",
             "personId": 203994,
-            "teamId": 1610612757,
-            "age": 28,
+            "teamId": 1610612756,
+            "age": 29,
             "height": "7'0\"",
             "weight": "290"
         },
         {
-            "id": "289",
-            "name": "KZ Okpala",
-            "personId": 1629644,
-            "teamId": 1610612758,
-            "age": 24,
-            "height": "6'8\"",
+            "id": "256",
+            "name": "KJ Martin",
+            "personId": 1630231,
+            "teamId": 1610612755,
+            "age": 22,
+            "height": "6'6\"",
             "weight": "215"
         },
         {
-            "id": "290",
-            "name": "Kai Jones",
-            "personId": 1630539,
-            "teamId": 1610612766,
-            "age": 22,
-            "height": "6'11\"",
-            "weight": "221"
+            "id": "257",
+            "name": "Kaiser Gates",
+            "personId": 1629232,
+            "teamId": 1610612740,
+            "age": 27,
+            "height": "6'7\"",
+            "weight": "225"
         },
         {
-            "id": "291",
+            "id": "258",
             "name": "Karl-Anthony Towns",
             "personId": 1626157,
             "teamId": 1610612750,
@@ -2629,43 +2332,43 @@
             "weight": "248"
         },
         {
-            "id": "292",
+            "id": "259",
             "name": "Kawhi Leonard",
             "personId": 202695,
             "teamId": 1610612746,
-            "age": 31,
+            "age": 32,
             "height": "6'7\"",
             "weight": "225"
         },
         {
-            "id": "293",
+            "id": "260",
             "name": "Keegan Murray",
             "personId": 1631099,
             "teamId": 1610612758,
-            "age": 22,
+            "age": 23,
             "height": "6'8\"",
             "weight": "225"
         },
         {
-            "id": "294",
+            "id": "261",
             "name": "Keita Bates-Diop",
             "personId": 1628966,
-            "teamId": 1610612759,
+            "teamId": 1610612756,
             "age": 27,
             "height": "6'8\"",
             "weight": "229"
         },
         {
-            "id": "295",
+            "id": "262",
             "name": "Keldon Johnson",
             "personId": 1629640,
             "teamId": 1610612759,
-            "age": 23,
+            "age": 24,
             "height": "6'5\"",
             "weight": "220"
         },
         {
-            "id": "296",
+            "id": "263",
             "name": "Kelly Olynyk",
             "personId": 203482,
             "teamId": 1610612762,
@@ -2674,70 +2377,25 @@
             "weight": "240"
         },
         {
-            "id": "297",
+            "id": "264",
             "name": "Kelly Oubre Jr.",
             "personId": 1626162,
-            "teamId": 1610612766,
+            "teamId": 1610612755,
             "age": 27,
-            "height": "6'6\"",
+            "height": "6'7\"",
             "weight": "203"
         },
         {
-            "id": "298",
-            "name": "Kemba Walker",
-            "personId": 202689,
-            "teamId": 1610612742,
-            "age": 33,
-            "height": "6'0\"",
-            "weight": "184"
-        },
-        {
-            "id": "299",
-            "name": "Kendall Brown",
-            "personId": 1631112,
-            "teamId": 1610612754,
-            "age": 20,
-            "height": "6'7\"",
-            "weight": "205"
-        },
-        {
-            "id": "300",
-            "name": "Kendrick Nunn",
-            "personId": 1629134,
-            "teamId": 1610612764,
-            "age": 27,
-            "height": "6'3\"",
-            "weight": "190"
-        },
-        {
-            "id": "301",
-            "name": "Kennedy Chandler",
-            "personId": 1631113,
-            "teamId": 1610612763,
-            "age": 20,
-            "height": "5'11\"",
-            "weight": "170"
-        },
-        {
-            "id": "302",
+            "id": "265",
             "name": "Kenneth Lofton Jr.",
             "personId": 1631254,
             "teamId": 1610612763,
-            "age": 20,
+            "age": 21,
             "height": "6'6\"",
             "weight": "275"
         },
         {
-            "id": "303",
-            "name": "Kenrich Williams",
-            "personId": 1629026,
-            "teamId": 1610612760,
-            "age": 28,
-            "height": "6'6\"",
-            "weight": "210"
-        },
-        {
-            "id": "304",
+            "id": "266",
             "name": "Kentavious Caldwell-Pope",
             "personId": 203484,
             "teamId": 1610612743,
@@ -2746,16 +2404,7 @@
             "weight": "204"
         },
         {
-            "id": "305",
-            "name": "Kenyon Martin Jr.",
-            "personId": 1630231,
-            "teamId": 1610612745,
-            "age": 22,
-            "height": "6'7\"",
-            "weight": "215"
-        },
-        {
-            "id": "306",
+            "id": "267",
             "name": "Keon Ellis",
             "personId": 1631165,
             "teamId": 1610612758,
@@ -2764,79 +2413,43 @@
             "weight": "175"
         },
         {
-            "id": "307",
-            "name": "Keon Johnson",
-            "personId": 1630553,
-            "teamId": 1610612757,
-            "age": 21,
-            "height": "6'3\"",
-            "weight": "185"
-        },
-        {
-            "id": "308",
+            "id": "268",
             "name": "Kessler Edwards",
             "personId": 1630556,
             "teamId": 1610612758,
-            "age": 22,
+            "age": 23,
             "height": "6'7\"",
             "weight": "203"
         },
         {
-            "id": "309",
+            "id": "269",
             "name": "Kevin Durant",
             "personId": 201142,
             "teamId": 1610612756,
-            "age": 34,
-            "height": "6'10\"",
+            "age": 35,
+            "height": "6'11\"",
             "weight": "240"
         },
         {
-            "id": "310",
+            "id": "270",
             "name": "Kevin Huerter",
             "personId": 1628989,
             "teamId": 1610612758,
-            "age": 24,
+            "age": 25,
             "height": "6'7\"",
             "weight": "198"
         },
         {
-            "id": "311",
-            "name": "Kevin Knox II",
-            "personId": 1628995,
-            "teamId": 1610612757,
-            "age": 23,
-            "height": "6'7\"",
-            "weight": "215"
-        },
-        {
-            "id": "312",
+            "id": "271",
             "name": "Kevin Love",
             "personId": 201567,
             "teamId": 1610612748,
-            "age": 34,
+            "age": 35,
             "height": "6'8\"",
             "weight": "251"
         },
         {
-            "id": "313",
-            "name": "Kevin Porter Jr.",
-            "personId": 1629645,
-            "teamId": 1610612745,
-            "age": 23,
-            "height": "6'4\"",
-            "weight": "203"
-        },
-        {
-            "id": "314",
-            "name": "Kevon Harris",
-            "personId": 1630284,
-            "teamId": 1610612753,
-            "age": 25,
-            "height": "6'6\"",
-            "weight": "216"
-        },
-        {
-            "id": "315",
+            "id": "272",
             "name": "Kevon Looney",
             "personId": 1626172,
             "teamId": 1610612744,
@@ -2845,34 +2458,43 @@
             "weight": "222"
         },
         {
-            "id": "316",
-            "name": "Khem Birch",
-            "personId": 203920,
-            "teamId": 1610612759,
-            "age": 30,
-            "height": "6'8\"",
-            "weight": "233"
+            "id": "273",
+            "name": "Keyontae Johnson",
+            "personId": 1641749,
+            "teamId": 1610612760,
+            "age": 23,
+            "height": "6'4\"",
+            "weight": "230"
         },
         {
-            "id": "317",
+            "id": "274",
+            "name": "Keyonte George",
+            "personId": 1641718,
+            "teamId": 1610612762,
+            "age": 20,
+            "height": "6'4\"",
+            "weight": "185"
+        },
+        {
+            "id": "275",
             "name": "Khris Middleton",
             "personId": 203114,
             "teamId": 1610612749,
-            "age": 31,
+            "age": 32,
             "height": "6'7\"",
             "weight": "222"
         },
         {
-            "id": "318",
+            "id": "276",
             "name": "Killian Hayes",
             "personId": 1630165,
             "teamId": 1610612765,
-            "age": 21,
+            "age": 22,
             "height": "6'5\"",
             "weight": "195"
         },
         {
-            "id": "319",
+            "id": "277",
             "name": "Kira Lewis Jr.",
             "personId": 1630184,
             "teamId": 1610612740,
@@ -2881,7 +2503,7 @@
             "weight": "170"
         },
         {
-            "id": "320",
+            "id": "278",
             "name": "Klay Thompson",
             "personId": 202691,
             "teamId": 1610612744,
@@ -2890,16 +2512,25 @@
             "weight": "220"
         },
         {
-            "id": "321",
-            "name": "Kobi Simmons",
-            "personId": 1628424,
-            "teamId": 1610612766,
-            "age": 25,
-            "height": "6'5\"",
-            "weight": "180"
+            "id": "279",
+            "name": "Kobe Brown",
+            "personId": 1641738,
+            "teamId": 1610612746,
+            "age": 23,
+            "height": "6'7\"",
+            "weight": "250"
         },
         {
-            "id": "322",
+            "id": "280",
+            "name": "Kobe Bufkin",
+            "personId": 1641723,
+            "teamId": 1610612737,
+            "age": 20,
+            "height": "6'5\"",
+            "weight": "195"
+        },
+        {
+            "id": "281",
             "name": "Kris Dunn",
             "personId": 1627739,
             "teamId": 1610612762,
@@ -2908,34 +2539,43 @@
             "weight": "205"
         },
         {
-            "id": "323",
+            "id": "282",
+            "name": "Kris Murray",
+            "personId": 1631200,
+            "teamId": 1610612757,
+            "age": 23,
+            "height": "6'8\"",
+            "weight": "210"
+        },
+        {
+            "id": "283",
             "name": "Kristaps Porzingis",
             "personId": 204001,
-            "teamId": 1610612764,
-            "age": 27,
-            "height": "7'3\"",
+            "teamId": 1610612738,
+            "age": 28,
+            "height": "7'2\"",
             "weight": "240"
         },
         {
-            "id": "324",
+            "id": "284",
             "name": "Kyle Anderson",
             "personId": 203937,
             "teamId": 1610612750,
-            "age": 29,
+            "age": 30,
             "height": "6'9\"",
             "weight": "230"
         },
         {
-            "id": "325",
+            "id": "285",
             "name": "Kyle Kuzma",
             "personId": 1628398,
             "teamId": 1610612764,
-            "age": 27,
+            "age": 28,
             "height": "6'9\"",
             "weight": "221"
         },
         {
-            "id": "326",
+            "id": "286",
             "name": "Kyle Lowry",
             "personId": 200768,
             "teamId": 1610612748,
@@ -2944,7 +2584,7 @@
             "weight": "196"
         },
         {
-            "id": "327",
+            "id": "287",
             "name": "Kyrie Irving",
             "personId": 202681,
             "teamId": 1610612742,
@@ -2953,34 +2593,34 @@
             "weight": "195"
         },
         {
-            "id": "328",
+            "id": "288",
             "name": "LaMelo Ball",
             "personId": 1630163,
             "teamId": 1610612766,
-            "age": 21,
+            "age": 22,
             "height": "6'7\"",
             "weight": "180"
         },
         {
-            "id": "329",
+            "id": "289",
             "name": "Lamar Stevens",
             "personId": 1630205,
-            "teamId": 1610612739,
-            "age": 25,
-            "height": "6'6\"",
+            "teamId": 1610612738,
+            "age": 26,
+            "height": "6'7\"",
             "weight": "230"
         },
         {
-            "id": "330",
+            "id": "290",
             "name": "Landry Shamet",
             "personId": 1629013,
-            "teamId": 1610612756,
+            "teamId": 1610612764,
             "age": 26,
             "height": "6'4\"",
             "weight": "190"
         },
         {
-            "id": "331",
+            "id": "291",
             "name": "Larry Nance Jr.",
             "personId": 1626204,
             "teamId": 1610612740,
@@ -2989,7 +2629,7 @@
             "weight": "245"
         },
         {
-            "id": "332",
+            "id": "292",
             "name": "Lauri Markkanen",
             "personId": 1628374,
             "teamId": 1610612762,
@@ -2998,7 +2638,7 @@
             "weight": "240"
         },
         {
-            "id": "333",
+            "id": "293",
             "name": "LeBron James",
             "personId": 2544,
             "teamId": 1610612747,
@@ -3007,16 +2647,25 @@
             "weight": "250"
         },
         {
-            "id": "334",
-            "name": "Leandro Bolmaro",
-            "personId": 1630195,
-            "teamId": 1610612762,
-            "age": 22,
+            "id": "294",
+            "name": "Leaky Black",
+            "personId": 1641778,
+            "teamId": 1610612766,
+            "age": 24,
             "height": "6'6\"",
-            "weight": "200"
+            "weight": "209"
         },
         {
-            "id": "335",
+            "id": "295",
+            "name": "Leonard Miller",
+            "personId": 1631159,
+            "teamId": 1610612750,
+            "age": 19,
+            "height": "6'10\"",
+            "weight": "210"
+        },
+        {
+            "id": "296",
             "name": "Lester Quinones",
             "personId": 1631311,
             "teamId": 1610612744,
@@ -3025,43 +2674,25 @@
             "weight": "208"
         },
         {
-            "id": "336",
-            "name": "Lindell Wigginton",
-            "personId": 1629623,
-            "teamId": 1610612749,
-            "age": 25,
-            "height": "6'1\"",
-            "weight": "189"
-        },
-        {
-            "id": "337",
+            "id": "297",
             "name": "Lindy Waters III",
             "personId": 1630322,
             "teamId": 1610612760,
-            "age": 25,
+            "age": 26,
             "height": "6'6\"",
             "weight": "210"
         },
         {
-            "id": "338",
+            "id": "298",
             "name": "Lonnie Walker IV",
             "personId": 1629022,
-            "teamId": 1610612747,
+            "teamId": 1610612751,
             "age": 24,
             "height": "6'4\"",
             "weight": "204"
         },
         {
-            "id": "339",
-            "name": "Louis King",
-            "personId": 1629663,
-            "teamId": 1610612755,
-            "age": 24,
-            "height": "6'7\"",
-            "weight": "205"
-        },
-        {
-            "id": "340",
+            "id": "299",
             "name": "Luguentz Dort",
             "personId": 1629652,
             "teamId": 1610612760,
@@ -3070,7 +2701,7 @@
             "weight": "220"
         },
         {
-            "id": "341",
+            "id": "300",
             "name": "Luka Doncic",
             "personId": 1629029,
             "teamId": 1610612742,
@@ -3079,7 +2710,7 @@
             "weight": "230"
         },
         {
-            "id": "342",
+            "id": "301",
             "name": "Luka Garza",
             "personId": 1630568,
             "teamId": 1610612750,
@@ -3088,7 +2719,7 @@
             "weight": "243"
         },
         {
-            "id": "343",
+            "id": "302",
             "name": "Luka Samanic",
             "personId": 1629677,
             "teamId": 1610612762,
@@ -3097,34 +2728,25 @@
             "weight": "227"
         },
         {
-            "id": "344",
+            "id": "303",
             "name": "Luke Kennard",
             "personId": 1628379,
             "teamId": 1610612763,
-            "age": 26,
+            "age": 27,
             "height": "6'5\"",
             "weight": "206"
         },
         {
-            "id": "345",
+            "id": "304",
             "name": "Luke Kornet",
             "personId": 1628436,
             "teamId": 1610612738,
-            "age": 27,
-            "height": "7'2\"",
+            "age": 28,
+            "height": "7'1\"",
             "weight": "250"
         },
         {
-            "id": "346",
-            "name": "Mac McClung",
-            "personId": 1630644,
-            "teamId": 1610612755,
-            "age": 24,
-            "height": "6'2\"",
-            "weight": "185"
-        },
-        {
-            "id": "347",
+            "id": "305",
             "name": "Malachi Flynn",
             "personId": 1630201,
             "teamId": 1610612761,
@@ -3133,7 +2755,7 @@
             "weight": "175"
         },
         {
-            "id": "348",
+            "id": "306",
             "name": "Malaki Branham",
             "personId": 1631103,
             "teamId": 1610612759,
@@ -3142,34 +2764,34 @@
             "weight": "180"
         },
         {
-            "id": "349",
+            "id": "307",
             "name": "Malcolm Brogdon",
             "personId": 1627763,
-            "teamId": 1610612738,
+            "teamId": 1610612757,
             "age": 30,
             "height": "6'4\"",
             "weight": "229"
         },
         {
-            "id": "350",
-            "name": "Malcolm Hill",
-            "personId": 1630792,
-            "teamId": 1610612741,
-            "age": 27,
+            "id": "308",
+            "name": "Malcolm Cazalon",
+            "personId": 1630608,
+            "teamId": 1610612765,
+            "age": 22,
             "height": "6'6\"",
-            "weight": "220"
+            "weight": "185"
         },
         {
-            "id": "351",
+            "id": "309",
             "name": "Malik Beasley",
             "personId": 1627736,
-            "teamId": 1610612747,
+            "teamId": 1610612749,
             "age": 26,
             "height": "6'4\"",
             "weight": "187"
         },
         {
-            "id": "352",
+            "id": "310",
             "name": "Malik Monk",
             "personId": 1628370,
             "teamId": 1610612758,
@@ -3178,43 +2800,43 @@
             "weight": "200"
         },
         {
-            "id": "353",
-            "name": "Mamadi Diakite",
-            "personId": 1629603,
-            "teamId": 1610612739,
-            "age": 26,
-            "height": "6'9\"",
-            "weight": "228"
-        },
-        {
-            "id": "354",
+            "id": "311",
             "name": "MarJon Beauchamp",
             "personId": 1630699,
             "teamId": 1610612749,
-            "age": 22,
+            "age": 23,
             "height": "6'7\"",
             "weight": "199"
         },
         {
-            "id": "355",
+            "id": "312",
             "name": "Marcus Morris Sr.",
             "personId": 202694,
-            "teamId": 1610612746,
-            "age": 33,
+            "teamId": 1610612755,
+            "age": 34,
             "height": "6'8\"",
             "weight": "218"
         },
         {
-            "id": "356",
+            "id": "313",
+            "name": "Marcus Sasser",
+            "personId": 1631204,
+            "teamId": 1610612765,
+            "age": 23,
+            "height": "6'2\"",
+            "weight": "195"
+        },
+        {
+            "id": "314",
             "name": "Marcus Smart",
             "personId": 203935,
-            "teamId": 1610612738,
+            "teamId": 1610612763,
             "age": 29,
-            "height": "6'4\"",
+            "height": "6'3\"",
             "weight": "220"
         },
         {
-            "id": "357",
+            "id": "315",
             "name": "Mark Williams",
             "personId": 1631109,
             "teamId": 1610612766,
@@ -3223,7 +2845,7 @@
             "weight": "240"
         },
         {
-            "id": "358",
+            "id": "316",
             "name": "Markelle Fultz",
             "personId": 1628365,
             "teamId": 1610612753,
@@ -3232,25 +2854,7 @@
             "weight": "209"
         },
         {
-            "id": "359",
-            "name": "Markieff Morris",
-            "personId": 202693,
-            "teamId": 1610612742,
-            "age": 33,
-            "height": "6'9\"",
-            "weight": "245"
-        },
-        {
-            "id": "360",
-            "name": "Marko Simonovic",
-            "personId": 1630250,
-            "teamId": 1610612741,
-            "age": 23,
-            "height": "7'0\"",
-            "weight": "220"
-        },
-        {
-            "id": "361",
+            "id": "317",
             "name": "Marvin Bagley III",
             "personId": 1628963,
             "teamId": 1610612765,
@@ -3259,16 +2863,16 @@
             "weight": "235"
         },
         {
-            "id": "362",
+            "id": "318",
             "name": "Mason Plumlee",
             "personId": 203486,
             "teamId": 1610612746,
             "age": 33,
-            "height": "7'0\"",
+            "height": "6'10\"",
             "weight": "254"
         },
         {
-            "id": "363",
+            "id": "319",
             "name": "Matisse Thybulle",
             "personId": 1629680,
             "teamId": 1610612757,
@@ -3277,25 +2881,16 @@
             "weight": "201"
         },
         {
-            "id": "364",
+            "id": "320",
             "name": "Matt Ryan",
             "personId": 1630346,
-            "teamId": 1610612750,
+            "teamId": 1610612740,
             "age": 26,
             "height": "6'6\"",
             "weight": "215"
         },
         {
-            "id": "365",
-            "name": "Matthew Dellavedova",
-            "personId": 203521,
-            "teamId": 1610612758,
-            "age": 32,
-            "height": "6'3\"",
-            "weight": "200"
-        },
-        {
-            "id": "366",
+            "id": "321",
             "name": "Max Christie",
             "personId": 1631108,
             "teamId": 1610612747,
@@ -3304,16 +2899,16 @@
             "weight": "190"
         },
         {
-            "id": "367",
+            "id": "322",
             "name": "Max Strus",
             "personId": 1629622,
-            "teamId": 1610612748,
+            "teamId": 1610612739,
             "age": 27,
             "height": "6'5\"",
             "weight": "215"
         },
         {
-            "id": "368",
+            "id": "323",
             "name": "Maxi Kleber",
             "personId": 1628467,
             "teamId": 1610612742,
@@ -3322,106 +2917,61 @@
             "weight": "240"
         },
         {
-            "id": "369",
-            "name": "McKinley Wright IV",
-            "personId": 1630593,
-            "teamId": 1610612742,
-            "age": 24,
-            "height": "5'11\"",
-            "weight": "192"
+            "id": "324",
+            "name": "Maxwell Lewis",
+            "personId": 1641721,
+            "teamId": 1610612747,
+            "age": 21,
+            "height": "6'7\"",
+            "weight": "195"
         },
         {
-            "id": "370",
-            "name": "Meyers Leonard",
-            "personId": 203086,
-            "teamId": 1610612749,
-            "age": 31,
-            "height": "7'0\"",
-            "weight": "260"
-        },
-        {
-            "id": "371",
-            "name": "Mfiondu Kabengele",
-            "personId": 1629662,
-            "teamId": 1610612738,
-            "age": 25,
-            "height": "6'10\"",
-            "weight": "250"
-        },
-        {
-            "id": "372",
-            "name": "Micah Potter",
-            "personId": 1630695,
-            "teamId": 1610612762,
-            "age": 25,
-            "height": "6'8\"",
-            "weight": "248"
-        },
-        {
-            "id": "373",
-            "name": "Michael Carter-Williams",
-            "personId": 203487,
-            "teamId": 1610612753,
-            "age": 31,
-            "height": "6'5\"",
-            "weight": "190"
-        },
-        {
-            "id": "374",
-            "name": "Michael Foster Jr.",
-            "personId": 1630701,
-            "teamId": 1610612755,
-            "age": 20,
-            "height": "6'8\"",
-            "weight": "250"
-        },
-        {
-            "id": "375",
+            "id": "325",
             "name": "Michael Porter Jr.",
             "personId": 1629008,
             "teamId": 1610612743,
-            "age": 24,
+            "age": 25,
             "height": "6'10\"",
             "weight": "218"
         },
         {
-            "id": "376",
+            "id": "326",
             "name": "Mikal Bridges",
             "personId": 1628969,
             "teamId": 1610612751,
-            "age": 26,
+            "age": 27,
             "height": "6'6\"",
             "weight": "209"
         },
         {
-            "id": "377",
+            "id": "327",
             "name": "Mike Conley",
             "personId": 201144,
             "teamId": 1610612750,
-            "age": 35,
-            "height": "6'1\"",
+            "age": 36,
+            "height": "6'0\"",
             "weight": "175"
         },
         {
-            "id": "378",
+            "id": "328",
             "name": "Mike Muscala",
             "personId": 203488,
-            "teamId": 1610612738,
-            "age": 31,
-            "height": "6'11\"",
+            "teamId": 1610612764,
+            "age": 32,
+            "height": "6'10\"",
             "weight": "240"
         },
         {
-            "id": "379",
+            "id": "329",
             "name": "Miles McBride",
             "personId": 1630540,
             "teamId": 1610612752,
-            "age": 22,
-            "height": "6'2\"",
+            "age": 23,
+            "height": "6'1\"",
             "weight": "195"
         },
         {
-            "id": "380",
+            "id": "330",
             "name": "Mitchell Robinson",
             "personId": 1629011,
             "teamId": 1610612752,
@@ -3430,34 +2980,16 @@
             "weight": "240"
         },
         {
-            "id": "381",
+            "id": "331",
             "name": "Mo Bamba",
             "personId": 1628964,
-            "teamId": 1610612747,
+            "teamId": 1610612755,
             "age": 25,
             "height": "7'0\"",
             "weight": "231"
         },
         {
-            "id": "382",
-            "name": "Monte Morris",
-            "personId": 1628420,
-            "teamId": 1610612764,
-            "age": 27,
-            "height": "6'2\"",
-            "weight": "183"
-        },
-        {
-            "id": "383",
-            "name": "Montrezl Harrell",
-            "personId": 1626149,
-            "teamId": 1610612755,
-            "age": 29,
-            "height": "6'7\"",
-            "weight": "240"
-        },
-        {
-            "id": "384",
+            "id": "332",
             "name": "Moritz Wagner",
             "personId": 1629021,
             "teamId": 1610612753,
@@ -3466,34 +2998,43 @@
             "weight": "245"
         },
         {
-            "id": "385",
+            "id": "333",
             "name": "Moses Brown",
             "personId": 1629650,
-            "teamId": 1610612751,
-            "age": 23,
+            "teamId": 1610612757,
+            "age": 24,
             "height": "7'2\"",
-            "weight": "245"
+            "weight": "258"
         },
         {
-            "id": "386",
+            "id": "334",
             "name": "Moses Moody",
             "personId": 1630541,
             "teamId": 1610612744,
-            "age": 20,
+            "age": 21,
             "height": "6'5\"",
             "weight": "211"
         },
         {
-            "id": "387",
-            "name": "Moussa Diabate",
-            "personId": 1631217,
-            "teamId": 1610612746,
+            "id": "335",
+            "name": "Mouhamed Gueye",
+            "personId": 1631243,
+            "teamId": 1610612737,
             "age": 21,
             "height": "6'10\"",
             "weight": "210"
         },
         {
-            "id": "388",
+            "id": "336",
+            "name": "Moussa Diabate",
+            "personId": 1631217,
+            "teamId": 1610612746,
+            "age": 21,
+            "height": "6'9\"",
+            "weight": "210"
+        },
+        {
+            "id": "337",
             "name": "Myles Turner",
             "personId": 1626167,
             "teamId": 1610612754,
@@ -3502,61 +3043,43 @@
             "weight": "250"
         },
         {
-            "id": "389",
-            "name": "Naji Marshall",
-            "personId": 1630230,
-            "teamId": 1610612740,
-            "age": 25,
-            "height": "6'7\"",
-            "weight": "220"
-        },
-        {
-            "id": "390",
+            "id": "338",
             "name": "Nassir Little",
             "personId": 1629642,
-            "teamId": 1610612757,
+            "teamId": 1610612756,
             "age": 23,
-            "height": "6'5\"",
+            "height": "6'6\"",
             "weight": "220"
         },
         {
-            "id": "391",
-            "name": "Nathan Knight",
-            "personId": 1630233,
-            "teamId": 1610612750,
-            "age": 25,
-            "height": "6'8\"",
-            "weight": "253"
+            "id": "339",
+            "name": "Nate Hinton",
+            "personId": 1630207,
+            "teamId": 1610612745,
+            "age": 24,
+            "height": "6'5\"",
+            "weight": "210"
         },
         {
-            "id": "392",
+            "id": "340",
+            "name": "Nate Williams",
+            "personId": 1631466,
+            "teamId": 1610612745,
+            "age": 24,
+            "height": "6'5\"",
+            "weight": "205"
+        },
+        {
+            "id": "341",
             "name": "Naz Reid",
             "personId": 1629675,
             "teamId": 1610612750,
-            "age": 23,
+            "age": 24,
             "height": "6'9\"",
             "weight": "264"
         },
         {
-            "id": "393",
-            "name": "Neemias Queta",
-            "personId": 1629674,
-            "teamId": 1610612758,
-            "age": 23,
-            "height": "7'0\"",
-            "weight": "248"
-        },
-        {
-            "id": "394",
-            "name": "Nerlens Noel",
-            "personId": 203457,
-            "teamId": 1610612751,
-            "age": 29,
-            "height": "6'10\"",
-            "weight": "220"
-        },
-        {
-            "id": "395",
+            "id": "342",
             "name": "Nic Claxton",
             "personId": 1629651,
             "teamId": 1610612751,
@@ -3565,7 +3088,7 @@
             "weight": "215"
         },
         {
-            "id": "396",
+            "id": "343",
             "name": "Nick Richards",
             "personId": 1630208,
             "teamId": 1610612766,
@@ -3574,25 +3097,34 @@
             "weight": "245"
         },
         {
-            "id": "397",
+            "id": "344",
+            "name": "Nick Smith Jr.",
+            "personId": 1641733,
+            "teamId": 1610612766,
+            "age": 19,
+            "height": "6'2\"",
+            "weight": "185"
+        },
+        {
+            "id": "345",
             "name": "Nickeil Alexander-Walker",
             "personId": 1629638,
             "teamId": 1610612750,
-            "age": 24,
+            "age": 25,
             "height": "6'5\"",
             "weight": "205"
         },
         {
-            "id": "398",
+            "id": "346",
             "name": "Nicolas Batum",
             "personId": 201587,
-            "teamId": 1610612746,
+            "teamId": 1610612755,
             "age": 34,
             "height": "6'8\"",
             "weight": "230"
         },
         {
-            "id": "399",
+            "id": "347",
             "name": "Nikola Jokic",
             "personId": 203999,
             "teamId": 1610612743,
@@ -3601,34 +3133,25 @@
             "weight": "284"
         },
         {
-            "id": "400",
+            "id": "348",
             "name": "Nikola Jovic",
             "personId": 1631107,
             "teamId": 1610612748,
-            "age": 19,
+            "age": 20,
             "height": "6'10\"",
             "weight": "205"
         },
         {
-            "id": "401",
+            "id": "349",
             "name": "Nikola Vucevic",
             "personId": 202696,
             "teamId": 1610612741,
-            "age": 32,
+            "age": 33,
             "height": "6'10\"",
             "weight": "260"
         },
         {
-            "id": "402",
-            "name": "Noah Vonleh",
-            "personId": 203943,
-            "teamId": 1610612738,
-            "age": 27,
-            "height": "6'10\"",
-            "weight": "257"
-        },
-        {
-            "id": "403",
+            "id": "350",
             "name": "Norman Powell",
             "personId": 1626181,
             "teamId": 1610612746,
@@ -3637,25 +3160,25 @@
             "weight": "215"
         },
         {
-            "id": "404",
-            "name": "O.G. Anunoby",
+            "id": "351",
+            "name": "OG Anunoby",
             "personId": 1628384,
             "teamId": 1610612761,
-            "age": 25,
+            "age": 26,
             "height": "6'7\"",
             "weight": "232"
         },
         {
-            "id": "405",
+            "id": "352",
             "name": "Obi Toppin",
             "personId": 1630167,
-            "teamId": 1610612752,
+            "teamId": 1610612754,
             "age": 25,
             "height": "6'9\"",
             "weight": "220"
         },
         {
-            "id": "406",
+            "id": "353",
             "name": "Ochai Agbaji",
             "personId": 1630534,
             "teamId": 1610612762,
@@ -3664,61 +3187,79 @@
             "weight": "215"
         },
         {
-            "id": "407",
+            "id": "354",
             "name": "Olivier Sarr",
             "personId": 1630846,
             "teamId": 1610612760,
             "age": 24,
-            "height": "6'11\"",
+            "height": "6'10\"",
             "weight": "240"
         },
         {
-            "id": "408",
+            "id": "355",
+            "name": "Olivier-Maxence Prosper",
+            "personId": 1641765,
+            "teamId": 1610612742,
+            "age": 21,
+            "height": "6'7\"",
+            "weight": "230"
+        },
+        {
+            "id": "356",
             "name": "Omer Yurtseven",
             "personId": 1630209,
-            "teamId": 1610612748,
-            "age": 24,
+            "teamId": 1610612762,
+            "age": 25,
             "height": "6'11\"",
             "weight": "275"
         },
         {
-            "id": "409",
+            "id": "357",
+            "name": "Onuralp Bitim",
+            "personId": 1641931,
+            "teamId": 1610612741,
+            "age": 24,
+            "height": "6'6\"",
+            "weight": "215"
+        },
+        {
+            "id": "358",
             "name": "Onyeka Okongwu",
             "personId": 1630168,
             "teamId": 1610612737,
             "age": 22,
-            "height": "6'9\"",
+            "height": "6'10\"",
             "weight": "240"
         },
         {
-            "id": "410",
+            "id": "359",
             "name": "Orlando Robinson",
             "personId": 1631115,
             "teamId": 1610612748,
-            "age": 22,
+            "age": 23,
             "height": "6'10\"",
             "weight": "235"
         },
         {
-            "id": "411",
+            "id": "360",
             "name": "Oshae Brissett",
             "personId": 1629052,
-            "teamId": 1610612754,
-            "age": 24,
+            "teamId": 1610612738,
+            "age": 25,
             "height": "6'7\"",
             "weight": "210"
         },
         {
-            "id": "412",
+            "id": "361",
             "name": "Otto Porter Jr.",
             "personId": 203490,
             "teamId": 1610612761,
-            "age": 29,
+            "age": 30,
             "height": "6'8\"",
             "weight": "198"
         },
         {
-            "id": "413",
+            "id": "362",
             "name": "Ousmane Dieng",
             "personId": 1631172,
             "teamId": 1610612760,
@@ -3727,34 +3268,25 @@
             "weight": "185"
         },
         {
-            "id": "414",
+            "id": "363",
             "name": "P.J. Tucker",
             "personId": 200782,
-            "teamId": 1610612755,
+            "teamId": 1610612746,
             "age": 38,
             "height": "6'5\"",
             "weight": "245"
         },
         {
-            "id": "415",
+            "id": "364",
             "name": "P.J. Washington",
             "personId": 1629023,
             "teamId": 1610612766,
-            "age": 24,
+            "age": 25,
             "height": "6'7\"",
             "weight": "230"
         },
         {
-            "id": "416",
-            "name": "PJ Dozier",
-            "personId": 1628408,
-            "teamId": 1610612758,
-            "age": 26,
-            "height": "6'6\"",
-            "weight": "205"
-        },
-        {
-            "id": "417",
+            "id": "365",
             "name": "Paolo Banchero",
             "personId": 1631094,
             "teamId": 1610612753,
@@ -3763,7 +3295,7 @@
             "weight": "250"
         },
         {
-            "id": "418",
+            "id": "366",
             "name": "Pascal Siakam",
             "personId": 1627783,
             "teamId": 1610612761,
@@ -3772,7 +3304,7 @@
             "weight": "230"
         },
         {
-            "id": "419",
+            "id": "367",
             "name": "Pat Connaughton",
             "personId": 1626192,
             "teamId": 1610612749,
@@ -3781,43 +3313,34 @@
             "weight": "209"
         },
         {
-            "id": "420",
+            "id": "368",
             "name": "Patrick Baldwin Jr.",
             "personId": 1631116,
-            "teamId": 1610612744,
+            "teamId": 1610612764,
             "age": 20,
             "height": "6'9\"",
             "weight": "220"
         },
         {
-            "id": "421",
+            "id": "369",
             "name": "Patrick Beverley",
             "personId": 201976,
-            "teamId": 1610612741,
-            "age": 34,
+            "teamId": 1610612755,
+            "age": 35,
             "height": "6'2\"",
             "weight": "180"
         },
         {
-            "id": "422",
+            "id": "370",
             "name": "Patrick Williams",
             "personId": 1630172,
             "teamId": 1610612741,
-            "age": 21,
+            "age": 22,
             "height": "6'7\"",
             "weight": "215"
         },
         {
-            "id": "423",
-            "name": "Patty Mills",
-            "personId": 201988,
-            "teamId": 1610612751,
-            "age": 34,
-            "height": "6'0\"",
-            "weight": "180"
-        },
-        {
-            "id": "424",
+            "id": "371",
             "name": "Paul George",
             "personId": 202331,
             "teamId": 1610612746,
@@ -3826,16 +3349,16 @@
             "weight": "220"
         },
         {
-            "id": "425",
+            "id": "372",
             "name": "Paul Reed",
             "personId": 1630194,
             "teamId": 1610612755,
-            "age": 23,
+            "age": 24,
             "height": "6'9\"",
             "weight": "210"
         },
         {
-            "id": "426",
+            "id": "373",
             "name": "Payton Pritchard",
             "personId": 1630202,
             "teamId": 1610612738,
@@ -3844,25 +3367,25 @@
             "weight": "195"
         },
         {
-            "id": "427",
+            "id": "374",
             "name": "Peyton Watson",
             "personId": 1631212,
             "teamId": 1610612743,
-            "age": 20,
+            "age": 21,
             "height": "6'7\"",
             "weight": "200"
         },
         {
-            "id": "428",
+            "id": "375",
             "name": "Precious Achiuwa",
             "personId": 1630173,
             "teamId": 1610612761,
-            "age": 23,
+            "age": 24,
             "height": "6'8\"",
             "weight": "225"
         },
         {
-            "id": "429",
+            "id": "376",
             "name": "Quentin Grimes",
             "personId": 1629656,
             "teamId": 1610612752,
@@ -3871,61 +3394,43 @@
             "weight": "210"
         },
         {
-            "id": "430",
-            "name": "Quenton Jackson",
-            "personId": 1631245,
-            "teamId": 1610612764,
-            "age": 24,
-            "height": "6'5\"",
-            "weight": "173"
-        },
-        {
-            "id": "431",
+            "id": "377",
             "name": "R.J. Hampton",
             "personId": 1630181,
-            "teamId": 1610612765,
+            "teamId": 1610612748,
             "age": 22,
             "height": "6'4\"",
             "weight": "175"
         },
         {
-            "id": "432",
+            "id": "378",
             "name": "RJ Barrett",
             "personId": 1629628,
             "teamId": 1610612752,
-            "age": 22,
+            "age": 23,
             "height": "6'6\"",
             "weight": "214"
         },
         {
-            "id": "433",
-            "name": "RaiQuan Gray",
-            "personId": 1630564,
-            "teamId": 1610612751,
-            "age": 23,
-            "height": "6'7\"",
-            "weight": "269"
+            "id": "379",
+            "name": "Rayan Rupert",
+            "personId": 1641712,
+            "teamId": 1610612757,
+            "age": 19,
+            "height": "6'6\"",
+            "weight": "185"
         },
         {
-            "id": "434",
-            "name": "Raul Neto",
-            "personId": 203526,
-            "teamId": 1610612739,
-            "age": 31,
-            "height": "6'2\"",
-            "weight": "180"
-        },
-        {
-            "id": "435",
-            "name": "Reggie Bullock",
+            "id": "380",
+            "name": "Reggie Bullock Jr.",
             "personId": 203493,
-            "teamId": 1610612742,
+            "teamId": 1610612745,
             "age": 32,
             "height": "6'6\"",
             "weight": "205"
         },
         {
-            "id": "436",
+            "id": "381",
             "name": "Reggie Jackson",
             "personId": 202704,
             "teamId": 1610612743,
@@ -3934,106 +3439,61 @@
             "weight": "208"
         },
         {
-            "id": "437",
+            "id": "382",
             "name": "Richaun Holmes",
             "personId": 1626158,
-            "teamId": 1610612758,
-            "age": 29,
-            "height": "6'8\"",
+            "teamId": 1610612742,
+            "age": 30,
+            "height": "6'9\"",
             "weight": "235"
         },
         {
-            "id": "438",
-            "name": "Ricky Rubio",
-            "personId": 201937,
-            "teamId": 1610612739,
-            "age": 32,
-            "height": "6'2\"",
-            "weight": "190"
-        },
-        {
-            "id": "439",
+            "id": "383",
             "name": "Robert Covington",
             "personId": 203496,
-            "teamId": 1610612746,
+            "teamId": 1610612755,
             "age": 32,
             "height": "6'7\"",
             "weight": "209"
         },
         {
-            "id": "440",
+            "id": "384",
             "name": "Robert Williams III",
             "personId": 1629057,
-            "teamId": 1610612738,
-            "age": 25,
+            "teamId": 1610612757,
+            "age": 26,
             "height": "6'9\"",
-            "weight": "237"
+            "weight": "249"
         },
         {
-            "id": "441",
+            "id": "385",
             "name": "Robin Lopez",
             "personId": 201577,
-            "teamId": 1610612739,
+            "teamId": 1610612749,
             "age": 35,
-            "height": "7'0\"",
+            "height": "7'1\"",
             "weight": "281"
         },
         {
-            "id": "442",
-            "name": "Rodney McGruder",
-            "personId": 203585,
-            "teamId": 1610612765,
-            "age": 31,
-            "height": "6'4\"",
-            "weight": "205"
-        },
-        {
-            "id": "443",
-            "name": "Romeo Langford",
-            "personId": 1629641,
-            "teamId": 1610612759,
-            "age": 23,
-            "height": "6'5\"",
-            "weight": "216"
-        },
-        {
-            "id": "444",
-            "name": "Ron Harper Jr.",
-            "personId": 1631199,
-            "teamId": 1610612761,
-            "age": 23,
-            "height": "6'5\"",
-            "weight": "245"
-        },
-        {
-            "id": "445",
+            "id": "386",
             "name": "Royce O'Neale",
             "personId": 1626220,
             "teamId": 1610612751,
-            "age": 29,
+            "age": 30,
             "height": "6'6\"",
             "weight": "226"
         },
         {
-            "id": "446",
-            "name": "Rudy Gay",
-            "personId": 200752,
-            "teamId": 1610612762,
-            "age": 36,
-            "height": "6'8\"",
-            "weight": "250"
-        },
-        {
-            "id": "447",
+            "id": "387",
             "name": "Rudy Gobert",
             "personId": 203497,
             "teamId": 1610612750,
-            "age": 30,
+            "age": 31,
             "height": "7'1\"",
             "weight": "258"
         },
         {
-            "id": "448",
+            "id": "388",
             "name": "Rui Hachimura",
             "personId": 1629060,
             "teamId": 1610612747,
@@ -4042,43 +3502,43 @@
             "weight": "230"
         },
         {
-            "id": "449",
+            "id": "389",
             "name": "Russell Westbrook",
             "personId": 201566,
             "teamId": 1610612746,
             "age": 34,
-            "height": "6'3\"",
+            "height": "6'4\"",
             "weight": "200"
         },
         {
-            "id": "450",
+            "id": "390",
             "name": "Ryan Arcidiacono",
             "personId": 1627853,
-            "teamId": 1610612757,
+            "teamId": 1610612752,
             "age": 29,
             "height": "6'3\"",
             "weight": "195"
         },
         {
-            "id": "451",
+            "id": "391",
             "name": "Ryan Rollins",
             "personId": 1631157,
-            "teamId": 1610612744,
-            "age": 20,
+            "teamId": 1610612764,
+            "age": 21,
             "height": "6'3\"",
             "weight": "180"
         },
         {
-            "id": "452",
+            "id": "392",
             "name": "Saben Lee",
             "personId": 1630240,
             "teamId": 1610612756,
-            "age": 23,
+            "age": 24,
             "height": "6'2\"",
             "weight": "183"
         },
         {
-            "id": "453",
+            "id": "393",
             "name": "Saddiq Bey",
             "personId": 1630180,
             "teamId": 1610612737,
@@ -4087,7 +3547,7 @@
             "weight": "215"
         },
         {
-            "id": "454",
+            "id": "394",
             "name": "Sam Hauser",
             "personId": 1630573,
             "teamId": 1610612738,
@@ -4096,7 +3556,7 @@
             "weight": "217"
         },
         {
-            "id": "455",
+            "id": "395",
             "name": "Sam Merrill",
             "personId": 1630241,
             "teamId": 1610612739,
@@ -4105,16 +3565,16 @@
             "weight": "205"
         },
         {
-            "id": "456",
+            "id": "396",
             "name": "Sandro Mamukelashvili",
             "personId": 1630572,
             "teamId": 1610612759,
             "age": 24,
-            "height": "6'10\"",
+            "height": "6'9\"",
             "weight": "240"
         },
         {
-            "id": "457",
+            "id": "397",
             "name": "Santi Aldama",
             "personId": 1630583,
             "teamId": 1610612763,
@@ -4123,79 +3583,70 @@
             "weight": "215"
         },
         {
-            "id": "458",
-            "name": "Scottie Barnes",
-            "personId": 1630567,
-            "teamId": 1610612761,
-            "age": 21,
+            "id": "398",
+            "name": "Sasha Vezenkov",
+            "personId": 1628426,
+            "teamId": 1610612758,
+            "age": 28,
             "height": "6'8\"",
             "weight": "225"
         },
         {
-            "id": "459",
-            "name": "Scotty Pippen Jr.",
-            "personId": 1630590,
-            "teamId": 1610612747,
+            "id": "399",
+            "name": "Scoot Henderson",
+            "personId": 1630703,
+            "teamId": 1610612757,
+            "age": 19,
+            "height": "6'3\"",
+            "weight": "202"
+        },
+        {
+            "id": "400",
+            "name": "Scottie Barnes",
+            "personId": 1630567,
+            "teamId": 1610612761,
             "age": 22,
-            "height": "6'1\"",
-            "weight": "170"
+            "height": "6'7\"",
+            "weight": "225"
         },
         {
-            "id": "460",
-            "name": "Serge Ibaka",
-            "personId": 201586,
-            "teamId": 1610612749,
-            "age": 33,
-            "height": "6'11\"",
-            "weight": "235"
-        },
-        {
-            "id": "461",
+            "id": "401",
             "name": "Seth Curry",
             "personId": 203552,
-            "teamId": 1610612751,
-            "age": 32,
+            "teamId": 1610612742,
+            "age": 33,
             "height": "6'1\"",
             "weight": "185"
         },
         {
-            "id": "462",
+            "id": "402",
             "name": "Shaedon Sharpe",
             "personId": 1631101,
             "teamId": 1610612757,
             "age": 20,
             "height": "6'5\"",
-            "weight": "200"
+            "weight": "205"
         },
         {
-            "id": "463",
+            "id": "403",
             "name": "Shai Gilgeous-Alexander",
             "personId": 1628983,
             "teamId": 1610612760,
-            "age": 24,
+            "age": 25,
             "height": "6'6\"",
             "weight": "195"
         },
         {
-            "id": "464",
+            "id": "404",
             "name": "Shake Milton",
             "personId": 1629003,
-            "teamId": 1610612755,
-            "age": 26,
+            "teamId": 1610612750,
+            "age": 27,
             "height": "6'5\"",
             "weight": "205"
         },
         {
-            "id": "465",
-            "name": "Shaquille Harrison",
-            "personId": 1627885,
-            "teamId": 1610612747,
-            "age": 29,
-            "height": "6'4\"",
-            "weight": "195"
-        },
-        {
-            "id": "466",
+            "id": "405",
             "name": "Simone Fontecchio",
             "personId": 1631323,
             "teamId": 1610612762,
@@ -4204,16 +3655,16 @@
             "weight": "209"
         },
         {
-            "id": "467",
+            "id": "406",
             "name": "Skylar Mays",
             "personId": 1630219,
             "teamId": 1610612757,
-            "age": 25,
-            "height": "6'4\"",
+            "age": 26,
+            "height": "6'3\"",
             "weight": "205"
         },
         {
-            "id": "468",
+            "id": "407",
             "name": "Spencer Dinwiddie",
             "personId": 203915,
             "teamId": 1610612751,
@@ -4222,16 +3673,7 @@
             "weight": "215"
         },
         {
-            "id": "469",
-            "name": "Stanley Johnson",
-            "personId": 1626169,
-            "teamId": 1610612759,
-            "age": 27,
-            "height": "6'6\"",
-            "weight": "242"
-        },
-        {
-            "id": "470",
+            "id": "408",
             "name": "Stanley Umude",
             "personId": 1630649,
             "teamId": 1610612765,
@@ -4240,7 +3682,7 @@
             "weight": "210"
         },
         {
-            "id": "471",
+            "id": "409",
             "name": "Stephen Curry",
             "personId": 201939,
             "teamId": 1610612744,
@@ -4249,34 +3691,16 @@
             "weight": "185"
         },
         {
-            "id": "472",
-            "name": "Sterling Brown",
-            "personId": 1628425,
-            "teamId": 1610612747,
-            "age": 28,
-            "height": "6'5\"",
-            "weight": "219"
-        },
-        {
-            "id": "473",
-            "name": "Steven Adams",
-            "personId": 203500,
-            "teamId": 1610612763,
-            "age": 29,
-            "height": "6'11\"",
-            "weight": "265"
-        },
-        {
-            "id": "474",
+            "id": "410",
             "name": "Svi Mykhailiuk",
             "personId": 1629004,
-            "teamId": 1610612766,
-            "age": 25,
+            "teamId": 1610612738,
+            "age": 26,
             "height": "6'7\"",
             "weight": "205"
         },
         {
-            "id": "475",
+            "id": "411",
             "name": "T.J. McConnell",
             "personId": 204456,
             "teamId": 1610612754,
@@ -4285,25 +3709,7 @@
             "weight": "190"
         },
         {
-            "id": "476",
-            "name": "T.J. Warren",
-            "personId": 203933,
-            "teamId": 1610612756,
-            "age": 29,
-            "height": "6'8\"",
-            "weight": "220"
-        },
-        {
-            "id": "477",
-            "name": "Taj Gibson",
-            "personId": 201959,
-            "teamId": 1610612764,
-            "age": 37,
-            "height": "6'9\"",
-            "weight": "232"
-        },
-        {
-            "id": "478",
+            "id": "412",
             "name": "Talen Horton-Tucker",
             "personId": 1629659,
             "teamId": 1610612762,
@@ -4312,7 +3718,7 @@
             "weight": "234"
         },
         {
-            "id": "479",
+            "id": "413",
             "name": "Tari Eason",
             "personId": 1631106,
             "teamId": 1610612745,
@@ -4321,43 +3727,34 @@
             "weight": "215"
         },
         {
-            "id": "480",
+            "id": "414",
             "name": "Taurean Prince",
             "personId": 1627752,
-            "teamId": 1610612750,
+            "teamId": 1610612747,
             "age": 29,
             "height": "6'6\"",
             "weight": "218"
         },
         {
-            "id": "481",
+            "id": "415",
+            "name": "Taylor Hendricks",
+            "personId": 1641707,
+            "teamId": 1610612762,
+            "age": 19,
+            "height": "6'9\"",
+            "weight": "215"
+        },
+        {
+            "id": "416",
             "name": "Terance Mann",
             "personId": 1629611,
             "teamId": 1610612746,
-            "age": 26,
+            "age": 27,
             "height": "6'5\"",
             "weight": "215"
         },
         {
-            "id": "482",
-            "name": "Terence Davis",
-            "personId": 1629056,
-            "teamId": 1610612758,
-            "age": 26,
-            "height": "6'4\"",
-            "weight": "201"
-        },
-        {
-            "id": "483",
-            "name": "Terrence Ross",
-            "personId": 203082,
-            "teamId": 1610612756,
-            "age": 32,
-            "height": "6'7\"",
-            "weight": "206"
-        },
-        {
-            "id": "484",
+            "id": "417",
             "name": "Terry Rozier",
             "personId": 1626179,
             "teamId": 1610612766,
@@ -4366,61 +3763,52 @@
             "weight": "190"
         },
         {
-            "id": "485",
+            "id": "418",
             "name": "Terry Taylor",
             "personId": 1630678,
             "teamId": 1610612741,
-            "age": 23,
+            "age": 24,
             "height": "6'4\"",
             "weight": "230"
         },
         {
-            "id": "486",
+            "id": "419",
             "name": "Thaddeus Young",
             "personId": 201152,
             "teamId": 1610612761,
-            "age": 34,
+            "age": 35,
             "height": "6'8\"",
             "weight": "235"
         },
         {
-            "id": "487",
+            "id": "420",
             "name": "Thanasis Antetokounmpo",
             "personId": 203648,
             "teamId": 1610612749,
-            "age": 30,
+            "age": 31,
             "height": "6'7\"",
             "weight": "219"
         },
         {
-            "id": "488",
+            "id": "421",
             "name": "Theo Maledon",
             "personId": 1630177,
             "teamId": 1610612766,
-            "age": 21,
-            "height": "6'5\"",
+            "age": 22,
+            "height": "6'4\"",
             "weight": "175"
         },
         {
-            "id": "489",
-            "name": "Theo Pinson",
-            "personId": 1629033,
-            "teamId": 1610612742,
-            "age": 27,
-            "height": "6'7\"",
-            "weight": "212"
-        },
-        {
-            "id": "490",
+            "id": "422",
             "name": "Thomas Bryant",
             "personId": 1628418,
-            "teamId": 1610612743,
-            "age": 25,
+            "teamId": 1610612748,
+            "age": 26,
             "height": "6'10\"",
             "weight": "248"
         },
         {
-            "id": "491",
+            "id": "423",
             "name": "Tim Hardaway Jr.",
             "personId": 203501,
             "teamId": 1610612742,
@@ -4429,43 +3817,52 @@
             "weight": "205"
         },
         {
-            "id": "492",
+            "id": "424",
             "name": "Tobias Harris",
             "personId": 202699,
             "teamId": 1610612755,
-            "age": 30,
+            "age": 31,
+            "height": "6'8\"",
+            "weight": "226"
+        },
+        {
+            "id": "425",
+            "name": "Torrey Craig",
+            "personId": 1628470,
+            "teamId": 1610612741,
+            "age": 32,
+            "height": "6'5\"",
+            "weight": "221"
+        },
+        {
+            "id": "426",
+            "name": "Toumani Camara",
+            "personId": 1641739,
+            "teamId": 1610612757,
+            "age": 23,
             "height": "6'7\"",
             "weight": "226"
         },
         {
-            "id": "493",
-            "name": "Tony Bradley",
-            "personId": 1628396,
-            "teamId": 1610612741,
-            "age": 25,
-            "height": "6'11\"",
-            "weight": "248"
-        },
-        {
-            "id": "494",
-            "name": "Torrey Craig",
-            "personId": 1628470,
-            "teamId": 1610612756,
-            "age": 32,
-            "height": "6'7\"",
-            "weight": "221"
-        },
-        {
-            "id": "495",
+            "id": "427",
             "name": "Trae Young",
             "personId": 1629027,
             "teamId": 1610612737,
-            "age": 24,
+            "age": 25,
             "height": "6'1\"",
             "weight": "164"
         },
         {
-            "id": "496",
+            "id": "428",
+            "name": "Trayce Jackson-Davis",
+            "personId": 1631218,
+            "teamId": 1610612744,
+            "age": 23,
+            "height": "6'9\"",
+            "weight": "245"
+        },
+        {
+            "id": "429",
             "name": "Tre Jones",
             "personId": 1630200,
             "teamId": 1610612759,
@@ -4474,7 +3871,7 @@
             "weight": "185"
         },
         {
-            "id": "497",
+            "id": "430",
             "name": "Tre Mann",
             "personId": 1630544,
             "teamId": 1610612760,
@@ -4483,106 +3880,61 @@
             "weight": "178"
         },
         {
-            "id": "498",
+            "id": "431",
             "name": "Trendon Watford",
             "personId": 1630570,
-            "teamId": 1610612757,
-            "age": 22,
+            "teamId": 1610612751,
+            "age": 23,
             "height": "6'8\"",
             "weight": "237"
         },
         {
-            "id": "499",
+            "id": "432",
             "name": "Trent Forrest",
             "personId": 1630235,
             "teamId": 1610612737,
-            "age": 24,
+            "age": 25,
             "height": "6'4\"",
             "weight": "210"
         },
         {
-            "id": "500",
-            "name": "Trevelin Queen",
-            "personId": 1630243,
-            "teamId": 1610612754,
-            "age": 26,
-            "height": "6'6\"",
-            "weight": "190"
-        },
-        {
-            "id": "501",
-            "name": "Trevor Hudgins",
-            "personId": 1631309,
-            "teamId": 1610612745,
-            "age": 24,
-            "height": "6'0\"",
-            "weight": "180"
-        },
-        {
-            "id": "502",
-            "name": "Trevor Keels",
-            "personId": 1631211,
-            "teamId": 1610612752,
-            "age": 19,
-            "height": "6'4\"",
-            "weight": "221"
-        },
-        {
-            "id": "503",
-            "name": "Trey Lyles",
-            "personId": 1626168,
-            "teamId": 1610612758,
-            "age": 27,
+            "id": "433",
+            "name": "Tristan Thompson",
+            "personId": 202684,
+            "teamId": 1610612739,
+            "age": 32,
             "height": "6'9\"",
-            "weight": "234"
+            "weight": "254"
         },
         {
-            "id": "504",
-            "name": "Trey Murphy III",
-            "personId": 1630530,
-            "teamId": 1610612740,
-            "age": 22,
-            "height": "6'8\"",
-            "weight": "206"
-        },
-        {
-            "id": "505",
+            "id": "434",
             "name": "Troy Brown Jr.",
             "personId": 1628972,
-            "teamId": 1610612747,
-            "age": 23,
+            "teamId": 1610612750,
+            "age": 24,
             "height": "6'7\"",
             "weight": "215"
         },
         {
-            "id": "506",
+            "id": "435",
             "name": "Ty Jerome",
             "personId": 1629660,
-            "teamId": 1610612744,
-            "age": 25,
+            "teamId": 1610612739,
+            "age": 26,
             "height": "6'5\"",
             "weight": "195"
         },
         {
-            "id": "507",
+            "id": "436",
             "name": "TyTy Washington Jr.",
             "personId": 1631102,
-            "teamId": 1610612745,
+            "teamId": 1610612749,
             "age": 21,
             "height": "6'3\"",
             "weight": "195"
         },
         {
-            "id": "508",
-            "name": "Tyler Dorsey",
-            "personId": 1628416,
-            "teamId": 1610612742,
-            "age": 27,
-            "height": "6'4\"",
-            "weight": "180"
-        },
-        {
-            "id": "509",
+            "id": "437",
             "name": "Tyler Herro",
             "personId": 1629639,
             "teamId": 1610612748,
@@ -4591,7 +3943,7 @@
             "weight": "195"
         },
         {
-            "id": "510",
+            "id": "438",
             "name": "Tyrese Haliburton",
             "personId": 1630169,
             "teamId": 1610612754,
@@ -4600,115 +3952,70 @@
             "weight": "185"
         },
         {
-            "id": "511",
-            "name": "Tyrese Martin",
-            "personId": 1631213,
-            "teamId": 1610612737,
-            "age": 24,
-            "height": "6'6\"",
-            "weight": "215"
-        },
-        {
-            "id": "512",
+            "id": "439",
             "name": "Tyrese Maxey",
             "personId": 1630178,
             "teamId": 1610612755,
-            "age": 22,
+            "age": 23,
             "height": "6'2\"",
             "weight": "200"
         },
         {
-            "id": "513",
+            "id": "440",
             "name": "Tyus Jones",
             "personId": 1626145,
-            "teamId": 1610612763,
+            "teamId": 1610612764,
             "age": 27,
-            "height": "6'2\"",
+            "height": "6'1\"",
             "weight": "196"
         },
         {
-            "id": "514",
+            "id": "441",
             "name": "Udoka Azubuike",
             "personId": 1628962,
-            "teamId": 1610612762,
-            "age": 23,
+            "teamId": 1610612756,
+            "age": 24,
             "height": "6'11\"",
             "weight": "270"
         },
         {
-            "id": "515",
-            "name": "Udonis Haslem",
-            "personId": 2617,
-            "teamId": 1610612748,
-            "age": 42,
-            "height": "6'7\"",
-            "weight": "235"
-        },
-        {
-            "id": "516",
-            "name": "Usman Garuba",
-            "personId": 1630586,
-            "teamId": 1610612745,
-            "age": 21,
-            "height": "6'8\"",
-            "weight": "229"
-        },
-        {
-            "id": "517",
-            "name": "Vernon Carey Jr.",
-            "personId": 1630176,
-            "teamId": 1610612762,
-            "age": 22,
-            "height": "6'10\"",
-            "weight": "270"
-        },
-        {
-            "id": "518",
-            "name": "Victor Oladipo",
-            "personId": 203506,
-            "teamId": 1610612748,
-            "age": 31,
+            "id": "442",
+            "name": "Vasilije Micic",
+            "personId": 203995,
+            "teamId": 1610612760,
+            "age": 29,
             "height": "6'3\"",
-            "weight": "213"
+            "weight": "188"
         },
         {
-            "id": "519",
+            "id": "443",
+            "name": "Victor Wembanyama",
+            "personId": 1641705,
+            "teamId": 1610612759,
+            "age": 19,
+            "height": "7'4\"",
+            "weight": "210"
+        },
+        {
+            "id": "444",
             "name": "Vince Williams Jr.",
             "personId": 1631246,
             "teamId": 1610612763,
-            "age": 22,
+            "age": 23,
             "height": "6'4\"",
             "weight": "205"
         },
         {
-            "id": "520",
-            "name": "Vit Krejci",
-            "personId": 1630249,
-            "teamId": 1610612737,
-            "age": 22,
-            "height": "6'8\"",
-            "weight": "195"
-        },
-        {
-            "id": "521",
-            "name": "Vlatko Cancar",
-            "personId": 1628427,
-            "teamId": 1610612743,
-            "age": 26,
-            "height": "6'8\"",
-            "weight": "236"
-        },
-        {
-            "id": "522",
+            "id": "445",
             "name": "Walker Kessler",
             "personId": 1631117,
             "teamId": 1610612762,
-            "age": 21,
+            "age": 22,
             "height": "7'0\"",
             "weight": "245"
         },
         {
-            "id": "523",
+            "id": "446",
             "name": "Wendell Carter Jr.",
             "personId": 1628976,
             "teamId": 1610612753,
@@ -4717,79 +4024,7 @@
             "weight": "270"
         },
         {
-            "id": "524",
-            "name": "Wendell Moore Jr.",
-            "personId": 1631111,
-            "teamId": 1610612750,
-            "age": 21,
-            "height": "6'5\"",
-            "weight": "215"
-        },
-        {
-            "id": "525",
-            "name": "Wenyen Gabriel",
-            "personId": 1629117,
-            "teamId": 1610612747,
-            "age": 26,
-            "height": "6'9\"",
-            "weight": "205"
-        },
-        {
-            "id": "526",
-            "name": "Wesley Matthews",
-            "personId": 202083,
-            "teamId": 1610612749,
-            "age": 36,
-            "height": "6'5\"",
-            "weight": "220"
-        },
-        {
-            "id": "527",
-            "name": "Will Barton",
-            "personId": 203115,
-            "teamId": 1610612761,
-            "age": 32,
-            "height": "6'5\"",
-            "weight": "181"
-        },
-        {
-            "id": "528",
-            "name": "Willy Hernangomez",
-            "personId": 1626195,
-            "teamId": 1610612740,
-            "age": 29,
-            "height": "6'11\"",
-            "weight": "250"
-        },
-        {
-            "id": "529",
-            "name": "Xavier Cooks",
-            "personId": 1641645,
-            "teamId": 1610612764,
-            "age": 27,
-            "height": "6'8\"",
-            "weight": "183"
-        },
-        {
-            "id": "530",
-            "name": "Xavier Moon",
-            "personId": 1629875,
-            "teamId": 1610612746,
-            "age": 28,
-            "height": "6'0\"",
-            "weight": "165"
-        },
-        {
-            "id": "531",
-            "name": "Xavier Sneed",
-            "personId": 1630270,
-            "teamId": 1610612766,
-            "age": 25,
-            "height": "6'5\"",
-            "weight": "215"
-        },
-        {
-            "id": "532",
+            "id": "447",
             "name": "Xavier Tillman",
             "personId": 1630214,
             "teamId": 1610612763,
@@ -4798,16 +4033,16 @@
             "weight": "245"
         },
         {
-            "id": "533",
+            "id": "448",
             "name": "Yuta Watanabe",
             "personId": 1629139,
-            "teamId": 1610612751,
-            "age": 28,
-            "height": "6'8\"",
+            "teamId": 1610612756,
+            "age": 29,
+            "height": "6'9\"",
             "weight": "215"
         },
         {
-            "id": "534",
+            "id": "449",
             "name": "Zach Collins",
             "personId": 1628380,
             "teamId": 1610612759,
@@ -4816,7 +4051,7 @@
             "weight": "250"
         },
         {
-            "id": "535",
+            "id": "450",
             "name": "Zach LaVine",
             "personId": 203897,
             "teamId": 1610612741,
@@ -4825,7 +4060,7 @@
             "weight": "200"
         },
         {
-            "id": "536",
+            "id": "451",
             "name": "Zeke Nnaji",
             "personId": 1630192,
             "teamId": 1610612743,
@@ -4834,20 +4069,20 @@
             "weight": "240"
         },
         {
-            "id": "537",
+            "id": "452",
             "name": "Ziaire Williams",
             "personId": 1630533,
             "teamId": 1610612763,
-            "age": 21,
+            "age": 22,
             "height": "6'9\"",
             "weight": "185"
         },
         {
-            "id": "538",
+            "id": "453",
             "name": "Zion Williamson",
             "personId": 1629627,
             "teamId": 1610612740,
-            "age": 22,
+            "age": 23,
             "height": "6'6\"",
             "weight": "284"
         }
@@ -4857,25 +4092,17 @@
             "name": "Alperen Sengun",
             "personId": 1630578,
             "teamId": 1610612745,
-            "age": 20,
+            "age": 21,
             "height": "6'11\"",
             "weight": "243"
-        },
-        {
-            "name": "Andrew Wiggins",
-            "personId": 203952,
-            "teamId": 1610612744,
-            "age": 28,
-            "height": "6'7\"",
-            "weight": "197"
         },
         {
             "name": "Anfernee Simons",
             "personId": 1629014,
             "teamId": 1610612757,
-            "age": 23,
+            "age": 24,
             "height": "6'3\"",
-            "weight": "181"
+            "weight": "193"
         },
         {
             "name": "Anthony Davis",
@@ -4889,15 +4116,23 @@
             "name": "Anthony Edwards",
             "personId": 1630162,
             "teamId": 1610612750,
-            "age": 21,
+            "age": 22,
             "height": "6'4\"",
             "weight": "225"
+        },
+        {
+            "name": "Ausar Thompson",
+            "personId": 1641709,
+            "teamId": 1610612765,
+            "age": 20,
+            "height": "6'6\"",
+            "weight": "205"
         },
         {
             "name": "Bam Adebayo",
             "personId": 1628389,
             "teamId": 1610612748,
-            "age": 25,
+            "age": 26,
             "height": "6'9\"",
             "weight": "255"
         },
@@ -4905,39 +4140,15 @@
             "name": "Ben Simmons",
             "personId": 1627732,
             "teamId": 1610612751,
-            "age": 26,
+            "age": 27,
             "height": "6'10\"",
             "weight": "240"
-        },
-        {
-            "name": "Bobby Portis",
-            "personId": 1626171,
-            "teamId": 1610612749,
-            "age": 28,
-            "height": "6'11\"",
-            "weight": "250"
-        },
-        {
-            "name": "Bojan Bogdanovic",
-            "personId": 202711,
-            "teamId": 1610612765,
-            "age": 34,
-            "height": "6'7\"",
-            "weight": "226"
-        },
-        {
-            "name": "Bradley Beal",
-            "personId": 203078,
-            "teamId": 1610612764,
-            "age": 29,
-            "height": "6'4\"",
-            "weight": "207"
         },
         {
             "name": "Brandon Ingram",
             "personId": 1627742,
             "teamId": 1610612740,
-            "age": 25,
+            "age": 26,
             "height": "6'8\"",
             "weight": "190"
         },
@@ -4945,7 +4156,7 @@
             "name": "CJ McCollum",
             "personId": 203468,
             "teamId": 1610612740,
-            "age": 31,
+            "age": 32,
             "height": "6'3\"",
             "weight": "190"
         },
@@ -4953,14 +4164,38 @@
             "name": "Cade Cunningham",
             "personId": 1630595,
             "teamId": 1610612765,
-            "age": 21,
-            "height": "6'7\"",
+            "age": 22,
+            "height": "6'6\"",
             "weight": "220"
+        },
+        {
+            "name": "Cam Thomas",
+            "personId": 1630560,
+            "teamId": 1610612751,
+            "age": 22,
+            "height": "6'3\"",
+            "weight": "210"
+        },
+        {
+            "name": "Caris LeVert",
+            "personId": 1627747,
+            "teamId": 1610612739,
+            "age": 29,
+            "height": "6'6\"",
+            "weight": "205"
+        },
+        {
+            "name": "Chet Holmgren",
+            "personId": 1631096,
+            "teamId": 1610612760,
+            "age": 21,
+            "height": "7'1\"",
+            "weight": "195"
         },
         {
             "name": "Chris Paul",
             "personId": 101108,
-            "teamId": 1610612756,
+            "teamId": 1610612744,
             "age": 38,
             "height": "6'0\"",
             "weight": "175"
@@ -4978,14 +4213,14 @@
             "personId": 1626156,
             "teamId": 1610612747,
             "age": 27,
-            "height": "6'4\"",
+            "height": "6'3\"",
             "weight": "193"
         },
         {
             "name": "Damian Lillard",
             "personId": 203081,
-            "teamId": 1610612757,
-            "age": 32,
+            "teamId": 1610612749,
+            "age": 33,
             "height": "6'2\"",
             "weight": "195"
         },
@@ -5009,31 +4244,47 @@
             "name": "DeMar DeRozan",
             "personId": 201942,
             "teamId": 1610612741,
-            "age": 33,
+            "age": 34,
             "height": "6'6\"",
             "weight": "220"
         },
         {
             "name": "Deandre Ayton",
             "personId": 1629028,
-            "teamId": 1610612756,
-            "age": 24,
+            "teamId": 1610612757,
+            "age": 25,
             "height": "7'0\"",
-            "weight": "250"
+            "weight": "247"
         },
         {
             "name": "Dejounte Murray",
             "personId": 1627749,
             "teamId": 1610612737,
-            "age": 26,
+            "age": 27,
             "height": "6'5\"",
             "weight": "180"
+        },
+        {
+            "name": "Dennis Schroder",
+            "personId": 203471,
+            "teamId": 1610612761,
+            "age": 30,
+            "height": "6'1\"",
+            "weight": "172"
+        },
+        {
+            "name": "Derrick White",
+            "personId": 1628401,
+            "teamId": 1610612738,
+            "age": 29,
+            "height": "6'4\"",
+            "weight": "190"
         },
         {
             "name": "Desmond Bane",
             "personId": 1630217,
             "teamId": 1610612763,
-            "age": 24,
+            "age": 25,
             "height": "6'5\"",
             "weight": "215"
         },
@@ -5041,15 +4292,15 @@
             "name": "Devin Booker",
             "personId": 1626164,
             "teamId": 1610612756,
-            "age": 26,
-            "height": "6'5\"",
+            "age": 27,
+            "height": "6'6\"",
             "weight": "206"
         },
         {
             "name": "Devin Vassell",
             "personId": 1630170,
             "teamId": 1610612759,
-            "age": 22,
+            "age": 23,
             "height": "6'5\"",
             "weight": "200"
         },
@@ -5058,15 +4309,15 @@
             "personId": 1627734,
             "teamId": 1610612758,
             "age": 27,
-            "height": "7'1\"",
+            "height": "6'10\"",
             "weight": "240"
         },
         {
             "name": "Donovan Mitchell",
             "personId": 1628378,
             "teamId": 1610612739,
-            "age": 26,
-            "height": "6'1\"",
+            "age": 27,
+            "height": "6'3\"",
             "weight": "215"
         },
         {
@@ -5081,7 +4332,7 @@
             "name": "Evan Mobley",
             "personId": 1630596,
             "teamId": 1610612739,
-            "age": 21,
+            "age": 22,
             "height": "6'11\"",
             "weight": "215"
         },
@@ -5089,79 +4340,47 @@
             "name": "Franz Wagner",
             "personId": 1630532,
             "teamId": 1610612753,
-            "age": 21,
+            "age": 22,
             "height": "6'10\"",
             "weight": "220"
         },
         {
             "name": "Fred VanVleet",
             "personId": 1627832,
-            "teamId": 1610612761,
+            "teamId": 1610612745,
             "age": 29,
             "height": "6'0\"",
             "weight": "197"
-        },
-        {
-            "name": "Gary Trent Jr.",
-            "personId": 1629018,
-            "teamId": 1610612761,
-            "age": 24,
-            "height": "6'5\"",
-            "weight": "209"
         },
         {
             "name": "Giannis Antetokounmpo",
             "personId": 203507,
             "teamId": 1610612749,
             "age": 28,
-            "height": "7'0\"",
+            "height": "6'11\"",
             "weight": "243"
         },
         {
-            "name": "Ivica Zubac",
-            "personId": 1627826,
-            "teamId": 1610612746,
-            "age": 26,
-            "height": "7'0\"",
-            "weight": "240"
-        },
-        {
-            "name": "Ja Morant",
-            "personId": 1629630,
-            "teamId": 1610612763,
-            "age": 23,
-            "height": "6'2\"",
-            "weight": "174"
-        },
-        {
-            "name": "Jacob Gilyard",
-            "personId": 1631367,
-            "teamId": 1610612763,
-            "age": 24,
-            "height": "5'9\"",
-            "weight": "160"
-        },
-        {
-            "name": "Jaden Ivey",
-            "personId": 1631093,
-            "teamId": 1610612765,
-            "age": 21,
-            "height": "6'4\"",
-            "weight": "195"
+            "name": "Gordon Hayward",
+            "personId": 202330,
+            "teamId": 1610612766,
+            "age": 33,
+            "height": "6'7\"",
+            "weight": "225"
         },
         {
             "name": "Jakob Poeltl",
             "personId": 1627751,
             "teamId": 1610612761,
-            "age": 27,
-            "height": "7'1\"",
+            "age": 28,
+            "height": "7'0\"",
             "weight": "245"
         },
         {
             "name": "Jalen Brunson",
             "personId": 1628973,
             "teamId": 1610612752,
-            "age": 26,
+            "age": 27,
             "height": "6'2\"",
             "weight": "190"
         },
@@ -5170,7 +4389,7 @@
             "personId": 1631105,
             "teamId": 1610612765,
             "age": 19,
-            "height": "6'11\"",
+            "height": "6'10\"",
             "weight": "250"
         },
         {
@@ -5180,6 +4399,22 @@
             "age": 21,
             "height": "6'4\"",
             "weight": "186"
+        },
+        {
+            "name": "Jalen Johnson",
+            "personId": 1630552,
+            "teamId": 1610612737,
+            "age": 21,
+            "height": "6'8\"",
+            "weight": "219"
+        },
+        {
+            "name": "Jalen Williams",
+            "personId": 1631114,
+            "teamId": 1610612760,
+            "age": 22,
+            "height": "6'5\"",
+            "weight": "211"
         },
         {
             "name": "Jamal Murray",
@@ -5192,8 +4427,8 @@
         {
             "name": "James Harden",
             "personId": 201935,
-            "teamId": 1610612755,
-            "age": 33,
+            "teamId": 1610612746,
+            "age": 34,
             "height": "6'5\"",
             "weight": "220"
         },
@@ -5201,23 +4436,15 @@
             "name": "Jaren Jackson Jr.",
             "personId": 1628991,
             "teamId": 1610612763,
-            "age": 23,
+            "age": 24,
             "height": "6'10\"",
             "weight": "242"
-        },
-        {
-            "name": "Jarrett Allen",
-            "personId": 1628386,
-            "teamId": 1610612739,
-            "age": 25,
-            "height": "6'9\"",
-            "weight": "243"
         },
         {
             "name": "Jaylen Brown",
             "personId": 1627759,
             "teamId": 1610612738,
-            "age": 26,
+            "age": 27,
             "height": "6'6\"",
             "weight": "223"
         },
@@ -5234,14 +4461,22 @@
             "personId": 203924,
             "teamId": 1610612757,
             "age": 29,
-            "height": "6'8\"",
+            "height": "6'7\"",
             "weight": "210"
+        },
+        {
+            "name": "Jeremiah Robinson-Earl",
+            "personId": 1630526,
+            "teamId": 1610612740,
+            "age": 23,
+            "height": "6'8\"",
+            "weight": "240"
         },
         {
             "name": "Jimmy Butler",
             "personId": 202710,
             "teamId": 1610612748,
-            "age": 33,
+            "age": 34,
             "height": "6'7\"",
             "weight": "230"
         },
@@ -5254,51 +4489,27 @@
             "weight": "280"
         },
         {
-            "name": "John Wall",
-            "personId": 202322,
-            "teamId": 1610612746,
-            "age": 32,
-            "height": "6'3\"",
-            "weight": "210"
-        },
-        {
-            "name": "Jonas Valanciunas",
-            "personId": 202685,
-            "teamId": 1610612740,
-            "age": 31,
-            "height": "6'11\"",
-            "weight": "265"
-        },
-        {
             "name": "Jordan Clarkson",
             "personId": 203903,
             "teamId": 1610612762,
-            "age": 30,
-            "height": "6'5\"",
+            "age": 31,
+            "height": "6'3\"",
             "weight": "194"
         },
         {
             "name": "Jordan Poole",
             "personId": 1629673,
-            "teamId": 1610612744,
-            "age": 23,
+            "teamId": 1610612764,
+            "age": 24,
             "height": "6'4\"",
             "weight": "194"
         },
         {
-            "name": "Josh Giddey",
-            "personId": 1630581,
-            "teamId": 1610612760,
-            "age": 20,
-            "height": "6'8\"",
-            "weight": "216"
-        },
-        {
             "name": "Jrue Holiday",
             "personId": 201950,
-            "teamId": 1610612749,
-            "age": 32,
-            "height": "6'5\"",
+            "teamId": 1610612738,
+            "age": 33,
+            "height": "6'4\"",
             "weight": "205"
         },
         {
@@ -5312,8 +4523,8 @@
         {
             "name": "Jusuf Nurkic",
             "personId": 203994,
-            "teamId": 1610612757,
-            "age": 28,
+            "teamId": 1610612756,
+            "age": 29,
             "height": "7'0\"",
             "weight": "290"
         },
@@ -5329,55 +4540,31 @@
             "name": "Kawhi Leonard",
             "personId": 202695,
             "teamId": 1610612746,
-            "age": 31,
+            "age": 32,
             "height": "6'7\"",
             "weight": "225"
         },
         {
-            "name": "Keldon Johnson",
-            "personId": 1629640,
-            "teamId": 1610612759,
-            "age": 23,
-            "height": "6'5\"",
-            "weight": "220"
-        },
-        {
             "name": "Kelly Oubre Jr.",
             "personId": 1626162,
-            "teamId": 1610612766,
+            "teamId": 1610612755,
             "age": 27,
-            "height": "6'6\"",
+            "height": "6'7\"",
             "weight": "203"
         },
         {
             "name": "Kevin Durant",
             "personId": 201142,
             "teamId": 1610612756,
-            "age": 34,
-            "height": "6'10\"",
+            "age": 35,
+            "height": "6'11\"",
             "weight": "240"
-        },
-        {
-            "name": "Kevin Porter Jr.",
-            "personId": 1629645,
-            "teamId": 1610612745,
-            "age": 23,
-            "height": "6'4\"",
-            "weight": "203"
-        },
-        {
-            "name": "Kevon Looney",
-            "personId": 1626172,
-            "teamId": 1610612744,
-            "age": 27,
-            "height": "6'9\"",
-            "weight": "222"
         },
         {
             "name": "Killian Hayes",
             "personId": 1630165,
             "teamId": 1610612765,
-            "age": 21,
+            "age": 22,
             "height": "6'5\"",
             "weight": "195"
         },
@@ -5390,28 +4577,36 @@
             "weight": "220"
         },
         {
-            "name": "Kris Dunn",
-            "personId": 1627739,
-            "teamId": 1610612762,
-            "age": 29,
-            "height": "6'3\"",
-            "weight": "205"
-        },
-        {
             "name": "Kristaps Porzingis",
             "personId": 204001,
-            "teamId": 1610612764,
-            "age": 27,
-            "height": "7'3\"",
+            "teamId": 1610612738,
+            "age": 28,
+            "height": "7'2\"",
             "weight": "240"
+        },
+        {
+            "name": "Kyle Anderson",
+            "personId": 203937,
+            "teamId": 1610612750,
+            "age": 30,
+            "height": "6'9\"",
+            "weight": "230"
         },
         {
             "name": "Kyle Kuzma",
             "personId": 1628398,
             "teamId": 1610612764,
-            "age": 27,
+            "age": 28,
             "height": "6'9\"",
             "weight": "221"
+        },
+        {
+            "name": "Kyle Lowry",
+            "personId": 200768,
+            "teamId": 1610612748,
+            "age": 37,
+            "height": "6'0\"",
+            "weight": "196"
         },
         {
             "name": "Kyrie Irving",
@@ -5425,7 +4620,7 @@
             "name": "LaMelo Ball",
             "personId": 1630163,
             "teamId": 1610612766,
-            "age": 21,
+            "age": 22,
             "height": "6'7\"",
             "weight": "180"
         },
@@ -5446,14 +4641,6 @@
             "weight": "250"
         },
         {
-            "name": "Louis King",
-            "personId": 1629663,
-            "teamId": 1610612755,
-            "age": 24,
-            "height": "6'7\"",
-            "weight": "205"
-        },
-        {
             "name": "Luka Doncic",
             "personId": 1629029,
             "teamId": 1610612742,
@@ -5462,44 +4649,36 @@
             "weight": "230"
         },
         {
+            "name": "Malcolm Brogdon",
+            "personId": 1627763,
+            "teamId": 1610612757,
+            "age": 30,
+            "height": "6'4\"",
+            "weight": "229"
+        },
+        {
+            "name": "Malik Monk",
+            "personId": 1628370,
+            "teamId": 1610612758,
+            "age": 25,
+            "height": "6'3\"",
+            "weight": "200"
+        },
+        {
             "name": "Marcus Smart",
             "personId": 203935,
-            "teamId": 1610612738,
+            "teamId": 1610612763,
             "age": 29,
-            "height": "6'4\"",
+            "height": "6'3\"",
             "weight": "220"
-        },
-        {
-            "name": "Markelle Fultz",
-            "personId": 1628365,
-            "teamId": 1610612753,
-            "age": 25,
-            "height": "6'4\"",
-            "weight": "209"
-        },
-        {
-            "name": "Michael Porter Jr.",
-            "personId": 1629008,
-            "teamId": 1610612743,
-            "age": 24,
-            "height": "6'10\"",
-            "weight": "218"
         },
         {
             "name": "Mikal Bridges",
             "personId": 1628969,
             "teamId": 1610612751,
-            "age": 26,
+            "age": 27,
             "height": "6'6\"",
             "weight": "209"
-        },
-        {
-            "name": "Mike Conley",
-            "personId": 201144,
-            "teamId": 1610612750,
-            "age": 35,
-            "height": "6'1\"",
-            "weight": "175"
         },
         {
             "name": "Mitchell Robinson",
@@ -5510,28 +4689,12 @@
             "weight": "240"
         },
         {
-            "name": "Monte Morris",
-            "personId": 1628420,
-            "teamId": 1610612764,
-            "age": 27,
-            "height": "6'2\"",
-            "weight": "183"
-        },
-        {
             "name": "Myles Turner",
             "personId": 1626167,
             "teamId": 1610612754,
             "age": 27,
             "height": "6'11\"",
             "weight": "250"
-        },
-        {
-            "name": "Nic Claxton",
-            "personId": 1629651,
-            "teamId": 1610612751,
-            "age": 24,
-            "height": "6'11\"",
-            "weight": "215"
         },
         {
             "name": "Nikola Jokic",
@@ -5545,9 +4708,25 @@
             "name": "Nikola Vucevic",
             "personId": 202696,
             "teamId": 1610612741,
-            "age": 32,
+            "age": 33,
             "height": "6'10\"",
             "weight": "260"
+        },
+        {
+            "name": "OG Anunoby",
+            "personId": 1628384,
+            "teamId": 1610612761,
+            "age": 26,
+            "height": "6'7\"",
+            "weight": "232"
+        },
+        {
+            "name": "P.J. Washington",
+            "personId": 1629023,
+            "teamId": 1610612766,
+            "age": 25,
+            "height": "6'7\"",
+            "weight": "230"
         },
         {
             "name": "Paolo Banchero",
@@ -5577,23 +4756,15 @@
             "name": "RJ Barrett",
             "personId": 1629628,
             "teamId": 1610612752,
-            "age": 22,
+            "age": 23,
             "height": "6'6\"",
             "weight": "214"
-        },
-        {
-            "name": "RaiQuan Gray",
-            "personId": 1630564,
-            "teamId": 1610612751,
-            "age": 23,
-            "height": "6'7\"",
-            "weight": "269"
         },
         {
             "name": "Rudy Gobert",
             "personId": 203497,
             "teamId": 1610612750,
-            "age": 30,
+            "age": 31,
             "height": "7'1\"",
             "weight": "258"
         },
@@ -5602,32 +4773,32 @@
             "personId": 201566,
             "teamId": 1610612746,
             "age": 34,
-            "height": "6'3\"",
+            "height": "6'4\"",
             "weight": "200"
+        },
+        {
+            "name": "Scottie Barnes",
+            "personId": 1630567,
+            "teamId": 1610612761,
+            "age": 22,
+            "height": "6'7\"",
+            "weight": "225"
+        },
+        {
+            "name": "Shaedon Sharpe",
+            "personId": 1631101,
+            "teamId": 1610612757,
+            "age": 20,
+            "height": "6'5\"",
+            "weight": "205"
         },
         {
             "name": "Shai Gilgeous-Alexander",
             "personId": 1628983,
             "teamId": 1610612760,
-            "age": 24,
+            "age": 25,
             "height": "6'6\"",
             "weight": "195"
-        },
-        {
-            "name": "Shaquille Harrison",
-            "personId": 1627885,
-            "teamId": 1610612747,
-            "age": 29,
-            "height": "6'4\"",
-            "weight": "195"
-        },
-        {
-            "name": "Skylar Mays",
-            "personId": 1630219,
-            "teamId": 1610612757,
-            "age": 25,
-            "height": "6'4\"",
-            "weight": "205"
         },
         {
             "name": "Spencer Dinwiddie",
@@ -5646,20 +4817,20 @@
             "weight": "185"
         },
         {
-            "name": "Steven Adams",
-            "personId": 203500,
-            "teamId": 1610612763,
-            "age": 29,
-            "height": "6'11\"",
-            "weight": "265"
+            "name": "Talen Horton-Tucker",
+            "personId": 1629659,
+            "teamId": 1610612762,
+            "age": 22,
+            "height": "6'4\"",
+            "weight": "234"
         },
         {
-            "name": "T.J. McConnell",
-            "personId": 204456,
-            "teamId": 1610612754,
-            "age": 31,
-            "height": "6'1\"",
-            "weight": "190"
+            "name": "Tari Eason",
+            "personId": 1631106,
+            "teamId": 1610612745,
+            "age": 22,
+            "height": "6'8\"",
+            "weight": "215"
         },
         {
             "name": "Terry Rozier",
@@ -5670,10 +4841,26 @@
             "weight": "190"
         },
         {
+            "name": "Tim Hardaway Jr.",
+            "personId": 203501,
+            "teamId": 1610612742,
+            "age": 31,
+            "height": "6'5\"",
+            "weight": "205"
+        },
+        {
+            "name": "Tobias Harris",
+            "personId": 202699,
+            "teamId": 1610612755,
+            "age": 31,
+            "height": "6'8\"",
+            "weight": "226"
+        },
+        {
             "name": "Trae Young",
             "personId": 1629027,
             "teamId": 1610612737,
-            "age": 24,
+            "age": 25,
             "height": "6'1\"",
             "weight": "164"
         },
@@ -5705,9 +4892,25 @@
             "name": "Tyrese Maxey",
             "personId": 1630178,
             "teamId": 1610612755,
-            "age": 22,
+            "age": 23,
             "height": "6'2\"",
             "weight": "200"
+        },
+        {
+            "name": "Tyus Jones",
+            "personId": 1626145,
+            "teamId": 1610612764,
+            "age": 27,
+            "height": "6'1\"",
+            "weight": "196"
+        },
+        {
+            "name": "Victor Wembanyama",
+            "personId": 1641705,
+            "teamId": 1610612759,
+            "age": 19,
+            "height": "7'4\"",
+            "weight": "210"
         },
         {
             "name": "Zach LaVine",
@@ -5721,7 +4924,7 @@
             "name": "Zion Williamson",
             "personId": 1629627,
             "teamId": 1610612740,
-            "age": 22,
+            "age": 23,
             "height": "6'6\"",
             "weight": "284"
         }

@@ -5,9 +5,10 @@ const logUpdate = require("log-update")
 
 const setPlayers = async () => {
     // fetch league data
-    const currentSeason = "2022-23" // must change every season
+    const currentSeason = "2023-24" // must change every season
     const LeagueDashPlayerStats = `https://stats.nba.com/stats/leaguedashplayerstats?LastNGames=0&LeagueID=00&MeasureType=Base&Month=0&OpponentTeamID=0&PORound=0&PerMode=PerGame&Period=0&PlusMinus=N&Rank=N&Season=${currentSeason}&SeasonType=Regular%20Season&TeamID=0&Weight=`
     const LeagueDashPlayerBio = `https://stats.nba.com/stats/leaguedashplayerbiostats?LeagueID=00&PerMode=PerGame&Season=${currentSeason}&SeasonType=Regular+Season`
+    const PlayerGameLogs = `https://stats.nba.com/stats/playergamelogs?DateFrom=&DateTo=&GameSegment=&LastNGames=&LeagueID=&Location=&MeasureType=&Month=&OppTeamID=&Outcome=&PORound=&PerMode=&Period=&PlayerID=&Season=${currentSeason}&SeasonSegment=&SeasonType=&ShotClockRange=&TeamID=&VsConference=&VsDivision=`
 
     console.log("\nFetching league data...")
     console.time("Response time")
@@ -28,6 +29,14 @@ const setPlayers = async () => {
             Referer: "https://www.nba.com/",
         },
     }).then((res) => res.json())
+    const gameLogsResponse = await fetch(PlayerGameLogs, {
+        headers: {
+            "User-Agent":
+                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15",
+            "Accept-Language": "en-CA,en-US;q=0.9,en;q=0.8",
+            Referer: "https://www.nba.com/",
+        },
+    }).then((res) => res.json())
 
     console.timeEnd("Response time")
 
@@ -36,6 +45,7 @@ const setPlayers = async () => {
         "https://stats.nba.com/stats/playercareerstats?LeagueID=&PerMode=PerGame&PlayerID="
     const leagueStats = leagueStatsResponse.resultSets[0].rowSet
     const leagueBios = leagueBiosResponse.resultSets[0].rowSet
+    const gameLogs = gameLogsResponse.resultSets[0].rowSet
     const NAME = 1
     const ID = 0
     const TEAMID = 2
@@ -127,27 +137,26 @@ const setPlayers = async () => {
             leagueBios[player][HEIGHT].replace("-", "'") + '"'
         playerObjComplete.weight = leagueBios[player][WEIGHT]
         playerObjComplete.stats = playerCareerStats.resultSets
+        playerObjComplete.games = (() => {
+            let games = []
+            for (log of gameLogs) {
+                if (log[1] === leagueBios[player][ID]) {
+                    games.push(log)
+                }
+            }
+            return games
+        })()
         allPlayersComplete.push(playerObjComplete)
-
-        // Limit requests to 1 per second
-        setTimeout(() => {}, 1000)
     }
-
     logUpdate.clear()
     console.timeEnd("Response time")
-    console.log("\nProcessed data...")
-    console.log(`Total players: ${leagueStats.length}`)
-    console.log(
-        `Players filtered: ${leagueStats.length - filteredPlayers.length}`
-    )
-    console.log(`Remaining players: ${filteredPlayers.length}\n`)
 
     // Update players.json file with new data
     const playerArrays = {
         allPlayers: allPlayers,
         filteredPlayers: filteredPlayers,
     }
-    console.log("Updating project files...")
+    console.log("\nUpdating project files...")
     writeFileSync(
         "./frontend/src/players.json",
         `${JSON.stringify(playerArrays, null, 4)}`,
@@ -159,11 +168,17 @@ const setPlayers = async () => {
         "utf-8"
     )
     writeFileSync(
-        "./backend/league.json",
+        "./backend/stats.json",
         `${JSON.stringify(leagueStats, null, 4)}`,
         "utf-8"
     )
     console.log("Done!\n")
+
+    console.log(`Total players: ${leagueStats.length}`)
+    console.log(
+        `Players filtered: ${leagueStats.length - filteredPlayers.length}`
+    )
+    console.log(`Remaining players: ${filteredPlayers.length}\n`)
 }
 
 setPlayers()
