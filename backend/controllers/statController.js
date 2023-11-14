@@ -1,6 +1,6 @@
 const asyncHandler = require("express-async-handler")
 const Players = require("../players.json")
-const LeagueStats = require("../league.json")
+const Stats = require("../stats.json")
 
 const ID = 0
 const NAME = 1
@@ -45,7 +45,7 @@ const getSeasonStats = asyncHandler(async (req, res) => {
         const ids = req.body.ids
 
         // get stats for the requested players
-        for (player of LeagueStats) {
+        for (player of Stats) {
             if (ids.includes(player[ID])) {
                 response[player[ID]] = {
                     Name: player[NAME],
