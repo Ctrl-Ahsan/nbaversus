@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react"
+import { useState, useEffect } from "react"
 import styled from "styled-components"
 import axios from "axios"
 import {
@@ -10,7 +10,6 @@ import "react-circular-progressbar/dist/styles.css"
 import roster from "../players.json"
 import Stats from "./Stats"
 import Leaderboard from "./Leaderboard"
-import User from "./User"
 
 import { FaCrown } from "react-icons/fa"
 import {
@@ -18,9 +17,7 @@ import {
     IoInformationCircle,
     IoArrowForwardCircle,
 } from "react-icons/io5"
-import { FaRegUserCircle } from "react-icons/fa"
 import { GiPodium } from "react-icons/gi"
-import { ImExit } from "react-icons/im"
 
 const Play = (props) => {
     const [player1, setPlayer1] = useState({})
@@ -35,7 +32,6 @@ const Play = (props) => {
     const [menuClosed, setMenuClosed] = useState(false)
     const [toggleStats, setToggleStats] = useState(false)
     const [toggleLeaderboard, setToggleLeaderboard] = useState(false)
-    const [toggleUser, setToggleUser] = useState(false)
 
     const playerArray = roster.filteredPlayers
 
@@ -55,7 +51,7 @@ const Play = (props) => {
         }
         setPlayer1(playerArray[randomInt1])
         setPlayer2(playerArray[randomInt2])
-    }, [])
+    }, [playerArray])
 
     // set player info
     let formatted = ""
@@ -337,11 +333,11 @@ const Play = (props) => {
     }
 
     // styling
-    const VersusContainer = styled.main`
+    const PlayContainer = styled.main`
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        height: 100%;
+        height: 92%;
         max-height: -webkit-fill-available;
         position: relative;
 
@@ -561,16 +557,12 @@ const Play = (props) => {
             setMenuOpen(true)
             setToggleLeaderboard(true)
         }
-        const handleUser = () => {
-            setMenuOpen(true)
-            setToggleUser(true)
-        }
 
         const MenuContainer = styled.nav`
             display: flex;
             flex-direction: column;
             position: absolute;
-            bottom: 2em;
+            bottom: 12%;
             right: 0.5em;
             z-index: 3;
             align-items: center;
@@ -628,62 +620,47 @@ const Play = (props) => {
                     onClick={handleLeaderboard}
                     style={{ fontSize: "2.5em" }}
                 />
-                <FaRegUserCircle
-                    onClick={handleUser}
-                    style={{ fontSize: "2.2em", marginTop: "0.4em" }}
-                />
             </MenuContainer>
         )
     }
 
     return (
         <>
-            <VersusContainer>
+            <PlayContainer>
                 <Panel1 />
                 <Panel2 />
-            </VersusContainer>
+            </PlayContainer>
             {!menuOpen && <Menu />}
             {!menuOpen && (
-                <div className="versus-nav">
-                    <div className="home">
-                        <ImExit
-                            onClick={() => {
-                                props.setTogglePlay(false)
-                            }}
-                        />
-                    </div>
-                    <div className="progress-stepper">
-                        <CircularProgressbarWithChildren
-                            value={round}
-                            maxValue={5}
-                            background
-                            styles={buildStyles({
-                                backgroundColor: "rgba(365, 365, 365, 0.4)",
-                                textColor: "#fff",
-                                pathColor: "#fff",
-                                trailColor: "transparent",
-                            })}
-                        >
-                            {round === 5 && (p1Wins || p2Wins) ? (
-                                <FaCrown
-                                    className={
-                                        !menuOpen && !menuClosed
-                                            ? "fade-in"
-                                            : ""
-                                    }
-                                />
-                            ) : (
-                                <span
-                                    style={{
-                                        fontSize: "0.7em",
-                                        fontWeight: 700,
-                                    }}
-                                >
-                                    {round} / 5
-                                </span>
-                            )}
-                        </CircularProgressbarWithChildren>
-                    </div>
+                <div className="progress-stepper">
+                    <CircularProgressbarWithChildren
+                        value={round}
+                        maxValue={5}
+                        background
+                        styles={buildStyles({
+                            backgroundColor: "rgba(365, 365, 365, 0.4)",
+                            textColor: "#fff",
+                            pathColor: "#fff",
+                            trailColor: "transparent",
+                        })}
+                    >
+                        {round === 5 && (p1Wins || p2Wins) ? (
+                            <FaCrown
+                                className={
+                                    !menuOpen && !menuClosed ? "fade-in" : ""
+                                }
+                            />
+                        ) : (
+                            <span
+                                style={{
+                                    fontSize: "0.7em",
+                                    fontWeight: 700,
+                                }}
+                            >
+                                {round} / 5
+                            </span>
+                        )}
+                    </CircularProgressbarWithChildren>
                 </div>
             )}
             {toggleStats && (
@@ -702,7 +679,6 @@ const Play = (props) => {
                     setToggleLeaderboard={setToggleLeaderboard}
                 />
             )}
-            {toggleUser && <User />}
         </>
     )
 }

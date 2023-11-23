@@ -1,15 +1,13 @@
 import styled from "styled-components"
 import { ReactSearchAutocomplete } from "react-search-autocomplete"
-import { FaSearch } from "react-icons/fa"
 import roster from "../players.json"
 import { useState } from "react"
 import axios from "axios"
 import { AiOutlineClose } from "react-icons/ai"
 import { toast } from "react-toastify"
-import { IoIosArrowBack } from "react-icons/io"
 import { IoReloadCircle, IoPersonAdd } from "react-icons/io5"
 
-const Compare = (props) => {
+const Compare = () => {
     const [selectedPlayers, setSelectedPlayers] = useState([])
     const [selectedScopes, setSelectedScopes] = useState([])
     const [loading, setLoading] = useState(false)
@@ -193,52 +191,24 @@ const Compare = (props) => {
         display: flex;
         flex-direction: column;
         align-items: center;
-        height: 100vh;
-        max-height: -webkit-fill-available;
+        height: 92%;
         background: linear-gradient(270deg, #860000, #013a6b);
 
-        & .back {
-            position: absolute;
-            z-index: 1;
-            top: 5%;
-            left: 3%;
-            color: white;
-            cursor: pointer;
-
-            & svg {
-                transition: all 0.3s;
-                :hover {
-                    scale: 1.05;
-                }
-                :active {
-                    scale: 0.9;
-                }
-            }
-        }
-
-        & .title {
+        & .header {
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 2em;
-            font-weight: 700;
-            padding: 10px 20px;
-            margin-top: 1em;
-            margin-bottom: 0.5em;
-            svg {
-                font-size: 0.7em;
-                margin-right: 0.3em;
-            }
+            width: 100%;
+            padding: 1em 0;
         }
 
         & .search {
-            position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
             width: 80%;
             max-width: 500px;
-            ${selectedPlayers.length > 1 ? "margin-left: 1em;" : ""}
+            ${selectedPlayers.length > 0 ? "margin-left: 1em;" : ""}
 
             & .search-bar {
                 width: 100%;
@@ -281,7 +251,6 @@ const Compare = (props) => {
             height: 100%;
             background-color: #0000007a;
             border: solid 1px #21212179;
-            margin-top: 1em;
             overflow: auto;
 
             & .message {
@@ -424,7 +393,7 @@ const Compare = (props) => {
                             formatResult={formatResult}
                         />
                     </div>
-                    {selectedPlayers.length > 1 && (
+                    {selectedPlayers.length > 0 && (
                         <div className="reload">
                             <IoReloadCircle
                                 onClick={() => {
@@ -1353,18 +1322,9 @@ const Compare = (props) => {
 
     return (
         <CompareContainer>
-            <div className="back">
-                <IoIosArrowBack
-                    fontSize={"2.5em"}
-                    onClick={() => {
-                        props.setToggleCompare(false)
-                    }}
-                />
+            <div className="header">
+                <SearchBar />
             </div>
-            <div className="title">
-                <FaSearch /> Compare
-            </div>
-            <SearchBar />
             <div className="compare">
                 {selectedPlayers.length === 0 && !loading && (
                     <div className="message scale-in-center">

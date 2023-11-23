@@ -6,7 +6,7 @@ const Title = (props) => {
         display: flex;
         flex-direction: column;
         align-items: center;
-        height: 100vh;
+        height: 92%;
         max-height: -webkit-fill-available;
 
         background: linear-gradient(270deg, #860000, #013a6b);
@@ -78,8 +78,6 @@ const Title = (props) => {
             color: #5e5e5e;
             font-family: Roboto Condensed, Arial;
             font-weight: 300;
-            position: absolute;
-            bottom: 5px;
 
             & svg {
                 font-size: 0.7em;
@@ -116,13 +114,6 @@ const Title = (props) => {
                         <FaSearch /> Compare
                     </div>
                 </button>
-            </div>
-            <div className="footer">
-                Made with{" "}
-                <span>
-                    <FaHeart />
-                </span>{" "}
-                by <FaGithub /> Ctrl-Ahsan
             </div>
         </TitleContainer>
     )

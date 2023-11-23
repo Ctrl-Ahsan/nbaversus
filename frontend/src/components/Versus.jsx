@@ -1,14 +1,15 @@
-import { useState, useEffect, useContext } from "react"
+import { useState, useEffect } from "react"
 import axios from "axios"
 import styled from "styled-components"
 
+import Navbar from "./Navbar"
 import Title from "./Title"
 import Play from "./Play"
 import Compare from "./Compare"
+import Analyze from "./Analyze"
 
 const Versus = () => {
-    const [togglePlay, setTogglePlay] = useState(false)
-    const [toggleCompare, setToggleCompare] = useState(false)
+    const [page, setPage] = useState("home")
 
     useEffect(() => {
         // log visit
@@ -24,6 +25,7 @@ const Versus = () => {
 
     // styling
     const VersusContainer = styled.main`
+        position: relative;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -32,16 +34,16 @@ const Versus = () => {
     `
     return (
         <VersusContainer>
-            {togglePlay ? (
-                <Play setTogglePlay={setTogglePlay} />
-            ) : toggleCompare ? (
-                <Compare setToggleCompare={setToggleCompare} />
+            {page === "play" ? (
+                <Play />
+            ) : page === "compare" ? (
+                <Compare />
+            ) : page === "analyze" ? (
+                <Analyze />
             ) : (
-                <Title
-                    setToggleVersus={setTogglePlay}
-                    setToggleCompare={setToggleCompare}
-                />
+                <Title />
             )}
+            <Navbar page={page} setPage={setPage} />
         </VersusContainer>
     )
 }
