@@ -1,15 +1,14 @@
+import React, { useEffect, useState } from "react"
 import axios from "axios"
-import React, { useEffect, useState, useContext } from "react"
 import styled from "styled-components"
 import { toast } from "react-toastify"
+
+import Spinner from "./Spinner"
+
 import { AiOutlineClose } from "react-icons/ai"
 import { FaMedal, FaCrown } from "react-icons/fa"
-import Spinner from "./Spinner"
-import { AppContext } from "../AppContext"
 
-const Leaderboard = () => {
-    const { setMenuOpen, setMenuClosed, setToggleLeaderboard } =
-        useContext(AppContext)
+const Leaderboard = (props) => {
     const [winners, setWinners] = useState([])
     const [loading, setLoading] = useState(false)
     useEffect(() => {
@@ -26,9 +25,9 @@ const Leaderboard = () => {
     }, [])
 
     function handleClick() {
-        setMenuOpen(false)
-        setMenuClosed(true)
-        setToggleLeaderboard(false)
+        props.setMenuOpen(false)
+        props.setMenuClosed(true)
+        props.setToggleLeaderboard(false)
     }
 
     const LeaderboardContainer = styled.section`

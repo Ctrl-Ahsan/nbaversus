@@ -94,7 +94,6 @@ const Title = (props) => {
                 <img src="/nbaversus.png" alt="" />
                 <button
                     onClick={() => {
-                        props.setToggleTitle(false)
                         props.setToggleVersus(true)
                     }}
                     className="button green"
@@ -109,7 +108,6 @@ const Title = (props) => {
                 </button>
                 <button
                     onClick={() => {
-                        props.setToggleTitle(false)
                         props.setToggleCompare(true)
                     }}
                     className="button"

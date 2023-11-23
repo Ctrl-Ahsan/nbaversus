@@ -1357,7 +1357,6 @@ const Compare = (props) => {
                 <IoIosArrowBack
                     fontSize={"2.5em"}
                     onClick={() => {
-                        props.setToggleTitle(true)
                         props.setToggleCompare(false)
                     }}
                 />

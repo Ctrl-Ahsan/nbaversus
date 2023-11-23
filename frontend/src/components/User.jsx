@@ -8,18 +8,11 @@ import Contact from "./Contact"
 import { AppContext } from "../AppContext"
 
 const User = () => {
-    const { setMenuOpen, setMenuClosed, setToggleUser } = useContext(AppContext)
     const [category, setCategory] = useState("account")
     const [loggedIn, setLoggedIn] = useState(
         localStorage.getItem("user") !== null
     )
     const [toggleRegister, setToggleRegister] = useState(false)
-
-    function handleClick() {
-        setMenuOpen(false)
-        setMenuClosed(true)
-        setToggleUser(false)
-    }
 
     const UserContainer = styled.section`
         position: absolute;
@@ -170,7 +163,7 @@ const User = () => {
     `
     return (
         <UserContainer>
-            <div className="close" onClick={handleClick}>
+            <div className="close">
                 <AiOutlineClose />
             </div>
             <div className="nav">
