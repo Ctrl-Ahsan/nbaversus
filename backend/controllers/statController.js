@@ -114,22 +114,293 @@ const getGameLogs = asyncHandler(async (req, res) => {
 
     try {
         // validate request
-        if (!req.body.id) {
-            res.status(400).json("Please include player ID")
+        if (!req.body.id || !req.body.stat) {
+            res.status(400).json("Invalid request")
             return
         }
         const id = req.body.id
-
-        // get career stats for requested player
-        for (player of Players) {
-            if (player.personId == id) response = player.games
-        }
         console.log(id)
+        const stat = req.body.stat
+
+        // get game logs for requested player
+        let games
+        for (player of Players) {
+            if (player.personId == id) {
+                games = player.games
+                break
+            }
+        }
+
+        // get game logs for targeted stat
+        switch (stat) {
+            case "pts":
+                gameLogs = []
+
+                for (gameIndex in games) {
+                    let simpleGameLog = {
+                        id: games[gameIndex][7],
+                        date: games[gameIndex][8],
+                        matchup: games[gameIndex][9],
+                        stat: games[gameIndex][PTS + 1],
+                    }
+                    gameLogs.push(simpleGameLog)
+                }
+
+                res.status(200).json(gameLogs)
+                break
+
+            case "reb":
+                gameLogs = []
+
+                for (gameIndex in games) {
+                    let simpleGameLog = {
+                        id: games[gameIndex][7],
+                        date: games[gameIndex][8],
+                        matchup: games[gameIndex][9],
+                        stat: games[gameIndex][REB + 1],
+                    }
+                    gameLogs.push(simpleGameLog)
+                }
+
+                res.status(200).json(gameLogs)
+                break
+
+            case "ast":
+                gameLogs = []
+
+                for (gameIndex in games) {
+                    let simpleGameLog = {
+                        id: games[gameIndex][7],
+                        date: games[gameIndex][8],
+                        matchup: games[gameIndex][9],
+                        stat: games[gameIndex][AST + 1],
+                    }
+                    gameLogs.push(simpleGameLog)
+                }
+
+                res.status(200).json(gameLogs)
+                break
+
+            case "stl":
+                gameLogs = []
+
+                for (gameIndex in games) {
+                    let simpleGameLog = {
+                        id: games[gameIndex][7],
+                        date: games[gameIndex][8],
+                        matchup: games[gameIndex][9],
+                        stat: games[gameIndex][STL + 1],
+                    }
+                    gameLogs.push(simpleGameLog)
+                }
+
+                res.status(200).json(gameLogs)
+                break
+
+            case "blk":
+                gameLogs = []
+
+                for (gameIndex in games) {
+                    let simpleGameLog = {
+                        id: games[gameIndex][7],
+                        date: games[gameIndex][8],
+                        matchup: games[gameIndex][9],
+                        stat: games[gameIndex][BLK + 1],
+                    }
+                    gameLogs.push(simpleGameLog)
+                }
+
+                res.status(200).json(gameLogs)
+                break
+
+            case "tov":
+                gameLogs = []
+
+                for (gameIndex in games) {
+                    let simpleGameLog = {
+                        id: games[gameIndex][7],
+                        date: games[gameIndex][8],
+                        matchup: games[gameIndex][9],
+                        stat: games[gameIndex][TOV + 1],
+                    }
+                    gameLogs.push(simpleGameLog)
+                }
+
+                res.status(200).json(gameLogs)
+                break
+
+            case "3pm":
+                gameLogs = []
+
+                for (gameIndex in games) {
+                    let simpleGameLog = {
+                        id: games[gameIndex][7],
+                        date: games[gameIndex][8],
+                        matchup: games[gameIndex][9],
+                        stat: games[gameIndex][15],
+                    }
+                    gameLogs.push(simpleGameLog)
+                }
+
+                res.status(200).json(gameLogs)
+                break
+
+            case "pts+reb":
+                gameLogs = []
+
+                for (gameIndex in games) {
+                    let simpleGameLog = {
+                        id: games[gameIndex][7],
+                        date: games[gameIndex][8],
+                        matchup: games[gameIndex][9],
+                        stat:
+                            games[gameIndex][PTS + 1] +
+                            games[gameIndex][REB + 1],
+                    }
+                    gameLogs.push(simpleGameLog)
+                }
+
+                res.status(200).json(gameLogs)
+                break
+
+            case "pts+ast":
+                gameLogs = []
+
+                for (gameIndex in games) {
+                    let simpleGameLog = {
+                        id: games[gameIndex][7],
+                        date: games[gameIndex][8],
+                        matchup: games[gameIndex][9],
+                        stat:
+                            games[gameIndex][PTS + 1] +
+                            games[gameIndex][AST + 1],
+                    }
+                    gameLogs.push(simpleGameLog)
+                }
+
+                res.status(200).json(gameLogs)
+                break
+
+            case "ast+reb":
+                gameLogs = []
+
+                for (gameIndex in games) {
+                    let simpleGameLog = {
+                        id: games[gameIndex][7],
+                        date: games[gameIndex][8],
+                        matchup: games[gameIndex][9],
+                        stat:
+                            games[gameIndex][AST + 1] +
+                            games[gameIndex][REB + 1],
+                    }
+                    gameLogs.push(simpleGameLog)
+                }
+
+                res.status(200).json(gameLogs)
+                break
+
+            case "pts+reb+ast":
+                gameLogs = []
+
+                for (gameIndex in games) {
+                    let simpleGameLog = {
+                        id: games[gameIndex][7],
+                        date: games[gameIndex][8],
+                        matchup: games[gameIndex][9],
+                        stat:
+                            games[gameIndex][PTS + 1] +
+                            games[gameIndex][REB + 1] +
+                            games[gameIndex][AST + 1],
+                    }
+                    gameLogs.push(simpleGameLog)
+                }
+
+                res.status(200).json(gameLogs)
+                break
+
+            case "stl+blk":
+                gameLogs = []
+
+                for (gameIndex in games) {
+                    let simpleGameLog = {
+                        id: games[gameIndex][7],
+                        date: games[gameIndex][8],
+                        matchup: games[gameIndex][9],
+                        stat:
+                            games[gameIndex][STL + 1] +
+                            games[gameIndex][BLK + 1],
+                    }
+                    gameLogs.push(simpleGameLog)
+                }
+
+                res.status(200).json(gameLogs)
+                break
+
+            case "dd":
+                gameLogs = []
+
+                for (gameIndex in games) {
+                    // check whether two highest stats are in the double digits
+                    let stats = []
+                    let doubleDouble = false
+                    stats.push(games[gameIndex][PTS + 1])
+                    stats.push(games[gameIndex][REB + 1])
+                    stats.push(games[gameIndex][AST + 1])
+                    stats.push(games[gameIndex][STL + 1])
+                    stats.push(games[gameIndex][BLK + 1])
+                    stats.sort((a, b) => b - a)
+
+                    if (stats[0] >= 10 && stats[1] >= 10) doubleDouble = true
+
+                    let simpleGameLog = {
+                        id: games[gameIndex][7],
+                        date: games[gameIndex][8],
+                        matchup: games[gameIndex][9],
+                        stat: doubleDouble,
+                    }
+                    gameLogs.push(simpleGameLog)
+                }
+
+                res.status(200).json(gameLogs)
+                break
+
+            case "td":
+                gameLogs = []
+
+                for (gameIndex in games) {
+                    // check whether two highest stats are in the double digits
+                    let stats = []
+                    let tripleDouble = false
+                    stats.push(games[gameIndex][PTS + 1])
+                    stats.push(games[gameIndex][REB + 1])
+                    stats.push(games[gameIndex][AST + 1])
+                    stats.push(games[gameIndex][STL + 1])
+                    stats.push(games[gameIndex][BLK + 1])
+                    stats.sort((a, b) => b - a)
+
+                    if (stats[0] >= 10 && stats[1] >= 10 && stats[2] >= 10)
+                        tripleDouble = true
+
+                    let simpleGameLog = {
+                        id: games[gameIndex][7],
+                        date: games[gameIndex][8],
+                        matchup: games[gameIndex][9],
+                        stat: tripleDouble,
+                    }
+                    gameLogs.push(simpleGameLog)
+                }
+
+                res.status(200).json(gameLogs)
+                break
+
+            default:
+                res.json("default")
+                break
+        }
     } catch (error) {
         console.error(error)
-        res.status(500).json("Could not fetch stats")
+        res.status(500).json("Could not fetch game logs")
     }
-    res.status(200).json(response)
 })
 
 module.exports = {
