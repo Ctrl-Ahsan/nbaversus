@@ -1,8 +1,9 @@
-import styled from "styled-components"
-import axios from "axios"
-import { FaSignOutAlt, FaUser } from "react-icons/fa"
 import { useEffect, useState } from "react"
+import axios from "axios"
+import styled from "styled-components"
 import { toast } from "react-toastify"
+
+import { FaSignOutAlt, FaUser } from "react-icons/fa"
 
 const Profile = (props) => {
     const [user, setUser] = useState()
@@ -65,18 +66,30 @@ const Profile = (props) => {
             padding-top: 0;
         }
 
-        & .panel {
+        & .favorites {
             display: flex;
+            flex-direction: column;
             justify-content: space-evenly;
             align-items: center;
+            width: 100%;
+        }
+
+        & .panel {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            min-height: 10em;
+            width: 90%;
             background-color: #d3d3d352;
             border-radius: 20px;
             padding: 0.5em;
+            margin-bottom: 1em;
             font-weight: 700;
 
             img {
                 height: 5em;
-                border-radius: 30px;
+                border-radius: 50px;
             }
         }
 
@@ -102,15 +115,11 @@ const Profile = (props) => {
             font-weight: 300;
             font-size: 0.7em;
             font-family: Roboto Condensed, Roboto, Arial;
+            margin-top: 1em;
         }
 
         & .image {
             height: 5em;
-        }
-
-        & .playerImg {
-            display: flex;
-            width: 7em;
         }
 
         & .logout {
@@ -136,58 +145,59 @@ const Profile = (props) => {
                             `Total Votes: ${voteCount ? voteCount : 0}`}
                     </div>
                 </div>
-                <div
-                    className={loading ? "panel shimmerBG" : "panel"}
-                    style={{ marginBottom: "0.5em" }}
-                >
-                    <div className="image">
-                        {favoriteURL && (
-                            <img
-                                src={favoriteURL}
-                                alt="favorite player"
-                                className="playerImg"
-                            />
+                <div className="favorites">
+                    <div className={loading ? "panel shimmerBG" : "panel"}>
+                        <div className="image">
+                            {favoriteURL && (
+                                <img
+                                    src={favoriteURL}
+                                    alt="favorite player"
+                                    className="playerImg"
+                                />
+                            )}
+                        </div>
+                        {!loading && (
+                            <div>
+                                <div className="profile-heading">
+                                    Favorite Player
+                                </div>
+                                <div>{favorite}</div>
+                                <div
+                                    className="profile-heading"
+                                    style={{ marginTop: "0.5em" }}
+                                >
+                                    Votes
+                                </div>
+                                {favoriteVotes}
+                            </div>
                         )}
                     </div>
-                    {!loading && (
-                        <div>
-                            <div className="profile-heading">
-                                Favorite Player
-                            </div>
-                            <div>{favorite}</div>
-                            <div
-                                className="profile-heading"
-                                style={{ marginTop: "0.5em" }}
-                            >
-                                Votes
-                            </div>
-                            {favoriteVotes}
+                    <div className={loading ? "panel shimmerBG" : "panel"}>
+                        <div className="image">
+                            {favoriteTeamURL && !loading && (
+                                <img
+                                    src={favoriteTeamURL}
+                                    alt="favorite team"
+                                    className="playerImg"
+                                />
+                            )}
                         </div>
-                    )}
-                </div>
-                <div className={loading ? "panel shimmerBG" : "panel"}>
-                    <div className="image">
-                        {favoriteTeamURL && !loading && (
-                            <img
-                                src={favoriteTeamURL}
-                                alt="favorite team"
-                                className="playerImg"
-                            />
+                        {!loading && (
+                            <div>
+                                <div className="profile-heading">
+                                    Favorite Team
+                                </div>
+                                {favoriteTeam}
+                                <div
+                                    className="profile-heading"
+                                    style={{ marginTop: "0.5em" }}
+                                >
+                                    Votes
+                                </div>
+                                {favoriteTeamVotes}
+                            </div>
                         )}
                     </div>
-                    {!loading && (
-                        <div>
-                            <div className="profile-heading">Favorite Team</div>
-                            {favoriteTeam}
-                            <div
-                                className="profile-heading"
-                                style={{ marginTop: "0.5em" }}
-                            >
-                                Votes
-                            </div>
-                            {favoriteTeamVotes}
-                        </div>
-                    )}
                 </div>
             </div>
             <button className="logout red" onClick={onLogout}>

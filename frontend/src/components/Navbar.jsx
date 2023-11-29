@@ -85,7 +85,7 @@ const Navbar = (props) => {
                     )}
                     Analyze
                 </div>
-                <div className="item">
+                <div className="item" onClick={() => props.setPage("account")}>
                     <FaRegUserCircle />
                     Account
                 </div>

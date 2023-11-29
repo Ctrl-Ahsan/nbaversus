@@ -105,7 +105,7 @@ const Contact = () => {
 
         & textarea {
             width: 100%;
-            height: 6em;
+            height: 15em;
             font-size: 0.7em;
             font-family: inherit;
             padding: 1em;

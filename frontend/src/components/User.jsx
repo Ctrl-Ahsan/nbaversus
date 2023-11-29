@@ -1,6 +1,5 @@
 import styled from "styled-components"
 import { useState, useContext } from "react"
-import { AiOutlineClose } from "react-icons/ai"
 import Register from "./Register"
 import Login from "./Login"
 import Profile from "./Profile"
@@ -15,12 +14,6 @@ const User = () => {
     const [toggleRegister, setToggleRegister] = useState(false)
 
     const UserContainer = styled.section`
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 3;
-
         background: rgba(0, 0, 0, 0.4);
         border-radius: 16px;
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -33,7 +26,7 @@ const User = () => {
 
         display: flex;
         flex-direction: column;
-        width: 70%;
+        width: 80%;
         max-width: 740px;
         padding: 20px;
 
@@ -79,17 +72,6 @@ const User = () => {
             background: #008cd2;
             :hover {
                 background: #006da3;
-            }
-        }
-
-        & .close {
-            position: absolute;
-            top: 1em;
-            right: 1em;
-            cursor: pointer;
-            transition: all 0.3s;
-            :active {
-                scale: 0.9;
             }
         }
 
@@ -163,9 +145,6 @@ const User = () => {
     `
     return (
         <UserContainer>
-            <div className="close">
-                <AiOutlineClose />
-            </div>
             <div className="nav">
                 <div
                     id={category === "account" ? "active" : ""}

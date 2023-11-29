@@ -7,6 +7,7 @@ import Title from "./Title"
 import Play from "./Play"
 import Compare from "./Compare"
 import Analyze from "./Analyze"
+import Account from "./Account"
 
 const Versus = () => {
     const [page, setPage] = useState("home")
@@ -44,6 +45,8 @@ const Versus = () => {
                 <Compare />
             ) : page === "analyze" ? (
                 <Analyze />
+            ) : page === "account" ? (
+                <Account />
             ) : (
                 <Title />
             )}
