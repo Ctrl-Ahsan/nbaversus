@@ -247,6 +247,7 @@ const Analyze = () => {
                 ? 20
                 : total
 
+        // iterate through game logs and tally up passing records
         if (props.line.operator === "over") {
             let index = 0
             for (let entry of props.line.logs) {
@@ -321,6 +322,10 @@ const Analyze = () => {
                 caption = "ASSISTS AND REBOUNDS"
                 break
 
+            case "pts+reb+ast":
+                caption = "POINTS, REBOUNDS AND ASSISTS"
+                break
+
             case "stl+blk":
                 caption = "STEALS AND BLOCKS"
                 break
@@ -390,7 +395,14 @@ const Analyze = () => {
         flex-direction: column;
         align-items: center;
         height: 92%;
+        width: 100%;
         background: linear-gradient(270deg, #860000, #013a6b);
+
+        @media screen and (min-width: 1080px) {
+            height: 100%;
+            flex-direction: row;
+            padding-top: 0;
+        }
 
         & .builder {
             display: flex;
@@ -402,6 +414,13 @@ const Analyze = () => {
             padding: 1em 0;
             border-radius: 10px;
             background-color: #0000007a;
+
+            @media screen and (min-width: 1080px) {
+                height: 90%;
+                width: 70%;
+                max-width: 500px;
+                margin: 0 1em;
+            }
 
             & .item {
                 display: flex;
@@ -548,6 +567,11 @@ const Analyze = () => {
             height: 45%;
             width: 90%;
 
+            @media screen and (min-width: 1080px) {
+                height: 94%;
+                margin-right: 1em;
+            }
+
             & .message {
                 display: flex;
                 flex-direction: column;
@@ -565,6 +589,12 @@ const Analyze = () => {
             width: 90%;
             background-color: #0000007a;
             border-radius: 10px;
+
+            @media screen and (min-width: 1080px) {
+                margin-right: 1em;
+                max-height: 90%;
+                overflow-y: scroll;
+            }
 
             & .summary {
                 display: flex;

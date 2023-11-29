@@ -57,6 +57,13 @@ button:active {
   width: 3em;
 }
 
+@media screen and (min-width: 1080px) {
+  .progress-stepper{
+    left: calc(12% + 1.5em);
+    bottom: 5%;
+  }
+}
+
 .shimmerBG {
   animation-duration: 3s;
   animation-fill-mode: forwards;

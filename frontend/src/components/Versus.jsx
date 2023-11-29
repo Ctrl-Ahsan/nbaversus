@@ -31,6 +31,10 @@ const Versus = () => {
         justify-content: space-between;
         height: 100vh;
         max-height: -webkit-fill-available;
+
+        @media screen and (min-width: 1080px) {
+            flex-direction: row-reverse;
+        }
     `
     return (
         <VersusContainer>

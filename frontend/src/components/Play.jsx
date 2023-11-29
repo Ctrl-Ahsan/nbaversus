@@ -338,8 +338,13 @@ const Play = (props) => {
         flex-direction: column;
         justify-content: space-between;
         height: 92%;
+        width: 100%;
         max-height: -webkit-fill-available;
         position: relative;
+
+        @media screen and (min-width: 1080px) {
+            height: 100%;
+        }
 
         & #one {
             background-color: ${bg1};
@@ -563,13 +568,14 @@ const Play = (props) => {
             flex-direction: column;
             position: absolute;
             bottom: 12%;
-            right: 0.5em;
+            right: 0.75em;
             z-index: 3;
             align-items: center;
-            font-size: 0.8rem;
+            font-size: 0.9em;
 
-            @media screen and (min-width: 320px) {
+            @media screen and (min-width: 1080px) {
                 font-size: 1em;
+                bottom: 5%;
             }
 
             & svg {

@@ -21,13 +21,24 @@ const Navbar = (props) => {
         font-family: Roboto, Arial, Helvetica, sans-serif;
         font-size: 0.6em;
 
+        @media screen and (min-width: 1080px) {
+            height: 100%;
+            width: 12%;
+            background: linear-gradient(0deg, #860000, #013a6b);
+            font-size: 0.8em;
+        }
+
         & .nav {
             display: flex;
             justify-content: space-evenly;
             align-items: center;
             height: 100%;
             width: 100%;
-            background-color: #0000004f;
+            background-color: #00000059;
+
+            @media screen and (min-width: 1080px) {
+                flex-direction: column;
+            }
         }
 
         & .item {

@@ -1,5 +1,6 @@
 import styled from "styled-components"
-import { FaBasketballBall, FaSearch, FaHeart, FaGithub } from "react-icons/fa"
+
+import { FaHeart, FaGithub } from "react-icons/fa"
 
 const Title = (props) => {
     const TitleContainer = styled.section`
@@ -7,11 +8,16 @@ const Title = (props) => {
         flex-direction: column;
         align-items: center;
         height: 92%;
+        width: 100%;
         max-height: -webkit-fill-available;
 
         background: linear-gradient(270deg, #860000, #013a6b);
         font-family: Bebas Neue, Roboto, Arial, Helvetica, sans-serif;
         font-size: 8em;
+
+        @media screen and (min-width: 1080px) {
+            height: 100%;
+        }
         & .vs {
             display: flex;
             flex-direction: column;
@@ -32,47 +38,6 @@ const Title = (props) => {
             }
         }
 
-        & button {
-            width: 95%;
-            margin-top: 5px;
-            padding: 10px;
-            border: none;
-            border-radius: 10px;
-            background: #000;
-            color: #fff;
-            font-family: Roboto, Arial;
-            font-size: 0.11em;
-            font-weight: 700;
-            cursor: pointer;
-            appearance: button;
-            align-self: center;
-
-            @media screen and (min-width: 740px) {
-                padding: 15px;
-            }
-
-            & svg {
-                font-size: 0.8em;
-                margin-right: 0.5em;
-            }
-
-            :hover {
-                color: #dbdbdb;
-            }
-        }
-
-        & .button-text {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        & .green {
-            background: green;
-            :hover {
-                background: #006c00;
-            }
-        }
-
         & .footer {
             font-size: 1rem;
             color: #5e5e5e;
@@ -90,30 +55,6 @@ const Title = (props) => {
             <div className="vs fade-in">
                 NBA
                 <img src="/nbaversus.png" alt="" />
-                <button
-                    onClick={() => {
-                        props.setToggleVersus(true)
-                    }}
-                    className="button green"
-                    style={{
-                        marginTop: "30px",
-                        marginBottom: "0.2em",
-                    }}
-                >
-                    <div className="button-text">
-                        <FaBasketballBall /> Play
-                    </div>
-                </button>
-                <button
-                    onClick={() => {
-                        props.setToggleCompare(true)
-                    }}
-                    className="button"
-                >
-                    <div className="button-text">
-                        <FaSearch /> Compare
-                    </div>
-                </button>
             </div>
         </TitleContainer>
     )

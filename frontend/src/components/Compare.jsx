@@ -1,11 +1,14 @@
-import styled from "styled-components"
-import { ReactSearchAutocomplete } from "react-search-autocomplete"
-import roster from "../players.json"
 import { useState } from "react"
 import axios from "axios"
-import { AiOutlineClose } from "react-icons/ai"
+import { ReactSearchAutocomplete } from "react-search-autocomplete"
+import styled from "styled-components"
 import { toast } from "react-toastify"
-import { IoReloadCircle, IoPersonAdd } from "react-icons/io5"
+
+import roster from "../players.json"
+
+import { AiOutlineClose } from "react-icons/ai"
+import { FaUsers } from "react-icons/fa"
+import { IoReloadCircle } from "react-icons/io5"
 
 const Compare = () => {
     const [selectedPlayers, setSelectedPlayers] = useState([])
@@ -192,7 +195,12 @@ const Compare = () => {
         flex-direction: column;
         align-items: center;
         height: 92%;
+        width: 100%;
         background: linear-gradient(270deg, #860000, #013a6b);
+
+        @media screen and (min-width: 1080px) {
+            height: 100%;
+        }
 
         & .header {
             display: flex;
@@ -1327,11 +1335,11 @@ const Compare = () => {
             </div>
             <div className="compare">
                 {selectedPlayers.length === 0 && !loading && (
-                    <div className="message scale-in-center">
+                    <div className="message">
                         <div>
-                            <IoPersonAdd fontSize={"4em"} />
+                            <FaUsers fontSize={"4em"} />
                         </div>
-                        Select players to compare.
+                        Select players to compare
                     </div>
                 )}
 
