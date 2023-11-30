@@ -540,12 +540,16 @@ const Compare = () => {
                                 <option value={`${index}S`}>{item[1]}</option>
                             ))}
                         </optgroup>
-                        <optgroup label="Playoffs">
-                            <option value={"CareerP"}>Career</option>
-                            {SeasonTotalsPostSeason.map((item, index) => (
-                                <option value={`${index}P`}>{item[1]}</option>
-                            ))}
-                        </optgroup>
+                        {SeasonTotalsPostSeason.length > 0 && (
+                            <optgroup label="Playoffs">
+                                <option value={"CareerP"}>Career</option>
+                                {SeasonTotalsPostSeason.map((item, index) => (
+                                    <option value={`${index}P`}>
+                                        {item[1]}
+                                    </option>
+                                ))}
+                            </optgroup>
+                        )}
                     </select>
                 </div>
                 {scope.slice(-1) === "S" &&
