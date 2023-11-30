@@ -372,7 +372,7 @@ const Compare = () => {
                         & .subtitle {
                             font-size: 0.6em;
                             font-weight: 300;
-                            color: darkgray;
+                            color: #cdcdcd;
                             margin-top: 0.1em;
                         }
                     }
