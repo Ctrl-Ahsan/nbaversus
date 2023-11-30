@@ -7,6 +7,7 @@ import Spinner from "./Spinner"
 
 import { AiOutlineClose } from "react-icons/ai"
 import { FaMedal, FaCrown } from "react-icons/fa"
+import { GiPodium } from "react-icons/gi"
 
 const Leaderboard = (props) => {
     const [winners, setWinners] = useState([])
@@ -24,47 +25,20 @@ const Leaderboard = (props) => {
         setLeaderboard()
     }, [])
 
-    function handleClick() {
-        props.setMenuOpen(false)
-        props.setMenuClosed(true)
-        props.setToggleLeaderboard(false)
-    }
-
     const LeaderboardContainer = styled.section`
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 3;
-
         background: rgba(0, 0, 0, 0.4);
         border-radius: 16px;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
         border: 1px solid rgba(148, 148, 148, 0.3);
 
         color: white;
         font-weight: 300;
-        height: 50%;
-        width: 75%;
-        max-width: 740px;
-        min-height: 70%;
+        min-height: 100%;
+        height: 100%;
+        width: 100%;
         padding: 1em;
 
         display: flex;
         flex-direction: column;
-
-        & .close {
-            position: absolute;
-            top: 1em;
-            right: 1em;
-            cursor: pointer;
-            transition: all 0.3s;
-            :active {
-                scale: 0.9;
-            }
-        }
 
         & .title {
             display: flex;
@@ -76,8 +50,8 @@ const Leaderboard = (props) => {
             margin-bottom: 0.5em;
 
             svg {
-                font-size: 0.8em;
-                margin-right: 0.3em;
+                margin-right: 0.5em;
+                padding-bottom: 0.2em;
             }
         }
 
@@ -86,14 +60,14 @@ const Leaderboard = (props) => {
             border: solid 1px #21212179;
             border-top: none;
             border-radius: 0px 0px 5px 5px;
-            padding: 1em 10px;
+            padding: 1em 0;
             padding-top: 0.5em;
             display: grid;
             grid-template-columns: 1fr 2fr 1fr;
             height: 100%;
+            width: 100%;
             overflow-x: hidden;
             overflow-y: scroll;
-            position: relative;
         }
 
         & .headers {
@@ -103,9 +77,10 @@ const Leaderboard = (props) => {
             border: solid 1px #21212179;
             border-bottom: none;
             border-radius: 5px 5px 0px 0px;
-            padding: 1em 10px;
-            font-family: Roboto Condensed, Roboto, Arial;
+            padding: 1em 0;
+            font-family: Bebas Neue, Roboto Condensed, Arial;
             font-weight: 700;
+            width: 100%;
         }
 
         & .entry {
@@ -119,11 +94,8 @@ const Leaderboard = (props) => {
 
     return (
         <LeaderboardContainer>
-            <div className="close" onClick={handleClick}>
-                <AiOutlineClose />
-            </div>
             <div className="title">
-                <FaMedal /> Leaderboard
+                <GiPodium /> Leaderboard
             </div>
             <div className="headers">
                 <div>Rank</div>
