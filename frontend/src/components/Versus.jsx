@@ -3,7 +3,7 @@ import axios from "axios"
 import styled from "styled-components"
 
 import Navbar from "./Navbar"
-import Title from "./Title"
+import Home from "./Home"
 import Play from "./Play"
 import Compare from "./Compare"
 import Analyze from "./Analyze"
@@ -48,7 +48,7 @@ const Versus = () => {
             ) : page === "account" ? (
                 <Account />
             ) : (
-                <Title />
+                <Home />
             )}
             <Navbar page={page} setPage={setPage} />
         </VersusContainer>

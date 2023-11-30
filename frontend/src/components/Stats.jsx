@@ -17,7 +17,7 @@ const Stats = (props) => {
         setLoading(true)
         const fetchStats = async () => {
             const statsResponse = await axios
-                .post("/api/stats", {
+                .post("/api/stats/season", {
                     ids: [props.player1.personId, props.player2.personId],
                 })
                 .catch((error) => {

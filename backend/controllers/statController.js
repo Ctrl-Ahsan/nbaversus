@@ -7,6 +7,7 @@ const NAME = 1
 const GP = 6
 const MIN = 10
 const FG_PCT = 13
+const FG3M = 14
 const FG3_PCT = 16
 const FT_PCT = 19
 const REB = 22
@@ -21,6 +22,7 @@ const PLUS_MINUS = 31
 const GP_RANK = 36
 const MIN_RANK = 40
 const FG_PCT_RANK = 43
+const FG3M_RANK = 44
 const FG3_PCT_RANK = 46
 const FT_PCT_RANK = 49
 const REB_RANK = 52
@@ -132,10 +134,9 @@ const getGameLogs = asyncHandler(async (req, res) => {
         }
 
         // get game logs for targeted stat
+        let gameLogs = []
         switch (stat) {
             case "pts":
-                gameLogs = []
-
                 for (gameIndex in games) {
                     let simpleGameLog = {
                         id: games[gameIndex][7],
@@ -150,8 +151,6 @@ const getGameLogs = asyncHandler(async (req, res) => {
                 break
 
             case "reb":
-                gameLogs = []
-
                 for (gameIndex in games) {
                     let simpleGameLog = {
                         id: games[gameIndex][7],
@@ -166,8 +165,6 @@ const getGameLogs = asyncHandler(async (req, res) => {
                 break
 
             case "ast":
-                gameLogs = []
-
                 for (gameIndex in games) {
                     let simpleGameLog = {
                         id: games[gameIndex][7],
@@ -182,8 +179,6 @@ const getGameLogs = asyncHandler(async (req, res) => {
                 break
 
             case "stl":
-                gameLogs = []
-
                 for (gameIndex in games) {
                     let simpleGameLog = {
                         id: games[gameIndex][7],
@@ -198,8 +193,6 @@ const getGameLogs = asyncHandler(async (req, res) => {
                 break
 
             case "blk":
-                gameLogs = []
-
                 for (gameIndex in games) {
                     let simpleGameLog = {
                         id: games[gameIndex][7],
@@ -214,8 +207,6 @@ const getGameLogs = asyncHandler(async (req, res) => {
                 break
 
             case "tov":
-                gameLogs = []
-
                 for (gameIndex in games) {
                     let simpleGameLog = {
                         id: games[gameIndex][7],
@@ -230,8 +221,6 @@ const getGameLogs = asyncHandler(async (req, res) => {
                 break
 
             case "3pm":
-                gameLogs = []
-
                 for (gameIndex in games) {
                     let simpleGameLog = {
                         id: games[gameIndex][7],
@@ -246,8 +235,6 @@ const getGameLogs = asyncHandler(async (req, res) => {
                 break
 
             case "pts+reb":
-                gameLogs = []
-
                 for (gameIndex in games) {
                     let simpleGameLog = {
                         id: games[gameIndex][7],
@@ -264,8 +251,6 @@ const getGameLogs = asyncHandler(async (req, res) => {
                 break
 
             case "pts+ast":
-                gameLogs = []
-
                 for (gameIndex in games) {
                     let simpleGameLog = {
                         id: games[gameIndex][7],
@@ -282,8 +267,6 @@ const getGameLogs = asyncHandler(async (req, res) => {
                 break
 
             case "ast+reb":
-                gameLogs = []
-
                 for (gameIndex in games) {
                     let simpleGameLog = {
                         id: games[gameIndex][7],
@@ -300,8 +283,6 @@ const getGameLogs = asyncHandler(async (req, res) => {
                 break
 
             case "pts+reb+ast":
-                gameLogs = []
-
                 for (gameIndex in games) {
                     let simpleGameLog = {
                         id: games[gameIndex][7],
@@ -319,8 +300,6 @@ const getGameLogs = asyncHandler(async (req, res) => {
                 break
 
             case "stl+blk":
-                gameLogs = []
-
                 for (gameIndex in games) {
                     let simpleGameLog = {
                         id: games[gameIndex][7],
@@ -337,8 +316,6 @@ const getGameLogs = asyncHandler(async (req, res) => {
                 break
 
             case "dd":
-                gameLogs = []
-
                 for (gameIndex in games) {
                     // check whether two highest stats are in the double digits
                     let stats = []
@@ -365,8 +342,6 @@ const getGameLogs = asyncHandler(async (req, res) => {
                 break
 
             case "td":
-                gameLogs = []
-
                 for (gameIndex in games) {
                     // check whether two highest stats are in the double digits
                     let stats = []
@@ -403,8 +378,138 @@ const getGameLogs = asyncHandler(async (req, res) => {
     }
 })
 
+const getLeaders = asyncHandler(async (req, res) => {
+    let response = {}
+
+    try {
+        // get daily leaders
+        let latestDate = ""
+        let dailyPoints = []
+        let dailyRebounds = []
+        let dailyAssists = []
+        let dailySteals = []
+        let dailyBlocks = []
+        let dailyThrees = []
+
+        for (player of Players) {
+            // only count latest games
+            if (player.games[0][8] > latestDate) {
+                latestDate = player.games[0][8]
+                dailyPoints = []
+                dailyRebounds = []
+                dailyAssists = []
+                dailySteals = []
+                dailyBlocks = []
+                dailyThrees = []
+            } else {
+                dailyPoints.push([
+                    player.personId,
+                    player.name,
+                    player.games[0][PTS + 1],
+                ])
+                dailyRebounds.push([
+                    player.personId,
+                    player.name,
+                    player.games[0][REB + 1],
+                ])
+                dailyAssists.push([
+                    player.personId,
+                    player.name,
+                    player.games[0][AST + 1],
+                ])
+                dailySteals.push([
+                    player.personId,
+                    player.name,
+                    player.games[0][STL + 1],
+                ])
+                dailyBlocks.push([
+                    player.personId,
+                    player.name,
+                    player.games[0][BLK + 1],
+                ])
+                dailyThrees.push([
+                    player.personId,
+                    player.name,
+                    player.games[0][15],
+                ])
+            }
+        }
+
+        // sort and structure
+        dailyPoints.sort((a, b) => b[2] - a[2])
+        dailyRebounds.sort((a, b) => b[2] - a[2])
+        dailyAssists.sort((a, b) => b[2] - a[2])
+        dailySteals.sort((a, b) => b[2] - a[2])
+        dailyBlocks.sort((a, b) => b[2] - a[2])
+        dailyThrees.sort((a, b) => b[2] - a[2])
+
+        dailyPoints.length = 5
+        dailyRebounds.length = 5
+        dailyAssists.length = 5
+        dailySteals.length = 5
+        dailyBlocks.length = 5
+        dailyThrees.length = 5
+
+        const dailyLeaders = {
+            points: dailyPoints,
+            rebounds: dailyRebounds,
+            assists: dailyAssists,
+            steals: dailySteals,
+            blocks: dailyBlocks,
+            threes: dailyThrees,
+        }
+
+        // get season leaders
+        let seasonPoints = []
+        let seasonRebounds = []
+        let seasonAssists = []
+        let seasonSteals = []
+        let seasonBlocks = []
+        let seasonThrees = []
+
+        for (player of Stats) {
+            if (player[PTS_RANK] <= 5)
+                seasonPoints.push([player[ID], player[NAME], player[PTS]])
+            if (player[REB_RANK] <= 5)
+                seasonRebounds.push([player[ID], player[NAME], player[REB]])
+            if (player[AST_RANK] <= 5)
+                seasonAssists.push([player[ID], player[NAME], player[AST]])
+            if (player[STL_RANK] <= 5)
+                seasonSteals.push([player[ID], player[NAME], player[STL]])
+            if (player[BLK_RANK] <= 5)
+                seasonBlocks.push([player[ID], player[NAME], player[BLK]])
+            if (player[FG3M_RANK] <= 5)
+                seasonThrees.push([player[ID], player[NAME], player[FG3M]])
+        }
+
+        // sort and structure
+        seasonPoints.sort((a, b) => b[2] - a[2])
+        seasonRebounds.sort((a, b) => b[2] - a[2])
+        seasonAssists.sort((a, b) => b[2] - a[2])
+        seasonSteals.sort((a, b) => b[2] - a[2])
+        seasonBlocks.sort((a, b) => b[2] - a[2])
+        seasonThrees.sort((a, b) => b[2] - a[2])
+
+        const seasonLeaders = {
+            points: seasonPoints,
+            rebounds: seasonRebounds,
+            assists: seasonAssists,
+            steals: seasonSteals,
+            blocks: seasonBlocks,
+            threes: seasonThrees,
+        }
+
+        response = { daily: dailyLeaders, season: seasonLeaders }
+    } catch (error) {
+        console.error(error)
+        res.status(500).json("Could not fetch stats")
+    }
+    res.status(200).json(response)
+})
+
 module.exports = {
     getSeasonStats,
     getCareerStats,
     getGameLogs,
+    getLeaders,
 }
