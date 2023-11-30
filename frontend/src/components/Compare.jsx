@@ -126,7 +126,7 @@ const Compare = () => {
         if (statsResponse) {
             player.stats = statsResponse.data
             setSelectedPlayers((prev) => [...prev, player])
-            setSelectedScopes((prev) => [...prev, "CareerS"])
+            setSelectedScopes((prev) => [...prev, "0S"])
             setLoading(false)
         }
     }
