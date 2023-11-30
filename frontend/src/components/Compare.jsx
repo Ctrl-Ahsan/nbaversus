@@ -1,9 +1,10 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import axios from "axios"
 import { ReactSearchAutocomplete } from "react-search-autocomplete"
 import styled from "styled-components"
 import { toast } from "react-toastify"
 
+import { AppContext } from "../AppContext"
 import roster from "../players.json"
 
 import { AiOutlineClose } from "react-icons/ai"
@@ -11,8 +12,12 @@ import { FaUsers } from "react-icons/fa"
 import { IoReloadCircle } from "react-icons/io5"
 
 const Compare = () => {
-    const [selectedPlayers, setSelectedPlayers] = useState([])
-    const [selectedScopes, setSelectedScopes] = useState([])
+    const {
+        selectedPlayers,
+        setSelectedPlayers,
+        selectedScopes,
+        setSelectedScopes,
+    } = useContext(AppContext)
     const [loading, setLoading] = useState(false)
     const players = [...roster.allPlayers]
 

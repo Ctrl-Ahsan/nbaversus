@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import axios from "axios"
 import { ReactSearchAutocomplete } from "react-search-autocomplete"
 import styled from "styled-components"
@@ -9,6 +9,7 @@ import {
 } from "react-circular-progressbar"
 import "react-circular-progressbar/dist/styles.css"
 
+import { AppContext } from "../AppContext"
 import roster from "../players.json"
 
 import { IoPersonAdd } from "react-icons/io5"
@@ -16,9 +17,9 @@ import { IoIosRemoveCircleOutline } from "react-icons/io"
 import { FaPlus } from "react-icons/fa"
 
 const Analyze = () => {
+    const { lines, setLines, parlayScope, setParlayScope } =
+        useContext(AppContext)
     const players = [...roster.allPlayers]
-    const [lines, setLines] = useState([])
-    const [parlayScope, setParlayScope] = useState("l5")
 
     const Builder = () => {
         const [line, setLine] = useState({
