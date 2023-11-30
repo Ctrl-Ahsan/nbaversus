@@ -558,10 +558,6 @@ const Play = (props) => {
             setMenuOpen(true)
             setToggleStats(true)
         }
-        const handleLeaderboard = () => {
-            setMenuOpen(true)
-            setToggleLeaderboard(true)
-        }
 
         const MenuContainer = styled.nav`
             display: flex;
@@ -602,7 +598,7 @@ const Play = (props) => {
                         style={{
                             color: "orange",
                             fontSize: "5em",
-                            marginBottom: "0.2em",
+                            marginBottom: "0.1em",
                         }}
                     />
                 ) : (
@@ -614,16 +610,12 @@ const Play = (props) => {
                         style={{
                             color: "orange",
                             fontSize: "5em",
-                            marginBottom: "0.2em",
+                            marginBottom: "0.1em",
                         }}
                     />
                 )}
                 <IoInformationCircle
                     onClick={handleStats}
-                    style={{ fontSize: "2.5em" }}
-                />
-                <GiPodium
-                    onClick={handleLeaderboard}
                     style={{ fontSize: "2.5em" }}
                 />
             </MenuContainer>
@@ -636,7 +628,6 @@ const Play = (props) => {
                 <Panel1 />
                 <Panel2 />
             </PlayContainer>
-            {!menuOpen && <Menu />}
             {!menuOpen && (
                 <div className="progress-stepper">
                     <CircularProgressbarWithChildren
@@ -669,6 +660,7 @@ const Play = (props) => {
                     </CircularProgressbarWithChildren>
                 </div>
             )}
+            {!menuOpen && <Menu />}
             {toggleStats && (
                 <Stats
                     player1={player1}
@@ -676,13 +668,6 @@ const Play = (props) => {
                     setMenuOpen={setMenuOpen}
                     setMenuClosed={setMenuClosed}
                     setToggleStats={setToggleStats}
-                />
-            )}
-            {toggleLeaderboard && (
-                <Leaderboard
-                    setMenuOpen={setMenuOpen}
-                    setMenuClosed={setMenuClosed}
-                    setToggleLeaderboard={setToggleLeaderboard}
                 />
             )}
         </>
