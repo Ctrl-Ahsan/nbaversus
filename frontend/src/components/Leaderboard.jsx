@@ -5,11 +5,10 @@ import { toast } from "react-toastify"
 
 import Spinner from "./Spinner"
 
-import { AiOutlineClose } from "react-icons/ai"
-import { FaMedal, FaCrown } from "react-icons/fa"
+import { FaCrown } from "react-icons/fa"
 import { GiPodium } from "react-icons/gi"
 
-const Leaderboard = (props) => {
+const Leaderboard = () => {
     const [winners, setWinners] = useState([])
     const [loading, setLoading] = useState(false)
     useEffect(() => {
@@ -68,6 +67,7 @@ const Leaderboard = (props) => {
             width: 100%;
             overflow-x: hidden;
             overflow-y: scroll;
+            position: relative;
         }
 
         & .headers {
