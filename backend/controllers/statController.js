@@ -481,17 +481,41 @@ const getLeaders = asyncHandler(async (req, res) => {
 
         for (player of Stats) {
             if (player[PTS_RANK] <= 5)
-                seasonPoints.push([player[ID], player[NAME], player[PTS]])
+                seasonPoints.push([
+                    player[ID],
+                    player[NAME],
+                    player[PTS].toFixed(1),
+                ])
             if (player[REB_RANK] <= 5)
-                seasonRebounds.push([player[ID], player[NAME], player[REB]])
+                seasonRebounds.push([
+                    player[ID],
+                    player[NAME],
+                    player[REB].toFixed(1),
+                ])
             if (player[AST_RANK] <= 5)
-                seasonAssists.push([player[ID], player[NAME], player[AST]])
+                seasonAssists.push([
+                    player[ID],
+                    player[NAME],
+                    player[AST].toFixed(1),
+                ])
             if (player[STL_RANK] <= 5)
-                seasonSteals.push([player[ID], player[NAME], player[STL]])
+                seasonSteals.push([
+                    player[ID],
+                    player[NAME],
+                    player[STL].toFixed(1),
+                ])
             if (player[BLK_RANK] <= 5)
-                seasonBlocks.push([player[ID], player[NAME], player[BLK]])
+                seasonBlocks.push([
+                    player[ID],
+                    player[NAME],
+                    player[BLK].toFixed(1),
+                ])
             if (player[FG3M_RANK] <= 5)
-                seasonThrees.push([player[ID], player[NAME], player[FG3M]])
+                seasonThrees.push([
+                    player[ID],
+                    player[NAME],
+                    player[FG3M].toFixed(1),
+                ])
         }
 
         // sort and structure
