@@ -20,15 +20,15 @@ const userVisit = asycHandler(async (req, res) => {
                 const user = await User.findById(decoded.id)
 
                 console.log(
-                    `${user.name} is online | ${location?.city} ${location?.region}, ${location?.country} | ${req.ip}`
+                    `[USER] ${user.name} is online | ${location?.city} ${location?.region}, ${location?.country} | ${req.ip}`
                 )
             } else {
                 console.log(
-                    `A new visitor from ${location?.city} ${location?.region}, ${location?.country} | ${req.ip}`
+                    `[USER] A new visitor from ${location?.city} ${location?.region}, ${location?.country} | ${req.ip}`
                 )
             }
             usersVisited.push(req.ip)
-            console.log(`${usersVisited.length} visits today`)
+            console.log(`[USER] ${usersVisited.length} visits today`)
         }
         res.status(200).json({})
     } catch (error) {
@@ -68,7 +68,8 @@ const registerUser = asycHandler(async (req, res) => {
 
         if (user) {
             console.log(
-                `${user.name} has created their account | ${req.ip}`.green
+                `[ACCOUNT] ${user.name} has created their account | ${req.ip}`
+                    .green
             )
             res.status(201).json({
                 _id: user.id,
@@ -77,7 +78,9 @@ const registerUser = asycHandler(async (req, res) => {
             })
         } else {
             res.status(400)
-            console.log(`Failed to create an account`.yellow)
+            console.log(
+                `[ACCOUNT] Failed to create an account | ${req.ip}`.yellow
+            )
             res.status(400).json("Could not create account")
         }
     } catch (error) {
@@ -96,7 +99,7 @@ const loginUser = asycHandler(async (req, res) => {
 
         const user = await User.findOne({ name })
         if (user && (await bcrypt.compare(password, user.password))) {
-            console.log(`${user.name} logged in | ${req.ip}`.green)
+            console.log(`[ACCOUNT] ${user.name} logged in | ${req.ip}`.green)
             res.json({
                 _id: user.id,
                 Name: user.name,
@@ -104,7 +107,8 @@ const loginUser = asycHandler(async (req, res) => {
             })
         } else {
             console.log(
-                `Attempted login with invalid credentials | ${req.ip}`.yellow
+                `[ACCOUNT] Attempted login with invalid credentials | ${req.ip}`
+                    .yellow
             )
             res.status(400).send("Invalid credentials")
             return
@@ -116,6 +120,9 @@ const loginUser = asycHandler(async (req, res) => {
 })
 
 const getMe = asycHandler(async (req, res) => {
+    console.log(
+        `[ACCOUNT] ${req.user.name} requested their profile | ${req.ip}`.green
+    )
     let response = {}
 
     try {

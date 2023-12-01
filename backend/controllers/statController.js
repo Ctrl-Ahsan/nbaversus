@@ -36,6 +36,11 @@ const PTS_RANK = 60
 const PLUS_MINUS_RANK = 61
 
 const getSeasonStats = asyncHandler(async (req, res) => {
+    console.log(
+        `[ACTIVITY][PLAY] Season stats requested for ${idToName(
+            req.body.ids[0]
+        )} and ${idToName(req.body.ids[1])} | ${req.ip}`.green
+    )
     let response = {}
 
     try {
@@ -104,6 +109,11 @@ const getCareerStats = asyncHandler(async (req, res) => {
         for (player of Players) {
             if (player.personId === id) response = player.stats
         }
+        console.log(
+            `[ACTIVITY][COMPARE] Career stats requested for ${idToName(
+                req.body.id
+            )} | ${req.ip}`.green
+        )
     } catch (error) {
         console.error(error)
         res.status(500).json("Could not fetch stats")
@@ -112,8 +122,6 @@ const getCareerStats = asyncHandler(async (req, res) => {
 })
 
 const getGameLogs = asyncHandler(async (req, res) => {
-    let response = {}
-
     try {
         // validate request
         if (!req.body.id || !req.body.stat) {
@@ -121,7 +129,6 @@ const getGameLogs = asyncHandler(async (req, res) => {
             return
         }
         const id = req.body.id
-        console.log(id)
         const stat = req.body.stat
 
         // get game logs for requested player
@@ -372,6 +379,11 @@ const getGameLogs = asyncHandler(async (req, res) => {
                 res.json("default")
                 break
         }
+        console.log(
+            `[ACTIVITY][ANALYZE] Logs requested for ${idToName(
+                req.body.id
+            )} ${stat} | ${req.ip}`.green
+        )
     } catch (error) {
         console.error(error)
         res.status(500).json("Could not fetch game logs")
@@ -506,6 +518,12 @@ const getLeaders = asyncHandler(async (req, res) => {
     }
     res.status(200).json(response)
 })
+
+const idToName = (id) => {
+    for (player of Players) {
+        if (id == player.personId) return player.name
+    }
+}
 
 module.exports = {
     getSeasonStats,

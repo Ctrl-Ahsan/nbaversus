@@ -82,10 +82,14 @@ const setVote = asyncHandler(async (req, res) => {
             userToUpdate.save()
 
             console.log(
-                `${userToUpdate.name} voted for ${winnerName} | ${req.ip}`
+                `[ACTIVITY][PLAY] ${userToUpdate.name} voted for ${winnerName} | ${req.ip}`
+                    .green
             )
         } else {
-            console.log(`A user voted for ${winnerName} | ${req.ip}`)
+            console.log(
+                `[ACTIVITY][PLAY] A user voted for ${winnerName} | ${req.ip}`
+                    .green
+            )
         }
         res.status(200).json(vote)
     } catch (error) {
