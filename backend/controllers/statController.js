@@ -6,9 +6,14 @@ const ID = 0
 const NAME = 1
 const GP = 6
 const MIN = 10
+const FGM = 11
+const FGA = 12
 const FG_PCT = 13
 const FG3M = 14
+const FG3A = 15
 const FG3_PCT = 16
+const FTM = 17
+const FTA = 18
 const FT_PCT = 19
 const REB = 22
 const AST = 23
@@ -21,9 +26,14 @@ const PTS = 30
 const PLUS_MINUS = 31
 const GP_RANK = 36
 const MIN_RANK = 40
+const FGM_RANK = 41
+const FGA_RANK = 42
 const FG_PCT_RANK = 43
 const FG3M_RANK = 44
+const FG3A_RANK = 45
 const FG3_PCT_RANK = 46
+const FTM_RANK = 47
+const FTA_RANK = 48
 const FT_PCT_RANK = 49
 const REB_RANK = 52
 const AST_RANK = 53
@@ -58,8 +68,14 @@ const getSeasonStats = asyncHandler(async (req, res) => {
                     Name: player[NAME],
                     GP: player[GP],
                     MIN: player[MIN],
+                    FGM: player[FGM],
+                    FGA: player[FGA],
                     FG_PCT: player[FG_PCT],
+                    FG3M: player[FG3M],
+                    FG3A: player[FG3A],
                     FG3_PCT: player[FG3_PCT],
+                    FTM: player[FTM],
+                    FTA: player[FTA],
                     FT_PCT: player[FT_PCT],
                     REB: player[REB],
                     AST: player[AST],
@@ -72,8 +88,14 @@ const getSeasonStats = asyncHandler(async (req, res) => {
                     PLUS_MINUS: player[PLUS_MINUS],
                     GP_RANK: player[GP_RANK],
                     MIN_RANK: player[MIN_RANK],
+                    FGM_RANK: player[FGM_RANK],
+                    FGA_RANK: player[FGA_RANK],
                     FG_PCT_RANK: player[FG_PCT_RANK],
+                    FG3M_RANK: player[FG3M_RANK],
+                    FG3A_RANK: player[FG3A_RANK],
                     FG3_PCT_RANK: player[FG3_PCT_RANK],
+                    FTM_RANK: player[FTM_RANK],
+                    FTA_RANK: player[FTA_RANK],
                     FT_PCT_RANK: player[FT_PCT_RANK],
                     REB_RANK: player[REB_RANK],
                     AST_RANK: player[AST_RANK],

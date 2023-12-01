@@ -236,6 +236,20 @@ const Stats = (props) => {
                             rightSub={stats2?.BLK_RANK}
                         />
                         <Row
+                            left={stats1?.FGM}
+                            leftSub={stats1?.FGM_RANK}
+                            middle="FGM"
+                            right={stats2?.FGM}
+                            rightSub={stats2?.FGM_RANK}
+                        />
+                        <Row
+                            left={stats1?.FGA}
+                            leftSub={stats1?.FGA_RANK}
+                            middle="FGA"
+                            right={stats2?.FGA}
+                            rightSub={stats2?.FGA_RANK}
+                        />
+                        <Row
                             left={(stats1?.FG_PCT * 100).toFixed(1)}
                             leftSub={stats1?.FG_PCT_RANK}
                             middle="FG%"
@@ -243,11 +257,39 @@ const Stats = (props) => {
                             rightSub={stats2?.FG_PCT_RANK}
                         />
                         <Row
+                            left={stats1?.FG3M}
+                            leftSub={stats1?.FG3M_RANK}
+                            middle="3PM"
+                            right={stats2?.FG3M}
+                            rightSub={stats2?.FG3M_RANK}
+                        />
+                        <Row
+                            left={stats1?.FG3A}
+                            leftSub={stats1?.FG3A_RANK}
+                            middle="3PA"
+                            right={stats2?.FG3A}
+                            rightSub={stats2?.FG3A_RANK}
+                        />
+                        <Row
                             left={(stats1?.FG3_PCT * 100).toFixed(1)}
                             leftSub={stats1?.FG3_PCT_RANK}
                             middle="3P%"
                             right={(stats2?.FG3_PCT * 100).toFixed(1)}
                             rightSub={stats2?.FG3_PCT_RANK}
+                        />
+                        <Row
+                            left={stats1?.FTM}
+                            leftSub={stats1?.FTM_RANK}
+                            middle="FTM"
+                            right={stats2?.FTM}
+                            rightSub={stats2?.FTM_RANK}
+                        />
+                        <Row
+                            left={stats1?.FTA}
+                            leftSub={stats1?.FTA_RANK}
+                            middle="FTA"
+                            right={stats2?.FTA}
+                            rightSub={stats2?.FTA_RANK}
                         />
                         <Row
                             left={(stats1?.FT_PCT * 100).toFixed(1)}
