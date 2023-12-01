@@ -1,4 +1,7 @@
+import { useContext } from "react"
 import styled from "styled-components"
+
+import { AppContext } from "../AppContext"
 
 import { GoHome, GoHomeFill } from "react-icons/go"
 import { FaMagnifyingGlass, FaMagnifyingGlassChart } from "react-icons/fa6"
@@ -11,6 +14,7 @@ import {
 import { FaRegUserCircle } from "react-icons/fa"
 
 const Navbar = (props) => {
+    const { setMenuClosed } = useContext(AppContext)
     // styling
     const NavbarContainer = styled.nav`
         z-index: 2;
@@ -57,7 +61,13 @@ const Navbar = (props) => {
     return (
         <NavbarContainer>
             <div className="nav">
-                <div className="item" onClick={() => props.setPage("home")}>
+                <div
+                    className="item"
+                    onClick={() => {
+                        setMenuClosed(true)
+                        props.setPage("home")
+                    }}
+                >
                     {props.page === "home" ? <GoHomeFill /> : <GoHome />}
                     Home
                 </div>
@@ -69,7 +79,13 @@ const Navbar = (props) => {
                     )}
                     Play
                 </div>
-                <div className="item" onClick={() => props.setPage("compare")}>
+                <div
+                    className="item"
+                    onClick={() => {
+                        setMenuClosed(true)
+                        props.setPage("compare")
+                    }}
+                >
                     {props.page === "compare" ? (
                         <FaMagnifyingGlassChart />
                     ) : (
@@ -77,7 +93,13 @@ const Navbar = (props) => {
                     )}
                     Compare
                 </div>
-                <div className="item" onClick={() => props.setPage("analyze")}>
+                <div
+                    className="item"
+                    onClick={() => {
+                        setMenuClosed(true)
+                        props.setPage("analyze")
+                    }}
+                >
                     {props.page === "analyze" ? (
                         <IoStatsChart />
                     ) : (
@@ -85,7 +107,13 @@ const Navbar = (props) => {
                     )}
                     Analyze
                 </div>
-                <div className="item" onClick={() => props.setPage("account")}>
+                <div
+                    className="item"
+                    onClick={() => {
+                        setMenuClosed(true)
+                        props.setPage("account")
+                    }}
+                >
                     <FaRegUserCircle />
                     Account
                 </div>

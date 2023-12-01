@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useEffect, useContext } from "react"
 import styled from "styled-components"
 import axios from "axios"
 import {
@@ -7,9 +7,9 @@ import {
 } from "react-circular-progressbar"
 import "react-circular-progressbar/dist/styles.css"
 
+import { AppContext } from "../AppContext"
 import roster from "../players.json"
 import Stats from "./Stats"
-import Leaderboard from "./Leaderboard"
 
 import { FaCrown } from "react-icons/fa"
 import {
@@ -17,40 +17,56 @@ import {
     IoInformationCircle,
     IoArrowForwardCircle,
 } from "react-icons/io5"
-import { GiPodium } from "react-icons/gi"
 
-const Play = (props) => {
-    const [player1, setPlayer1] = useState({})
-    const [player2, setPlayer2] = useState({})
-    const [p1Wins, setP1Wins] = useState(false)
-    const [p2Wins, setP2Wins] = useState(false)
-    const [sameP1, setSameP1] = useState(false)
-    const [sameP2, setSameP2] = useState(false)
-    const [seenPlayers, setSeenPlayers] = useState([])
-    const [round, setRound] = useState(1)
-    const [menuOpen, setMenuOpen] = useState(false)
-    const [menuClosed, setMenuClosed] = useState(false)
-    const [toggleStats, setToggleStats] = useState(false)
-    const [toggleLeaderboard, setToggleLeaderboard] = useState(false)
+const Play = () => {
+    const {
+        player1,
+        setPlayer1,
+        player2,
+        setPlayer2,
+        p1Wins,
+        setP1Wins,
+        p2Wins,
+        setP2Wins,
+        sameP1,
+        setSameP1,
+        sameP2,
+        setSameP2,
+        seenPlayers,
+        setSeenPlayers,
+        round,
+        setRound,
+        menuOpen,
+        setMenuOpen,
+        menuClosed,
+        setMenuClosed,
+        toggleStats,
+        setToggleStats,
+    } = useContext(AppContext)
 
     const playerArray = roster.filteredPlayers
 
     useEffect(() => {
-        // reset states
-        setP1Wins(false)
-        setP2Wins(false)
-        setSameP1(false)
-        setSameP2(false)
-        setSeenPlayers([])
-        setRound(1)
-        // set random players
-        let randomInt1 = Math.floor(Math.random() * playerArray.length)
-        let randomInt2 = Math.floor(Math.random() * playerArray.length)
-        while (randomInt2 === randomInt1) {
-            randomInt2 = Math.floor(Math.random() * playerArray.length)
+        if (
+            JSON.stringify(player1) === "{}" ||
+            JSON.stringify(player2) === "{}"
+        ) {
+            // reset states
+            setP1Wins(false)
+            setP2Wins(false)
+            setSameP1(false)
+            setSameP2(false)
+            setSeenPlayers([])
+            setRound(1)
+            // set random players
+            let randomInt1 = Math.floor(Math.random() * playerArray.length)
+            let randomInt2 = Math.floor(Math.random() * playerArray.length)
+            while (randomInt2 === randomInt1) {
+                randomInt2 = Math.floor(Math.random() * playerArray.length)
+            }
+            setPlayer1(playerArray[randomInt1])
+            setPlayer2(playerArray[randomInt2])
         }
-        setPlayer1(playerArray[randomInt1])
-        setPlayer2(playerArray[randomInt2])
     }, [playerArray])
 
     // set player info
