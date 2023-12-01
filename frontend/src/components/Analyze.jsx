@@ -26,7 +26,7 @@ const Analyze = () => {
             player: {},
             stat: "pts",
             operator: "over",
-            value: 0.5,
+            value: null,
         })
         const onChange = (e) => {
             setLine((prevState) => ({
@@ -41,8 +41,8 @@ const Analyze = () => {
                 toast.error("No player selected")
                 return
             }
-            if (line.value > 999.5 || line.value < 0.5) {
-                toast.error("Value must be between 0.5 and 999.5")
+            if (line.value > 99.5 || line.value < 0.5) {
+                toast.error("Value must be between 0.5 and 99.5")
                 return
             }
             for (let existingLine of lines) {
