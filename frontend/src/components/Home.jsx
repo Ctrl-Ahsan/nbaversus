@@ -170,7 +170,7 @@ const Home = () => {
                     flex-direction: column;
                     justify-content: space-between;
                     align-items: center;
-                    height: 8em;
+                    height: 9em;
                     width: 7em;
                     margin: 0 0.5em;
                     & .name {
