@@ -1346,7 +1346,7 @@
             "name": "E.J. Liddell",
             "personId": 1630604,
             "teamId": 1610612740,
-            "age": 22,
+            "age": 23,
             "height": "6'6\"",
             "weight": "240"
         },
@@ -1895,7 +1895,7 @@
             "name": "Jalen Johnson",
             "personId": 1630552,
             "teamId": 1610612737,
-            "age": 21,
+            "age": 22,
             "height": "6'8\"",
             "weight": "219"
         },
@@ -4253,7 +4253,7 @@
             "name": "Torrey Craig",
             "personId": 1628470,
             "teamId": 1610612741,
-            "age": 32,
+            "age": 33,
             "height": "6'5\"",
             "weight": "221"
         },
@@ -4587,6 +4587,14 @@
             "age": 22,
             "height": "6'4\"",
             "weight": "225"
+        },
+        {
+            "name": "Austin Reaves",
+            "personId": 1630559,
+            "teamId": 1610612747,
+            "age": 25,
+            "height": "6'5\"",
+            "weight": "197"
         },
         {
             "name": "Bam Adebayo",
@@ -5283,14 +5291,6 @@
             "age": 31,
             "height": "6'5\"",
             "weight": "205"
-        },
-        {
-            "name": "Tobias Harris",
-            "personId": 202699,
-            "teamId": 1610612755,
-            "age": 31,
-            "height": "6'8\"",
-            "weight": "226"
         },
         {
             "name": "Trae Young",
