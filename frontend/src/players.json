@@ -95,7 +95,7 @@
             "name": "Al Horford",
             "personId": 201143,
             "teamId": 1610612738,
-            "age": 37,
+            "age": 38,
             "height": "6'9\"",
             "weight": "240"
         },
@@ -284,7 +284,7 @@
             "name": "Armoni Brooks",
             "personId": 1629717,
             "teamId": 1610612751,
-            "age": 25,
+            "age": 26,
             "height": "6'3\"",
             "weight": "195"
         },
@@ -311,7 +311,7 @@
             "name": "Austin Reaves",
             "personId": 1630559,
             "teamId": 1610612747,
-            "age": 25,
+            "age": 26,
             "height": "6'5\"",
             "weight": "197"
         },
@@ -824,7 +824,7 @@
             "name": "Colby Jones",
             "personId": 1641732,
             "teamId": 1610612758,
-            "age": 21,
+            "age": 22,
             "height": "6'6\"",
             "weight": "207"
         },
@@ -851,7 +851,7 @@
             "name": "Colin Castleton",
             "personId": 1630658,
             "teamId": 1610612747,
-            "age": 23,
+            "age": 24,
             "height": "6'10\"",
             "weight": "250"
         },
@@ -1148,7 +1148,7 @@
             "name": "De'Anthony Melton",
             "personId": 1629001,
             "teamId": 1610612755,
-            "age": 25,
+            "age": 26,
             "height": "6'3\"",
             "weight": "200"
         },
@@ -1256,7 +1256,7 @@
             "name": "Dereon Seabron",
             "personId": 1631220,
             "teamId": 1610612740,
-            "age": 23,
+            "age": 24,
             "height": "6'5\"",
             "weight": "180"
         },
@@ -1364,7 +1364,7 @@
             "name": "Dominick Barlow",
             "personId": 1631230,
             "teamId": 1610612759,
-            "age": 20,
+            "age": 21,
             "height": "6'9\"",
             "weight": "215"
         },
@@ -1742,7 +1742,7 @@
             "name": "Harrison Barnes",
             "personId": 203084,
             "teamId": 1610612758,
-            "age": 31,
+            "age": 32,
             "height": "6'8\"",
             "weight": "225"
         },
@@ -2192,7 +2192,7 @@
             "name": "Jalen Suggs",
             "personId": 1630591,
             "teamId": 1610612753,
-            "age": 22,
+            "age": 23,
             "height": "6'5\"",
             "weight": "205"
         },
@@ -2363,7 +2363,7 @@
             "name": "Javonte Smart",
             "personId": 1630606,
             "teamId": 1610612755,
-            "age": 24,
+            "age": 25,
             "height": "6'4\"",
             "weight": "205"
         },
@@ -2642,7 +2642,7 @@
             "name": "Jordan Ford",
             "personId": 1630259,
             "teamId": 1610612758,
-            "age": 25,
+            "age": 26,
             "height": "6'1\"",
             "weight": "175"
         },
@@ -3092,7 +3092,7 @@
             "name": "Keyontae Johnson",
             "personId": 1641749,
             "teamId": 1610612760,
-            "age": 23,
+            "age": 24,
             "height": "6'4\"",
             "weight": "230"
         },
@@ -3524,7 +3524,7 @@
             "name": "Markelle Fultz",
             "personId": 1628365,
             "teamId": 1610612753,
-            "age": 25,
+            "age": 26,
             "height": "6'4\"",
             "weight": "209"
         },
@@ -3758,7 +3758,7 @@
             "name": "Moses Moody",
             "personId": 1630541,
             "teamId": 1610612744,
-            "age": 21,
+            "age": 22,
             "height": "6'5\"",
             "weight": "211"
         },
@@ -3947,7 +3947,7 @@
             "name": "Norman Powell",
             "personId": 1626181,
             "teamId": 1610612746,
-            "age": 30,
+            "age": 31,
             "height": "6'4\"",
             "weight": "215"
         },
@@ -4055,7 +4055,7 @@
             "name": "Otto Porter Jr.",
             "personId": 203490,
             "teamId": 1610612761,
-            "age": 30,
+            "age": 31,
             "height": "6'8\"",
             "weight": "230"
         },
@@ -4262,7 +4262,7 @@
             "name": "Rayan Rupert",
             "personId": 1641712,
             "teamId": 1610612757,
-            "age": 19,
+            "age": 20,
             "height": "6'6\"",
             "weight": "185"
         },
@@ -4343,7 +4343,7 @@
             "name": "Royce O'Neale",
             "personId": 1626220,
             "teamId": 1610612756,
-            "age": 30,
+            "age": 31,
             "height": "6'6\"",
             "weight": "226"
         },
@@ -4505,7 +4505,7 @@
             "name": "Shaedon Sharpe",
             "personId": 1631101,
             "teamId": 1610612757,
-            "age": 20,
+            "age": 21,
             "height": "6'5\"",
             "weight": "205"
         },
@@ -5194,7 +5194,7 @@
             "name": "Austin Reaves",
             "personId": 1630559,
             "teamId": 1610612747,
-            "age": 25,
+            "age": 26,
             "height": "6'5\"",
             "weight": "197"
         },
