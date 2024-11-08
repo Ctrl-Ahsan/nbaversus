@@ -6,41 +6,38 @@ const Players = require("../players.json")
 
 const getVote = asyncHandler(async (req, res) => {
     try {
-        const votes = await Vote.find()
+        // Use MongoDB aggregation to count votes directly
+        const votes = await Vote.aggregate([
+            {
+                $group: {
+                    _id: "$winner", // Group by the 'winner' field
+                    count: { $sum: 1 }, // Count occurrences
+                },
+            },
+            {
+                $sort: { count: -1 }, // Sort by count in descending order
+            },
+            {
+                $limit: 50, // Limit to top 50 results
+            },
+        ])
 
-        // count individual votes
-        let count = {}
-        for (let i = 0; i < votes.length; i++) {
-            let property = votes[i].winner
-            if (count.hasOwnProperty(property)) {
-                count[property] += 1
-            } else {
-                count[property] = 1
-            }
+        // Create a map for player lookups
+        const playerMap = {}
+        for (const player of Players) {
+            playerMap[player.personId] = player.name
         }
-        const leaderboard = Object.entries(count).sort((a, b) => b[1] - a[1])
 
-        // convert IDs to names
-        let numPlayers = 0
-        for (let i = 0; i < leaderboard.length; i++) {
-            // limit to 50 players
-            if (numPlayers >= 50) {
-                leaderboard.length = 50
-                break
-            }
-            for (player of Players) {
-                if (leaderboard[i][0] == player.personId) {
-                    leaderboard[i][0] = player.name
-                    numPlayers += 1
-                    break
+        // Convert IDs to names and filter out inactive players
+        const leaderboard = votes
+            .map((vote) => {
+                if (playerMap[vote._id]) {
+                    return [playerMap[vote._id], vote.count] // Replace ID with name
                 }
-            }
-            // remove players that are no longer in active players list
-            if (parseInt(leaderboard[i][0])) {
-                leaderboard.splice(i, 1)
-                i--
-            }
-        }
+                return null // Mark for filtering if player is not active
+            })
+            .filter((entry) => entry !== null) // Remove null entries
+
         res.status(200).json(leaderboard)
     } catch (error) {
         console.error(error)
