@@ -489,7 +489,7 @@ const Analyze = () => {
                 border: none;
                 border-radius: 50px;
                 color: #fff;
-                font-size: 1em;
+                font-size: 0.8em;
                 font-weight: 700;
                 cursor: pointer;
                 appearance: button;
