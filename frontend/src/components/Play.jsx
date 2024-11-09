@@ -284,7 +284,7 @@ const Play = () => {
             setSeenPlayers([...seenPlayers, player2.personId.toString()])
             setMenuOpen(false)
             setMenuClosed(false)
-            if (round === 5) {
+            if (round === 3) {
                 if (localStorage.getItem("user") !== null) {
                     const token = JSON.parse(localStorage.getItem("user")).Token
                     axios.post(
@@ -320,7 +320,7 @@ const Play = () => {
             setMenuOpen(false)
             setMenuClosed(false)
 
-            if (round === 5) {
+            if (round === 3) {
                 if (localStorage.getItem("user") !== null) {
                     const token = JSON.parse(localStorage.getItem("user")).Token
                     axios.post(
@@ -435,7 +435,7 @@ const Play = () => {
             >
                 <div className="info">
                     <div>
-                        {round === 5 && p1Wins && (
+                        {round === 3 && p1Wins && (
                             <div
                                 className={
                                     !menuOpen && !menuClosed ? "fade-in" : ""
@@ -469,7 +469,7 @@ const Play = () => {
                 onClick={handleClick2}
             >
                 <div className="info">
-                    {round === 5 && p2Wins && (
+                    {round === 3 && p2Wins && (
                         <div
                             className={
                                 !menuOpen && !menuClosed ? "fade-in" : ""
@@ -515,10 +515,10 @@ const Play = () => {
             setMenuOpen(false)
             setMenuClosed(false)
             // increment round
-            if (round < 5) setRound((prevRound) => prevRound + 1)
+            if (round < 3) setRound((prevRound) => prevRound + 1)
             else setRound(1)
             // set random player(s)
-            if (round === 5) {
+            if (round === 3) {
                 let randomInt1 = Math.floor(Math.random() * playerArray.length)
                 let randomInt2 = Math.floor(Math.random() * playerArray.length)
                 while (randomInt2 === randomInt1) {
@@ -648,7 +648,7 @@ const Play = () => {
                 <div className="progress-stepper">
                     <CircularProgressbarWithChildren
                         value={round}
-                        maxValue={5}
+                        maxValue={3}
                         background
                         styles={buildStyles({
                             backgroundColor: "rgba(365, 365, 365, 0.4)",
@@ -657,7 +657,7 @@ const Play = () => {
                             trailColor: "transparent",
                         })}
                     >
-                        {round === 5 && (p1Wins || p2Wins) ? (
+                        {round === 3 && (p1Wins || p2Wins) ? (
                             <FaCrown
                                 className={
                                     !menuOpen && !menuClosed ? "fade-in" : ""
@@ -670,7 +670,7 @@ const Play = () => {
                                     fontWeight: 700,
                                 }}
                             >
-                                {round} / 5
+                                {round} / 3
                             </span>
                         )}
                     </CircularProgressbarWithChildren>
