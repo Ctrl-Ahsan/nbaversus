@@ -1,7 +1,4 @@
-import { useContext } from "react"
 import styled from "styled-components"
-
-import { AppContext } from "../AppContext"
 
 import { GoHome, GoHomeFill } from "react-icons/go"
 import { FaMagnifyingGlass, FaMagnifyingGlassChart } from "react-icons/fa6"
@@ -14,7 +11,6 @@ import {
 import { FaRegUserCircle } from "react-icons/fa"
 
 const Navbar = (props) => {
-    const { setMenuClosed } = useContext(AppContext)
     // styling
     const NavbarContainer = styled.nav`
         z-index: 2;
@@ -64,7 +60,6 @@ const Navbar = (props) => {
                 <div
                     className="item"
                     onClick={() => {
-                        setMenuClosed(true)
                         props.setPage("home")
                     }}
                 >
@@ -82,7 +77,6 @@ const Navbar = (props) => {
                 <div
                     className="item"
                     onClick={() => {
-                        setMenuClosed(true)
                         props.setPage("compare")
                     }}
                 >
@@ -96,7 +90,6 @@ const Navbar = (props) => {
                 <div
                     className="item"
                     onClick={() => {
-                        setMenuClosed(true)
                         props.setPage("analyze")
                     }}
                 >
@@ -110,7 +103,6 @@ const Navbar = (props) => {
                 <div
                     className="item"
                     onClick={() => {
-                        setMenuClosed(true)
                         props.setPage("account")
                     }}
                 >
