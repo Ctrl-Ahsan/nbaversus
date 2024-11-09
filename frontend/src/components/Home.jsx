@@ -23,7 +23,11 @@ const Home = () => {
                     setLoading(false)
                 })
             setLoading(false)
-            setLeaders(leadersResponse.data)
+            try {
+                setLeaders(leadersResponse.data)
+            } catch (error) {
+                toast.error(error)
+            }
         }
         getLeaders()
     }, [])
@@ -100,10 +104,7 @@ const Home = () => {
             width: 90%;
             padding: 1em 0;
             margin-bottom: 1em;
-            border: 1px solid rgba(148, 148, 148, 0.3);
             border-radius: 16px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            background: rgba(0, 0, 0, 0.4);
 
             @media screen and (min-width: 1440px) {
                 height: 90%;
@@ -133,7 +134,6 @@ const Home = () => {
                 overflow-y: scroll;
                 height: 100%;
                 width: 90%;
-                border: solid 1px #21212179;
                 border-radius: 5px;
                 background-color: #0000007a;
             }
@@ -231,6 +231,9 @@ const Home = () => {
                 <img src="/nbaversus.png" alt="" />
             </div>
             <div className="content">
+                <div className="leaderboard-container">
+                    <Leaderboard />
+                </div>
                 <div className="leaders-container">
                     <div className="title">
                         <FaFire color="orange" /> Daily Leaders
@@ -356,9 +359,6 @@ const Home = () => {
                             </>
                         )}
                     </div>
-                </div>
-                <div className="leaderboard-container">
-                    <Leaderboard />
                 </div>
             </div>
         </HomeContainer>

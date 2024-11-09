@@ -14,13 +14,6 @@ const User = () => {
     const [toggleRegister, setToggleRegister] = useState(false)
 
     const UserContainer = styled.section`
-        background: rgba(0, 0, 0, 0.4);
-        border-radius: 16px;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border: 1px solid rgba(148, 148, 148, 0.3);
-
         color: white;
         font-weight: 300;
 

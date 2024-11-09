@@ -25,9 +25,7 @@ const Leaderboard = () => {
     }, [])
 
     const LeaderboardContainer = styled.section`
-        background: rgba(0, 0, 0, 0.4);
         border-radius: 16px;
-        border: 1px solid rgba(148, 148, 148, 0.3);
 
         color: white;
         font-weight: 300;
