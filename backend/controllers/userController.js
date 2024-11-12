@@ -126,37 +126,26 @@ const getMe = asycHandler(async (req, res) => {
     let response = {}
 
     try {
-        // get user votes
-        let userVotes = []
         const voteIDs = req.user.votes
         response.voteCount = voteIDs.length
-        if (voteIDs.length > 0) {
-            const allVotes = await Vote.find()
-            for (ID of voteIDs) {
-                for (vote of allVotes) {
-                    if (ID.toString() === vote._id.toString()) {
-                        userVotes.push(vote)
-                    }
-                }
-            }
-            // count winners
-            let winnerCount = {}
-            let teamCount = {}
-            for (let i = 0; i < userVotes.length; i++) {
-                let property = userVotes[i].winner
-                if (winnerCount.hasOwnProperty(property)) {
-                    winnerCount[property] += 1
-                } else {
-                    winnerCount[property] = 1
-                }
 
-                property = userVotes[i].winnerTeam
-                if (teamCount.hasOwnProperty(property)) {
-                    teamCount[property] += 1
-                } else {
-                    teamCount[property] = 1
-                }
-            }
+        if (voteIDs.length > 0) {
+            // Fetch only the votes associated with the user
+            const userVotes = await Vote.find({ _id: { $in: voteIDs } })
+
+            // Count winners and teams using reduce
+            const { winnerCount, teamCount } = userVotes.reduce(
+                (counts, vote) => {
+                    counts.winnerCount[vote.winner] =
+                        (counts.winnerCount[vote.winner] || 0) + 1
+                    counts.teamCount[vote.winnerTeam] =
+                        (counts.teamCount[vote.winnerTeam] || 0) + 1
+                    return counts
+                },
+                { winnerCount: {}, teamCount: {} }
+            )
+
+            // Convert counts to sorted arrays
             const winnerArray = Object.entries(winnerCount).sort(
                 (a, b) => b[1] - a[1]
             )
@@ -164,119 +153,67 @@ const getMe = asycHandler(async (req, res) => {
                 (a, b) => b[1] - a[1]
             )
 
-            // convert IDs to names
-            for (entry of winnerArray) {
-                for (player of Players) {
-                    if (entry[0] == player.personId) {
-                        response.favoritePlayer = player.name
-                            .split(" ")
-                            .splice(1, 2)
-                            .join(" ")
-                        response.favoritePlayerID = entry[0]
-                        response.favoritePlayerVotes = entry[1]
-                        break
-                    }
-                }
-                if (response.favoritePlayer) break
+            // Optimize player lookup by creating a Map with string keys
+            const playerMap = new Map(
+                Players.map((player) => [
+                    player.personId.toString(),
+                    player.name,
+                ])
+            )
+
+            // Set favorite player details
+            const favoritePlayerId = winnerArray[0][0]
+            response.favoritePlayerID = favoritePlayerId
+            response.favoritePlayerVotes = winnerArray[0][1]
+            response.favoritePlayer = playerMap.has(favoritePlayerId)
+                ? playerMap
+                      .get(favoritePlayerId)
+                      .split(" ")
+                      .splice(1, 2)
+                      .join(" ")
+                : "Unknown Player"
+
+            // Use a mapping object for team names
+            const teamMap = {
+                1610612738: "Celtics",
+                1610612751: "Nets",
+                1610612752: "Knicks",
+                1610612755: "Sixers",
+                1610612761: "Raptors",
+                1610612741: "Bulls",
+                1610612739: "Cavaliers",
+                1610612765: "Pistons",
+                1610612754: "Pacers",
+                1610612749: "Bucks",
+                1610612737: "Hawks",
+                1610612766: "Hornets",
+                1610612748: "Heat",
+                1610612753: "Magic",
+                1610612764: "Wizards",
+                1610612743: "Nuggets",
+                1610612750: "Timberwolves",
+                1610612760: "Thunder",
+                1610612757: "Trail Blazers",
+                1610612762: "Jazz",
+                1610612744: "Warriors",
+                1610612746: "Clippers",
+                1610612747: "Lakers",
+                1610612756: "Suns",
+                1610612758: "Kings",
+                1610612742: "Mavericks",
+                1610612745: "Rockets",
+                1610612763: "Grizzlies",
+                1610612740: "Pelicans",
+                1610612759: "Spurs",
             }
 
-            switch (teamArray[0][0]) {
-                case "1610612738":
-                    response.favoriteTeam = "Celtics"
-                    break
-                case "1610612751":
-                    response.favoriteTeam = "Nets"
-                    break
-                case "1610612752":
-                    response.favoriteTeam = "Knicks"
-                    break
-                case "1610612755":
-                    response.favoriteTeam = "Sixers"
-                    break
-                case "1610612761":
-                    response.favoriteTeam = "Raptors"
-                    break
-                case "1610612741":
-                    response.favoriteTeam = "Bulls"
-                    break
-                case "1610612739":
-                    response.favoriteTeam = "Cavaliers"
-                    break
-                case "1610612765":
-                    response.favoriteTeam = "Pistons"
-                    break
-                case "1610612754":
-                    response.favoriteTeam = "Pacers"
-                    break
-                case "1610612749":
-                    response.favoriteTeam = "Bucks"
-                    break
-                case "1610612737":
-                    response.favoriteTeam = "Hawks"
-                    break
-                case "1610612766":
-                    response.favoriteTeam = "Hornets"
-                    break
-                case "1610612748":
-                    response.favoriteTeam = "Heat"
-                    break
-                case "1610612753":
-                    response.favoriteTeam = "Magic"
-                    break
-                case "1610612764":
-                    response.favoriteTeam = "Wizards"
-                    break
-                case "1610612743":
-                    response.favoriteTeam = "Nuggets"
-                    break
-                case "1610612750":
-                    response.favoriteTeam = "Timberwolves"
-                    break
-                case "1610612760":
-                    response.favoriteTeam = "Thunder"
-                    break
-                case "1610612757":
-                    response.favoriteTeam = "Trail Blazers"
-                    break
-                case "1610612762":
-                    response.favoriteTeam = "Jazz"
-                    break
-                case "1610612744":
-                    response.favoriteTeam = "Warriors"
-                    break
-                case "1610612746":
-                    response.favoriteTeam = "Clippers"
-                    break
-                case "1610612747":
-                    response.favoriteTeam = "Lakers"
-                    break
-                case "1610612756":
-                    response.favoriteTeam = "Suns"
-                    break
-                case "1610612758":
-                    response.favoriteTeam = "Kings"
-                    break
-                case "1610612742":
-                    response.favoriteTeam = "Mavericks"
-                    break
-                case "1610612745":
-                    response.favoriteTeam = "Rockets"
-                    break
-                case "1610612763":
-                    response.favoriteTeam = "Grizzlies"
-                    break
-                case "1610612740":
-                    response.favoriteTeam = "Pelicans"
-                    break
-                case "1610612759":
-                    response.favoriteTeam = "Spurs"
-                    break
-                default:
-                    break
-            }
-            response.favoriteTeamID = teamArray[0][0]
+            // Set favorite team details
+            const favoriteTeamId = teamArray[0][0]
+            response.favoriteTeamID = favoriteTeamId
             response.favoriteTeamVotes = teamArray[0][1]
+            response.favoriteTeam = teamMap[favoriteTeamId] || "Unknown Team"
         }
+
         res.status(200).json(response)
     } catch (error) {
         console.error(error)
