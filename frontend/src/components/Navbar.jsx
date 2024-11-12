@@ -98,7 +98,7 @@ const Navbar = (props) => {
                     ) : (
                         <IoStatsChartOutline />
                     )}
-                    Analyze
+                    Props
                 </div>
                 <div
                     className="item"
