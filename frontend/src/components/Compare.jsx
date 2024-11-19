@@ -6,6 +6,7 @@ import { toast } from "react-toastify"
 
 import { AppContext } from "../AppContext"
 import roster from "../players.json"
+import { teamColors, defaultColor } from "../config"
 
 import { AiOutlineClose } from "react-icons/ai"
 import { FaUsers } from "react-icons/fa"
@@ -20,103 +21,6 @@ const Compare = () => {
     } = useContext(AppContext)
     const [loading, setLoading] = useState(false)
     const players = [...roster.allPlayers]
-
-    const getTeamColor = (teamID) => {
-        switch (teamID) {
-            case 1610612737:
-                return "#df393fd0"
-
-            case 1610612738:
-                return "#096839d0"
-
-            case 1610612751:
-                return "#000000d0"
-
-            case 1610612766:
-                return "#065F70d0"
-
-            case 1610612741:
-                return "#ce1241d0"
-
-            case 1610612739:
-                return "#591E31d0"
-
-            case 1610612742:
-                return "#024396d0"
-
-            case 1610612743:
-                return "#0C1B34d0"
-
-            case 1610612765:
-                return "#1C428Ad0"
-
-            case 1610612744:
-                return "#065591d0"
-
-            case 1610612745:
-                return "#CE1241d0"
-
-            case 1610612754:
-                return "#012D61d0"
-
-            case 1610612746:
-                return "#9F0E25d0"
-
-            case 1610612747:
-                return "#552582d0"
-
-            case 1610612763:
-                return "#5D76A9d0"
-
-            case 1610612748:
-                return "#98002Ed0"
-
-            case 1610612749:
-                return "#00471Bd0"
-
-            case 1610612750:
-                return "#0D2240d0"
-
-            case 1610612740:
-                return "#012B5Cd0"
-
-            case 1610612752:
-                return "#156EB6d0"
-
-            case 1610612760:
-                return "#007AC0d0"
-
-            case 1610612753:
-                return "#0177BFd0"
-
-            case 1610612755:
-                return "#1A71B9d0"
-
-            case 1610612756:
-                return "#1D1260d0"
-
-            case 1610612757:
-                return "#D9363Cd0"
-
-            case 1610612758:
-                return "#623787d0"
-
-            case 1610612759:
-                return "#b8b8b8d0"
-
-            case 1610612761:
-                return "#000000d0"
-
-            case 1610612762:
-                return "#012B5Cd0"
-
-            case 1610612764:
-                return "#012B5Cd0"
-
-            default:
-                return "#051D2Dd0"
-        }
-    }
 
     const onSelect = async (player) => {
         setLoading(true)
@@ -493,7 +397,7 @@ const Compare = () => {
             <div
                 className="column"
                 style={{
-                    backgroundColor: getTeamColor(getTeamID()),
+                    backgroundColor: teamColors[getTeamID()] || defaultColor,
                     borderColor: scope.slice(-1) === "P" ? "#b49900" : "",
                 }}
             >
