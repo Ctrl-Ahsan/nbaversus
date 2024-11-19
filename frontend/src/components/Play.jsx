@@ -10,6 +10,7 @@ import "react-circular-progressbar/dist/styles.css"
 import { AppContext } from "../AppContext"
 import roster from "../players.json"
 import Stats from "./Stats"
+import Leaderboard from "./Leaderboard"
 
 import { FaCrown } from "react-icons/fa"
 import {
@@ -17,6 +18,8 @@ import {
     IoInformationCircle,
     IoArrowForwardCircle,
 } from "react-icons/io5"
+import { IoIosStats } from "react-icons/io"
+import { GiPodium } from "react-icons/gi"
 
 const Play = () => {
     const {
@@ -40,8 +43,10 @@ const Play = () => {
         setMenuOpen,
         menuClosed,
         setMenuClosed,
-        toggleStats,
-        setToggleStats,
+        stats,
+        setStats,
+        leaderboard,
+        setLeaderboard,
     } = useContext(AppContext)
 
     const playerArray = roster.filteredPlayers
@@ -572,7 +577,11 @@ const Play = () => {
 
         const handleStats = () => {
             setMenuOpen(true)
-            setToggleStats(true)
+            setStats(true)
+        }
+        const handleLeaderboard = () => {
+            setMenuOpen(true)
+            setLeaderboard(true)
         }
 
         const MenuContainer = styled.nav`
@@ -634,6 +643,10 @@ const Play = () => {
                     onClick={handleStats}
                     style={{ fontSize: "2.5em" }}
                 />
+                <GiPodium
+                    onClick={handleLeaderboard}
+                    style={{ fontSize: "2.5em" }}
+                />
             </MenuContainer>
         )
     }
@@ -677,13 +690,20 @@ const Play = () => {
                 </div>
             )}
             {!menuOpen && <Menu />}
-            {toggleStats && (
+            {stats && (
                 <Stats
                     player1={player1}
                     player2={player2}
                     setMenuOpen={setMenuOpen}
                     setMenuClosed={setMenuClosed}
-                    setToggleStats={setToggleStats}
+                    setStats={setStats}
+                />
+            )}
+            {leaderboard && (
+                <Leaderboard
+                    setMenuOpen={setMenuOpen}
+                    setMenuClosed={setMenuClosed}
+                    setLeaderboard={setLeaderboard}
                 />
             )}
         </>

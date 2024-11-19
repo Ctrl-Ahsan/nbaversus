@@ -34,7 +34,7 @@ const Stats = (props) => {
     function handleClick() {
         props.setMenuOpen(false)
         props.setMenuClosed(true)
-        props.setToggleStats(false)
+        props.setStats(false)
     }
 
     const suffix = (num) => {
@@ -62,8 +62,8 @@ const Stats = (props) => {
         background: rgba(0, 0, 0, 0.4);
         border-radius: 16px;
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
         border: 1px solid rgba(148, 148, 148, 0.3);
         color: white;
         overflow: hidden;
@@ -72,8 +72,8 @@ const Stats = (props) => {
         padding: 20px;
         & .close {
             position: absolute;
-            top: 1em;
-            right: 1em;
+            top: 1.5em;
+            right: 1.5em;
             cursor: pointer;
             transition: all 0.3s;
             :active {

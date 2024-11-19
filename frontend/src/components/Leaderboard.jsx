@@ -5,10 +5,11 @@ import { toast } from "react-toastify"
 
 import Spinner from "./Spinner"
 
+import { AiOutlineClose } from "react-icons/ai"
 import { FaCrown } from "react-icons/fa"
 import { GiPodium } from "react-icons/gi"
 
-const Leaderboard = () => {
+const Leaderboard = (props) => {
     const [winners, setWinners] = useState([])
     const [loading, setLoading] = useState(false)
     useEffect(() => {
@@ -24,18 +25,47 @@ const Leaderboard = () => {
         setLeaderboard()
     }, [])
 
+    function handleClick() {
+        props.setMenuOpen(false)
+        props.setMenuClosed(true)
+        props.setLeaderboard(false)
+    }
+
     const LeaderboardContainer = styled.section`
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 3;
+        background: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(148, 148, 148, 0.3);
         border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        color: white;
+        overflow: hidden;
+        width: 75%;
+        max-width: 740px;
+        padding: 20px;
 
         color: white;
         font-weight: 300;
-        min-height: 100%;
-        height: 100%;
-        width: 100%;
         padding: 1em;
 
         display: flex;
         flex-direction: column;
+
+        & .close {
+            position: absolute;
+            top: 1em;
+            right: 1em;
+            cursor: pointer;
+            transition: all 0.3s;
+            :active {
+                scale: 0.9;
+            }
+        }
 
         & .title {
             display: flex;
@@ -61,7 +91,7 @@ const Leaderboard = () => {
             padding-top: 0.5em;
             display: grid;
             grid-template-columns: 1fr 2fr 1fr;
-            height: 100%;
+            height: 55vh;
             width: 100%;
             overflow-x: hidden;
             overflow-y: scroll;
@@ -92,6 +122,9 @@ const Leaderboard = () => {
 
     return (
         <LeaderboardContainer>
+            <div className="close" onClick={handleClick}>
+                <AiOutlineClose />
+            </div>
             <div className="title">
                 <GiPodium /> Leaderboard
             </div>
