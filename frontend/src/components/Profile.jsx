@@ -62,8 +62,7 @@ const Profile = (props) => {
         border-radius: 5px;
         padding: 1em 10px;
         & .me {
-            padding: 1em;
-            padding-top: 0;
+            padding: 0 1em;
         }
 
         & .favorites {
@@ -123,7 +122,7 @@ const Profile = (props) => {
         }
 
         & .logout {
-            width: 90%;
+            width: calc(90% - 1em);
         }
         & .button-text {
             display: flex;
