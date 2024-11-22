@@ -86,12 +86,16 @@ const Home = () => {
         const displayName2 = width2 - width1 > -79 ? fullName2 : lastName2
 
         const handleClick1 = () => {
-            setVoted(true)
-            setP1Wins(true)
+            if (!p1Wins && !p2Wins) {
+                setVoted(true)
+                setP1Wins(true)
+            }
         }
         const handleClick2 = () => {
-            setVoted(true)
-            setP2Wins(true)
+            if (!p1Wins && !p2Wins) {
+                setVoted(true)
+                setP2Wins(true)
+            }
         }
 
         return (
