@@ -47,6 +47,8 @@ const Home = () => {
 
     const Panel = ({ question }) => {
         const [voted, setVoted] = useState(false)
+        const [p1Wins, setP1Wins] = useState(false)
+        const [p2Wins, setP2Wins] = useState(false)
 
         const votes1 = question.players[0].votes
         const votes2 = question.players[1].votes
@@ -73,8 +75,13 @@ const Home = () => {
         const bg1 = teamColors[question.players[0].teamId]
         const bg2 = teamColors[question.players[1].teamId]
 
-        const handleClick = () => {
+        const handleClick1 = () => {
             setVoted(true)
+            setP1Wins(true)
+        }
+        const handleClick2 = () => {
+            setVoted(true)
+            setP2Wins(true)
         }
 
         return (
@@ -84,8 +91,9 @@ const Home = () => {
                     style={{
                         backgroundColor: bg1,
                         width: `${width1}%`,
+                        filter: `${p2Wins ? "brightness(30%)" : ""}`,
                     }}
-                    onClick={handleClick}
+                    onClick={handleClick1}
                 >
                     <div className="name">{question.players[0].name}</div>
                     <div
@@ -104,8 +112,9 @@ const Home = () => {
                     style={{
                         backgroundColor: bg2,
                         width: `${width2}%`,
+                        filter: `${p1Wins ? "brightness(30%)" : ""}`,
                     }}
-                    onClick={handleClick}
+                    onClick={handleClick2}
                 >
                     <div className="name">{question.players[1].name}</div>
                     <div
