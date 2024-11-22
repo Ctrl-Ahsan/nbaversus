@@ -1,12 +1,10 @@
-import { useEffect } from "react"
-import axios from "axios"
+import { useEffect, useState } from "react"
 import "./Home.css"
-import { toast } from "react-toastify"
-import { useState } from "react"
 import { teamColors } from "../config"
 
 const Home = () => {
     const [versus, setVersus] = useState([])
+
     useEffect(() => {
         const response = [
             {
@@ -47,13 +45,16 @@ const Home = () => {
         setVersus(response)
     }, [])
 
-    const Panel = (props) => {
+    const Panel = ({ question }) => {
         const [voted, setVoted] = useState(false)
-        const votes1 = props.question.players[0].votes
-        const votes2 = props.question.players[1].votes
+
+        const votes1 = question.players[0].votes
+        const votes2 = question.players[1].votes
         const totalVotes = votes1 + votes2
+
         const percentage1 = Math.round((votes1 / totalVotes) * 100)
         const percentage2 = 100 - percentage1
+
         const width1 = voted
             ? percentage1 > percentage2
                 ? percentage1 + 50
@@ -65,22 +66,28 @@ const Home = () => {
                 : 50
             : 50
 
+        const img1 = `https://cdn.nba.com/headshots/nba/latest/1040x760/${question.players[0].personId}.png`
+        const img2 = `https://cdn.nba.com/headshots/nba/latest/1040x760/${question.players[1].personId}.png`
+        const logo1 = `https://cdn.nba.com/logos/nba/${question.players[0].teamId}/global/L/logo.svg`
+        const logo2 = `https://cdn.nba.com/logos/nba/${question.players[1].teamId}/global/L/logo.svg`
+        const bg1 = teamColors[question.players[0].teamId]
+        const bg2 = teamColors[question.players[1].teamId]
+
         const handleClick = () => {
             setVoted(true)
         }
+
         return (
             <div className="panel">
                 <div
                     className="player"
                     style={{
-                        backgroundColor: `${
-                            teamColors[props.question.players[0].teamId]
-                        }`,
+                        backgroundColor: bg1,
                         width: `${width1}%`,
                     }}
                     onClick={handleClick}
                 >
-                    <div className="name">{props.question.players[0].name}</div>
+                    <div className="name">{question.players[0].name}</div>
                     <div
                         className="votes"
                         style={{ opacity: voted ? "100%" : "0%" }}
@@ -88,27 +95,19 @@ const Home = () => {
                         {percentage1}%
                     </div>
                     <div className="image">
-                        <img
-                            src={`https://cdn.nba.com/headshots/nba/latest/1040x760/${props.question.players[0].personId}.png`}
-                        />
+                        <img src={img1} />
                     </div>
-                    <img
-                        className="logoBG"
-                        src={`https://cdn.nba.com/logos/nba/${props.question.players[0].teamId}/global/L/logo.svg`}
-                        alt=""
-                    />
+                    <img className="logoBG" src={logo1} alt="" />
                 </div>
                 <div
                     className="player"
                     style={{
-                        backgroundColor: `${
-                            teamColors[props.question.players[1].teamId]
-                        }`,
-                        width: `${width2}`,
+                        backgroundColor: bg2,
+                        width: `${width2}%`,
                     }}
                     onClick={handleClick}
                 >
-                    <div className="name">{props.question.players[1].name}</div>
+                    <div className="name">{question.players[1].name}</div>
                     <div
                         className="votes"
                         style={{ opacity: voted ? "100%" : "0%" }}
@@ -116,15 +115,9 @@ const Home = () => {
                         {percentage2}%
                     </div>
                     <div className="image">
-                        <img
-                            src={`https://cdn.nba.com/headshots/nba/latest/1040x760/${props.question.players[1].personId}.png`}
-                        />
+                        <img src={img2} />
                     </div>
-                    <img
-                        className="logoBG"
-                        src={`https://cdn.nba.com/logos/nba/${props.question.players[1].teamId}/global/L/logo.svg`}
-                        alt=""
-                    />
+                    <img className="logoBG" src={logo2} alt="" />
                 </div>
             </div>
         )
@@ -137,10 +130,13 @@ const Home = () => {
                 <img src="/nbaversus.png" alt="" />
             </div>
             <div className="content">
-                {versus.map((question) => (
-                    <div className="versus">
+                {versus.map((question, index) => (
+                    <div className="versus" key={index}>
                         <div className="category">{question.category}</div>
-                        <Panel question={question} />
+                        <Panel
+                            question={question}
+                            key={`${question.category}-${index}`}
+                        />
                     </div>
                 ))}
             </div>
