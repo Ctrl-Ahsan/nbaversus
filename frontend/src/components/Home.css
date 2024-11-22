@@ -68,6 +68,7 @@
                         font-weight: 700;
                         padding-top: 1em;
                         padding-bottom: 0.5em;
+                        white-space: nowrap;
                     }
                     .votes {
                         margin-bottom: 0.5em;
