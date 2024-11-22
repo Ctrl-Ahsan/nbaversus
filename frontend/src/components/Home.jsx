@@ -89,7 +89,7 @@ const Home = () => {
                 >
                     <div className="name">{question.players[0].name}</div>
                     <div
-                        className="votes"
+                        className={`votes ${voted ? "fade-in" : ""}`}
                         style={{ opacity: voted ? "100%" : "0%" }}
                     >
                         {percentage1}%
@@ -109,7 +109,7 @@ const Home = () => {
                 >
                     <div className="name">{question.players[1].name}</div>
                     <div
-                        className="votes"
+                        className={`votes ${voted ? "fade-in" : ""}`}
                         style={{ opacity: voted ? "100%" : "0%" }}
                     >
                         {percentage2}%
