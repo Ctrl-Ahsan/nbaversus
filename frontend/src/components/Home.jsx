@@ -102,10 +102,13 @@ const Home = () => {
                         backgroundColor: bg1,
                         width: `${width1}%`,
                         filter: `${p2Wins ? "brightness(30%)" : ""}`,
+                        cursor: `${p1Wins || p2Wins ? "" : "pointer"}`,
                     }}
                     onClick={handleClick1}
                 >
-                    <div className="name">{displayName1}</div>
+                    <div className="name" title={fullName1}>
+                        {displayName1}
+                    </div>
                     <div
                         className={`votes ${voted ? "puff-in-center" : ""}`}
                         style={{ opacity: voted ? "100%" : "0%" }}
@@ -123,10 +126,13 @@ const Home = () => {
                         backgroundColor: bg2,
                         width: `${width2}%`,
                         filter: `${p1Wins ? "brightness(30%)" : ""}`,
+                        cursor: `${p1Wins || p2Wins ? "" : "pointer"}`,
                     }}
                     onClick={handleClick2}
                 >
-                    <div className="name">{displayName2}</div>
+                    <div className="name" title={fullName2}>
+                        {displayName2}
+                    </div>
                     <div
                         className={`votes ${voted ? "puff-in-center" : ""}`}
                         style={{ opacity: voted ? "100%" : "0%" }}
