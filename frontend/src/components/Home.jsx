@@ -1,367 +1,150 @@
 import { useEffect } from "react"
 import axios from "axios"
-import styled from "styled-components"
+import "./Home.css"
 import { toast } from "react-toastify"
-
-import Leaderboard from "./Leaderboard"
-
-import { FaHeart, FaGithub, FaFire } from "react-icons/fa"
 import { useState } from "react"
-import { FaMedal } from "react-icons/fa6"
-import Spinner from "./Spinner"
+import { teamColors } from "../config"
 
 const Home = () => {
-    const [leaders, setLeaders] = useState({})
-    const [loading, setLoading] = useState(false)
+    const [versus, setVersus] = useState([])
     useEffect(() => {
-        setLoading(true)
-        const getLeaders = async () => {
-            const leadersResponse = await axios
-                .get("/api/stats/leaders")
-                .catch((error) => {
-                    toast.error(error.response.data)
-                    setLoading(false)
-                })
-            setLoading(false)
-            try {
-                setLeaders(leadersResponse.data)
-            } catch (error) {
-                toast.error(error)
-            }
-        }
-        getLeaders()
+        const response = [
+            {
+                category: "GOAT",
+                players: [
+                    {
+                        name: "LeBron James",
+                        personId: 2544,
+                        teamId: 1610612747,
+                        votes: 22,
+                    },
+                    {
+                        name: "Stephen Curry",
+                        personId: 201939,
+                        teamId: 1610612744,
+                        votes: 8,
+                    },
+                ],
+            },
+            {
+                category: "Shooting",
+                players: [
+                    {
+                        name: "LeBron James",
+                        personId: 2544,
+                        teamId: 1610612747,
+                        votes: 2,
+                    },
+                    {
+                        name: "Stephen Curry",
+                        personId: 201939,
+                        teamId: 1610612744,
+                        votes: 8,
+                    },
+                ],
+            },
+        ]
+        setVersus(response)
     }, [])
 
-    const Entry = (props) => {
-        const imageUrl = `https://cdn.nba.com/headshots/nba/latest/260x190/${props.entry[0]}.png`
+    const Panel = (props) => {
+        const [voted, setVoted] = useState(false)
+        const votes1 = props.question.players[0].votes
+        const votes2 = props.question.players[1].votes
+        const totalVotes = votes1 + votes2
+        const percentage1 = Math.round((votes1 / totalVotes) * 100)
+        const percentage2 = 100 - percentage1
+        const width1 = voted
+            ? percentage1 > percentage2
+                ? percentage1 + 50
+                : 50
+            : 50
+        const width2 = voted
+            ? percentage2 > percentage1
+                ? percentage2 + 50
+                : 50
+            : 50
 
+        const handleClick = () => {
+            setVoted(true)
+        }
         return (
-            <div className="entry">
-                <div className="image">
-                    <img src={imageUrl} alt="" />
+            <div className="panel">
+                <div
+                    className="player"
+                    style={{
+                        backgroundColor: `${
+                            teamColors[props.question.players[0].teamId]
+                        }`,
+                        width: `${width1}%`,
+                    }}
+                    onClick={handleClick}
+                >
+                    <div className="name">{props.question.players[0].name}</div>
+                    <div
+                        className="votes"
+                        style={{ opacity: voted ? "100%" : "0%" }}
+                    >
+                        {percentage1}%
+                    </div>
+                    <div className="image">
+                        <img
+                            src={`https://cdn.nba.com/headshots/nba/latest/1040x760/${props.question.players[0].personId}.png`}
+                        />
+                    </div>
+                    <img
+                        className="logoBG"
+                        src={`https://cdn.nba.com/logos/nba/${props.question.players[0].teamId}/global/L/logo.svg`}
+                        alt=""
+                    />
                 </div>
-                <div className="name">{props.entry[1]}</div>
-                <div className="stat">{props.entry[2]}</div>
+                <div
+                    className="player"
+                    style={{
+                        backgroundColor: `${
+                            teamColors[props.question.players[1].teamId]
+                        }`,
+                        width: `${width2}`,
+                    }}
+                    onClick={handleClick}
+                >
+                    <div className="name">{props.question.players[1].name}</div>
+                    <div
+                        className="votes"
+                        style={{ opacity: voted ? "100%" : "0%" }}
+                    >
+                        {percentage2}%
+                    </div>
+                    <div className="image">
+                        <img
+                            src={`https://cdn.nba.com/headshots/nba/latest/1040x760/${props.question.players[1].personId}.png`}
+                        />
+                    </div>
+                    <img
+                        className="logoBG"
+                        src={`https://cdn.nba.com/logos/nba/${props.question.players[1].teamId}/global/L/logo.svg`}
+                        alt=""
+                    />
+                </div>
             </div>
         )
     }
 
-    const HomeContainer = styled.section`
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        height: 92%;
-        width: 100%;
-        max-height: -webkit-fill-available;
-        overflow-y: scroll;
-
-        background: linear-gradient(270deg, #860000, #013a6b);
-
-        @media screen and (min-width: 1080px) {
-            height: 100%;
-        }
-        & .logo {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            margin: 0.5em 0;
-            font-family: Bebas Neue, Roboto, Arial, Helvetica, sans-serif;
-            font-size: 4em;
-
-            img {
-                margin-top: -12px;
-                width: 1.25em;
-                -webkit-touch-callout: none;
-                -webkit-tap-highlight-color: transparent;
-                -moz-user-select: none;
-                -webkit-user-select: none;
-                user-select: none;
-                -webkit-user-drag: none;
-            }
-        }
-
-        & .content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-            height: 100%;
-
-            @media screen and (min-width: 1440px) {
-                flex-direction: row;
-                justify-content: space-evenly;
-                align-items: flex-start;
-                height: 100%;
-            }
-        }
-
-        & .leaders-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 80%;
-            width: 90%;
-            padding: 1em 0;
-            margin-bottom: 1em;
-            border-radius: 16px;
-
-            @media screen and (min-width: 1440px) {
-                height: 90%;
-                width: 32%;
-            }
-
-            & .title {
-                display: flex;
-                align-items: center;
-                font-size: 1.5em;
-                font-weight: 700;
-                padding: 10px 20px;
-                margin-bottom: 0.5em;
-
-                svg {
-                    font-size: 0.8em;
-                    margin-right: 0.5em;
-                }
-            }
-
-            & .leaders {
-                position: relative;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                overflow-x: hidden;
-                overflow-y: scroll;
-                height: 100%;
-                width: 90%;
-                border-radius: 5px;
-                background-color: #0000007a;
-            }
-
-            & .headers {
-                display: flex;
-                justify-content: center;
-                margin: 1em;
-                font-size: 1.2em;
-                font-family: Bebas Neue, Roboto Condensed, Arial;
-                font-weight: 700;
-                width: 100%;
-            }
-
-            & .entry-container {
-                display: flex;
-                align-items: center;
-                overflow-x: auto;
-                overflow-y: hidden;
-                min-height: 10em;
-                width: 100%;
-                padding-bottom: 0.5em;
-                border-bottom: 1px solid rgba(148, 148, 148, 0.3);
-                font-size: 0.8em;
-
-                & .entries {
-                    display: flex;
-                    justify-content: space-between;
-                    margin: auto;
-                }
-
-                & .entry {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-between;
-                    align-items: center;
-                    height: 9em;
-                    width: 7em;
-                    margin: 0 0.5em;
-                    & .name {
-                        margin-top: 0.5em;
-                        margin-bottom: 0.25em;
-                    }
-                    & .image {
-                        display: flex;
-                        justify-content: center;
-                        border-radius: 100px;
-                        overflow: hidden;
-                        height: 4em;
-                        width: 4em;
-                        background-color: #b8b8b8;
-                        & img {
-                            height: 4em;
-                        }
-                    }
-                }
-            }
-        }
-
-        & .leaderboard-container {
-            display: flex;
-            min-height: 70%;
-            height: 70%;
-            width: 90%;
-            position: relative;
-            margin-bottom: 3em;
-
-            @media screen and (min-width: 1440px) {
-                height: 90%;
-                width: 32%;
-            }
-        }
-
-        & .footer {
-            display: flex;
-            align-items: center;
-            margin-bottom: 0.5em;
-            height: 1em;
-            font-size: 1rem;
-            color: #5e5e5e;
-            font-family: Roboto Condensed, Arial;
-            font-weight: 300;
-
-            & svg {
-                font-size: 0.7em;
-                margin: 0 0.4em;
-            }
-        }
-    `
-
     return (
-        <HomeContainer>
+        <main className="home">
             <div className="logo">
                 NBA
                 <img src="/nbaversus.png" alt="" />
             </div>
             <div className="content">
-                <div className="leaderboard-container">
-                    <Leaderboard />
-                </div>
-                <div className="leaders-container">
-                    <div className="title">
-                        <FaFire color="orange" /> Daily Leaders
+                {versus.map((question) => (
+                    <div className="versus">
+                        <div className="category">{question.category}</div>
+                        <Panel question={question} />
                     </div>
-                    <div className="leaders">
-                        {loading && <Spinner />}
-                        {JSON.stringify(leaders) !== "{}" && (
-                            <>
-                                <div className="headers">Points</div>
-                                <div className="entry-container">
-                                    <div className="entries">
-                                        {leaders.daily.points.map((item) => (
-                                            <Entry entry={item} />
-                                        ))}
-                                    </div>
-                                </div>
-                                <div className="headers">Rebounds</div>
-                                <div className="entry-container">
-                                    <div className="entries">
-                                        {leaders.daily.rebounds.map((item) => (
-                                            <Entry entry={item} />
-                                        ))}
-                                    </div>
-                                </div>
-                                <div className="headers">Assists</div>
-                                <div className="entry-container">
-                                    <div className="entries">
-                                        {leaders.daily.assists.map((item) => (
-                                            <Entry entry={item} />
-                                        ))}
-                                    </div>
-                                </div>
-                                <div className="headers">Steals</div>
-                                <div className="entry-container">
-                                    <div className="entries">
-                                        {leaders.daily.steals.map((item) => (
-                                            <Entry entry={item} />
-                                        ))}
-                                    </div>
-                                </div>
-                                <div className="headers">Blocks</div>
-                                <div className="entry-container">
-                                    <div className="entries">
-                                        {leaders.daily.blocks.map((item) => (
-                                            <Entry entry={item} />
-                                        ))}
-                                    </div>
-                                </div>
-                                <div className="headers">Threes Made</div>
-                                <div
-                                    className="entry-container"
-                                    style={{ border: "none" }}
-                                >
-                                    <div className="entries">
-                                        {leaders.daily.threes.map((item) => (
-                                            <Entry entry={item} />
-                                        ))}
-                                    </div>
-                                </div>
-                            </>
-                        )}
-                    </div>
-                </div>
-                <div className="leaders-container">
-                    <div className="title">
-                        <FaMedal /> Season Leaders
-                    </div>
-                    <div className="leaders">
-                        {loading && <Spinner />}
-                        {JSON.stringify(leaders) !== "{}" && (
-                            <>
-                                <div className="headers">Points</div>
-                                <div className="entry-container">
-                                    <div className="entries">
-                                        {leaders.season.points.map((item) => (
-                                            <Entry entry={item} />
-                                        ))}
-                                    </div>
-                                </div>
-                                <div className="headers">Rebounds</div>
-                                <div className="entry-container">
-                                    <div className="entries">
-                                        {leaders.season.rebounds.map((item) => (
-                                            <Entry entry={item} />
-                                        ))}
-                                    </div>
-                                </div>
-                                <div className="headers">Assists</div>
-                                <div className="entry-container">
-                                    <div className="entries">
-                                        {leaders.season.assists.map((item) => (
-                                            <Entry entry={item} />
-                                        ))}
-                                    </div>
-                                </div>
-                                <div className="headers">Steals</div>
-                                <div className="entry-container">
-                                    <div className="entries">
-                                        {leaders.season.steals.map((item) => (
-                                            <Entry entry={item} />
-                                        ))}
-                                    </div>
-                                </div>
-                                <div className="headers">Blocks</div>
-                                <div className="entry-container">
-                                    <div className="entries">
-                                        {leaders.season.blocks.map((item) => (
-                                            <Entry entry={item} />
-                                        ))}
-                                    </div>
-                                </div>
-                                <div className="headers">Threes Made</div>
-                                <div
-                                    className="entry-container"
-                                    style={{ border: "none" }}
-                                >
-                                    <div className="entries">
-                                        {leaders.season.threes.map((item) => (
-                                            <Entry entry={item} />
-                                        ))}
-                                    </div>
-                                </div>
-                            </>
-                        )}
-                    </div>
-                </div>
+                ))}
             </div>
-        </HomeContainer>
+        </main>
     )
 }
 
