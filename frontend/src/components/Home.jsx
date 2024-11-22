@@ -75,6 +75,16 @@ const Home = () => {
         const bg1 = teamColors[question.players[0].teamId]
         const bg2 = teamColors[question.players[1].teamId]
 
+        // Extract first and last names
+        const fullName1 = question.players[0].name
+        const lastName1 = fullName1.split(" ").slice(-1).join(" ")
+        const fullName2 = question.players[1].name
+        const lastName2 = fullName2.split(" ").slice(-1).join(" ")
+
+        // Decide name display based on width
+        const displayName1 = width1 - width2 > -79 ? fullName1 : lastName1
+        const displayName2 = width2 - width1 > -79 ? fullName2 : lastName2
+
         const handleClick1 = () => {
             setVoted(true)
             setP1Wins(true)
@@ -95,7 +105,7 @@ const Home = () => {
                     }}
                     onClick={handleClick1}
                 >
-                    <div className="name">{question.players[0].name}</div>
+                    <div className="name">{displayName1}</div>
                     <div
                         className={`votes ${voted ? "puff-in-center" : ""}`}
                         style={{ opacity: voted ? "100%" : "0%" }}
@@ -116,7 +126,7 @@ const Home = () => {
                     }}
                     onClick={handleClick2}
                 >
-                    <div className="name">{question.players[1].name}</div>
+                    <div className="name">{displayName2}</div>
                     <div
                         className={`votes ${voted ? "puff-in-center" : ""}`}
                         style={{ opacity: voted ? "100%" : "0%" }}
