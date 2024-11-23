@@ -1,5 +1,6 @@
 const asyncHandler = require("express-async-handler")
 const Question = require("../models/questionModel")
+const GOAT = require("../models/goatModel")
 
 const addQuestion = asyncHandler(async (req, res) => {
     const { question, players } = req.body
@@ -38,4 +39,44 @@ const addQuestion = asyncHandler(async (req, res) => {
     })
 })
 
-module.exports = { addQuestion }
+const voteForGoat = async (req, res) => {
+    const { playerId } = req.body
+
+    if (!playerId) {
+        return res.status(400).json({ message: "Player ID is required." })
+    }
+
+    try {
+        // Find the GOAT vote document (assuming only one exists)
+        let goat = await GOAT.findOne()
+
+        if (!goat) {
+            // Initialize the GOAT vote document if it doesn't exist
+            goat = await GOAT.create({
+                lebron: 0,
+                jordan: 0,
+            })
+        }
+
+        // Increment the appropriate vote count
+        if (playerId === 2544) {
+            goat.lebron += 1
+        } else if (playerId === 893) {
+            goat.jordan += 1
+        } else {
+            return res.status(400).json({ message: "Invalid player ID." })
+        }
+
+        await goat.save()
+
+        res.status(200).json({
+            message: "Vote recorded successfully.",
+            lebron: goat.lebron,
+            jordan: goat.jordan,
+        })
+    } catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+}
+
+module.exports = { addQuestion, voteForGoat }
