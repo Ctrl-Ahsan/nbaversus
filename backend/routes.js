@@ -14,6 +14,7 @@ const {
     getMe,
     updateMe,
 } = require("./controllers/userController")
+const { addQuestion } = require("./controllers/questionController")
 const { protect } = require("./middleware/authMiddleware")
 
 // user routes
@@ -32,5 +33,8 @@ router.get("/stats/leaders", getLeaders)
 router.post("/stats/season", getSeasonStats)
 router.post("/stats/career", getCareerStats)
 router.post("/stats/gamelogs", getGameLogs)
+
+// question routes
+router.post("/questions", addQuestion)
 
 module.exports = router
