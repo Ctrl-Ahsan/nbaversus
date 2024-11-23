@@ -27,9 +27,16 @@ const protect = asyncHandler(async (req, res, next) => {
     }
 
     if (!token) {
-        res.status(401)
-        throw new Error("Not authorized, no token")
+        res.status(401).json("Not authorized, no token")
     }
 })
 
-module.exports = { protect }
+const admin = (req, res, next) => {
+    const apiKey = req.header("x-api-key")
+    if (!apiKey || apiKey !== process.env.API_KEY) {
+        return res.status(403).json({ message: "Forbidden: Invalid API Key" })
+    }
+    next()
+}
+
+module.exports = { protect, admin }
