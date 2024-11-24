@@ -2,7 +2,7 @@ const asyncHandler = require("express-async-handler")
 const jwt = require("jsonwebtoken")
 const Vote = require("../models/voteModel")
 const User = require("../models/userModel")
-const Players = require("../players.json")
+const Players = require("../data/players.json")
 
 const getVote = asyncHandler(async (req, res) => {
     try {

@@ -4,7 +4,7 @@ const geoip = require("geoip-lite")
 const asycHandler = require("express-async-handler")
 const User = require("../models/userModel")
 const Vote = require("../models/voteModel")
-const Players = require("../players.json")
+const Players = require("../data/players.json")
 
 let usersVisited = []
 
