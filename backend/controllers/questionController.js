@@ -2,26 +2,39 @@ const asyncHandler = require("express-async-handler")
 const Question = require("../models/questionModel")
 const GOAT = require("../models/goatModel")
 
+// Add a question pool
 const addQuestion = asyncHandler(async (req, res) => {
     const { question, players } = req.body
 
     // Validate the input
-    if (!question || players.length < 2) {
+    if (!question || !players || players.length < 2) {
         res.status(400).json(
             "A question and an array of at least two players are required."
         )
     }
 
-    // Validate that all players are numbers
-    if (!players.every((id) => typeof id === "number")) {
-        res.status(400).json("All player IDs must be numbers.")
+    // Validate that all players have id and teamId
+    if (
+        !Array.isArray(players) ||
+        !players.every(
+            (player) =>
+                typeof player.id === "number" &&
+                typeof player.teamId === "number"
+        )
+    ) {
+        return res.status(400).json({
+            message: "Players must be an array of objects with id and teamId.",
+        })
     }
 
     // Generate all 2-player combinations
     const combinations = []
     for (let i = 0; i < players.length; i++) {
         for (let j = i + 1; j < players.length; j++) {
-            combinations.push({ player1: players[i], player2: players[j] })
+            combinations.push({
+                player1: players[i],
+                player2: players[j],
+            })
         }
     }
 
@@ -39,7 +52,8 @@ const addQuestion = asyncHandler(async (req, res) => {
     })
 })
 
-const voteForGoat = async (req, res) => {
+// Vote for GOAT
+const voteForGoat = asyncHandler(async (req, res) => {
     const { playerId } = req.body
 
     if (!playerId) {
@@ -60,9 +74,9 @@ const voteForGoat = async (req, res) => {
 
         // Increment the appropriate vote count
         if (playerId === 2544) {
-            goat.lebron += 1
+            goat.lebron += 1 // LeBron's ID
         } else if (playerId === 893) {
-            goat.jordan += 1
+            goat.jordan += 1 // Jordan's ID
         } else {
             return res.status(400).json({ message: "Invalid player ID." })
         }
@@ -77,6 +91,6 @@ const voteForGoat = async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: error.message })
     }
-}
+})
 
 module.exports = { addQuestion, voteForGoat }

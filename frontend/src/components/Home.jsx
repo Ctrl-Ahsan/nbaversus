@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import "./Home.css"
 import { teamColors } from "../config"
+import { GiGoat } from "react-icons/gi"
 
 const Home = () => {
     const [versus, setVersus] = useState([])
@@ -17,9 +18,9 @@ const Home = () => {
                         votes: 22,
                     },
                     {
-                        name: "Stephen Curry",
-                        personId: 201939,
-                        teamId: 1610612744,
+                        name: "Michael Jordan",
+                        personId: 893,
+                        teamId: 1610612741,
                         votes: 8,
                     },
                 ],
@@ -82,8 +83,8 @@ const Home = () => {
         const lastName2 = fullName2.split(" ").slice(-1).join(" ")
 
         // Decide name display based on width
-        const displayName1 = width1 - width2 > -79 ? fullName1 : lastName1
-        const displayName2 = width2 - width1 > -79 ? fullName2 : lastName2
+        const displayName1 = width1 - width2 > -69 ? fullName1 : lastName1
+        const displayName2 = width2 - width1 > -69 ? fullName2 : lastName2
 
         const handleClick1 = () => {
             if (!p1Wins && !p2Wins) {
@@ -161,7 +162,10 @@ const Home = () => {
             <div className="content">
                 {versus.map((question, index) => (
                     <div className="versus" key={index}>
-                        <div className="category">{question.category}</div>
+                        <div className="category">
+                            {question.category}
+                            {question.category === "GOAT" ? <GiGoat /> : ""}
+                        </div>
                         <Panel
                             question={question}
                             key={`${question.category}-${index}`}
