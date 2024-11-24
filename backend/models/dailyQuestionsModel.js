@@ -1,26 +1,29 @@
 const mongoose = require("mongoose")
 
-const dailyQuestionSchema = mongoose.Schema(
-    {
-        date: { type: String, required: true, unique: true }, // Format: YYYY-MM-DD
-        questions: [
-            {
-                question: { type: String, required: true },
-                players: {
-                    player1: { id: Number, teamId: Number },
-                    player2: { id: Number, teamId: Number },
+const dailyQuestionsSchema = mongoose.Schema({
+    date: { type: String, required: true, unique: true },
+    questions: [
+        {
+            question: { type: String, required: true },
+            players: {
+                player1: {
+                    personId: { type: Number, required: true },
+                    name: { type: String, required: true },
+                    teamId: { type: Number, required: true },
                 },
-                votes: {
-                    player1Votes: { type: Number, default: 0 },
-                    player2Votes: { type: Number, default: 0 },
+                player2: {
+                    personId: { type: Number, required: true },
+                    name: { type: String, required: true },
+                    teamId: { type: Number, required: true },
                 },
             },
-        ],
-        totalVotes: { type: Number, default: 0 }, // Total votes for the day
-    },
-    {
-        timestamps: true,
-    }
-)
+            votes: {
+                player1: { type: Number, default: 0 },
+                player2: { type: Number, default: 0 },
+            },
+        },
+    ],
+    totalVotes: { type: Number, default: 0 },
+})
 
-module.exports = mongoose.model("DailyQuestions", dailyQuestionSchema)
+module.exports = mongoose.model("DailyQuestions", dailyQuestionsSchema)

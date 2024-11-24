@@ -152,7 +152,7 @@ const getDailyQuestions = asyncHandler(async (req, res) => {
         totalVotes: dailyQuestions.totalVotes,
         questions: dailyQuestions.questions.map((q) => ({
             question: q.question,
-            player_combination: {
+            players: {
                 player1: q.players.player1,
                 player2: q.players.player2,
             },
