@@ -14,7 +14,11 @@ const {
     getMe,
     updateMe,
 } = require("./controllers/userController")
-const { addQuestion, voteForGoat } = require("./controllers/questionController")
+const {
+    addQuestion,
+    getDailyQuestions,
+    voteForGoat,
+} = require("./controllers/questionController")
 const { protect, admin } = require("./middleware/authMiddleware")
 
 // user routes
@@ -36,6 +40,7 @@ router.post("/stats/gamelogs", getGameLogs)
 
 // question routes
 router.post("/questions", admin, addQuestion)
+router.get("/questions/daily", getDailyQuestions)
 router.post("/questions/goat", voteForGoat)
 
 module.exports = router

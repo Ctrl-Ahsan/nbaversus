@@ -1,5 +1,6 @@
 const asyncHandler = require("express-async-handler")
 const Question = require("../models/questionModel")
+const DailyQuestions = require("../models/dailyQuestionsModel")
 const GOAT = require("../models/goatModel")
 
 // Add a question pool
@@ -22,9 +23,9 @@ const addQuestion = asyncHandler(async (req, res) => {
                 typeof player.teamId === "number"
         )
     ) {
-        return res.status(400).json({
-            message: "Players must be an array of objects with id and teamId.",
-        })
+        return res
+            .status(400)
+            .json("Players must be an array of objects with id and teamId.")
     }
 
     // Generate all 2-player combinations
@@ -50,6 +51,117 @@ const addQuestion = asyncHandler(async (req, res) => {
         questionId: newQuestion._id,
         combinationCount: combinations.length,
     })
+})
+
+// Get/generate daily questions
+const getDailyQuestions = asyncHandler(async (req, res) => {
+    const today = new Date().toISOString().split("T")[0] // Format: YYYY-MM-DD
+
+    // Check if daily questions already exist
+    let dailyQuestions = await DailyQuestions.findOne({ date: today })
+
+    if (!dailyQuestions) {
+        // Fetch or initialize the GOAT question in the database
+        let goatQuestionData = await GOAT.findOne()
+
+        if (!goatQuestionData) {
+            goatQuestionData = await GOAT.create({
+                lebron: 0,
+                jordan: 0,
+            })
+        }
+
+        const goatQuestion = {
+            question: "GOAT",
+            players: {
+                player1: { id: 2544, teamId: 1610612747 }, // LeBron James
+                player2: { id: 893, teamId: 1610612741 }, // Michael Jordan
+            },
+            votes: {
+                player1Votes: goatQuestionData.lebron,
+                player2Votes: goatQuestionData.jordan,
+            },
+        }
+
+        // All-Time
+        const allTimePool = await Question.findOne({ question: "All-Time" })
+        if (!allTimePool) {
+            throw new Error("All-Time question pool not found in the database.")
+        }
+        const allTimeQuestion = {
+            question: allTimePool.question,
+            players:
+                allTimePool.player_combinations[
+                    Math.floor(
+                        Math.random() * allTimePool.player_combinations.length
+                    )
+                ],
+            votes: { player1Votes: 0, player2Votes: 0 },
+        }
+
+        // Fetch the Active question pool
+        const activePool = await Question.findOne({ question: "Active" })
+        if (!activePool) {
+            throw new Error("Active question pool not found in the database.")
+        }
+        const activeQuestion = {
+            question: activePool.question,
+            players:
+                activePool.player_combinations[
+                    Math.floor(
+                        Math.random() * activePool.player_combinations.length
+                    )
+                ],
+            votes: { player1Votes: 0, player2Votes: 0 },
+        }
+
+        // Fetch 3 random questions from the question pool (excluding All-Time and Active)
+        const randomPools = await Question.aggregate([
+            { $match: { question: { $nin: ["All-Time", "Active"] } } },
+            { $sample: { size: 3 } },
+        ])
+
+        const randomQuestions = randomPools.map((q) => ({
+            question: q.question,
+            players:
+                q.player_combinations[
+                    Math.floor(Math.random() * q.player_combinations.length)
+                ],
+            votes: { player1Votes: 0, player2Votes: 0 },
+        }))
+
+        // Combine all questions
+        const questions = [
+            goatQuestion,
+            allTimeQuestion,
+            activeQuestion,
+            ...randomQuestions,
+        ]
+
+        // Save the daily questions to the database
+        dailyQuestions = await DailyQuestions.create({
+            date: today,
+            questions,
+            totalVotes: 0, // Initialize total votes for the day
+        })
+    }
+
+    // Transform the response to include player details
+    const response = {
+        date: dailyQuestions.date,
+        totalVotes: dailyQuestions.totalVotes,
+        questions: dailyQuestions.questions.map((q) => ({
+            question: q.question,
+            player_combination: {
+                player1: q.players.player1,
+                player2: q.players.player2,
+            },
+            votes: q.votes,
+        })),
+    }
+
+    // Respond with the daily questions
+    res.status(200).json(response)
 })
 
 // Vote for GOAT
@@ -93,4 +205,4 @@ const voteForGoat = asyncHandler(async (req, res) => {
     }
 })
 
-module.exports = { addQuestion, voteForGoat }
+module.exports = { addQuestion, voteForGoat, getDailyQuestions }
