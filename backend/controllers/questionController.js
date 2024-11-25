@@ -129,18 +129,18 @@ const getDailyQuestions = asyncHandler(async (req, res) => {
 
         const goatQuestion = {
             question: "GOAT",
-            players: [
-                {
-                    personId: 2544,
+            players: {
+                player1: {
                     name: "LeBron James",
+                    personId: 2544,
                     teamId: 1610612747,
                 },
-                {
-                    personId: 893,
+                player2: {
                     name: "Michael Jordan",
+                    personId: 893,
                     teamId: 1610612741,
                 },
-            ],
+            },
             votes: {
                 player1: goatQuestionData.lebron,
                 player2: goatQuestionData.jordan,
@@ -166,9 +166,13 @@ const getDailyQuestions = asyncHandler(async (req, res) => {
         if (!allTimePool) {
             throw new Error("All-Time question pool not found in the database.")
         }
+        const allTimePair = generateRandomPair(allTimePool.players)
         const allTimeQuestion = {
             question: "All-Time",
-            players: generateRandomPair(allTimePool.players),
+            players: {
+                player1: allTimePair.player1,
+                player2: allTimePair.player2,
+            },
             votes: { player1: 0, player2: 0 },
         }
 
@@ -177,9 +181,13 @@ const getDailyQuestions = asyncHandler(async (req, res) => {
         if (!activePool) {
             throw new Error("Active question pool not found in the database.")
         }
+        const activePair = generateRandomPair(activePool.players)
         const activeQuestion = {
             question: "Active",
-            players: generateRandomPair(activePool.players),
+            players: {
+                player1: activePair.player1,
+                player2: activePair.player2,
+            },
             votes: { player1: 0, player2: 0 },
         }
 
@@ -189,11 +197,17 @@ const getDailyQuestions = asyncHandler(async (req, res) => {
             { $sample: { size: 3 } },
         ])
 
-        const randomQuestions = randomPools.map((q) => ({
-            question: q.question,
-            players: generateRandomPair(q.players),
-            votes: { player1: 0, player2: 0 },
-        }))
+        const randomQuestions = randomPools.map((q) => {
+            const randomPair = generateRandomPair(q.players)
+            return {
+                question: q.question,
+                players: {
+                    player1: randomPair.player1,
+                    player2: randomPair.player2,
+                },
+                votes: { player1: 0, player2: 0 },
+            }
+        })
 
         // Combine all questions
         const questions = [
@@ -203,12 +217,20 @@ const getDailyQuestions = asyncHandler(async (req, res) => {
             ...randomQuestions,
         ]
 
+        console.log("Questions array:", JSON.stringify(questions, null, 2))
+
         // Save the daily questions
-        dailyQuestions = await DailyQuestions.create({
-            date: today,
-            questions,
-            totalVotes: 0,
-        })
+        try {
+            dailyQuestions = await DailyQuestions.create({
+                date: today,
+                questions,
+                totalVotes: 0,
+            })
+        } catch (error) {
+            console.error("Error saving daily questions:", error.message)
+            res.status(500).json({ error: "Failed to save daily questions." })
+            return
+        }
     }
 
     res.status(200).json(dailyQuestions)
