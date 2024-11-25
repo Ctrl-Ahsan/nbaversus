@@ -1,7 +1,12 @@
+const { writeFile, readFile } = require("fs/promises")
+const fetch = require("node-fetch")
 const asyncHandler = require("express-async-handler")
+const allPlayers = require("../data/allplayers.json")
 const Question = require("../models/questionModel")
 const DailyQuestions = require("../models/dailyQuestionsModel")
 const GOAT = require("../models/goatModel")
+const path = require("path")
+const allTimePath = path.join(__dirname, "../data/alltime.json")
 
 // Add a question pool
 const addQuestion = asyncHandler(async (req, res) => {
@@ -16,34 +21,94 @@ const addQuestion = asyncHandler(async (req, res) => {
             )
     }
 
-    // Validate that all players have personId, teamId, and name
-    if (
-        !Array.isArray(players) ||
-        !players.every(
-            (player) =>
-                typeof player.name === "string" &&
-                typeof player.personId === "number" &&
-                typeof player.teamId === "number"
-        )
-    ) {
-        return res
-            .status(400)
-            .json(
-                "Players must be an array of objects with personId, teamId, and name."
+    let allTime = JSON.parse(await readFile(allTimePath, "utf-8"))
+
+    // Fetch player teamId from NBA API
+    const getTeamId = async (personId) => {
+        try {
+            const response = await fetch(
+                `https://stats.nba.com/stats/commonplayerinfo?PlayerID=${personId}`,
+                {
+                    headers: {
+                        "User-Agent":
+                            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15",
+                        Referer: "https://www.nba.com/",
+                        "Accept-Language": "en-US,en;q=0.9",
+                    },
+                }
             )
+            const data = await response.json()
+
+            const teamId = data.resultSets?.[0]?.rowSet?.[0]?.[18] || 0
+
+            if (teamId === 0) {
+                throw new Error(
+                    `Player with personId: ${personId} is not associated with a team.`
+                )
+            }
+
+            return teamId
+        } catch (error) {
+            console.error(
+                `Error fetching teamId for personId ${personId}:`,
+                error.message
+            )
+            throw new Error("Failed to fetch teamId from NBA API.")
+        }
     }
+
+    // Resolve player data
+    const resolvedPlayers = []
+    for (const playerName of players) {
+        // Player is not in alltime.json
+        if (!allTime[playerName]) {
+            // Get personId from allplayers.json
+            const playerRow = allPlayers.resultSets[0].rowSet.find(
+                (row) => row[2] === playerName
+            )
+
+            if (!playerRow) {
+                throw new Error(
+                    `Player '${playerName}' not found in commonallplayers.json.`
+                )
+            }
+
+            const personId = playerRow[0]
+
+            let teamId = playerRow[8] // TEAM_ID in rowSet
+
+            // Check if teamId is missing (0) and fetch dynamically
+            if (teamId === 0) {
+                teamId = await getTeamId(personId)
+            }
+
+            // Add player to alltime.json
+            allTime[playerName] = { personId, teamId }
+        }
+
+        // Add resolved player data to the result array
+        resolvedPlayers.push({
+            name: playerName,
+            personId: allTime[playerName].personId,
+            teamId: allTime[playerName].teamId,
+        })
+    }
+
+    // Save the updated alltime.json
+    await writeFile(allTimePath, JSON.stringify(allTime, null, 2))
 
     // Save the question pool to the database
     const newQuestion = await Question.create({
         question,
-        players,
+        players: resolvedPlayers,
     })
 
     res.status(201).json({
         message: "Question pool added successfully.",
-        question,
         questionId: newQuestion._id,
-        playerCount: players.length,
+        question,
+        players: resolvedPlayers,
+        playerCount: resolvedPlayers.length,
     })
 })
 
@@ -82,7 +147,7 @@ const getDailyQuestions = asyncHandler(async (req, res) => {
             },
         }
 
-        // Helper function to generate a random pair
+        // Generate a random pair for daily questions
         const generateRandomPair = (players) => {
             const pool = [...players] // Clone the array to avoid mutation
             const player1 = pool.splice(
