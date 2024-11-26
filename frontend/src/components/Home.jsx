@@ -7,8 +7,10 @@ import { toast } from "react-toastify"
 
 const Home = () => {
     const [versus, setVersus] = useState([])
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
+        setLoading(true)
         const fetchDailyQuestions = async () => {
             try {
                 const { data } = await axios
@@ -18,7 +20,7 @@ const Home = () => {
                     })
 
                 setVersus(data.questions)
-                console.log(data)
+                setLoading(false)
             } catch (error) {
                 console.error("Error fetching daily questions:", error)
             }
@@ -147,19 +149,30 @@ const Home = () => {
                 <img src="/nbaversus.png" alt="" />
             </div>
             <div className="content">
-                {versus?.map((category, index) => (
-                    <div className="versus" key={index}>
-                        <div className="category">
-                            {category.question}
-                            {category.question === "GOAT" ? <GiGoat /> : ""}
+                {loading && (
+                    <>
+                        <div className="blank shimmerBG"></div>
+                        <div className="blank shimmerBG"></div>
+                        <div className="blank shimmerBG"></div>
+                        <div className="blank shimmerBG"></div>
+                        <div className="blank shimmerBG"></div>
+                        <div className="blank shimmerBG"></div>
+                    </>
+                )}
+                {!loading &&
+                    versus?.map((category, index) => (
+                        <div className="versus" key={index}>
+                            <div className="category">
+                                {category.question}
+                                {category.question === "GOAT" ? <GiGoat /> : ""}
+                            </div>
+                            <Panel
+                                players={category.players}
+                                votes={category.votes}
+                                key={`${category.category}-${index}`}
+                            />
                         </div>
-                        <Panel
-                            players={category.players}
-                            votes={category.votes}
-                            key={`${category.category}-${index}`}
-                        />
-                    </div>
-                ))}
+                    ))}
             </div>
         </main>
     )

@@ -70,22 +70,25 @@ button:active {
     animation-iteration-count: infinite;
     animation-name: shimmer;
     animation-timing-function: linear;
-    background: #ddd;
     background: linear-gradient(
         to left,
-        #6f6f6f52 8%,
-        #44444452 18%,
-        #6f6f6f52 33%
+        rgba(255, 255, 255, 0.005) 8%,
+        /* Subtle shimmer start */ rgba(255, 255, 255, 0.06) 18%,
+        /* Darker shimmer stripe */ rgba(255, 255, 255, 0.005) 33%
+            /* Subtle shimmer end */
     );
     background-size: 1200px 100%;
+    background-color: transparent; /* Ensure it overlays the panel's background */
+    position: relative; /* Required for proper overlay */
+    overflow: hidden; /* Ensure it doesn't exceed panel boundaries */
 }
 
 @-webkit-keyframes shimmer {
     0% {
-        background-position: -100% 0;
+        background-position: -1200px 0;
     }
     100% {
-        background-position: 100% 0;
+        background-position: 1200px 0;
     }
 }
 
