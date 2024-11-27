@@ -217,8 +217,6 @@ const getDailyQuestions = asyncHandler(async (req, res) => {
             ...randomQuestions,
         ]
 
-        console.log("Questions array:", JSON.stringify(questions, null, 2))
-
         // Save the daily questions
         try {
             dailyQuestions = await DailyQuestions.create({
