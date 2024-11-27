@@ -12,25 +12,21 @@ const Home = () => {
     useEffect(() => {
         setLoading(true)
 
-        const isSameDay = (cachedDate) => {
+        const isToday = (cachedDate) => {
             const today = new Date().toISOString().split("T")[0] // Current UTC date
             return cachedDate === today
-        }
-
-        const loadFromCache = () => {
-            const cachedDate = localStorage.getItem("lastUpdated")
-            const cachedQuestions = JSON.parse(
-                localStorage.getItem("dailyQuestions")
-            )
-
-            if (cachedQuestions && isSameDay(cachedDate)) {
-                setVersus(cachedQuestions.questions) // Use cached questions for instant display
-            }
         }
 
         const fetchDailyQuestions = async () => {
             try {
                 const { data } = await axios.get("/api/questions/daily")
+
+                const cachedDate = localStorage.getItem("lastUpdated")
+                const voteTracking = localStorage.getItem("voteTracking")
+                if (!isToday(cachedDate) || !voteTracking) {
+                    // Reset vote tracking for new day
+                    localStorage.setItem("voteTracking", "{}")
+                }
                 // Save to local storage
                 localStorage.setItem("lastUpdated", data.date)
                 localStorage.setItem("dailyQuestions", JSON.stringify(data))
@@ -42,16 +38,31 @@ const Home = () => {
                 setLoading(false)
             }
         }
-        loadFromCache()
         fetchDailyQuestions()
     }, [])
 
-    const Panel = ({ players, votes }) => {
-        const [voted, setVoted] = useState(false)
-        const [p1Wins, setP1Wins] = useState(false)
-        const [p2Wins, setP2Wins] = useState(false)
-        const [votes1, setVotes1] = useState(votes.player1)
-        const [votes2, setVotes2] = useState(votes.player2)
+    const handleVote = (questionIndex, winner) => {
+        const cachedVotes = JSON.parse(localStorage.getItem("voteTracking"))
+        const updatedVotes = { ...cachedVotes, [questionIndex]: winner }
+        localStorage.setItem("voteTracking", JSON.stringify(updatedVotes)) // Save to local storage
+    }
+
+    const Panel = ({ players, votes, questionIndex }) => {
+        const cachedVotes = JSON.parse(localStorage.getItem("voteTracking"))
+        const [voted, setVoted] = useState(!!cachedVotes[questionIndex])
+        const [animate, setAnimate] = useState(false)
+        const [p1Wins, setP1Wins] = useState(
+            cachedVotes[questionIndex] === "p1"
+        )
+        const [p2Wins, setP2Wins] = useState(
+            cachedVotes[questionIndex] === "p2"
+        )
+        const [votes1, setVotes1] = useState(
+            p1Wins && votes.player1 === 0 ? 1 : votes.player1
+        )
+        const [votes2, setVotes2] = useState(
+            p2Wins && votes.player2 === 0 ? 1 : votes.player2
+        )
 
         const player1 = players.player1
         const player2 = players.player2
@@ -95,14 +106,18 @@ const Home = () => {
             if (!p1Wins && !p2Wins) {
                 setVotes1(votes1 + 1)
                 setVoted(true)
+                setAnimate(true)
                 setP1Wins(true)
+                handleVote(questionIndex, "p1")
             }
         }
         const handleClick2 = () => {
             if (!p1Wins && !p2Wins) {
                 setVotes2(votes2 + 1)
                 setVoted(true)
+                setAnimate(true)
                 setP2Wins(true)
+                handleVote(questionIndex, "p2")
             }
         }
 
@@ -122,7 +137,7 @@ const Home = () => {
                         {displayName1}
                     </div>
                     <div
-                        className={`votes ${voted ? "puff-in-center" : ""}`}
+                        className={`votes ${animate ? "puff-in-center" : ""}`}
                         style={{ opacity: voted ? "100%" : "0%" }}
                     >
                         {`${percentage1}%`}
@@ -146,7 +161,7 @@ const Home = () => {
                         {displayName2}
                     </div>
                     <div
-                        className={`votes ${voted ? "puff-in-center" : ""}`}
+                        className={`votes ${animate ? "puff-in-center" : ""}`}
                         style={{ opacity: voted ? "100%" : "0%" }}
                     >
                         {`${percentage2}%`}
@@ -167,7 +182,7 @@ const Home = () => {
                 <img src="/nbaversus.png" alt="" />
             </div>
             <div className="content">
-                {loading && (
+                {loading ? (
                     <>
                         <div className="blank shimmerBG"></div>
                         <div className="blank shimmerBG"></div>
@@ -176,8 +191,7 @@ const Home = () => {
                         <div className="blank shimmerBG"></div>
                         <div className="blank shimmerBG"></div>
                     </>
-                )}
-                {!loading &&
+                ) : (
                     versus?.map((category, index) => (
                         <div className="versus" key={index}>
                             <div className="category">
@@ -188,9 +202,11 @@ const Home = () => {
                                 players={category.players}
                                 votes={category.votes}
                                 key={`${category.category}-${index}`}
+                                questionIndex={index}
                             />
                         </div>
-                    ))}
+                    ))
+                )}
             </div>
         </main>
     )
