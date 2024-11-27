@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 import "./Home.css"
 import { teamColors } from "../config"
 import { GiGoat } from "react-icons/gi"
+import { FaFire } from "react-icons/fa"
+import { IoReload } from "react-icons/io5"
 import axios from "axios"
 import { toast } from "react-toastify"
 
@@ -11,11 +13,6 @@ const Home = () => {
 
     useEffect(() => {
         setLoading(true)
-
-        const isToday = (cachedDate) => {
-            const today = new Date().toISOString().split("T")[0] // Current UTC date
-            return cachedDate === today
-        }
 
         const fetchDailyQuestions = async () => {
             try {
@@ -29,7 +26,6 @@ const Home = () => {
                 }
                 // Save to local storage
                 localStorage.setItem("lastUpdated", data.date)
-                localStorage.setItem("dailyQuestions", JSON.stringify(data))
                 setVersus(data.questions)
             } catch (error) {
                 toast.error("Error fetching daily questions")
@@ -38,13 +34,113 @@ const Home = () => {
                 setLoading(false)
             }
         }
+
+        const updateStreak = () => {
+            const lastVoteDate = localStorage.getItem("lastVoteDate")
+            const currentStreak = parseInt(localStorage.getItem("streak"))
+
+            if (!lastVoteDate) {
+                // First-time voting
+                localStorage.setItem("streak", 0)
+            } else if (isToday(lastVoteDate)) {
+                // Voted today, no changes
+            } else if (isYesterday(lastVoteDate)) {
+                // Increment streak for consecutive days
+                localStorage.setItem("streak", currentStreak + 1)
+                localStorage.setItem(
+                    "lastVoteDate",
+                    new Date().toISOString().split("T")[0]
+                )
+            } else {
+                // Reset streak if user missed a day
+                localStorage.setItem("streak", 0)
+            }
+        }
+
         fetchDailyQuestions()
+        updateStreak()
     }, [])
+
+    const isToday = (date) => {
+        const today = new Date().toISOString().split("T")[0] // Current UTC date
+        return date === today
+    }
+
+    const isYesterday = (date) => {
+        const yesterday = new Date()
+        yesterday.setDate(yesterday.getDate() - 1)
+        return date === yesterday.toISOString().split("T")[0]
+    }
 
     const handleVote = (questionIndex, winner) => {
         const cachedVotes = JSON.parse(localStorage.getItem("voteTracking"))
         const updatedVotes = { ...cachedVotes, [questionIndex]: winner }
         localStorage.setItem("voteTracking", JSON.stringify(updatedVotes)) // Save to local storage
+
+        // Update streak and last vote date
+        const currentStreak = parseInt(localStorage.getItem("streak"))
+        const today = new Date().toISOString().split("T")[0]
+        const lastVoteDate = localStorage.getItem("lastVoteDate")
+
+        if (!!!lastVoteDate) {
+            localStorage.setItem("lastVoteDate", today)
+        } else if (lastVoteDate !== today) {
+            if (isYesterday(lastVoteDate)) {
+                localStorage.setItem("streak", currentStreak + 1)
+            } else {
+                localStorage.setItem("streak", 0)
+            }
+            localStorage.setItem("lastVoteDate", today)
+        }
+    }
+
+    const Streak = () => {
+        const [streak, setStreak] = useState(0)
+
+        useEffect(() => {
+            const currentStreak = parseInt(localStorage.getItem("streak") || 0)
+            setStreak(currentStreak)
+        }, [])
+
+        return (
+            <div className="streak">
+                <FaFire className="fire-icon" /> {streak}
+            </div>
+        )
+    }
+
+    const Refresh = () => {
+        // Function to calculate time left until 12am UTC
+        const calculateTimeLeft = () => {
+            const now = new Date()
+            const nextMidnight = new Date(now)
+            nextMidnight.setUTCDate(now.getUTCDate() + 1) // Move to the next day
+            nextMidnight.setUTCHours(0, 0, 0, 0) // Set time to 12am UTC
+
+            const diff = nextMidnight - now // Difference in milliseconds
+            const hours = Math.floor(diff / (1000 * 60 * 60))
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
+
+            return `${hours}h ${minutes}m`
+        }
+
+        const [timeLeft, setTimeLeft] = useState(calculateTimeLeft())
+
+        useEffect(() => {
+            // Update the time left every second
+            const interval = setInterval(() => {
+                setTimeLeft(calculateTimeLeft())
+            }, 1000)
+
+            // Cleanup the interval on component unmount
+            return () => clearInterval(interval)
+        }, [])
+
+        return (
+            <div className="refresh">
+                <IoReload className="refresh-icon" /> {timeLeft}
+            </div>
+        )
     }
 
     const Panel = ({ players, votes, questionIndex }) => {
@@ -181,6 +277,8 @@ const Home = () => {
                 NBA
                 <img src="/nbaversus.png" alt="" />
             </div>
+            <Streak />
+            <Refresh />
             <div className="content">
                 {loading ? (
                     <>
