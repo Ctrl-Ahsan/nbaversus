@@ -11,20 +11,38 @@ const Home = () => {
 
     useEffect(() => {
         setLoading(true)
-        const fetchDailyQuestions = async () => {
-            try {
-                const { data } = await axios
-                    .get("/api/questions/daily")
-                    .catch((error) => {
-                        toast.error(error.response.data)
-                    })
 
-                setVersus(data.questions)
-                setLoading(false)
-            } catch (error) {
-                console.error("Error fetching daily questions:", error)
+        const isSameDay = (cachedDate) => {
+            const today = new Date().toISOString().split("T")[0] // Current UTC date
+            return cachedDate === today
+        }
+
+        const loadFromCache = () => {
+            const cachedDate = localStorage.getItem("lastUpdated")
+            const cachedQuestions = JSON.parse(
+                localStorage.getItem("dailyQuestions")
+            )
+
+            if (cachedQuestions && isSameDay(cachedDate)) {
+                setVersus(cachedQuestions.questions) // Use cached questions for instant display
             }
         }
+
+        const fetchDailyQuestions = async () => {
+            try {
+                const { data } = await axios.get("/api/questions/daily")
+                // Save to local storage
+                localStorage.setItem("lastUpdated", data.date)
+                localStorage.setItem("dailyQuestions", JSON.stringify(data))
+                setVersus(data.questions)
+            } catch (error) {
+                toast.error("Error fetching daily questions")
+                console.error("Error fetching daily questions:", error)
+            } finally {
+                setLoading(false)
+            }
+        }
+        loadFromCache()
         fetchDailyQuestions()
     }, [])
 
