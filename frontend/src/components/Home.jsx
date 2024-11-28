@@ -27,10 +27,10 @@ const Home = () => {
                 // Save to local storage
                 localStorage.setItem("lastUpdated", data.date)
                 setVersus(data.questions)
+                setLoading(false)
             } catch (error) {
                 toast.error("Error fetching daily questions")
                 console.error("Error fetching daily questions:", error)
-            } finally {
                 setLoading(false)
             }
         }
@@ -89,7 +89,7 @@ const Home = () => {
 
         return (
             <div className="streak">
-                <FaFire className="fire-icon" /> {streak}
+                {streak} <FaFire className="fire-icon" />
             </div>
         )
     }
@@ -122,7 +122,7 @@ const Home = () => {
 
         return (
             <div className="refresh">
-                <IoReload className="refresh-icon" /> {timeLeft}
+                {timeLeft} <IoReload className="refresh-icon" />
             </div>
         )
     }
@@ -257,14 +257,12 @@ const Home = () => {
 
     return (
         <main className="home">
-            <div className="header">
-                <Streak />
-                <div className="logo">
-                    NBA
-                    <img src="/nbaversus.png" alt="" />
-                </div>
-                <Refresh />
+            <div className="logo">
+                NBA
+                <img src="/nbaversus.png" alt="" />
             </div>
+            <Streak />
+            <Refresh />
             <div className="content">
                 {loading ? (
                     <>

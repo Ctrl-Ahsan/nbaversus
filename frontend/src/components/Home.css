@@ -34,16 +34,6 @@
         }
     }
 
-    .header {
-        display: grid;
-        grid-template-columns: 1fr auto 1fr;
-        align-items: center;
-        justify-items: center;
-        gap: 1em;
-        width: 100%;
-        padding: 1em 0;
-    }
-
     .logo {
         display: flex;
         flex-direction: column;
@@ -51,28 +41,34 @@
         align-items: center;
         font-family: Bebas Neue, Roboto, Arial, Helvetica, sans-serif;
         font-size: 4em;
-        margin: 0;
-    }
-
-    .streak {
-        justify-self: center;
-        display: flex;
-        align-items: center;
-        font-family: Bebas Neue, Roboto, Arial, Helvetica, sans-serif;
-        font-size: 1.75em;
-        padding-top: 2em;
-        gap: 0.2em;
+        margin-top: 0.25em;
+        margin-bottom: 0.5em;
     }
 
     .refresh {
-        justify-self: center;
+        position: absolute;
+        top: 1em;
+        right: 1em;
         display: flex;
         align-items: center;
         font-family: Bebas Neue, Roboto, Arial, Helvetica, sans-serif;
         font-size: 1.75em;
-        padding-top: 2em;
-        padding-right: 0.3em;
         gap: 0.1em;
+
+        .refresh-icon {
+            padding-bottom: 3px;
+        }
+    }
+
+    .streak {
+        position: absolute;
+        top: 2.25em;
+        right: 1em;
+        display: flex;
+        align-items: center;
+        font-family: Bebas Neue, Roboto, Arial, Helvetica, sans-serif;
+        font-size: 1.75em;
+        gap: 0.2em;
     }
 
     .content {
