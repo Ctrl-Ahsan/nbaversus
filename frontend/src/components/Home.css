@@ -13,6 +13,11 @@
     @media screen and (min-width: 1080px) {
         height: 100%;
     }
+
+    .header {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
     .logo {
         display: flex;
         flex-direction: column;
@@ -29,41 +34,45 @@
         }
     }
 
-    .refresh {
-        position: absolute;
-        top: 0.75em;
-        right: 1em;
-        display: flex;
+    .header {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
         align-items: center;
-        font-family: Bebas Neue, sans-serif;
-        font-size: 1.75em;
-        z-index: 10;
+        justify-items: center;
+        gap: 1em;
+        width: 100%;
+        padding: 1em 0;
+    }
 
-        .refresh-icon {
-            margin-right: 0.1em;
-        }
-        @media screen and (max-width: 540px) {
-            font-size: 1.5em;
-        }
+    .logo {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-family: Bebas Neue, Roboto, Arial, Helvetica, sans-serif;
+        font-size: 4em;
+        margin: 0;
     }
 
     .streak {
-        position: absolute;
-        top: 2em;
-        right: 1em;
+        justify-self: center;
         display: flex;
         align-items: center;
-        font-family: Roboto Condensed, sans-serif;
+        font-family: Bebas Neue, Roboto, Arial, Helvetica, sans-serif;
         font-size: 1.75em;
-        z-index: 10;
+        padding-top: 2em;
+        gap: 0.2em;
+    }
 
-        .fire-icon {
-            font-size: 0.9em;
-            margin-right: 0.1em;
-        }
-        @media screen and (max-width: 540px) {
-            font-size: 1.5em;
-        }
+    .refresh {
+        justify-self: center;
+        display: flex;
+        align-items: center;
+        font-family: Bebas Neue, Roboto, Arial, Helvetica, sans-serif;
+        font-size: 1.75em;
+        padding-top: 2em;
+        padding-right: 0.3em;
+        gap: 0.1em;
     }
 
     .content {

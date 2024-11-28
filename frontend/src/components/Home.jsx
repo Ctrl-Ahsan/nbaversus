@@ -118,10 +118,9 @@ const Home = () => {
             nextMidnight.setUTCHours(0, 0, 0, 0) // Set time to 12am UTC
 
             const diff = nextMidnight - now // Difference in milliseconds
-            const hours = Math.floor(diff / (1000 * 60 * 60))
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
+            const hours = Math.floor(diff / (1000 * 60 * 60)) + 1
 
-            return `${hours}h ${minutes}m`
+            return `${hours}h`
         }
 
         const [timeLeft, setTimeLeft] = useState(calculateTimeLeft())
@@ -273,12 +272,14 @@ const Home = () => {
 
     return (
         <main className="home">
-            <div className="logo">
-                NBA
-                <img src="/nbaversus.png" alt="" />
+            <div className="header">
+                <Streak />
+                <div className="logo">
+                    NBA
+                    <img src="/nbaversus.png" alt="" />
+                </div>
+                <Refresh />
             </div>
-            <Streak />
-            <Refresh />
             <div className="content">
                 {loading ? (
                     <>
