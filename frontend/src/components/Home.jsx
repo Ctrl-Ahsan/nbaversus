@@ -36,24 +36,25 @@ const Home = () => {
         }
 
         const updateStreak = () => {
-            const lastVoteDate = localStorage.getItem("lastVoteDate")
-            const currentStreak = parseInt(localStorage.getItem("streak"))
+            try {
+                const lastVisitDate = localStorage.getItem("lastUpdated")
+                const currentStreak = parseInt(localStorage.getItem("streak"))
 
-            if (!lastVoteDate) {
-                // First-time voting
-                localStorage.setItem("streak", 0)
-            } else if (isToday(lastVoteDate)) {
-                // Voted today, no changes
-            } else if (isYesterday(lastVoteDate)) {
-                // Increment streak for consecutive days
-                localStorage.setItem("streak", currentStreak + 1)
-                localStorage.setItem(
-                    "lastVoteDate",
-                    new Date().toISOString().split("T")[0]
-                )
-            } else {
-                // Reset streak if user missed a day
-                localStorage.setItem("streak", 0)
+                if (!lastVisitDate) {
+                    // First-time visiting
+                    localStorage.setItem("streak", 0)
+                } else if (isToday(lastVisitDate)) {
+                    // Visited today, no changes
+                } else if (isYesterday(lastVisitDate)) {
+                    // Increment streak for consecutive days
+                    localStorage.setItem("streak", currentStreak + 1)
+                } else {
+                    // Reset streak if user missed a day
+                    localStorage.setItem("streak", 0)
+                }
+            } catch (error) {
+                toast.error("Error updating streak")
+                console.log(error)
             }
         }
 
@@ -76,22 +77,6 @@ const Home = () => {
         const cachedVotes = JSON.parse(localStorage.getItem("voteTracking"))
         const updatedVotes = { ...cachedVotes, [questionIndex]: winner }
         localStorage.setItem("voteTracking", JSON.stringify(updatedVotes)) // Save to local storage
-
-        // Update streak and last vote date
-        const currentStreak = parseInt(localStorage.getItem("streak"))
-        const today = new Date().toISOString().split("T")[0]
-        const lastVoteDate = localStorage.getItem("lastVoteDate")
-
-        if (!!!lastVoteDate) {
-            localStorage.setItem("lastVoteDate", today)
-        } else if (lastVoteDate !== today) {
-            if (isYesterday(lastVoteDate)) {
-                localStorage.setItem("streak", currentStreak + 1)
-            } else {
-                localStorage.setItem("streak", 0)
-            }
-            localStorage.setItem("lastVoteDate", today)
-        }
     }
 
     const Streak = () => {
