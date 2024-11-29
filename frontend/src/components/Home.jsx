@@ -13,54 +13,53 @@ const Home = () => {
 
     useEffect(() => {
         setLoading(true)
-
-        const fetchDailyQuestions = async () => {
-            try {
-                const { data } = await axios.get("/api/questions/daily")
-
-                const cachedDate = localStorage.getItem("lastUpdated")
-                const voteTracking = localStorage.getItem("voteTracking")
-                if (!isToday(cachedDate) || !voteTracking) {
-                    // Reset vote tracking for new day
-                    localStorage.setItem("voteTracking", "{}")
-                }
-                // Save to local storage
-                localStorage.setItem("lastUpdated", data.date)
-                setVersus(data.questions)
-                setLoading(false)
-            } catch (error) {
-                toast.error("Error fetching daily questions")
-                console.error("Error fetching daily questions:", error)
-                setLoading(false)
-            }
-        }
-
-        const updateStreak = () => {
-            try {
-                const lastVisitDate = localStorage.getItem("lastUpdated")
-                const currentStreak = parseInt(localStorage.getItem("streak"))
-
-                if (!lastVisitDate) {
-                    // First-time visiting
-                    localStorage.setItem("streak", 0)
-                } else if (isToday(lastVisitDate)) {
-                    // Visited today, no changes
-                } else if (isYesterday(lastVisitDate)) {
-                    // Increment streak for consecutive days
-                    localStorage.setItem("streak", currentStreak + 1)
-                } else {
-                    // Reset streak if user missed a day
-                    localStorage.setItem("streak", 0)
-                }
-            } catch (error) {
-                toast.error("Error updating streak")
-                console.log(error)
-            }
-        }
-
         fetchDailyQuestions()
         updateStreak()
     }, [])
+
+    const fetchDailyQuestions = async () => {
+        try {
+            const { data } = await axios.get("/api/questions/daily")
+
+            const cachedDate = localStorage.getItem("lastUpdated")
+            const voteTracking = localStorage.getItem("voteTracking")
+            if (!isToday(cachedDate) || !voteTracking) {
+                // Reset vote tracking for new day
+                localStorage.setItem("voteTracking", "{}")
+            }
+            // Save to local storage
+            localStorage.setItem("lastUpdated", data.date)
+            setVersus(data.questions)
+            setLoading(false)
+        } catch (error) {
+            toast.error("Error fetching daily questions")
+            console.error("Error fetching daily questions:", error)
+            setLoading(false)
+        }
+    }
+
+    const updateStreak = () => {
+        try {
+            const lastVisitDate = localStorage.getItem("lastUpdated")
+            const currentStreak = parseInt(localStorage.getItem("streak"))
+
+            if (!lastVisitDate) {
+                // First-time visiting
+                localStorage.setItem("streak", 0)
+            } else if (isToday(lastVisitDate)) {
+                // Visited today, no changes
+            } else if (isYesterday(lastVisitDate)) {
+                // Increment streak for consecutive days
+                localStorage.setItem("streak", currentStreak + 1)
+            } else {
+                // Reset streak if user missed a day
+                localStorage.setItem("streak", 0)
+            }
+        } catch (error) {
+            toast.error("Error updating streak")
+            console.log(error)
+        }
+    }
 
     const isToday = (date) => {
         const today = new Date().toISOString().split("T")[0] // Current UTC date
@@ -105,7 +104,7 @@ const Home = () => {
             const diff = nextMidnight - now // Difference in milliseconds
             const hours = Math.floor(diff / (1000 * 60 * 60)) + 1
 
-            return `${hours}h`
+            return hours
         }
 
         const [timeLeft, setTimeLeft] = useState(calculateTimeLeft())
@@ -113,7 +112,12 @@ const Home = () => {
         useEffect(() => {
             // Update the time left every second
             const interval = setInterval(() => {
-                setTimeLeft(calculateTimeLeft())
+                const timeLeft = calculateTimeLeft()
+                if (timeLeft === 0) {
+                    fetchDailyQuestions()
+                    updateStreak()
+                }
+                setTimeLeft(timeLeft)
             }, 1000)
 
             // Cleanup the interval on component unmount
@@ -122,7 +126,7 @@ const Home = () => {
 
         return (
             <div className="refresh">
-                {timeLeft} <IoReload className="refresh-icon" />
+                {timeLeft}H <IoReload className="refresh-icon" />
             </div>
         )
     }
