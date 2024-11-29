@@ -41,13 +41,14 @@ const Home = () => {
     const updateStreak = () => {
         try {
             const lastVisitDate = localStorage.getItem("lastUpdated")
-            const currentStreak = parseInt(localStorage.getItem("streak"))
+            const currentStreak = parseInt(localStorage.getItem("streak") || 0)
 
             if (!lastVisitDate) {
-                // First-time visiting
-                localStorage.setItem("streak", 0)
+                // First-time visiting, do nothing
+                return
             } else if (isToday(lastVisitDate)) {
                 // Visited today, no changes
+                return
             } else if (isYesterday(lastVisitDate)) {
                 // Increment streak for consecutive days
                 localStorage.setItem("streak", currentStreak + 1)
@@ -55,9 +56,15 @@ const Home = () => {
                 // Reset streak if user missed a day
                 localStorage.setItem("streak", 0)
             }
+
+            // Update the `lastUpdated` date
+            localStorage.setItem(
+                "lastUpdated",
+                new Date().toISOString().split("T")[0]
+            )
         } catch (error) {
             toast.error("Error updating streak")
-            console.log(error)
+            console.error("Error updating streak:", error)
         }
     }
 
@@ -79,16 +86,10 @@ const Home = () => {
     }
 
     const Streak = () => {
-        const [streak, setStreak] = useState(0)
-
-        useEffect(() => {
-            const currentStreak = parseInt(localStorage.getItem("streak") || 0)
-            setStreak(currentStreak)
-        }, [])
-
         return (
             <div className="streak">
-                {streak} <FaFire className="fire-icon" />
+                {parseInt(localStorage.getItem("streak") || 0)}{" "}
+                <FaFire className="fire-icon" />
             </div>
         )
     }
