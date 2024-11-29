@@ -114,162 +114,197 @@ const addQuestion = asyncHandler(async (req, res) => {
 
 // Get/generate daily questions
 const getDailyQuestions = asyncHandler(async (req, res) => {
-    const today = new Date().toISOString().split("T")[0] // Format: YYYY-MM-DD
+    try {
+        const today = new Date().toISOString().split("T")[0] // Format: YYYY-MM-DD
 
-    // Check if daily questions already exist
-    let dailyQuestions = await DailyQuestions.findOne({ date: today })
+        // Check if daily questions already exist
+        let dailyQuestions = await DailyQuestions.findOne({ date: today })
 
-    if (!dailyQuestions) {
         // Fetch or initialize the GOAT question
-        let goatQuestionData = await GOAT.findOne()
+        if (!dailyQuestions) {
+            let goatQuestionData = await GOAT.findOne()
 
-        if (!goatQuestionData) {
-            goatQuestionData = await GOAT.create({ lebron: 0, jordan: 0 })
-        }
+            if (!goatQuestionData) {
+                goatQuestionData = await GOAT.create({ lebron: 0, jordan: 0 })
+            }
 
-        const goatQuestion = {
-            question: "GOAT",
-            players: {
-                player1: {
-                    name: "LeBron James",
-                    personId: 2544,
-                    teamId: 1610612747,
-                },
-                player2: {
-                    name: "Michael Jordan",
-                    personId: 893,
-                    teamId: 1610612741,
-                },
-            },
-            votes: {
-                player1: goatQuestionData.lebron,
-                player2: goatQuestionData.jordan,
-            },
-        }
-
-        // Generate a random pair for daily questions
-        const generateRandomPair = (players) => {
-            const pool = [...players] // Clone the array to avoid mutation
-            const player1 = pool.splice(
-                Math.floor(Math.random() * pool.length),
-                1
-            )[0]
-            const player2 = pool.splice(
-                Math.floor(Math.random() * pool.length),
-                1
-            )[0]
-            return { player1, player2 }
-        }
-
-        // All-Time
-        const allTimePool = await Question.findOne({ question: "All-Time" })
-        if (!allTimePool) {
-            throw new Error("All-Time question pool not found in the database.")
-        }
-        const allTimePair = generateRandomPair(allTimePool.players)
-        const allTimeQuestion = {
-            question: "All-Time",
-            players: {
-                player1: allTimePair.player1,
-                player2: allTimePair.player2,
-            },
-            votes: { player1: 0, player2: 0 },
-        }
-
-        // Active
-        const activePool = await Question.findOne({ question: "Active" })
-        if (!activePool) {
-            throw new Error("Active question pool not found in the database.")
-        }
-        const activePair = generateRandomPair(activePool.players)
-        const activeQuestion = {
-            question: "Active",
-            players: {
-                player1: activePair.player1,
-                player2: activePair.player2,
-            },
-            votes: { player1: 0, player2: 0 },
-        }
-
-        // Random questions
-        const randomPools = await Question.aggregate([
-            { $match: { question: { $nin: ["All-Time", "Active"] } } },
-            { $sample: { size: 3 } },
-        ])
-
-        const randomQuestions = randomPools.map((q) => {
-            const randomPair = generateRandomPair(q.players)
-            return {
-                question: q.question,
+            const goatQuestion = {
+                question: "GOAT",
                 players: {
-                    player1: randomPair.player1,
-                    player2: randomPair.player2,
+                    player1: {
+                        name: "LeBron James",
+                        personId: 2544,
+                        teamId: 1610612747,
+                    },
+                    player2: {
+                        name: "Michael Jordan",
+                        personId: 893,
+                        teamId: 1610612741,
+                    },
+                },
+                votes: {
+                    player1: goatQuestionData.lebron,
+                    player2: goatQuestionData.jordan,
+                },
+            }
+
+            // Generate a random pair for daily questions
+            const generateRandomPair = (players) => {
+                const pool = [...players] // Clone the array to avoid mutation
+                const player1 = pool.splice(
+                    Math.floor(Math.random() * pool.length),
+                    1
+                )[0]
+                const player2 = pool.splice(
+                    Math.floor(Math.random() * pool.length),
+                    1
+                )[0]
+                return { player1, player2 }
+            }
+
+            // All-Time
+            const allTimePool = await Question.findOne({ question: "All-Time" })
+            if (!allTimePool) {
+                throw new Error(
+                    "All-Time question pool not found in the database."
+                )
+            }
+            const allTimePair = generateRandomPair(allTimePool.players)
+            const allTimeQuestion = {
+                question: "All-Time",
+                players: {
+                    player1: allTimePair.player1,
+                    player2: allTimePair.player2,
                 },
                 votes: { player1: 0, player2: 0 },
             }
-        })
 
-        // Combine all questions
-        const questions = [
-            goatQuestion,
-            allTimeQuestion,
-            activeQuestion,
-            ...randomQuestions,
-        ]
+            // Active
+            const activePool = await Question.findOne({ question: "Active" })
+            if (!activePool) {
+                throw new Error(
+                    "Active question pool not found in the database."
+                )
+            }
+            const activePair = generateRandomPair(activePool.players)
+            const activeQuestion = {
+                question: "Active",
+                players: {
+                    player1: activePair.player1,
+                    player2: activePair.player2,
+                },
+                votes: { player1: 0, player2: 0 },
+            }
 
-        // Save the daily questions
-        try {
-            dailyQuestions = await DailyQuestions.create({
-                date: today,
-                questions,
-                totalVotes: 0,
+            // Random questions
+            const randomPools = await Question.aggregate([
+                { $match: { question: { $nin: ["All-Time", "Active"] } } },
+                { $sample: { size: 3 } },
+            ])
+
+            const randomQuestions = randomPools.map((q) => {
+                const randomPair = generateRandomPair(q.players)
+                return {
+                    question: q.question,
+                    players: {
+                        player1: randomPair.player1,
+                        player2: randomPair.player2,
+                    },
+                    votes: { player1: 0, player2: 0 },
+                }
             })
-        } catch (error) {
-            console.error("Error saving daily questions:", error.message)
-            res.status(500).json({ error: "Failed to save daily questions." })
-            return
-        }
-    }
 
-    res.status(200).json(dailyQuestions)
+            // Combine all questions
+            const questions = [
+                goatQuestion,
+                allTimeQuestion,
+                activeQuestion,
+                ...randomQuestions,
+            ]
+
+            // Save the daily questions
+            try {
+                dailyQuestions = await DailyQuestions.create({
+                    date: today,
+                    questions,
+                    totalVotes: 0,
+                })
+            } catch (error) {
+                console.error("Error saving daily questions:", error.message)
+                res.status(500).json({
+                    error: "Failed to save daily questions.",
+                })
+                return
+            }
+        }
+        res.status(200).json(dailyQuestions)
+    } catch (error) {
+        console.error(error)
+        res.status(500).json({ error: "Failed to get daily questions." })
+    }
 })
 
-// Vote for GOAT
-const voteForGoat = asyncHandler(async (req, res) => {
-    const { playerId } = req.body
+// Answer daily questions
+const answerQuestion = asyncHandler(async (req, res) => {
+    const { date, questionIndex, winner } = req.body
 
-    if (!playerId) {
-        return res.status(400).json({ message: "Player ID is required." })
+    // Validate request
+    if (questionIndex === undefined || !["p1", "p2"].includes(winner)) {
+        return res
+            .status(400)
+            .json("Invalid request. Question and winner are required.")
     }
 
     try {
-        let goat = await GOAT.findOne()
+        // Get today's date in UTC (YYYY-MM-DD format)
+        const today = new Date().toISOString().split("T")[0]
+        if (date !== today)
+            return res.status(400).json("Daily questions expired.")
 
-        if (!goat) {
-            goat = await GOAT.create({
-                lebron: 0,
-                jordan: 0,
-            })
+        // Fetch the daily questions for today
+        const dailyQuestions = await DailyQuestions.findOne({ date: today })
+        if (!dailyQuestions) {
+            return res
+                .status(400)
+                .json({ message: "No daily questions found for today." })
         }
 
-        if (playerId === 2544) {
-            goat.lebron += 1
-        } else if (playerId === 893) {
-            goat.jordan += 1
+        // Find the specific question in the daily questions
+        const dailyQuestion = dailyQuestions.questions[questionIndex]
+
+        // Update the votes for the winner
+        if (winner === "p1") {
+            if (questionIndex === 0) {
+                let goat = await GOAT.findOne()
+                goat.lebron += 1
+                await goat.save()
+            }
+            dailyQuestion.votes.player1 += 1
         } else {
-            return res.status(400).json({ message: "Invalid player ID." })
+            if (questionIndex === 0) {
+                let goat = await GOAT.findOne()
+                goat.jordan += 1
+                await goat.save()
+            }
+            dailyQuestion.votes.player2 += 1
         }
 
-        await goat.save()
+        // Update total votes
+        dailyQuestions.totalVotes += 1
+
+        // Save the updated daily questions
+        await dailyQuestions.save()
 
         res.status(200).json({
             message: "Vote recorded successfully.",
-            lebron: goat.lebron,
-            jordan: goat.jordan,
+            question: dailyQuestion,
+            votes: dailyQuestion.votes,
         })
     } catch (error) {
-        res.status(500).json({ message: error.message })
+        res.status(500).json("Error posting vote.")
     }
 })
 
-module.exports = { addQuestion, voteForGoat, getDailyQuestions }
+module.exports = { answerQuestion }
+
+module.exports = { addQuestion, getDailyQuestions, answerQuestion }

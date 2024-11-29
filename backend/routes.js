@@ -17,6 +17,7 @@ const {
     addQuestion,
     getDailyQuestions,
     voteForGoat,
+    answerQuestion,
 } = require("./controllers/questionController")
 const { protect, admin } = require("./middleware/authMiddleware")
 
@@ -39,6 +40,6 @@ router.post("/stats/gamelogs", getGameLogs)
 // question routes
 router.post("/questions", admin, addQuestion)
 router.get("/questions/daily", getDailyQuestions)
-router.post("/questions/goat", voteForGoat)
+router.post("/questions/daily", answerQuestion)
 
 module.exports = router
