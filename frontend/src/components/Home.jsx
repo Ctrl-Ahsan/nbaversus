@@ -83,6 +83,36 @@ const Home = () => {
         const cachedVotes = JSON.parse(localStorage.getItem("voteTracking"))
         const updatedVotes = { ...cachedVotes, [questionIndex]: winner }
         localStorage.setItem("voteTracking", JSON.stringify(updatedVotes)) // Save to local storage
+
+        // Send vote
+        if (localStorage.getItem("user") !== null) {
+            const token = JSON.parse(localStorage.getItem("user")).Token
+            axios
+                .post(
+                    "/api/questions/daily",
+                    {
+                        date: new Date().toISOString().split("T")[0],
+                        questionIndex: questionIndex,
+                        winner: winner,
+                    },
+                    {
+                        headers: { Authorization: "Bearer " + token },
+                    }
+                )
+                .catch((error) => {
+                    toast.error(error.response.data)
+                })
+        } else {
+            axios
+                .post("/api/questions/daily", {
+                    date: new Date().toISOString().split("T")[0],
+                    questionIndex: questionIndex,
+                    winner: winner,
+                })
+                .catch((error) => {
+                    toast.error(error.response.data)
+                })
+        }
     }
 
     const Streak = () => {
