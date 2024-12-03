@@ -19,10 +19,10 @@ const {
     getMe,
     updateMe,
 } = require("./controllers/userController")
-const { protect, admin } = require("./middleware/authMiddleware")
+const { optionalAuth, protect, admin } = require("./middleware/authMiddleware")
 
 // user routes
-router.post("/users/visit", userVisit)
+router.post("/users/visit", optionalAuth, userVisit)
 router.post("/users", registerUser)
 router.post("/users/login", loginUser)
 router.get("/users/me", protect, getMe)
@@ -30,7 +30,7 @@ router.put("/users/me", protect, updateMe)
 
 // vote routes
 router.get("/votes", getVote)
-router.post("/votes", setVote)
+router.post("/votes", optionalAuth, setVote)
 
 // stats routes
 router.post("/stats/season", getSeasonStats)
@@ -39,7 +39,7 @@ router.post("/stats/gamelogs", getGameLogs)
 
 // question routes
 router.post("/questions", admin, addQuestion)
-router.get("/questions/daily", getDailyQuestions)
-router.post("/questions/daily", answerDailyQuestion)
+router.get("/questions/daily", optionalAuth, getDailyQuestions)
+router.post("/questions/daily", optionalAuth, answerDailyQuestion)
 
 module.exports = router

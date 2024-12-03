@@ -373,13 +373,8 @@ const setVote = asyncHandler(async (req, res) => {
                 break
             }
         }
-        if (req.headers.authorization) {
-            token = req.headers.authorization.split(" ")[1]
-
-            // Verify token
-            const decoded = jwt.verify(token, process.env.JWT_SECRET)
-
-            userToUpdate = await User.findById(decoded.id)
+        if (req.user) {
+            userToUpdate = req.user
             userToUpdate.votes.push(vote)
             userToUpdate.save()
 

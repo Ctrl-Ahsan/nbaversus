@@ -13,11 +13,8 @@ const userVisit = asycHandler(async (req, res) => {
         // log visit once per day / dyno reset
         if (!usersVisited.includes(req.ip)) {
             const location = geoip.lookup(req.ip)
-            if (req.headers.authorization) {
-                // Verify token
-                token = req.headers.authorization.split(" ")[1]
-                const decoded = jwt.verify(token, process.env.JWT_SECRET)
-                const user = await User.findById(decoded.id)
+            if (req.user) {
+                const user = req.user
 
                 console.log(
                     `[USER] ${user.name} is online | ${location?.city} ${location?.region}, ${location?.country} | ${req.ip}`
