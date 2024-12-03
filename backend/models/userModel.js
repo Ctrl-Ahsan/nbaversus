@@ -11,28 +11,28 @@ const userSchema = mongoose.Schema(
             type: String,
             required: [true, "Please add a password"],
         },
-        votes: {
-            type: [mongoose.Schema.Types.ObjectId],
-            ref: "Vote",
-        },
-        answers: [
+        currentStreak: { type: Number, default: 0 },
+        longestStreak: { type: Number, default: 0 },
+        lastActiveDate: { type: Date },
+        dailyAnswers: [
             {
                 date: { type: String, required: true }, // YYYY-MM-DD
-                dailyQuestionId: {
+                dailyQuestionsId: {
                     type: mongoose.Schema.Types.ObjectId,
                     ref: "DailyQuestions",
-                }, // Link to the daily questions document
+                },
                 answers: [
                     {
-                        question: {
-                            type: String,
-                            required: true,
-                        }, // The specific question within the daily questions
-                        selectedPlayer: { type: Number, required: true }, // ID of the selected player
+                        questionIndex: { type: Number, required: true },
+                        winner: { type: String, required: true },
                     },
                 ],
             },
         ],
+        votes: {
+            type: [mongoose.Schema.Types.ObjectId],
+            ref: "Vote",
+        },
     },
     {
         timestamps: true,

@@ -118,13 +118,15 @@ const addQuestion = asyncHandler(async (req, res) => {
 
 // Get/generate daily questions
 const getDailyQuestions = asyncHandler(async (req, res) => {
+    let response = {}
+
     try {
         const today = new Date().toISOString().split("T")[0] // Format: YYYY-MM-DD
 
         // Check if daily questions already exist
         let dailyQuestions = await DailyQuestions.findOne({ date: today })
 
-        // Fetch or initialize the GOAT question
+        // Fetch or initialize daily questions
         if (!dailyQuestions) {
             let goatQuestionData = await GOAT.findOne()
 
@@ -241,7 +243,56 @@ const getDailyQuestions = asyncHandler(async (req, res) => {
                 return
             }
         }
-        res.status(200).json(dailyQuestions)
+
+        // Structure response
+        response.dailyQuestions = dailyQuestions
+
+        // Streaks and vote tracking for signed in users
+        if (req.user) {
+            const user = req.user
+
+            // Update streak
+            const lastActiveDate = user.lastActiveDate
+                ? user.lastActiveDate.toISOString().split("T")[0]
+                : null
+
+            const yesterday = new Date()
+            yesterday.setDate(yesterday.getDate() - 1)
+            const yesterdayDate = yesterday.toISOString().split("T")[0]
+
+            if (lastActiveDate === yesterdayDate) {
+                // Continue streak
+                user.currentStreak += 1
+            } else if (lastActiveDate !== today) {
+                // Reset streak
+                user.currentStreak = 0
+            }
+            // Update longest streak if necessary
+            if (user.currentStreak > user.longestStreak) {
+                user.longestStreak = user.currentStreak
+            }
+
+            // Update lastActiveDate
+            user.lastActiveDate = new Date()
+
+            // Vote tracking
+            const dailyAnswersEntry = user.dailyAnswers.find(
+                (entry) => entry.date === today
+            )
+
+            let voteTracking = {}
+            if (dailyAnswersEntry) {
+                for (answer of dailyAnswersEntry.answers) {
+                    voteTracking[answer.questionIndex] = answer.winner
+                }
+            }
+
+            // Save user document and structure response
+            await user.save()
+            response.streak = user.currentStreak
+            response.voteTracking = voteTracking
+        }
+        res.status(200).json(response)
     } catch (error) {
         console.error(error)
         res.status(500).json({ error: "Failed to get daily questions." })
@@ -275,6 +326,9 @@ const answerDailyQuestion = asyncHandler(async (req, res) => {
 
         // Find the specific question in the daily questions
         const dailyQuestion = dailyQuestions.questions[questionIndex]
+        if (!dailyQuestion) {
+            return res.status(400).json({ message: "Invalid question index." })
+        }
 
         // Update the votes for the winner
         if (winner === "p1") {
@@ -299,12 +353,54 @@ const answerDailyQuestion = asyncHandler(async (req, res) => {
         // Save the updated daily questions
         await dailyQuestions.save()
 
+        // Update the user document
+        if (req.user) {
+            const user = req.user
+
+            // Check if the user has a dailyAnswers entry for today
+            let dailyAnswersEntry = user.dailyAnswers.find(
+                (entry) => entry.date === today
+            )
+
+            if (!dailyAnswersEntry) {
+                // If not, create a new entry
+                dailyAnswersEntry = {
+                    date: today,
+                    dailyQuestionsId: dailyQuestions._id,
+                    answers: [],
+                }
+                user.dailyAnswers.push(dailyAnswersEntry)
+            }
+
+            // Check if the user has already answered this question
+            const hasAnsweredQuestion = dailyAnswersEntry.answers.some(
+                (answer) => answer.questionIndex === questionIndex
+            )
+
+            if (hasAnsweredQuestion) {
+                return res.status(400).json({
+                    message: "You have already answered this question today.",
+                })
+            }
+
+            // Add the answer to the answers array
+            dailyAnswersEntry.answers.push({
+                questionIndex: questionIndex,
+                winner: winner,
+            })
+            console.log(dailyAnswersEntry)
+
+            // Save the user document
+            await user.save()
+        }
+
         res.status(200).json({
             message: "Vote recorded successfully.",
             question: dailyQuestion,
             votes: dailyQuestion.votes,
         })
     } catch (error) {
+        console.error("Error posting vote:", error)
         res.status(500).json("Error posting vote.")
     }
 })

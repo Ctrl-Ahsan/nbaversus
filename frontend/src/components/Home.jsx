@@ -14,22 +14,45 @@ const Home = () => {
     useEffect(() => {
         setLoading(true)
         fetchDailyQuestions()
-        updateStreak()
     }, [])
 
     const fetchDailyQuestions = async () => {
         try {
-            const { data } = await axios.get("/api/questions/daily")
-
-            const cachedDate = localStorage.getItem("lastUpdated")
-            const voteTracking = localStorage.getItem("voteTracking")
-            if (!isToday(cachedDate) || !voteTracking) {
-                // Reset vote tracking for new day
-                localStorage.setItem("voteTracking", "{}")
+            let response
+            if (localStorage.getItem("user") !== null) {
+                const token = JSON.parse(localStorage.getItem("user")).Token
+                response = await axios.get("/api/questions/daily", {
+                    headers: { Authorization: "Bearer " + token },
+                })
+                console.log(response)
+            } else {
+                response = await axios.get("/api/questions/daily")
             }
-            // Save to local storage
-            setVersus(data.questions)
-            localStorage.setItem("lastUpdated", data.date)
+
+            // Set streak and vote tracking for signed in users
+            if (response.data.streak && response.data.voteTracking) {
+                localStorage.setItem("streak", response.data.streak)
+                localStorage.setItem(
+                    "voteTracking",
+                    JSON.stringify(response.data.voteTracking)
+                )
+            }
+            // Set streak and vote tracking for users not signed in
+            else {
+                const cachedDate = localStorage.getItem("lastUpdated")
+                const voteTracking = localStorage.getItem("voteTracking")
+                if (!isToday(cachedDate) || !voteTracking) {
+                    // Reset vote tracking for new day
+                    localStorage.setItem("voteTracking", "{}")
+                }
+                updateStreak()
+                // Save to local storage
+                localStorage.setItem(
+                    "lastUpdated",
+                    response.data.dailyQuestions.date
+                )
+            }
+            setVersus(response.data.dailyQuestions.questions)
             setLoading(false)
         } catch (error) {
             toast.error("Error fetching daily questions")
