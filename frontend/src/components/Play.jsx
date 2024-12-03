@@ -429,7 +429,7 @@ const Play = () => {
 
         return (
             <MenuContainer>
-                {(!p1Wins && !p2Wins) || round === 5 ? (
+                {(!p1Wins && !p2Wins) || round === 3 ? (
                     <IoReloadCircle
                         onClick={handleReload}
                         style={{
