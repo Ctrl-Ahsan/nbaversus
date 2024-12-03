@@ -28,8 +28,8 @@ const Home = () => {
                 localStorage.setItem("voteTracking", "{}")
             }
             // Save to local storage
-            localStorage.setItem("lastUpdated", data.date)
             setVersus(data.questions)
+            localStorage.setItem("lastUpdated", data.date)
             setLoading(false)
         } catch (error) {
             toast.error("Error fetching daily questions")
@@ -56,12 +56,6 @@ const Home = () => {
                 // Reset streak if user missed a day
                 localStorage.setItem("streak", 0)
             }
-
-            // Update the `lastUpdated` date
-            localStorage.setItem(
-                "lastUpdated",
-                new Date().toISOString().split("T")[0]
-            )
         } catch (error) {
             toast.error("Error updating streak")
             console.error("Error updating streak:", error)
