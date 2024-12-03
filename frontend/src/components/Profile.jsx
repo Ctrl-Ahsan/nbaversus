@@ -53,6 +53,9 @@ const Profile = (props) => {
 
     const onLogout = () => {
         localStorage.removeItem("user")
+        localStorage.removeItem("streak")
+        localStorage.removeItem("voteTracking")
+        localStorage.removeItem("lastUpdated")
         props.setLoggedIn(false)
     }
 
