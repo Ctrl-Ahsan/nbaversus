@@ -5,7 +5,13 @@ const {
     getCareerStats,
     getGameLogs,
 } = require("./controllers/statController")
-const { getVote, setVote } = require("./controllers/voteController")
+const {
+    addQuestion,
+    getDailyQuestions,
+    answerDailyQuestion,
+    getVote,
+    setVote,
+} = require("./controllers/voteController")
 const {
     userVisit,
     registerUser,
@@ -13,12 +19,6 @@ const {
     getMe,
     updateMe,
 } = require("./controllers/userController")
-const {
-    addQuestion,
-    getDailyQuestions,
-    voteForGoat,
-    answerQuestion,
-} = require("./controllers/questionController")
 const { protect, admin } = require("./middleware/authMiddleware")
 
 // user routes
@@ -40,6 +40,6 @@ router.post("/stats/gamelogs", getGameLogs)
 // question routes
 router.post("/questions", admin, addQuestion)
 router.get("/questions/daily", getDailyQuestions)
-router.post("/questions/daily", answerQuestion)
+router.post("/questions/daily", answerDailyQuestion)
 
 module.exports = router
