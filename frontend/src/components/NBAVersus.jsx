@@ -1,4 +1,4 @@
-import "./Versus.css"
+import "./NBAVersus.css"
 import { useState, useEffect } from "react"
 import axios from "axios"
 
@@ -7,9 +7,9 @@ import Home from "./Home"
 import Play from "./Play"
 import Compare from "./Compare"
 import Analyze from "./Analyze"
-import Account from "./Account"
+import Account from "./Account/Account"
 
-const Versus = () => {
+const NBAVersus = () => {
     const [page, setPage] = useState("home")
 
     useEffect(() => {
@@ -25,7 +25,7 @@ const Versus = () => {
     }, [])
 
     return (
-        <main className="versus-container">
+        <main className="nbaversus">
             {page === "play" ? (
                 <Play />
             ) : page === "compare" ? (
@@ -42,4 +42,4 @@ const Versus = () => {
     )
 }
 
-export default Versus
+export default NBAVersus
