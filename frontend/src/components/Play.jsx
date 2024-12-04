@@ -215,10 +215,17 @@ const Play = () => {
                 font-size: 2em;
                 font-weight: 700;
                 margin-bottom: 0.3rem;
+                @media screen and (max-width: 540px) {
+                    font-size: 1.5em;
+                }
             }
             & .stats {
                 font-size: 1em;
                 font-weight: 400;
+
+                @media screen and (max-width: 540px) {
+                    font-size: 0.8em;
+                }
             }
             & .logoBG {
                 position: absolute;
