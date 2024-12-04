@@ -400,7 +400,7 @@ const Play = () => {
             display: flex;
             flex-direction: column;
             position: absolute;
-            bottom: 12%;
+            bottom: 4%;
             right: 0.75em;
             z-index: 3;
             align-items: center;
@@ -468,6 +468,23 @@ const Play = () => {
             <PlayContainer>
                 <Panel1 />
                 <Panel2 />
+                {!menuOpen && <Menu />}
+                {stats && (
+                    <Stats
+                        player1={player1}
+                        player2={player2}
+                        setMenuOpen={setMenuOpen}
+                        setMenuClosed={setMenuClosed}
+                        setStats={setStats}
+                    />
+                )}
+                {leaderboard && (
+                    <Leaderboard
+                        setMenuOpen={setMenuOpen}
+                        setMenuClosed={setMenuClosed}
+                        setLeaderboard={setLeaderboard}
+                    />
+                )}
             </PlayContainer>
             {!menuOpen && (
                 <div className="progress-stepper">
@@ -500,23 +517,6 @@ const Play = () => {
                         )}
                     </CircularProgressbarWithChildren>
                 </div>
-            )}
-            {!menuOpen && <Menu />}
-            {stats && (
-                <Stats
-                    player1={player1}
-                    player2={player2}
-                    setMenuOpen={setMenuOpen}
-                    setMenuClosed={setMenuClosed}
-                    setStats={setStats}
-                />
-            )}
-            {leaderboard && (
-                <Leaderboard
-                    setMenuOpen={setMenuOpen}
-                    setMenuClosed={setMenuClosed}
-                    setLeaderboard={setLeaderboard}
-                />
             )}
         </>
     )
