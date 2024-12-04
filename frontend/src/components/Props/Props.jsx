@@ -1,4 +1,4 @@
-import "./Analyze.css"
+import "./Props.css"
 import { useContext, useState } from "react"
 import axios from "axios"
 import { ReactSearchAutocomplete } from "react-search-autocomplete"
@@ -16,7 +16,7 @@ import { IoPersonAdd } from "react-icons/io5"
 import { IoIosRemoveCircleOutline } from "react-icons/io"
 import { FaPlus } from "react-icons/fa"
 
-const Analyze = () => {
+const Props = () => {
     const { lines, setLines, parlayScope, setParlayScope } =
         useContext(AppContext)
     const players = [...roster.allPlayers]
@@ -395,7 +395,7 @@ const Analyze = () => {
     }
 
     return (
-        <main className="analyze-container">
+        <main className="props-container">
             <Builder />
 
             {lines.length === 0 && (
@@ -462,4 +462,4 @@ const Analyze = () => {
     )
 }
 
-export default Analyze
+export default Props

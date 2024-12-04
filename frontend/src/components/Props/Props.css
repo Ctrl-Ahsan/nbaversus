@@ -1,4 +1,4 @@
-.analyze-container {
+.props-container {
     display: flex;
     overflow-y: scroll;
     flex-direction: column;

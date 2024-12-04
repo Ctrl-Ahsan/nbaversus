@@ -402,7 +402,7 @@ const getGameLogs = asyncHandler(async (req, res) => {
                 break
         }
         console.log(
-            `[ACTIVITY][ANALYZE] Logs requested for ${idToName(
+            `[ACTIVITY][PROPS] Logs requested for ${idToName(
                 req.body.id
             )} ${stat} | ${req.ip}`.green
         )
