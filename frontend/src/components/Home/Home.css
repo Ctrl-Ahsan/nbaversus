@@ -163,12 +163,22 @@
         .blank {
             background-color: #0000007a;
             border-radius: 16px;
-            height: 13.04em;
+            height: calc((1.37 * 25vw) + 2.6em);
             width: 90%;
             padding: 1em;
             margin-left: auto;
             margin-right: auto;
             margin-bottom: 1em;
+
+            @media screen and (max-width: 540px) {
+                padding: 1em 0.75em;
+            }
+            @media screen and (min-width: 1080px) {
+                height: calc((1.37 * 12vw) + 3em);
+            }
+            @media screen and (min-width: 1440px) {
+                height: calc((1.37 * 8vw) + 3.15em);
+            }
         }
     }
 }
