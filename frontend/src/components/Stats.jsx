@@ -6,7 +6,7 @@ import { toast } from "react-toastify"
 import Spinner from "./Spinner"
 
 import { AiOutlineClose } from "react-icons/ai"
-import { IoIosStats } from "react-icons/io"
+import { IoInformationCircle } from "react-icons/io5"
 
 const Stats = (props) => {
     const [stats1, setStats1] = useState(null)
@@ -59,12 +59,11 @@ const Stats = (props) => {
         left: 50%;
         transform: translate(-50%, -50%);
         z-index: 3;
-        background: rgba(0, 0, 0, 0.4);
+        background-color: #151515bb;
         border-radius: 16px;
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(148, 148, 148, 0.3);
         color: white;
         overflow: hidden;
         width: 75%;
@@ -159,7 +158,7 @@ const Stats = (props) => {
                 <AiOutlineClose />
             </div>
             <div className="title">
-                <IoIosStats /> Stats
+                <IoInformationCircle size={"1.35em"} /> Stats
             </div>
             <div className="headers">
                 <Row
