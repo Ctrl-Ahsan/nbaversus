@@ -4,9 +4,9 @@ import axios from "axios"
 import { ReactSearchAutocomplete } from "react-search-autocomplete"
 import { toast } from "react-toastify"
 
-import { AppContext } from "../AppContext"
-import roster from "../players.json"
-import { teamColors, defaultColor } from "../config"
+import { AppContext } from "../../AppContext"
+import roster from "../../players.json"
+import { teamColors, defaultColor } from "../../config"
 
 import { AiOutlineClose } from "react-icons/ai"
 import { FaUsers } from "react-icons/fa"

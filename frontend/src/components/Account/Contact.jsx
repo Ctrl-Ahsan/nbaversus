@@ -3,7 +3,7 @@ import { useState } from "react"
 import { toast } from "react-toastify"
 import { BiSupport } from "react-icons/bi"
 import emailjs from "emailjs-com"
-import Spinner from "./Spinner"
+import Spinner from "../Spinner/Spinner"
 
 const Contact = () => {
     const [submit, setSubmit] = useState(false)

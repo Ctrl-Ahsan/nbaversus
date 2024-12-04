@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import axios from "axios"
 import { toast } from "react-toastify"
 
-import Spinner from "./Spinner"
+import Spinner from "../Spinner/Spinner"
 
 import { AiOutlineClose } from "react-icons/ai"
 import { IoInformationCircle } from "react-icons/io5"

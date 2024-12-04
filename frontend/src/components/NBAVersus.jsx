@@ -2,11 +2,11 @@ import "./NBAVersus.css"
 import { useState, useEffect } from "react"
 import axios from "axios"
 
-import Navbar from "./Navbar"
-import Home from "./Home"
-import Versus from "./Versus"
-import Compare from "./Compare"
-import Analyze from "./Analyze"
+import Navbar from "./Navbar/Navbar"
+import Home from "./Home/Home"
+import Versus from "./Versus/Versus"
+import Compare from "./Compare/Compare"
+import Analyze from "./Analyze/Analyze"
 import Account from "./Account/Account"
 
 const NBAVersus = () => {

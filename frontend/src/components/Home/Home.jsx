@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import "./Home.css"
-import { teamColors } from "../config"
+import { teamColors } from "../../config"
 import { GiGoat } from "react-icons/gi"
 import { FaFire } from "react-icons/fa"
 import { IoReload } from "react-icons/io5"

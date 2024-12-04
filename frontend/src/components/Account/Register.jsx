@@ -1,19 +1,20 @@
-import "./Login.css"
+import "./Register.css"
 import { useState } from "react"
 import { toast } from "react-toastify"
-import { FaSignInAlt } from "react-icons/fa"
+import { IoPersonAdd } from "react-icons/io5"
 import axios from "axios"
-import Spinner from "../components/Spinner"
+import Spinner from "../Spinner/Spinner"
 
-const Login = (props) => {
+const Register = (props) => {
     const Form = () => {
         const [formData, setFormData] = useState({
             name: "",
             password: "",
+            password2: "",
         })
         const [loading, setLoading] = useState(false)
 
-        const { name, password } = formData
+        const { name, password, password2 } = formData
 
         const onChange = (e) => {
             setFormData((prevState) => ({
@@ -24,17 +25,20 @@ const Login = (props) => {
 
         const onSubmit = (e) => {
             e.preventDefault()
-
-            if (name === "" || password === "") {
+            if (name === "" || password === "" || password2 === "") {
                 toast.error("Please fill in all fields")
-            } else {
+            } else if (name.length > 16)
+                toast.error("Username exceeds 16 character limit")
+            else if (password !== password2)
+                toast.error("Passwords do not match")
+            else {
                 setLoading(true)
                 const userData = {
                     name,
                     password,
                 }
                 axios
-                    .post("/api/users/login", userData)
+                    .post("/api/users", userData)
                     .then((response) => {
                         if (response.data) {
                             localStorage.setItem(
@@ -42,6 +46,7 @@ const Login = (props) => {
                                 JSON.stringify(response.data)
                             )
                             props.setLoggedIn(true)
+                            props.setToggleRegister(false)
                         }
                         setLoading(false)
                     })
@@ -77,18 +82,35 @@ const Login = (props) => {
                     />
                 </div>
                 <div className="form-item">
+                    <input
+                        required
+                        type="password"
+                        id="password2"
+                        name="password2"
+                        value={password2}
+                        placeholder="Confirm Password"
+                        onChange={onChange}
+                    />
+                </div>
+                <div className="form-item">
                     {loading ? (
                         <div className="spinner-container">
                             <Spinner size="small" />
                         </div>
                     ) : (
-                        <button type="submit">Sign In</button>
+                        <button className="green" type="submit">
+                            Sign Up
+                        </button>
                     )}
                 </div>
                 <hr className="divider" />
                 <div className="form-item">
-                    <button className="green" onClick={props.setToggleRegister}>
-                        Register
+                    <button
+                        onClick={() => {
+                            props.setToggleRegister()
+                        }}
+                    >
+                        Login
                     </button>
                 </div>
             </form>
@@ -96,13 +118,13 @@ const Login = (props) => {
     }
 
     return (
-        <section className="login-container">
+        <section className="register-container">
             <div className="form-title">
-                <FaSignInAlt /> Login
+                <IoPersonAdd /> Register
             </div>
             <Form />
         </section>
     )
 }
 
-export default Login
+export default Register
