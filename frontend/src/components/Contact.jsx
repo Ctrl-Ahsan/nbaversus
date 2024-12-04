@@ -1,5 +1,5 @@
+import "./Contact.css"
 import { useState } from "react"
-import styled from "styled-components"
 import { toast } from "react-toastify"
 import { BiSupport } from "react-icons/bi"
 import emailjs from "emailjs-com"
@@ -94,43 +94,13 @@ const Contact = () => {
         )
     }
 
-    const ContactContainer = styled.div`
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background-color: #0000007a;
-        border: solid 1px #21212179;
-        border-radius: 5px;
-        padding: 1em 0;
-
-        & textarea {
-            width: 100%;
-            height: 15em;
-            font-size: 0.7em;
-            font-family: inherit;
-            padding: 1em;
-            border: 0.1px solid #2a2a2a;
-            border-radius: 5px;
-            background-color: #333333;
-            color: white;
-            resize: none;
-            overflow-y: scroll;
-        }
-
-        & .spinner-container {
-            height: 30px;
-            position: relative;
-            margin-top: 10px;
-        }
-    `
-
     return (
-        <ContactContainer>
+        <section className="contact-container">
             <div className="form-title">
                 <BiSupport /> Contact
             </div>
             <Form />
-        </ContactContainer>
+        </section>
     )
 }
 

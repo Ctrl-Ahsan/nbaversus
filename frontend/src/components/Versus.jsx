@@ -1,6 +1,6 @@
+import "./Versus.css"
 import { useState, useEffect } from "react"
 import axios from "axios"
-import styled from "styled-components"
 
 import Navbar from "./Navbar"
 import Home from "./Home"
@@ -24,21 +24,8 @@ const Versus = () => {
         }
     }, [])
 
-    // styling
-    const VersusContainer = styled.main`
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        height: 100vh;
-        max-height: -webkit-fill-available;
-
-        @media screen and (min-width: 1080px) {
-            flex-direction: row-reverse;
-        }
-    `
     return (
-        <VersusContainer>
+        <main className="versus-container">
             {page === "play" ? (
                 <Play />
             ) : page === "compare" ? (
@@ -51,7 +38,7 @@ const Versus = () => {
                 <Home />
             )}
             <Navbar page={page} setPage={setPage} />
-        </VersusContainer>
+        </main>
     )
 }
 

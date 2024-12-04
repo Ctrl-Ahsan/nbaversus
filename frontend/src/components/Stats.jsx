@@ -1,6 +1,6 @@
+import "./Stats.css"
 import { useState, useEffect } from "react"
 import axios from "axios"
-import styled from "styled-components"
 import { toast } from "react-toastify"
 
 import Spinner from "./Spinner"
@@ -52,84 +52,6 @@ const Stats = (props) => {
         }
     }
 
-    // styling
-    const StatsContainer = styled.section`
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 3;
-        background-color: #151515bb;
-        border-radius: 16px;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        color: white;
-        overflow: hidden;
-        width: 75%;
-        max-width: 740px;
-        padding: 20px;
-        & .close {
-            position: absolute;
-            top: 1.5em;
-            right: 1.5em;
-            cursor: pointer;
-            transition: all 0.3s;
-            :active {
-                scale: 0.9;
-            }
-        }
-        & .title {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.5em;
-            font-weight: 700;
-            padding: 10px 20px;
-            margin-bottom: 0.5em;
-            svg {
-                font-size: 0.8em;
-                margin-right: 0.2em;
-            }
-        }
-
-        & .subtitle {
-            font-size: 0.65em;
-            font-weight: 300;
-            color: darkgray;
-        }
-        & .stats {
-            display: grid;
-            position: relative;
-            height: 55vh;
-            overflow-x: hidden;
-            overflow-y: scroll;
-            grid-template-columns: 2fr 1fr 2fr;
-            grid-row-gap: 20px;
-            background-color: #0000007a;
-            border: solid 1px #21212179;
-            border-top: none;
-            border-radius: 0px 0px 5px 5px;
-            padding: 1em 10px;
-        }
-        & .headers {
-            display: grid;
-            grid-template-columns: 2fr 1fr 2fr;
-            grid-row-gap: 20px;
-            background-color: #0000007a;
-            border: solid 1px #21212179;
-            border-bottom: none;
-            border-radius: 5px 5px 0px 0px;
-            padding: 0.5em 10px;
-        }
-        & .heading {
-            font-family: Roboto Condensed, Roboto, Arial;
-            font-weight: 700;
-        }
-        & .cell {
-            padding: 0.3em;
-        }
-    `
     const Row = (props) => {
         return (
             <>
@@ -153,7 +75,7 @@ const Stats = (props) => {
     }
 
     return (
-        <StatsContainer>
+        <section className="stats-container">
             <div className="close" onClick={handleClick}>
                 <AiOutlineClose />
             </div>
@@ -328,7 +250,7 @@ const Stats = (props) => {
                     </>
                 )}
             </div>
-        </StatsContainer>
+        </section>
     )
 }
 export default Stats

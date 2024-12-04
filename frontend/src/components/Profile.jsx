@@ -1,6 +1,6 @@
+import "./Profile.css"
 import { useEffect, useState } from "react"
 import axios from "axios"
-import styled from "styled-components"
 import { toast } from "react-toastify"
 
 import { FaSignOutAlt, FaUser } from "react-icons/fa"
@@ -59,86 +59,8 @@ const Profile = (props) => {
         props.setLoggedIn(false)
     }
 
-    const ProfileContainer = styled.div`
-        background-color: #0000007a;
-        border: solid 1px #21212179;
-        border-radius: 5px;
-        padding: 1em 10px;
-        & .me {
-            padding: 0 1em;
-        }
-
-        & .favorites {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-evenly;
-            align-items: center;
-            width: 100%;
-        }
-
-        & .panel {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-evenly;
-            align-items: center;
-            min-height: 10em;
-            width: 90%;
-            background-color: #d3d3d352;
-            border-radius: 20px;
-            padding: 0.5em;
-            margin-bottom: 1em;
-            font-weight: 700;
-
-            img {
-                height: 5em;
-                border-radius: 50px;
-            }
-        }
-
-        & .title {
-            font-size: 1.5em;
-            font-weight: 700;
-            margin-bottom: 0.5em;
-
-            svg {
-                font-size: 0.7em;
-            }
-
-            & .votes {
-                margin-top: 0.25em;
-                height: 1em;
-                font-family: Roboto Condensed, Roboto, Arial;
-                font-size: 0.5em;
-                font-weight: 300;
-            }
-        }
-
-        & .profile-heading {
-            font-weight: 300;
-            font-size: 0.7em;
-            font-family: Roboto Condensed, Roboto, Arial;
-            margin-top: 1em;
-        }
-
-        & .image {
-            height: 5em;
-        }
-
-        & .logout {
-            width: calc(90% - 1em);
-        }
-        & .button-text {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            & svg {
-                margin-right: 0.2em;
-            }
-        }
-    `
-
     return (
-        <ProfileContainer>
+        <section className="profile-container">
             <div className="me">
                 <div className="title">
                     <FaUser /> {user}
@@ -207,7 +129,7 @@ const Profile = (props) => {
                     <FaSignOutAlt /> Sign Out
                 </div>
             </button>
-        </ProfileContainer>
+        </section>
     )
 }
 

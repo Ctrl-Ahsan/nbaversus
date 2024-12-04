@@ -1,5 +1,5 @@
+import "./Register.css"
 import { useState } from "react"
-import styled from "styled-components"
 import { toast } from "react-toastify"
 import { IoPersonAdd } from "react-icons/io5"
 import axios from "axios"
@@ -117,29 +117,13 @@ const Register = (props) => {
         )
     }
 
-    const RegisterContainer = styled.div`
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background-color: #0000007a;
-        border: solid 1px #21212179;
-        border-radius: 5px;
-        padding: 1em 0;
-
-        & .spinner-container {
-            height: 30px;
-            position: relative;
-            margin-top: 10px;
-        }
-    `
-
     return (
-        <RegisterContainer>
+        <section className="register-container">
             <div className="form-title">
                 <IoPersonAdd /> Register
             </div>
             <Form />
-        </RegisterContainer>
+        </section>
     )
 }
 

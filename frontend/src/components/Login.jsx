@@ -1,5 +1,5 @@
+import "./Login.css"
 import { useState } from "react"
-import styled from "styled-components"
 import { toast } from "react-toastify"
 import { FaSignInAlt } from "react-icons/fa"
 import axios from "axios"
@@ -95,29 +95,13 @@ const Login = (props) => {
         )
     }
 
-    const LoginContainer = styled.div`
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background-color: #0000007a;
-        border: solid 1px #21212179;
-        border-radius: 5px;
-        padding: 1em 0;
-
-        & .spinner-container {
-            height: 30px;
-            position: relative;
-            margin-top: 10px;
-        }
-    `
-
     return (
-        <LoginContainer>
+        <section className="login-container">
             <div className="form-title">
                 <FaSignInAlt /> Login
             </div>
             <Form />
-        </LoginContainer>
+        </section>
     )
 }
 
