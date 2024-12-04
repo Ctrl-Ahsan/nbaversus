@@ -47,7 +47,7 @@ const PLUS_MINUS_RANK = 61
 
 const getSeasonStats = asyncHandler(async (req, res) => {
     console.log(
-        `[ACTIVITY][PLAY] Season stats requested for ${idToName(
+        `[ACTIVITY][Versus] Season stats requested for ${idToName(
             req.body.ids[0]
         )} and ${idToName(req.body.ids[1])} | ${req.ip}`.green
     )

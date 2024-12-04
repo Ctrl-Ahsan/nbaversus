@@ -473,17 +473,12 @@ const setVote = asyncHandler(async (req, res) => {
             userToUpdate = req.user
             userToUpdate.votes.push(vote)
             userToUpdate.save()
-
-            console.log(
-                `[ACTIVITY][PLAY] ${userToUpdate.name} voted for ${winnerName} | ${req.ip}`
-                    .green
-            )
-        } else {
-            console.log(
-                `[ACTIVITY][PLAY] A user voted for ${winnerName} | ${req.ip}`
-                    .green
-            )
         }
+        console.log(
+            `[ACTIVITY][VERSUS] ${
+                req.user ? userToUpdate.name : "A user"
+            } voted for ${winnerName} | ${req.ip}`.green
+        )
         res.status(200).json(vote)
     } catch (error) {
         res.status(500).json("Could not cast vote")
