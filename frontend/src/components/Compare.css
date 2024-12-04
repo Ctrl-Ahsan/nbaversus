@@ -44,18 +44,18 @@
             height: 100%;
             display: flex;
             align-items: center;
-            svg {
-                cursor: pointer;
-                transition: all 0.3s;
-                -webkit-tap-highlight-color: transparent;
-                :hover {
-                    scale: 1.05;
-                }
-                :active {
-                    scale: 0.9;
-                    color: #bd7b00 !important;
-                }
-            }
+        }
+        .reload svg {
+            cursor: pointer;
+            transition: all 0.3s;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .reload svg:hover {
+            scale: 1.05;
+        }
+        .reload svg:active {
+            scale: 0.9;
+            color: #bd7b00 !important;
         }
     }
 
@@ -109,9 +109,9 @@
                     right: 0.6em;
                     cursor: pointer;
                     transition: all 0.3s;
-                    :active {
-                        scale: 0.9;
-                    }
+                }
+                .close:active {
+                    scale: 0.9;
                 }
                 .player {
                     display: flex;

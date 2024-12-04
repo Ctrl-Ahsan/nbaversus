@@ -103,13 +103,13 @@
             @media screen and (min-width: 740px) {
                 padding: 15px;
             }
-            :hover {
-                color: #dbdbdb;
-            }
 
             svg {
                 margin-right: 0.5em;
             }
+        }
+        button:hover {
+            color: #dbdbdb;
         }
 
         .button-content {
@@ -124,9 +124,9 @@
 
         .green {
             background: green;
-            :hover {
-                background: #006c00;
-            }
+        }
+        .green:hover {
+            background: #006c00;
         }
     }
 
@@ -149,24 +149,6 @@
                 background: rgba(0, 0, 0, 0.4);
                 backdrop-filter: blur(10px);
                 -webkit-backdrop-filter: blur(10px);
-            }
-        }
-        .reload {
-            margin-left: 0.5em;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            svg {
-                cursor: pointer;
-                transition: all 0.3s;
-                -webkit-tap-highlight-color: transparent;
-                :hover {
-                    scale: 1.05;
-                }
-                :active {
-                    scale: 0.9;
-                    color: #bd7b00 !important;
-                }
             }
         }
     }
@@ -257,14 +239,10 @@
                 font-size: 1.5em;
                 color: #ff3333;
                 cursor: pointer;
-
-                svg {
-                    transition: all 0.5s;
-                }
-
-                :hover {
-                    color: #b51a1a;
-                }
+                transition: all 0.5s;
+            }
+            .remove:hover {
+                color: #b51a1a;
             }
 
             .info {

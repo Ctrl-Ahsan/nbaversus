@@ -12,47 +12,6 @@
         border-bottom: 1px solid white;
     }
 
-    button {
-        width: 100%;
-        margin-top: 5px;
-        padding: 10px;
-        border: none;
-        border-radius: 5px;
-        background: #000;
-        color: #fff;
-        font-size: 1em;
-        font-weight: 700;
-        cursor: pointer;
-        appearance: button;
-        align-self: center;
-
-        @media screen and (min-width: 740px) {
-            padding: 15px;
-        }
-        :hover {
-            color: #dbdbdb;
-        }
-    }
-
-    .red {
-        background: #900000;
-        :hover {
-            background: #780000;
-        }
-    }
-    .green {
-        background: green;
-        :hover {
-            background: #006c00;
-        }
-    }
-    .blue {
-        background: #008cd2;
-        :hover {
-            background: #006da3;
-        }
-    }
-
     .nav {
         display: flex;
         flex-direction: row;
@@ -65,9 +24,9 @@
         margin-top: 1em;
         padding: 10px 20px;
         transition: all 0.3s;
-        :active {
-            scale: 0.95;
-        }
+    }
+    .heading:active {
+        scale: 0.95;
     }
 
     .headingText {
@@ -120,4 +79,48 @@
         border: solid 0.5px grey;
         margin: 1em;
     }
+}
+
+.user-container button {
+    width: 100%;
+    margin-top: 5px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #000;
+    color: #fff;
+    font-size: 1em;
+    font-weight: 700;
+    cursor: pointer;
+    appearance: button;
+    align-self: center;
+
+    @media screen and (min-width: 740px) {
+        padding: 15px;
+    }
+}
+
+.user-container button:hover {
+    color: #dbdbdb;
+}
+
+.user-container .red {
+    background: #900000;
+}
+.user-container .red:hover {
+    background: #780000;
+}
+
+.user-container .green {
+    background: green;
+}
+.user-container .green:hover {
+    background: #006c00;
+}
+
+.user-container .blue {
+    background: #008cd2;
+}
+.user-container .blue:hover {
+    background: #006da3;
 }
