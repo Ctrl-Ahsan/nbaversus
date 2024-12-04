@@ -24,7 +24,6 @@ const Home = () => {
                 response = await axios.get("/api/questions/daily", {
                     headers: { Authorization: "Bearer " + token },
                 })
-                console.log(response)
             } else {
                 response = await axios.get("/api/questions/daily")
             }

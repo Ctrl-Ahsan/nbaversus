@@ -13,16 +13,17 @@ const userVisit = asycHandler(async (req, res) => {
         // log visit once per day / dyno reset
         if (!usersVisited.includes(req.ip)) {
             const location = geoip.lookup(req.ip)
+            console.log(
+                `[USER] ${
+                    req.user
+                        ? `${req.user.name} is online |`
+                        : "A new visitor from"
+                } ${location?.city} ${location?.region}, ${
+                    location?.country
+                } | ${req.ip}`
+            )
             if (req.user) {
                 const user = req.user
-
-                console.log(
-                    `[USER] ${user.name} is online | ${location?.city} ${location?.region}, ${location?.country} | ${req.ip}`
-                )
-            } else {
-                console.log(
-                    `[USER] A new visitor from ${location?.city} ${location?.region}, ${location?.country} | ${req.ip}`
-                )
             }
             usersVisited.push(req.ip)
             console.log(`[USER] ${usersVisited.length} visits today`)

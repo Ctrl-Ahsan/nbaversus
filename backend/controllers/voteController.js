@@ -388,7 +388,6 @@ const answerDailyQuestion = asyncHandler(async (req, res) => {
                 questionIndex: questionIndex,
                 winner: winner,
             })
-            console.log(dailyAnswersEntry)
 
             // Save the user document
             await user.save()
