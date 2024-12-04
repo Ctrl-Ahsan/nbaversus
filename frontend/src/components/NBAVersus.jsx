@@ -4,7 +4,7 @@ import axios from "axios"
 
 import Navbar from "./Navbar"
 import Home from "./Home"
-import Play from "./Play"
+import Versus from "./Versus"
 import Compare from "./Compare"
 import Analyze from "./Analyze"
 import Account from "./Account/Account"
@@ -26,8 +26,8 @@ const NBAVersus = () => {
 
     return (
         <main className="nbaversus">
-            {page === "play" ? (
-                <Play />
+            {page === "versus" ? (
+                <Versus />
             ) : page === "compare" ? (
                 <Compare />
             ) : page === "analyze" ? (

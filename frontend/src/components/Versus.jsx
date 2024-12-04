@@ -21,7 +21,7 @@ import {
 } from "react-icons/io5"
 import { GiPodium } from "react-icons/gi"
 
-const Play = () => {
+const Versus = () => {
     const {
         player1,
         setPlayer1,
@@ -529,4 +529,4 @@ const Play = () => {
     )
 }
 
-export default Play
+export default Versus

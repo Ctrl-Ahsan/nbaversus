@@ -23,13 +23,13 @@ const Navbar = (props) => {
                     {props.page === "home" ? <GoHomeFill /> : <GoHome />}
                     Home
                 </div>
-                <div className="item" onClick={() => props.setPage("play")}>
-                    {props.page === "play" ? (
+                <div className="item" onClick={() => props.setPage("versus")}>
+                    {props.page === "versus" ? (
                         <IoBasketball />
                     ) : (
                         <IoBasketballOutline />
                     )}
-                    Play
+                    Versus
                 </div>
                 <div
                     className="item"
