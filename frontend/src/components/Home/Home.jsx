@@ -1,15 +1,15 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import "./Home.css"
 import { teamColors } from "../../config"
 import { GiGoat } from "react-icons/gi"
-import { FaFire } from "react-icons/fa"
-import { IoReload } from "react-icons/io5"
 import axios from "axios"
 import { toast } from "react-toastify"
 
 const Home = () => {
     const [versus, setVersus] = useState([])
     const [loading, setLoading] = useState(false)
+    const streakRef = useRef(parseInt(localStorage.getItem("streak")) || 0)
+    const streakDivRef = useRef(null)
 
     useEffect(() => {
         setLoading(true)
@@ -28,29 +28,35 @@ const Home = () => {
                 response = await axios.get("/api/questions/daily")
             }
 
-            // Set streak and vote tracking for signed in users
+            // Set streak and vote tracking for users
             if (response.data.streak && response.data.voteTracking) {
                 localStorage.setItem("streak", response.data.streak)
                 localStorage.setItem(
                     "voteTracking",
                     JSON.stringify(response.data.voteTracking)
                 )
+                streakRef.current = response.data.streak
+                updateStreakDisplay()
             }
-            // Set streak and vote tracking for users not signed in
+            // Reset streak and vote tracking for guest users
             else {
-                const cachedDate = localStorage.getItem("lastUpdated")
+                const lastVisitDate = localStorage.getItem("lastUpdated")
                 const voteTracking = localStorage.getItem("voteTracking")
-                if (!isToday(cachedDate) || !voteTracking) {
+                if (!isToday(lastVisitDate) || !voteTracking) {
                     // Reset vote tracking for new day
                     localStorage.setItem("voteTracking", "{}")
                 }
-                updateStreak()
-                // Save to local storage
-                localStorage.setItem(
-                    "lastUpdated",
-                    response.data.dailyQuestions.date
-                )
+                if (!isToday(lastVisitDate) && !isYesterday(lastVisitDate)) {
+                    // Reset streak
+                    streakRef.current = 0
+                    localStorage.setItem("streak", 0)
+                    updateStreakDisplay()
+                }
             }
+            localStorage.setItem(
+                "lastUpdated",
+                response.data.dailyQuestions.date
+            )
             setVersus(response.data.dailyQuestions.questions)
             setLoading(false)
         } catch (error) {
@@ -60,23 +66,20 @@ const Home = () => {
         }
     }
 
-    const updateStreak = () => {
+    const incrementStreak = () => {
         try {
             const lastVisitDate = localStorage.getItem("lastUpdated")
-            const currentStreak = parseInt(localStorage.getItem("streak") || 0)
 
-            if (!lastVisitDate) {
-                // First-time visiting, do nothing
-                return
-            } else if (isToday(lastVisitDate)) {
-                // Visited today, no changes
-                return
-            } else if (isYesterday(lastVisitDate)) {
-                // Increment streak for consecutive days
-                localStorage.setItem("streak", currentStreak + 1)
+            if (isToday(lastVisitDate) || isYesterday(lastVisitDate)) {
+                // Increment streak
+                streakRef.current += 1
+                localStorage.setItem("streak", streakRef.current)
+                updateStreakDisplay()
             } else {
                 // Reset streak if user missed a day
+                streakRef.current = 0
                 localStorage.setItem("streak", 0)
+                updateStreakDisplay()
             }
         } catch (error) {
             toast.error("Error updating streak")
@@ -96,6 +99,10 @@ const Home = () => {
     }
 
     const handleVote = (questionIndex, winner) => {
+        // Increment streak on first vote of the day
+        if (localStorage.getItem("voteTracking") === "{}") {
+            incrementStreak()
+        }
         const cachedVotes = JSON.parse(localStorage.getItem("voteTracking"))
         const updatedVotes = { ...cachedVotes, [questionIndex]: winner }
         localStorage.setItem("voteTracking", JSON.stringify(updatedVotes)) // Save to local storage
@@ -131,13 +138,18 @@ const Home = () => {
         }
     }
 
+    const updateStreakDisplay = () => {
+        if (streakDivRef.current) {
+            streakDivRef.current.textContent = `${streakRef.current} 🔥` // Update DOM content directly
+        }
+    }
+
     const Streak = () => {
-        return (
-            <div className="streak">
-                {parseInt(localStorage.getItem("streak") || 0)}{" "}
-                <FaFire className="fire-icon" />
-            </div>
-        )
+        useEffect(() => {
+            updateStreakDisplay()
+        }, [])
+
+        return <div ref={streakDivRef} className="streak"></div> // Assign ref to the div
     }
 
     const Refresh = () => {
@@ -162,7 +174,6 @@ const Home = () => {
                 const timeLeft = calculateTimeLeft()
                 if (timeLeft === 0) {
                     fetchDailyQuestions()
-                    updateStreak()
                 }
                 setTimeLeft(timeLeft)
             }, 1000)
@@ -171,11 +182,7 @@ const Home = () => {
             return () => clearInterval(interval)
         }, [])
 
-        return (
-            <div className="refresh">
-                {timeLeft}H <IoReload className="refresh-icon" />
-            </div>
-        )
+        return <div className="refresh">{timeLeft}H ⏳</div>
     }
 
     const Panel = ({ players, votes, questionIndex }) => {

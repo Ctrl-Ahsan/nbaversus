@@ -251,7 +251,7 @@ const getDailyQuestions = asyncHandler(async (req, res) => {
         if (req.user) {
             const user = req.user
 
-            // Update streak
+            // Reset streak if necessary
             const lastActiveDate = user.lastActiveDate
                 ? user.lastActiveDate.toISOString().split("T")[0]
                 : null
@@ -260,20 +260,9 @@ const getDailyQuestions = asyncHandler(async (req, res) => {
             yesterday.setDate(yesterday.getDate() - 1)
             const yesterdayDate = yesterday.toISOString().split("T")[0]
 
-            if (lastActiveDate === yesterdayDate) {
-                // Continue streak
-                user.currentStreak += 1
-            } else if (lastActiveDate !== today) {
-                // Reset streak
+            if (lastActiveDate !== today && lastActiveDate !== yesterdayDate) {
                 user.currentStreak = 0
             }
-            // Update longest streak if necessary
-            if (user.currentStreak > user.longestStreak) {
-                user.longestStreak = user.currentStreak
-            }
-
-            // Update lastActiveDate
-            user.lastActiveDate = new Date()
 
             // Vote tracking
             const dailyAnswersEntry = user.dailyAnswers.find(
@@ -289,8 +278,8 @@ const getDailyQuestions = asyncHandler(async (req, res) => {
 
             // Save user document and structure response
             await user.save()
-            response.streak = user.currentStreak
             response.voteTracking = voteTracking
+            response.streak = user.currentStreak
         }
         res.status(200).json(response)
     } catch (error) {
@@ -363,7 +352,28 @@ const answerDailyQuestion = asyncHandler(async (req, res) => {
             )
 
             if (!dailyAnswersEntry) {
-                // If not, create a new entry
+                // Update streak
+                const lastActiveDate = user.lastActiveDate
+                    ? user.lastActiveDate.toISOString().split("T")[0]
+                    : null
+
+                const yesterday = new Date()
+                yesterday.setDate(yesterday.getDate() - 1)
+                const yesterdayDate = yesterday.toISOString().split("T")[0]
+
+                if (lastActiveDate === yesterdayDate) {
+                    // Increment streak
+                    user.currentStreak += 1
+                } else {
+                    // Reset streak
+                    user.currentStreak = 1
+                }
+                // Update longest streak if necessary
+                if (user.currentStreak > user.longestStreak) {
+                    user.longestStreak = user.currentStreak
+                }
+
+                // Create a new entry
                 dailyAnswersEntry = {
                     date: today,
                     dailyQuestionsId: dailyQuestions._id,
@@ -389,6 +399,8 @@ const answerDailyQuestion = asyncHandler(async (req, res) => {
                 winner: winner,
             })
 
+            // Update lastActiveDate
+            user.lastActiveDate = new Date()
             // Save the user document
             await user.save()
         }
