@@ -29,14 +29,13 @@ const Home = () => {
             }
 
             // Set streak and vote tracking for users
-            if (response.data.streak && response.data.voteTracking) {
-                localStorage.setItem("streak", response.data.streak)
+            if (response.data.voteTracking) {
                 localStorage.setItem(
                     "voteTracking",
                     JSON.stringify(response.data.voteTracking)
                 )
                 streakRef.current = response.data.streak
-                updateStreakDisplay()
+                localStorage.setItem("streak", streakRef.current)
             }
             // Reset streak and vote tracking for guest users
             else {
@@ -50,20 +49,19 @@ const Home = () => {
                     // Reset streak
                     streakRef.current = 0
                     localStorage.setItem("streak", 0)
-                    updateStreakDisplay()
                 }
             }
+            updateStreakDisplay()
             localStorage.setItem(
                 "lastUpdated",
                 response.data.dailyQuestions.date
             )
             setVersus(response.data.dailyQuestions.questions)
-            setLoading(false)
         } catch (error) {
             toast.error("Error fetching daily questions")
             console.error("Error fetching daily questions:", error)
-            setLoading(false)
         }
+        setLoading(false)
     }
 
     const incrementStreak = () => {
@@ -99,42 +97,48 @@ const Home = () => {
     }
 
     const handleVote = (questionIndex, winner) => {
-        // Increment streak on first vote of the day
-        if (localStorage.getItem("voteTracking") === "{}") {
-            incrementStreak()
-        }
-        const cachedVotes = JSON.parse(localStorage.getItem("voteTracking"))
-        const updatedVotes = { ...cachedVotes, [questionIndex]: winner }
-        localStorage.setItem("voteTracking", JSON.stringify(updatedVotes)) // Save to local storage
+        // Cast vote if same day otherwise refresh
+        if (isToday(localStorage.getItem("lastUpdated"))) {
+            // Increment streak on first vote of the day
+            if (localStorage.getItem("voteTracking") === "{}") {
+                incrementStreak()
+            }
+            const cachedVotes = JSON.parse(localStorage.getItem("voteTracking"))
+            const updatedVotes = { ...cachedVotes, [questionIndex]: winner }
+            localStorage.setItem("voteTracking", JSON.stringify(updatedVotes)) // Save to local storage
 
-        // Send vote
-        if (localStorage.getItem("user") !== null) {
-            const token = JSON.parse(localStorage.getItem("user")).Token
-            axios
-                .post(
-                    "/api/questions/daily",
-                    {
+            // Send vote
+            if (localStorage.getItem("user") !== null) {
+                const token = JSON.parse(localStorage.getItem("user")).Token
+                axios
+                    .post(
+                        "/api/questions/daily",
+                        {
+                            date: new Date().toISOString().split("T")[0],
+                            questionIndex: questionIndex,
+                            winner: winner,
+                        },
+                        {
+                            headers: { Authorization: "Bearer " + token },
+                        }
+                    )
+                    .catch((error) => {
+                        toast.error(error.response.data)
+                    })
+            } else {
+                axios
+                    .post("/api/questions/daily", {
                         date: new Date().toISOString().split("T")[0],
                         questionIndex: questionIndex,
                         winner: winner,
-                    },
-                    {
-                        headers: { Authorization: "Bearer " + token },
-                    }
-                )
-                .catch((error) => {
-                    toast.error(error.response.data)
-                })
+                    })
+                    .catch((error) => {
+                        toast.error(error.response.data)
+                    })
+            }
         } else {
-            axios
-                .post("/api/questions/daily", {
-                    date: new Date().toISOString().split("T")[0],
-                    questionIndex: questionIndex,
-                    winner: winner,
-                })
-                .catch((error) => {
-                    toast.error(error.response.data)
-                })
+            setLoading(true)
+            fetchDailyQuestions()
         }
     }
 
@@ -161,7 +165,7 @@ const Home = () => {
             nextMidnight.setUTCHours(0, 0, 0, 0) // Set time to 12am UTC
 
             const diff = nextMidnight - now // Difference in milliseconds
-            const hours = Math.floor(diff / (1000 * 60 * 60)) + 1
+            const hours = Math.floor(diff / (1000 * 60 * 60))
 
             return hours
         }
@@ -169,20 +173,21 @@ const Home = () => {
         const [timeLeft, setTimeLeft] = useState(calculateTimeLeft())
 
         useEffect(() => {
-            // Update the time left every second
+            // Update the time left every minute
             const interval = setInterval(() => {
-                const timeLeft = calculateTimeLeft()
-                if (timeLeft === 0) {
+                if (!isToday(localStorage.getItem("lastUpdated"))) {
+                    setLoading(true)
                     fetchDailyQuestions()
                 }
+                const timeLeft = calculateTimeLeft()
                 setTimeLeft(timeLeft)
-            }, 1000)
+            }, 60000)
 
             // Cleanup the interval on component unmount
             return () => clearInterval(interval)
         }, [])
 
-        return <div className="refresh">{timeLeft}H ⏳</div>
+        return <div className="refresh">{timeLeft + 1}H ⏳</div>
     }
 
     const Panel = ({ players, votes, questionIndex }) => {
