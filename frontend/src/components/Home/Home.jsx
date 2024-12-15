@@ -40,12 +40,13 @@ const Home = () => {
             // Reset streak and vote tracking for guest users
             else {
                 const lastVisitDate = localStorage.getItem("lastUpdated")
+                const lastActiveDate = localStorage.getItem("lastActive")
                 const voteTracking = localStorage.getItem("voteTracking")
                 if (!isToday(lastVisitDate) || !voteTracking) {
                     // Reset vote tracking for new day
                     localStorage.setItem("voteTracking", "{}")
                 }
-                if (!isToday(lastVisitDate) && !isYesterday(lastVisitDate)) {
+                if (!isToday(lastActiveDate) && !isYesterday(lastActiveDate)) {
                     // Reset streak
                     streakRef.current = 0
                     localStorage.setItem("streak", 0)
@@ -135,6 +136,11 @@ const Home = () => {
                     .catch((error) => {
                         toast.error(error.response.data)
                     })
+
+                localStorage.setItem(
+                    "lastActive",
+                    new Date().toISOString().split("T")[0]
+                )
             }
         } else {
             setLoading(true)
