@@ -51,11 +51,11 @@
             -webkit-tap-highlight-color: transparent;
         }
         .reload svg:hover {
-            scale: 1.05;
+            color: #bb7a00 !important;
         }
         .reload svg:active {
             scale: 0.9;
-            color: #bd7b00 !important;
+            color: #bb7a00 !important;
         }
     }
 

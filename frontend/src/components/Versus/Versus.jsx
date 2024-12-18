@@ -418,18 +418,28 @@ const Versus = () => {
                 bottom: 5%;
             }
 
-            & svg {
+            svg {
                 cursor: pointer;
                 margin-bottom: 2.5px;
                 transition: all 0.3s;
                 -webkit-tap-highlight-color: transparent;
-
+            }
+            .reload {
                 :hover {
-                    scale: 1.1;
+                    color: #bb7a00 !important;
                 }
                 :active {
                     scale: 0.9;
-                    color: #bd7b00 !important;
+                    color: #bb7a00 !important;
+                }
+            }
+            .item {
+                :hover {
+                    color: #d7d7d7 !important;
+                }
+                :active {
+                    scale: 0.9;
+                    color: #d7d7d7 !important;
                 }
             }
         `
@@ -439,6 +449,7 @@ const Versus = () => {
                 {(!p1Wins && !p2Wins) || round === 3 ? (
                     <IoReloadCircle
                         onClick={handleReload}
+                        className="reload"
                         style={{
                             color: "orange",
                             fontSize: "5em",
@@ -448,7 +459,9 @@ const Versus = () => {
                 ) : (
                     <IoArrowForwardCircle
                         className={
-                            !menuOpen && !menuClosed ? "scale-in-center" : ""
+                            !menuOpen && !menuClosed
+                                ? "scale-in-center reload"
+                                : "reload"
                         }
                         onClick={handleNext}
                         style={{
@@ -460,10 +473,12 @@ const Versus = () => {
                 )}
                 <IoInformationCircle
                     onClick={handleStats}
+                    className="item"
                     style={{ fontSize: "2.5em" }}
                 />
                 <GiPodium
                     onClick={handleLeaderboard}
+                    className="item"
                     style={{ fontSize: "2.5em" }}
                 />
             </MenuContainer>
