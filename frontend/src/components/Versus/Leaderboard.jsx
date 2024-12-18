@@ -42,7 +42,7 @@ const Leaderboard = (props) => {
             <div className="headers">
                 <div>Rank</div>
                 <div></div>
-                <div>Votes</div>
+                <div>Wins</div>
             </div>
             <div className="leaderboard">
                 {loading && <Spinner />}
