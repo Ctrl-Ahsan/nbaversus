@@ -373,13 +373,22 @@ const answerDailyQuestion = asyncHandler(async (req, res) => {
                     user.longestStreak = user.currentStreak
                 }
 
-                // Create a new entry
-                dailyAnswersEntry = {
+                // Create a new subdocument
+                dailyAnswersEntry = user.dailyAnswers.create({
                     date: today,
                     dailyQuestionsId: dailyQuestions._id,
                     answers: [],
-                }
+                })
+
+                // Push the new subdocument to the array
                 user.dailyAnswers.push(dailyAnswersEntry)
+            }
+
+            // Reassign variable reference
+            if (!dailyAnswersEntry.answers) {
+                dailyAnswersEntry = user.dailyAnswers.find(
+                    (entry) => entry.date === today
+                )
             }
 
             // Check if the user has already answered this question
