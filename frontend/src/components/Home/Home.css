@@ -6,6 +6,7 @@
     width: 100%;
     max-height: -webkit-fill-available;
     overflow-y: scroll;
+    overflow-x: hidden;
     position: relative;
 
     background: linear-gradient(270deg, #860000, #013a6b);
@@ -74,13 +75,9 @@
     .content {
         display: grid;
         grid-template-columns: 1fr;
-        column-gap: 0.5em;
         width: 100%;
-        @media screen and (min-width: 1080px) {
+        @media screen and (min-width: 800px) {
             grid-template-columns: 1fr 1fr;
-        }
-        @media screen and (min-width: 1440px) {
-            grid-template-columns: 1fr 1fr 1fr;
         }
 
         .versus {
@@ -139,11 +136,8 @@
                         img {
                             vertical-align: bottom;
                             width: 25vw;
-                            @media screen and (min-width: 1080px) {
+                            @media screen and (min-width: 800px) {
                                 width: 12vw;
-                            }
-                            @media screen and (min-width: 1440px) {
-                                width: 8vw;
                             }
                         }
                     }
@@ -173,11 +167,8 @@
             @media screen and (max-width: 540px) {
                 padding: 1em 0.75em;
             }
-            @media screen and (min-width: 1080px) {
+            @media screen and (min-width: 800px) {
                 height: calc((1.37 * 12vw) + 3em);
-            }
-            @media screen and (min-width: 1440px) {
-                height: calc((1.37 * 8vw) + 3.15em);
             }
         }
     }
