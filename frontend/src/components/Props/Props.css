@@ -172,6 +172,10 @@
             height: 100%;
             width: 100%;
             color: gray;
+
+            @media screen and (max-width: 540px) {
+                font-size: 0.8em;
+            }
         }
     }
 
@@ -188,7 +192,7 @@
             overflow-y: scroll;
         }
 
-        .summary {
+        .header {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -215,12 +219,6 @@
                     border-radius: 5px;
                 }
             }
-
-            .indicator {
-                height: 3em;
-                width: 3em;
-                margin-right: 1em;
-            }
         }
 
         .line {
@@ -228,6 +226,9 @@
             justify-content: space-between;
             margin: 1em;
             padding: 1em;
+            @media screen and (max-width: 540px) {
+                padding: 0.5em;
+            }
 
             .left {
                 display: flex;
@@ -247,6 +248,9 @@
 
             .info {
                 text-align: start;
+                @media screen and (max-width: 540px) {
+                    font-size: 0.8em;
+                }
 
                 .name {
                     font-size: 1.2em;
@@ -265,10 +269,43 @@
                 }
             }
 
+            .right {
+                display: flex;
+                align-items: center;
+            }
+
+            .summary {
+                width: 6.5em;
+                height: 4em;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: start;
+                margin-left: 0.75em;
+                font-weight: 700;
+                font-size: 0.75em;
+                color: #b7b6b6;
+                @media screen and (max-width: 540px) {
+                    font-size: 0.6em;
+                }
+                .green {
+                    color: #1db303;
+                }
+                .yellow {
+                    color: yellow;
+                }
+                .red {
+                    color: #c90808;
+                }
+            }
+
             .indicator {
                 height: 4em;
                 width: 4em;
-                margin-right: 1em;
+                @media screen and (max-width: 540px) {
+                    font-size: 0.8em;
+                    margin-right: 0;
+                }
             }
         }
     }
