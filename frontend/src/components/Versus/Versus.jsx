@@ -8,7 +8,7 @@ import {
 import "react-circular-progressbar/dist/styles.css"
 
 import { AppContext } from "../../AppContext"
-import roster from "../../players.json"
+import roster from "../../roster.json"
 import { teamColors, defaultColor } from "../../config"
 import Stats from "./Stats"
 import Leaderboard from "./Leaderboard"

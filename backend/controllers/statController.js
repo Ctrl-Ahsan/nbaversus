@@ -1,5 +1,5 @@
 const asyncHandler = require("express-async-handler")
-const Players = require("../data/players.json")
+const Players = require("../data/roster.json")
 const Stats = require("../data/stats.json")
 
 const ID = 0

@@ -10,7 +10,7 @@ import {
 import "react-circular-progressbar/dist/styles.css"
 
 import { AppContext } from "../../AppContext"
-import roster from "../../players.json"
+import roster from "../../roster.json"
 
 import { IoPersonAdd } from "react-icons/io5"
 import { IoIosRemoveCircleOutline } from "react-icons/io"

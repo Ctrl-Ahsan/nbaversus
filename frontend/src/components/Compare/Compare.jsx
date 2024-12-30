@@ -5,7 +5,7 @@ import { ReactSearchAutocomplete } from "react-search-autocomplete"
 import { toast } from "react-toastify"
 
 import { AppContext } from "../../AppContext"
-import roster from "../../players.json"
+import roster from "../../roster.json"
 import { teamColors, defaultColor } from "../../config"
 
 import { AiOutlineClose } from "react-icons/ai"
