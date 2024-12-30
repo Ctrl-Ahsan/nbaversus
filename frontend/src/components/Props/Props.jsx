@@ -449,28 +449,6 @@ const Props = () => {
                 </div>
                 {!isCategorical && (
                     <div className="right">
-                        <div className="indicator">
-                            <CircularProgressbarWithChildren
-                                value={hit}
-                                maxValue={relevantLogs.length}
-                                background
-                                styles={buildStyles({
-                                    backgroundColor: "rgba(0, 0, 0, 0)",
-                                    textColor: "#fff",
-                                    pathColor: color,
-                                    trailColor: "#00000045",
-                                })}
-                            >
-                                <span
-                                    style={{
-                                        fontSize: "0.8em",
-                                        fontWeight: 700,
-                                    }}
-                                >
-                                    {hit} / {relevantLogs.length}
-                                </span>
-                            </CircularProgressbarWithChildren>
-                        </div>
                         <div className="summary">
                             <div>
                                 H: {high}{" "}
@@ -526,6 +504,28 @@ const Props = () => {
                                     </span>
                                 )}
                             </div>
+                        </div>
+                        <div className="indicator">
+                            <CircularProgressbarWithChildren
+                                value={hit}
+                                maxValue={relevantLogs.length}
+                                background
+                                styles={buildStyles({
+                                    backgroundColor: "rgba(0, 0, 0, 0)",
+                                    textColor: "#fff",
+                                    pathColor: color,
+                                    trailColor: "#00000045",
+                                })}
+                            >
+                                <span
+                                    style={{
+                                        fontSize: "0.8em",
+                                        fontWeight: 700,
+                                    }}
+                                >
+                                    {hit} / {relevantLogs.length}
+                                </span>
+                            </CircularProgressbarWithChildren>
                         </div>
                     </div>
                 )}
