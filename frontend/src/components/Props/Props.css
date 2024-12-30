@@ -128,6 +128,12 @@
         .green:hover {
             background: #006c00;
         }
+
+        .timestamp {
+            color: grey;
+            font-size: 0.75em;
+            margin-top: 10px;
+        }
     }
 
     .search {

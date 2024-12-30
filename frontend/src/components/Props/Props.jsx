@@ -235,6 +235,7 @@ const Props = () => {
                         </div>
                     </button>
                 </div>
+                <div className="timestamp">Updated {roster.timestamp}</div>
             </div>
         )
     }
