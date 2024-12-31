@@ -22,9 +22,6 @@ const userVisit = asycHandler(async (req, res) => {
                     location?.country
                 } | ${req.ip}`
             )
-            if (req.user) {
-                const user = req.user
-            }
             usersVisited.push(req.ip)
             console.log(`[USER] ${usersVisited.length} visits today`)
         }
@@ -124,8 +121,38 @@ const getMe = asycHandler(async (req, res) => {
     let response = {}
 
     try {
+        // Set streak details
+        response.currentStreak = req.user.currentStreak
+        response.longestStreak = req.user.longestStreak
+        response.voteCount = 0
+
+        // Calculate and set GOAT details
+        if (req.user.dailyAnswers.length > 0) {
+            let lebronVotes = 0
+            let jordanVotes = 0
+            req.user.dailyAnswers.forEach((dailyAnswersObject) => {
+                if (dailyAnswersObject.answers) {
+                    dailyAnswersObject.answers.forEach((answer) => {
+                        if (answer.questionIndex === 0) {
+                            if (answer.winner === "p1") {
+                                lebronVotes += 1
+                            } else if (answer.winner === "p2") {
+                                jordanVotes += 1
+                            }
+                        }
+                        // Count user daily answers
+                        response.voteCount += 1
+                    })
+                }
+            })
+            response.goat = lebronVotes > jordanVotes ? "LeBron" : "Jordan"
+            response.goatVotes =
+                lebronVotes > jordanVotes ? lebronVotes : jordanVotes
+        }
+
+        // Count user votes
         const voteIDs = req.user.votes
-        response.voteCount = voteIDs.length
+        response.voteCount += voteIDs.length
 
         if (voteIDs.length > 0) {
             // Fetch only the votes associated with the user
