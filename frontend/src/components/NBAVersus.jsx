@@ -6,7 +6,7 @@ import Navbar from "./Navbar/Navbar"
 import Home from "./Home/Home"
 import Versus from "./Versus/Versus"
 import Compare from "./Compare/Compare"
-import Props from "./Props/Props"
+import Parlay from "./Parlay/Parlay"
 import Account from "./Account/Account"
 
 const NBAVersus = () => {
@@ -30,8 +30,8 @@ const NBAVersus = () => {
                 <Versus />
             ) : page === "compare" ? (
                 <Compare />
-            ) : page === "props" ? (
-                <Props />
+            ) : page === "parlay" ? (
+                <Parlay />
             ) : page === "account" ? (
                 <Account />
             ) : (

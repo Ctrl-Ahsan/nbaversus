@@ -1,4 +1,4 @@
-import "./Props.css"
+import "./Parlay.css"
 import { useContext } from "react"
 import {
     CircularProgressbarWithChildren,
@@ -12,7 +12,7 @@ import { IoPersonAdd } from "react-icons/io5"
 import { IoIosRemoveCircleOutline } from "react-icons/io"
 import Builder from "./Builder"
 
-const Props = () => {
+const Parlay = () => {
     const { lines, setLines, parlayScope, setParlayScope } =
         useContext(AppContext)
 
@@ -341,7 +341,7 @@ const Props = () => {
     }
 
     return (
-        <main className="props-container">
+        <main className="parlay-container">
             <Builder />
 
             {lines.length === 0 && (
@@ -410,4 +410,4 @@ const Props = () => {
     )
 }
 
-export default Props
+export default Parlay

@@ -47,15 +47,15 @@ const Navbar = (props) => {
                 <div
                     className="item"
                     onClick={() => {
-                        props.setPage("props")
+                        props.setPage("parlay")
                     }}
                 >
-                    {props.page === "props" ? (
+                    {props.page === "parlay" ? (
                         <IoStatsChart />
                     ) : (
                         <IoStatsChartOutline />
                     )}
-                    Props
+                    Parlay
                 </div>
                 <div
                     className="item"
