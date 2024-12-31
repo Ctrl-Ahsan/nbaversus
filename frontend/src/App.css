@@ -42,6 +42,11 @@ button:active {
         font-size: 1.2rem;
     }
 }
+@media screen and (min-width: 2160px) {
+    .App {
+        font-size: 1.5rem;
+    }
+}
 
 .progress-stepper {
     position: absolute;
