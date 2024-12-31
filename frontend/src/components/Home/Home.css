@@ -136,6 +136,10 @@
                         z-index: 2;
                     }
                     .image {
+                        height: 18.27vw;
+                        @media screen and (min-width: 800px) {
+                            height: 8.77vw;
+                        }
                         img {
                             vertical-align: bottom;
                             width: 25vw;
