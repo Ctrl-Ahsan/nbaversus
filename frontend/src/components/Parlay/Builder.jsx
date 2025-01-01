@@ -5,16 +5,19 @@ import { toast } from "react-toastify"
 import { FaPlus } from "react-icons/fa"
 import roster from "../../roster.json"
 import { AppContext } from "../../AppContext"
+import Spinner from "../Spinner/Spinner"
 
 const Builder = () => {
     const { lines, setLines } = useContext(AppContext)
     const players = [...roster.allPlayers]
+    const [loading, setLoading] = useState(false)
     const [line, setLine] = useState({
         player: {},
         stat: "pts",
         operator: "over",
         value: null,
     })
+
     const onChange = (e) => {
         setLine((prevState) => ({
             ...prevState,
@@ -23,50 +26,58 @@ const Builder = () => {
     }
 
     const addLine = async () => {
-        // Validate line
-        if (JSON.stringify(line.player) === "{}") {
-            toast.error("No player selected")
-            return
-        }
-        if (
-            (line.value > 99.5 || line.value < 0.5) &&
-            line.stat !== "dd" &&
-            line.stat !== "td"
-        ) {
-            toast.error("Value must be between 0.5 and 99.5")
-            return
-        }
-        for (let existingLine of lines) {
-            if (
-                line.player.personId === existingLine.player.personId &&
-                line.stat === existingLine.stat &&
-                line.value === existingLine.value
-            ) {
-                toast.error("Line has already been added")
+        try {
+            // Validate line
+            if (JSON.stringify(line.player) === "{}") {
+                toast.error("No player selected")
                 return
             }
+            if (
+                (line.value > 99.5 || line.value < 0.5) &&
+                line.stat !== "dd" &&
+                line.stat !== "td"
+            ) {
+                toast.error("Value must be between 0.5 and 99.5")
+                return
+            }
+            for (let existingLine of lines) {
+                if (
+                    line.player.personId === existingLine.player.personId &&
+                    line.stat === existingLine.stat &&
+                    line.value === existingLine.value
+                ) {
+                    toast.error("Line has already been added")
+                    return
+                }
+            }
+            // Fetch game data
+            setLoading(true)
+            const gameLogsResponse = await axios
+                .post("/api/stats/gamelogs", {
+                    id: line.player.personId,
+                    stat: line.stat,
+                })
+                .catch((error) => {
+                    toast.error(error.response.data)
+                })
+            if (gameLogsResponse) {
+                setLines((prev) => [
+                    ...prev,
+                    { ...line, logs: gameLogsResponse.data },
+                ])
+                setLine({
+                    player: {},
+                    stat: "pts",
+                    operator: "over",
+                    value: "",
+                })
+            }
+        } catch (error) {
+            toast.error("Error adding line")
+            console.log(error)
         }
-        // Fetch game data
-        const gameLogsResponse = await axios
-            .post("/api/stats/gamelogs", {
-                id: line.player.personId,
-                stat: line.stat,
-            })
-            .catch((error) => {
-                toast.error(error.response.data)
-            })
-        if (gameLogsResponse) {
-            setLines((prev) => [
-                ...prev,
-                { ...line, logs: gameLogsResponse.data },
-            ])
-            setLine({
-                player: {},
-                stat: "pts",
-                operator: "over",
-                value: "",
-            })
-        }
+
+        setLoading(false)
     }
 
     const SearchBar = () => {
@@ -209,14 +220,20 @@ const Builder = () => {
                 </div>
             </div>
             <div className="submit">
-                <button className="green" onClick={addLine}>
-                    <div className="button-content">
-                        <div className="content">
-                            <FaPlus />
+                {!loading ? (
+                    <button className="green" onClick={addLine}>
+                        <div className="button-content">
+                            <div className="content">
+                                <FaPlus />
+                            </div>
+                            <div>Add Line</div>
                         </div>
-                        <div>Add Line</div>
+                    </button>
+                ) : (
+                    <div className="spinner-container">
+                        <Spinner size="small" />
                     </div>
-                </button>
+                )}
             </div>
             <div className="timestamp">Updated {roster.timestamp}</div>
         </div>
