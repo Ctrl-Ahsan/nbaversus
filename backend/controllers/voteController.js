@@ -100,14 +100,13 @@ const addQuestion = asyncHandler(async (req, res) => {
     await writeFile(allTimePath, JSON.stringify(allTime, null, 2))
 
     // Save the question pool to the database
-    const newQuestion = await Question.create({
+    Question.create({
         question,
         players: resolvedPlayers,
     })
 
     res.status(201).json({
         message: "Question pool added successfully.",
-        questionId: newQuestion._id,
         question,
         players: resolvedPlayers,
         playerCount: resolvedPlayers.length,
