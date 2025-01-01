@@ -8,7 +8,7 @@ import {
     IoBasketball,
     IoBasketballOutline,
 } from "react-icons/io5"
-import { FaRegUserCircle } from "react-icons/fa"
+import { FaUserCircle, FaRegUserCircle } from "react-icons/fa"
 
 const Navbar = (props) => {
     return (
@@ -63,7 +63,11 @@ const Navbar = (props) => {
                         props.setPage("account")
                     }}
                 >
-                    <FaRegUserCircle />
+                    {props.page === "account" ? (
+                        <FaUserCircle />
+                    ) : (
+                        <FaRegUserCircle />
+                    )}
                     Account
                 </div>
             </div>
