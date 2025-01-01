@@ -4,7 +4,7 @@ const geoip = require("geoip-lite")
 const asycHandler = require("express-async-handler")
 const User = require("../models/userModel")
 const Vote = require("../models/voteModel")
-const Players = require("../players.json")
+const Players = require("../data/roster.json")
 
 let usersVisited = []
 
@@ -13,20 +13,15 @@ const userVisit = asycHandler(async (req, res) => {
         // log visit once per day / dyno reset
         if (!usersVisited.includes(req.ip)) {
             const location = geoip.lookup(req.ip)
-            if (req.headers.authorization) {
-                // Verify token
-                token = req.headers.authorization.split(" ")[1]
-                const decoded = jwt.verify(token, process.env.JWT_SECRET)
-                const user = await User.findById(decoded.id)
-
-                console.log(
-                    `[USER] ${user.name} is online | ${location?.city} ${location?.region}, ${location?.country} | ${req.ip}`
-                )
-            } else {
-                console.log(
-                    `[USER] A new visitor from ${location?.city} ${location?.region}, ${location?.country} | ${req.ip}`
-                )
-            }
+            console.log(
+                `[USER] ${
+                    req.user
+                        ? `${req.user.name} is online |`
+                        : "A new visitor from"
+                } ${location?.city} ${location?.region}, ${
+                    location?.country
+                } | ${req.ip}`
+            )
             usersVisited.push(req.ip)
             console.log(`[USER] ${usersVisited.length} visits today`)
         }
@@ -126,8 +121,38 @@ const getMe = asycHandler(async (req, res) => {
     let response = {}
 
     try {
+        // Set streak details
+        response.currentStreak = req.user.currentStreak
+        response.longestStreak = req.user.longestStreak
+        response.voteCount = 0
+
+        // Calculate and set GOAT details
+        if (req.user.dailyAnswers.length > 0) {
+            let lebronVotes = 0
+            let jordanVotes = 0
+            req.user.dailyAnswers.forEach((dailyAnswersObject) => {
+                if (dailyAnswersObject.answers) {
+                    dailyAnswersObject.answers.forEach((answer) => {
+                        if (answer.questionIndex === 0) {
+                            if (answer.winner === "p1") {
+                                lebronVotes += 1
+                            } else if (answer.winner === "p2") {
+                                jordanVotes += 1
+                            }
+                        }
+                        // Count user daily answers
+                        response.voteCount += 1
+                    })
+                }
+            })
+            response.goat = lebronVotes > jordanVotes ? "LeBron" : "Jordan"
+            response.goatVotes =
+                lebronVotes > jordanVotes ? lebronVotes : jordanVotes
+        }
+
+        // Count user votes
         const voteIDs = req.user.votes
-        response.voteCount = voteIDs.length
+        response.voteCount += voteIDs.length
 
         if (voteIDs.length > 0) {
             // Fetch only the votes associated with the user

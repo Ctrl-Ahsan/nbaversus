@@ -1,0 +1,87 @@
+.profile-container {
+    background-color: #0000007a;
+    border: solid 1px #21212179;
+    border-radius: 5px;
+    padding: 1.5em 10px;
+    .me {
+        padding: 0 1em;
+    }
+
+    .favorites {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 10px;
+        width: 100%;
+    }
+
+    .panel {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        min-height: 11em;
+        width: 90%;
+        background-color: #5b5b5b52;
+        border-radius: 20px;
+        padding: 0.5em;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 1em;
+        font-weight: 700;
+
+        @media screen and (max-width: 540px) {
+            margin-bottom: 0.5em;
+        }
+
+        img {
+            width: 5em;
+            border-radius: 50px;
+        }
+    }
+
+    .title {
+        font-size: 1.5em;
+        font-weight: 700;
+        margin-bottom: 0.5em;
+
+        svg {
+            font-size: 0.7em;
+        }
+
+        .votes {
+            margin-top: 0.25em;
+            height: 1em;
+            font-family: Roboto Condensed, Roboto, Arial;
+            font-size: 0.5em;
+            font-weight: 300;
+        }
+    }
+
+    .profile-heading {
+        font-weight: 300;
+        font-size: 0.7em;
+        font-family: Roboto Condensed, Roboto, Arial;
+        margin-top: 1em;
+    }
+
+    .image {
+        height: 3em;
+    }
+
+    .streak {
+        height: 1em;
+        font-size: 3em;
+    }
+
+    .logout {
+        width: calc(92% - 10px);
+    }
+    .button-text {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        svg {
+            margin-right: 0.2em;
+        }
+    }
+}

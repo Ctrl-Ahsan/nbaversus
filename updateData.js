@@ -108,8 +108,8 @@ const setPlayers = async () => {
                 set.rowSet.reverse()
             })
 
-            // Structure complete player data
-            let playerObjComplete = {
+            // Structure player data
+            let playerObj = {
                 id: player,
                 name: leagueBios[player][1],
                 personId: leagueBios[player][0],
@@ -117,6 +117,9 @@ const setPlayers = async () => {
                 age: leagueBios[player][4],
                 height: leagueBios[player][5].replace("-", "'") + '"',
                 weight: leagueBios[player][7],
+            }
+            let playerObjComplete = {
+                ...playerObj,
                 stats: playerCareerStats.resultSets,
                 games: (() => {
                     let games = []
@@ -129,7 +132,7 @@ const setPlayers = async () => {
                 })(),
             }
 
-            allPlayers.push(playerObjComplete)
+            allPlayers.push(playerObj)
             allPlayersComplete.push(playerObjComplete)
         } catch (error) {
             console.error(
@@ -143,24 +146,28 @@ const setPlayers = async () => {
     logUpdate.clear()
     console.timeEnd("Response time")
 
-    // Update players.json and stats.json files with new data
+    // Update data files
+    const now = new Date()
+    const timestamp = `${now.getMonth() + 1}/${now.getDate()}`
     const playerArrays = {
+        timestamp: timestamp,
         allPlayers: allPlayers,
         filteredPlayers: filteredPlayers,
     }
+
     console.log("\nUpdating project files...")
     writeFileSync(
-        "./frontend/src/players.json",
+        "./frontend/src/roster.json",
         JSON.stringify(playerArrays, null, 4),
         "utf-8"
     )
     writeFileSync(
-        "./backend/players.json",
+        "./backend/data/roster.json",
         JSON.stringify(allPlayersComplete, null, 4),
         "utf-8"
     )
     writeFileSync(
-        "./backend/stats.json",
+        "./backend/data/stats.json",
         JSON.stringify(leagueStats, null, 4),
         "utf-8"
     )

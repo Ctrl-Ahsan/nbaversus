@@ -1,13 +1,13 @@
 import "./App.css"
 import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
-import Versus from "./components/Versus"
+import NBAVersus from "./components/NBAVersus"
 
 function App() {
     return (
         <>
             <div className="App">
-                <Versus />
+                <NBAVersus />
             </div>
             <ToastContainer theme="colored" />
         </>

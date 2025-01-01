@@ -1,6 +1,6 @@
 const asyncHandler = require("express-async-handler")
-const Players = require("../players.json")
-const Stats = require("../stats.json")
+const Players = require("../data/roster.json")
+const Stats = require("../data/stats.json")
 
 const ID = 0
 const NAME = 1
@@ -47,7 +47,7 @@ const PLUS_MINUS_RANK = 61
 
 const getSeasonStats = asyncHandler(async (req, res) => {
     console.log(
-        `[ACTIVITY][PLAY] Season stats requested for ${idToName(
+        `[ACTIVITY][Versus] Season stats requested for ${idToName(
             req.body.ids[0]
         )} and ${idToName(req.body.ids[1])} | ${req.ip}`.green
     )
@@ -402,7 +402,7 @@ const getGameLogs = asyncHandler(async (req, res) => {
                 break
         }
         console.log(
-            `[ACTIVITY][ANALYZE] Logs requested for ${idToName(
+            `[ACTIVITY][PROPS] Logs requested for ${idToName(
                 req.body.id
             )} ${stat} | ${req.ip}`.green
         )
@@ -410,159 +410,6 @@ const getGameLogs = asyncHandler(async (req, res) => {
         console.error(error)
         res.status(500).json("Could not fetch game logs")
     }
-})
-
-const getLeaders = asyncHandler(async (req, res) => {
-    let response = {}
-
-    try {
-        // get daily leaders
-        let latestDate = ""
-        let dailyPoints = []
-        let dailyRebounds = []
-        let dailyAssists = []
-        let dailySteals = []
-        let dailyBlocks = []
-        let dailyThrees = []
-
-        for (player of Players) {
-            // only count latest games
-            if (player.games[0][8] > latestDate) {
-                latestDate = player.games[0][8]
-                dailyPoints = []
-                dailyRebounds = []
-                dailyAssists = []
-                dailySteals = []
-                dailyBlocks = []
-                dailyThrees = []
-            } else {
-                dailyPoints.push([
-                    player.personId,
-                    player.name,
-                    player.games[0][PTS + 1],
-                ])
-                dailyRebounds.push([
-                    player.personId,
-                    player.name,
-                    player.games[0][REB + 1],
-                ])
-                dailyAssists.push([
-                    player.personId,
-                    player.name,
-                    player.games[0][AST + 1],
-                ])
-                dailySteals.push([
-                    player.personId,
-                    player.name,
-                    player.games[0][STL + 1],
-                ])
-                dailyBlocks.push([
-                    player.personId,
-                    player.name,
-                    player.games[0][BLK + 1],
-                ])
-                dailyThrees.push([
-                    player.personId,
-                    player.name,
-                    player.games[0][15],
-                ])
-            }
-        }
-
-        // sort and structure
-        dailyPoints.sort((a, b) => b[2] - a[2])
-        dailyRebounds.sort((a, b) => b[2] - a[2])
-        dailyAssists.sort((a, b) => b[2] - a[2])
-        dailySteals.sort((a, b) => b[2] - a[2])
-        dailyBlocks.sort((a, b) => b[2] - a[2])
-        dailyThrees.sort((a, b) => b[2] - a[2])
-
-        dailyPoints.length = 5
-        dailyRebounds.length = 5
-        dailyAssists.length = 5
-        dailySteals.length = 5
-        dailyBlocks.length = 5
-        dailyThrees.length = 5
-
-        const dailyLeaders = {
-            points: dailyPoints,
-            rebounds: dailyRebounds,
-            assists: dailyAssists,
-            steals: dailySteals,
-            blocks: dailyBlocks,
-            threes: dailyThrees,
-        }
-
-        // get season leaders
-        let seasonPoints = []
-        let seasonRebounds = []
-        let seasonAssists = []
-        let seasonSteals = []
-        let seasonBlocks = []
-        let seasonThrees = []
-
-        for (player of Stats) {
-            if (player[PTS_RANK] <= 5)
-                seasonPoints.push([
-                    player[ID],
-                    player[NAME],
-                    player[PTS].toFixed(1),
-                ])
-            if (player[REB_RANK] <= 5)
-                seasonRebounds.push([
-                    player[ID],
-                    player[NAME],
-                    player[REB].toFixed(1),
-                ])
-            if (player[AST_RANK] <= 5)
-                seasonAssists.push([
-                    player[ID],
-                    player[NAME],
-                    player[AST].toFixed(1),
-                ])
-            if (player[STL_RANK] <= 5)
-                seasonSteals.push([
-                    player[ID],
-                    player[NAME],
-                    player[STL].toFixed(1),
-                ])
-            if (player[BLK_RANK] <= 5)
-                seasonBlocks.push([
-                    player[ID],
-                    player[NAME],
-                    player[BLK].toFixed(1),
-                ])
-            if (player[FG3M_RANK] <= 5)
-                seasonThrees.push([
-                    player[ID],
-                    player[NAME],
-                    player[FG3M].toFixed(1),
-                ])
-        }
-
-        // sort and structure
-        seasonPoints.sort((a, b) => b[2] - a[2])
-        seasonRebounds.sort((a, b) => b[2] - a[2])
-        seasonAssists.sort((a, b) => b[2] - a[2])
-        seasonSteals.sort((a, b) => b[2] - a[2])
-        seasonBlocks.sort((a, b) => b[2] - a[2])
-        seasonThrees.sort((a, b) => b[2] - a[2])
-
-        const seasonLeaders = {
-            points: seasonPoints,
-            rebounds: seasonRebounds,
-            assists: seasonAssists,
-            steals: seasonSteals,
-            blocks: seasonBlocks,
-            threes: seasonThrees,
-        }
-
-        response = { daily: dailyLeaders, season: seasonLeaders }
-    } catch (error) {
-        console.error(error)
-        res.status(500).json("Could not fetch stats")
-    }
-    res.status(200).json(response)
 })
 
 const idToName = (id) => {
@@ -575,5 +422,4 @@ module.exports = {
     getSeasonStats,
     getCareerStats,
     getGameLogs,
-    getLeaders,
 }

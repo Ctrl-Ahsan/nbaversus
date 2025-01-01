@@ -13,7 +13,8 @@ export const AppContextProvider = ({ children }) => {
     const [round, setRound] = useState(1)
     const [menuOpen, setMenuOpen] = useState(false)
     const [menuClosed, setMenuClosed] = useState(false)
-    const [toggleStats, setToggleStats] = useState(false)
+    const [stats, setStats] = useState(false)
+    const [leaderboard, setLeaderboard] = useState(false)
     const [selectedPlayers, setSelectedPlayers] = useState([])
     const [selectedScopes, setSelectedScopes] = useState([])
     const [lines, setLines] = useState([])
@@ -39,8 +40,10 @@ export const AppContextProvider = ({ children }) => {
         setMenuOpen,
         menuClosed,
         setMenuClosed,
-        toggleStats,
-        setToggleStats,
+        stats,
+        setStats,
+        leaderboard,
+        setLeaderboard,
         selectedPlayers,
         setSelectedPlayers,
         selectedScopes,
