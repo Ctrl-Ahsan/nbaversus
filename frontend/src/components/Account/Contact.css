@@ -19,6 +19,7 @@
         color: white;
         resize: none;
         overflow-y: scroll;
+        box-sizing: border-box;
     }
 
     .spinner-container {
