@@ -37,7 +37,6 @@
         svg {
             font-size: 2em;
             margin-bottom: 0.1em;
-            object-fit: contain;
         }
     }
 }
