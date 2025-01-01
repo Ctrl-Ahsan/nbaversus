@@ -94,5 +94,269 @@
   "Anthony Edwards": {
     "personId": 1630162,
     "teamId": 1610612750
+  },
+  "Allen Iverson": {
+    "personId": 947,
+    "teamId": 1610612755
+  },
+  "Patrick Ewing": {
+    "personId": 121,
+    "teamId": 1610612752
+  },
+  "Jason Kidd": {
+    "personId": 467,
+    "teamId": 1610612751
+  },
+  "Kawhi Leonard": {
+    "personId": 202695,
+    "teamId": 1610612746
+  },
+  "David Robinson": {
+    "personId": 764,
+    "teamId": 1610612759
+  },
+  "Kevin Garnett": {
+    "personId": 708,
+    "teamId": 1610612750
+  },
+  "Chris Paul": {
+    "personId": 101108,
+    "teamId": 1610612759
+  },
+  "Dwyane Wade": {
+    "personId": 2548,
+    "teamId": 1610612748
+  },
+  "Charles Barkley": {
+    "personId": 787,
+    "teamId": 1610612755
+  },
+  "Karl Malone": {
+    "personId": 252,
+    "teamId": 1610612762
+  },
+  "Dirk Nowitzki": {
+    "personId": 1717,
+    "teamId": 1610612742
+  },
+  "Moses Malone": {
+    "personId": 77449,
+    "teamId": 1610612745
+  },
+  "Julius Erving": {
+    "personId": 76681,
+    "teamId": 1610612755
+  },
+  "Joel Embiid": {
+    "personId": 203954,
+    "teamId": 1610612755
+  },
+  "Devin Booker": {
+    "personId": 1626164,
+    "teamId": 1610612756
+  },
+  "Shai Gilgeous-Alexander": {
+    "personId": 1628983,
+    "teamId": 1610612760
+  },
+  "Damian Lillard": {
+    "personId": 203081,
+    "teamId": 1610612749
+  },
+  "Donovan Mitchell": {
+    "personId": 1628378,
+    "teamId": 1610612739
+  },
+  "Jimmy Butler": {
+    "personId": 202710,
+    "teamId": 1610612748
+  },
+  "Trae Young": {
+    "personId": 1629027,
+    "teamId": 1610612737
+  },
+  "Anthony Davis": {
+    "personId": 203076,
+    "teamId": 1610612747
+  },
+  "Jalen Brunson": {
+    "personId": 1628973,
+    "teamId": 1610612752
+  },
+  "Tyrese Haliburton": {
+    "personId": 1630169,
+    "teamId": 1610612754
+  },
+  "Victor Wembanyama": {
+    "personId": 1641705,
+    "teamId": 1610612759
+  },
+  "Tyrese Maxey": {
+    "personId": 1630178,
+    "teamId": 1610612755
+  },
+  "Jaylen Brown": {
+    "personId": 1627759,
+    "teamId": 1610612738
+  },
+  "LaMelo Ball": {
+    "personId": 1630163,
+    "teamId": 1610612766
+  },
+  "Paolo Banchero": {
+    "personId": 1631094,
+    "teamId": 1610612753
+  },
+  "Cade Cunningham": {
+    "personId": 1630595,
+    "teamId": 1610612765
+  },
+  "Chet Holmgren": {
+    "personId": 1631096,
+    "teamId": 1610612760
+  },
+  "Jerry West": {
+    "personId": 78497,
+    "teamId": 1610612747
+  },
+  "Ray Allen": {
+    "personId": 951,
+    "teamId": 1610612749
+  },
+  "Reggie Miller": {
+    "personId": 397,
+    "teamId": 1610612754
+  },
+  "Klay Thompson": {
+    "personId": 202691,
+    "teamId": 1610612742
+  },
+  "Steve Nash": {
+    "personId": 959,
+    "teamId": 1610612756
+  },
+  "Kyle Korver": {
+    "personId": 2594,
+    "teamId": 1610612755
+  },
+  "JJ Redick": {
+    "personId": 200755,
+    "teamId": 1610612755
+  },
+  "Steve Kerr": {
+    "personId": 70,
+    "teamId": 1610612741
+  },
+  "Buddy Hield": {
+    "personId": 1627741,
+    "teamId": 1610612744
+  },
+  "Drazen Petrovic": {
+    "personId": 77845,
+    "teamId": 1610612751
+  },
+  "Mark Price": {
+    "personId": 899,
+    "teamId": 1610612739
+  },
+  "Gary Payton": {
+    "personId": 56,
+    "teamId": 1610612760
+  },
+  "Walt Frazier": {
+    "personId": 76750,
+    "teamId": 1610612752
+  },
+  "Bob Cousy": {
+    "personId": 600003,
+    "teamId": 1610612738
+  },
+  "Rajon Rondo": {
+    "personId": 200765,
+    "teamId": 1610612739
+  },
+  "Tony Parker": {
+    "personId": 2225,
+    "teamId": 1610612759
+  },
+  "Nate Archibald": {
+    "personId": 76054,
+    "teamId": 1610612758
+  },
+  "Dwight Howard": {
+    "personId": 2730,
+    "teamId": 1610612747
+  },
+  "Robert Parish": {
+    "personId": 305,
+    "teamId": 1610612738
+  },
+  "George Mikan": {
+    "personId": 600012,
+    "teamId": 1610612747
+  },
+  "Dennis Rodman": {
+    "personId": 23,
+    "teamId": 1610612765
+  },
+  "Scottie Pippen": {
+    "personId": 937,
+    "teamId": 1610612741
+  },
+  "Dikembe Mutombo": {
+    "personId": 87,
+    "teamId": 1610612743
+  },
+  "Ben Wallace": {
+    "personId": 1112,
+    "teamId": 1610612765
+  },
+  "Sidney Moncrief": {
+    "personId": 77626,
+    "teamId": 1610612749
+  },
+  "Draymond Green": {
+    "personId": 203110,
+    "teamId": 1610612744
+  },
+  "Dominique Wilkins": {
+    "personId": 1122,
+    "teamId": 1610612737
+  },
+  "Elgin Baylor": {
+    "personId": 76127,
+    "teamId": 1610612747
+  },
+  "George Gervin": {
+    "personId": 76804,
+    "teamId": 1610612759
+  },
+  "Vince Carter": {
+    "personId": 1713,
+    "teamId": 1610612761
+  },
+  "Blake Griffin": {
+    "personId": 201933,
+    "teamId": 1610612738
+  },
+  "Zach LaVine": {
+    "personId": 203897,
+    "teamId": 1610612741
+  },
+  "Aaron Gordon": {
+    "personId": 203932,
+    "teamId": 1610612743
+  },
+  "Shawn Kemp": {
+    "personId": 431,
+    "teamId": 1610612760
+  },
+  "Jason Richardson": {
+    "personId": 2202,
+    "teamId": 1610612744
+  },
+  "Clyde Drexler": {
+    "personId": 17,
+    "teamId": 1610612757
   }
 }
