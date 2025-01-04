@@ -425,8 +425,10 @@ const Versus = () => {
                 -webkit-tap-highlight-color: transparent;
             }
             .reload {
-                :hover {
-                    color: #bb7a00 !important;
+                @media (hover: hover) {
+                    :hover {
+                        color: #bb7a00 !important;
+                    }
                 }
                 :active {
                     scale: 0.9;
@@ -434,8 +436,10 @@ const Versus = () => {
                 }
             }
             .item {
-                :hover {
-                    color: #d7d7d7 !important;
+                @media (hover: hover) {
+                    :hover {
+                        color: #d7d7d7 !important;
+                    }
                 }
                 :active {
                     scale: 0.9;
