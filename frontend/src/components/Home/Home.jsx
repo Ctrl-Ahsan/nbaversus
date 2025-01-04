@@ -328,7 +328,9 @@ const Home = () => {
         <main className="home">
             <div className="logo">
                 NBA
-                <img src="/nbaversus.png" alt="" />
+                <div className="logo-image">
+                    <img src="/nbaversus.png" alt="" />
+                </div>
             </div>
             <Streak />
             <Refresh />

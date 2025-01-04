@@ -29,21 +29,13 @@
         font-family: Bebas Neue, Roboto, Arial, Helvetica, sans-serif;
         font-size: 4em;
 
-        img {
+        .logo-image {
             margin-top: -12px;
+            height: 1.25em;
+        }
+        img {
             width: 1.25em;
         }
-    }
-
-    .logo {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        font-family: Bebas Neue, Roboto, Arial, Helvetica, sans-serif;
-        font-size: 4em;
-        margin-top: 0.25em;
-        margin-bottom: 0.5em;
     }
 
     .refresh {
