@@ -39,7 +39,7 @@ else
 fi
 
 # Step 2: Stage specific files
-git add ./frontend/src/players.json ./backend/players.json ./backend/stats.json
+git add ./frontend/src/roster.json ./backend/roster.json ./backend/stats.json
 
 # Step 3: Commit changes with a message
 git commit -m "Update players"
