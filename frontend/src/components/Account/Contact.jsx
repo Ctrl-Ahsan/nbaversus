@@ -61,7 +61,7 @@ const Contact = () => {
                 <div className="form-item">
                     <input
                         required
-                        type="text"
+                        type="email"
                         id="email"
                         name="email"
                         value={email}
