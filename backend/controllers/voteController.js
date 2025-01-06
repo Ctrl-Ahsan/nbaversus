@@ -411,6 +411,13 @@ const answerDailyQuestion = asyncHandler(async (req, res) => {
             await user.save()
         }
 
+        console.log(
+            `[ACTIVITY][HOME] ${
+                req.user ? req.user.name : "A user"
+            } voted ${winner} for category #${questionIndex + 1} | ${req.ip}`
+                .green
+        )
+
         res.status(200).json({
             message: "Vote recorded successfully.",
             question: dailyQuestion,
