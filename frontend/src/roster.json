@@ -1,5 +1,5 @@
 {
-    "timestamp": "1/6",
+    "timestamp": "1/7",
     "allPlayers": [
         {
             "id": "0",
@@ -99,15 +99,6 @@
             "age": 22,
             "height": "6'5\"",
             "weight": "190"
-        },
-        {
-            "id": "11",
-            "name": "Al Horford",
-            "personId": 201143,
-            "teamId": 1610612738,
-            "age": 38,
-            "height": "6'9\"",
-            "weight": "240"
         },
         {
             "id": "12",
@@ -300,7 +291,7 @@
         },
         {
             "id": "33",
-            "name": "Armel Traoré",
+            "name": "Armel Traore",
             "personId": 1642422,
             "teamId": 1610612747,
             "age": 21,
@@ -3342,7 +3333,7 @@
         },
         {
             "id": "371",
-            "name": "Moussa Diabaté",
+            "name": "Moussa Diabate",
             "personId": 1631217,
             "teamId": 1610612766,
             "age": 22,
@@ -3594,7 +3585,7 @@
         },
         {
             "id": "399",
-            "name": "Pacôme Dadiet",
+            "name": "Pacome Dadiet",
             "personId": 1642359,
             "teamId": 1610612752,
             "age": 19,
@@ -3903,7 +3894,7 @@
             "name": "Ryan Dunn",
             "personId": 1642346,
             "teamId": 1610612756,
-            "age": 21,
+            "age": 22,
             "height": "6'8\"",
             "weight": "216"
         },
@@ -4152,7 +4143,7 @@
         },
         {
             "id": "461",
-            "name": "Tazé Moore",
+            "name": "Taze Moore",
             "personId": 1631386,
             "teamId": 1610612757,
             "age": 26,
