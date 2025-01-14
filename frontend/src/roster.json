@@ -1,5 +1,5 @@
 {
-    "timestamp": "1/13",
+    "timestamp": "1/14",
     "allPlayers": [
         {
             "id": "0",
@@ -2684,15 +2684,6 @@
             "weight": "230"
         },
         {
-            "id": "298",
-            "name": "Keldon Johnson",
-            "personId": 1629640,
-            "teamId": 1610612759,
-            "age": 25,
-            "height": "6'5\"",
-            "weight": "220"
-        },
-        {
             "id": "299",
             "name": "Kelly Olynyk",
             "personId": 203482,
@@ -2718,15 +2709,6 @@
             "age": 30,
             "height": "6'6\"",
             "weight": "210"
-        },
-        {
-            "id": "302",
-            "name": "Kentavious Caldwell-Pope",
-            "personId": 203484,
-            "teamId": 1610612753,
-            "age": 31,
-            "height": "6'5\"",
-            "weight": "204"
         },
         {
             "id": "303",
@@ -4005,15 +3987,6 @@
             "age": 23,
             "height": "6'7\"",
             "weight": "237"
-        },
-        {
-            "id": "445",
-            "name": "Scotty Pippen Jr.",
-            "personId": 1630590,
-            "teamId": 1610612763,
-            "age": 24,
-            "height": "6'1\"",
-            "weight": "170"
         },
         {
             "id": "446",
