@@ -1,5 +1,5 @@
 {
-    "timestamp": "1/14",
+    "timestamp": "1/16",
     "allPlayers": [
         {
             "id": "0",
@@ -2684,6 +2684,15 @@
             "weight": "230"
         },
         {
+            "id": "298",
+            "name": "Keldon Johnson",
+            "personId": 1629640,
+            "teamId": 1610612759,
+            "age": 25,
+            "height": "6'5\"",
+            "weight": "220"
+        },
+        {
             "id": "299",
             "name": "Kelly Olynyk",
             "personId": 203482,
@@ -2709,6 +2718,15 @@
             "age": 30,
             "height": "6'6\"",
             "weight": "210"
+        },
+        {
+            "id": "302",
+            "name": "Kentavious Caldwell-Pope",
+            "personId": 203484,
+            "teamId": 1610612753,
+            "age": 31,
+            "height": "6'5\"",
+            "weight": "204"
         },
         {
             "id": "303",
@@ -3989,6 +4007,15 @@
             "weight": "237"
         },
         {
+            "id": "445",
+            "name": "Scotty Pippen Jr.",
+            "personId": 1630590,
+            "teamId": 1610612763,
+            "age": 24,
+            "height": "6'1\"",
+            "weight": "170"
+        },
+        {
             "id": "446",
             "name": "Seth Curry",
             "personId": 203552,
@@ -4654,6 +4681,14 @@
             "age": 22,
             "height": "6'11\"",
             "weight": "243"
+        },
+        {
+            "name": "Andrew Nembhard",
+            "personId": 1629614,
+            "teamId": 1610612754,
+            "age": 24,
+            "height": "6'4\"",
+            "weight": "191"
         },
         {
             "name": "Anfernee Simons",
