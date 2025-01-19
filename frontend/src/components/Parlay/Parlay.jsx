@@ -307,6 +307,11 @@ const Parlay = () => {
                 )}
                 {isCategorical && (
                     <div className="right">
+                        <div className="summary">
+                            <div>Y: {hit}</div>
+                            <div>N: {relevantLogs.length - hit}</div>
+                            <div>A: {average}%</div>
+                        </div>
                         <div className="indicator">
                             <CircularProgressbarWithChildren
                                 value={hit}
@@ -328,11 +333,6 @@ const Parlay = () => {
                                     {hit} / {relevantLogs.length}
                                 </span>
                             </CircularProgressbarWithChildren>
-                        </div>
-                        <div className="summary">
-                            <div>Y: {hit}</div>
-                            <div>N: {relevantLogs.length - hit}</div>
-                            <div>A: {average}%</div>
                         </div>
                     </div>
                 )}
