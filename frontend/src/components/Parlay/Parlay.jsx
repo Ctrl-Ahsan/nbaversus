@@ -138,7 +138,7 @@ const Parlay = () => {
             const noCount = relevantLogs.length - yesCount
             const averagePercentage =
                 relevantLogs.length > 0 && yesCount > 0
-                    ? ((yesCount / relevantLogs.length) * 100).toFixed(1) // Assuming percentage
+                    ? (yesCount / relevantLogs.length).toFixed(2) // Assuming percentage
                     : "0.0"
 
             high = yesCount // Maximum possible
@@ -310,7 +310,7 @@ const Parlay = () => {
                         <div className="summary">
                             <div>Y: {hit}</div>
                             <div>N: {relevantLogs.length - hit}</div>
-                            <div>A: {average}%</div>
+                            <div>A: {average}</div>
                         </div>
                         <div className="indicator">
                             <CircularProgressbarWithChildren
