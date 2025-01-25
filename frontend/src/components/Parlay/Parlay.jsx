@@ -9,7 +9,11 @@ import "react-circular-progressbar/dist/styles.css"
 import { AppContext } from "../../AppContext"
 
 import { IoPersonAdd } from "react-icons/io5"
-import { IoIosRemoveCircleOutline } from "react-icons/io"
+import {
+    IoIosRemoveCircleOutline,
+    IoIosAddCircle,
+    IoIosRemoveCircle,
+} from "react-icons/io"
 import Builder from "./Builder"
 
 const Parlay = () => {
@@ -72,7 +76,27 @@ const Parlay = () => {
             color = "#c90808" // Red
         }
 
-        // Function to remove the line
+        // Line functions
+        const incrementValue = () => {
+            if (props.line.value < 99) {
+                const updatedLines = lines.map((line) =>
+                    JSON.stringify(line) === JSON.stringify(props.line)
+                        ? { ...line, value: parseFloat(line.value) + 0.5 } // Ensure value is a number
+                        : line
+                )
+                setLines(updatedLines)
+            }
+        }
+        const decrementValue = () => {
+            if (props.line.value > 1) {
+                const updatedLines = lines.map((line) =>
+                    JSON.stringify(line) === JSON.stringify(props.line)
+                        ? { ...line, value: parseFloat(line.value) - 0.5 } // Ensure value is a number
+                        : line
+                )
+                setLines(updatedLines)
+            }
+        }
         const removeLine = () => {
             const updatedLines = lines.filter(
                 (existingLine) =>
@@ -213,13 +237,36 @@ const Parlay = () => {
                         <div className="stat">{caption}</div>
                         <div className="value">
                             {props.line.stat !== "dd" &&
-                            props.line.stat !== "td"
-                                ? `${props.line.operator.toUpperCase()} ${
-                                      props.line.value
-                                  }`
-                                : props.line.operator === "over"
-                                ? "YES"
-                                : "NO"}
+                            props.line.stat !== "td" ? (
+                                <>
+                                    {props.line.operator.toUpperCase()}{" "}
+                                    <span className="adjust-buttons">
+                                        <IoIosRemoveCircle
+                                            className={
+                                                props.line.value < 1
+                                                    ? "disabled"
+                                                    : ""
+                                            }
+                                            onClick={decrementValue}
+                                        />
+                                        <span className="line-value">
+                                            {props.line.value}
+                                        </span>
+                                        <IoIosAddCircle
+                                            className={
+                                                props.line.value > 99
+                                                    ? "disabled"
+                                                    : ""
+                                            }
+                                            onClick={incrementValue}
+                                        />
+                                    </span>
+                                </>
+                            ) : props.line.operator === "over" ? (
+                                "YES"
+                            ) : (
+                                "NO"
+                            )}
                         </div>
                     </div>
                 </div>

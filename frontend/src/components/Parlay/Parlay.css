@@ -281,7 +281,7 @@
             .info {
                 text-align: start;
                 @media screen and (max-width: 540px) {
-                    font-size: 0.8em;
+                    font-size: 0.85em;
                 }
 
                 .name {
@@ -298,6 +298,18 @@
 
                 .value {
                     font-size: 0.9em;
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                }
+                .value svg {
+                    cursor: pointer;
+                    margin: 0 3px;
+                    vertical-align: middle;
+                }
+                .disabled {
+                    opacity: 50%;
+                    cursor: default !important;
                 }
             }
 
@@ -318,7 +330,7 @@
                 font-size: 0.75em;
                 color: #b7b6b6;
                 @media screen and (max-width: 540px) {
-                    font-size: 0.6em;
+                    font-size: 0.7em;
                 }
                 .green {
                     color: #1db303;
