@@ -81,7 +81,7 @@ const Parlay = () => {
             if (props.line.value < 99) {
                 const updatedLines = lines.map((line) =>
                     JSON.stringify(line) === JSON.stringify(props.line)
-                        ? { ...line, value: parseFloat(line.value) + 0.5 } // Ensure value is a number
+                        ? { ...line, value: parseFloat(line.value) + 1 } // Ensure value is a number
                         : line
                 )
                 setLines(updatedLines)
@@ -91,7 +91,7 @@ const Parlay = () => {
             if (props.line.value > 1) {
                 const updatedLines = lines.map((line) =>
                     JSON.stringify(line) === JSON.stringify(props.line)
-                        ? { ...line, value: parseFloat(line.value) - 0.5 } // Ensure value is a number
+                        ? { ...line, value: parseFloat(line.value) - 1 } // Ensure value is a number
                         : line
                 )
                 setLines(updatedLines)

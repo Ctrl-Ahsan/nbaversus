@@ -206,15 +206,20 @@ const Builder = () => {
                             </option>
                         </select>
                         {line.stat !== "dd" && line.stat !== "td" && (
-                            <input
+                            <select
                                 name="value"
                                 value={line.value}
                                 onChange={onChange}
-                                type="number"
-                                min={0.5}
-                                max={999.5}
-                                step={0.5}
-                            ></input>
+                            >
+                                {Array.from(
+                                    { length: 100 },
+                                    (_, i) => i + 0.5
+                                ).map((val) => (
+                                    <option key={val} value={val}>
+                                        {val.toFixed(1)}
+                                    </option>
+                                ))}
+                            </select>
                         )}
                     </div>
                 </div>
