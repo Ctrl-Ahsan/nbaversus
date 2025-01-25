@@ -15,7 +15,7 @@ const Builder = () => {
         player: {},
         stat: "pts",
         operator: "over",
-        value: null,
+        value: 0.5,
     })
 
     const onChange = (e) => {
@@ -32,19 +32,10 @@ const Builder = () => {
                 toast.error("No player selected")
                 return
             }
-            if (
-                (line.value > 99.5 || line.value < 0.5) &&
-                line.stat !== "dd" &&
-                line.stat !== "td"
-            ) {
-                toast.error("Value must be between 0.5 and 99.5")
-                return
-            }
             for (let existingLine of lines) {
                 if (
                     line.player.personId === existingLine.player.personId &&
-                    line.stat === existingLine.stat &&
-                    line.value === existingLine.value
+                    line.stat === existingLine.stat
                 ) {
                     toast.error("Line has already been added")
                     return
@@ -61,6 +52,8 @@ const Builder = () => {
                     toast.error(error.response.data)
                 })
             if (gameLogsResponse) {
+                console.log(line)
+
                 setLines((prev) => [
                     ...prev,
                     { ...line, logs: gameLogsResponse.data },
@@ -69,7 +62,7 @@ const Builder = () => {
                     player: {},
                     stat: "pts",
                     operator: "over",
-                    value: "",
+                    value: 0.5,
                 })
             }
         } catch (error) {
