@@ -273,7 +273,7 @@ const Parlay = () => {
                 {!isCategorical && (
                     <div className="right">
                         <div className="summary">
-                            <div>
+                            <div title="High">
                                 H: {high}{" "}
                                 {high !== "N/A" && (
                                     <span
@@ -291,7 +291,7 @@ const Parlay = () => {
                                     </span>
                                 )}
                             </div>
-                            <div>
+                            <div title="Low">
                                 L: {low}{" "}
                                 {low !== "N/A" && (
                                     <span
@@ -309,7 +309,7 @@ const Parlay = () => {
                                     </span>
                                 )}
                             </div>
-                            <div>
+                            <div title="Average">
                                 A: {average}{" "}
                                 {average !== "0.0" && (
                                     <span
@@ -355,9 +355,9 @@ const Parlay = () => {
                 {isCategorical && (
                     <div className="right">
                         <div className="summary">
-                            <div>Y: {hit}</div>
-                            <div>N: {relevantLogs.length - hit}</div>
-                            <div>A: {average}</div>
+                            <div title="Yes">Y: {hit}</div>
+                            <div title="No">N: {relevantLogs.length - hit}</div>
+                            <div title="Average">A: {average}</div>
                         </div>
                         <div className="indicator">
                             <CircularProgressbarWithChildren
