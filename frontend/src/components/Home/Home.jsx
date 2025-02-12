@@ -13,9 +13,14 @@ const Home = () => {
 
     useEffect(() => {
         setLoading(true)
+        testAPI()
         fetchDailyQuestions()
     }, [])
 
+    const testAPI = async () => {
+        const response = await axios.get("/api/stats/gamelogs")
+        console.log(response)
+    }
     const fetchDailyQuestions = async () => {
         try {
             let response

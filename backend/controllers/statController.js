@@ -1,4 +1,5 @@
 const asyncHandler = require("express-async-handler")
+const fetch = require("node-fetch")
 const Players = require("../data/roster.json")
 const Stats = require("../data/stats.json")
 
@@ -412,6 +413,40 @@ const getGameLogs = asyncHandler(async (req, res) => {
     }
 })
 
+const testGameLogs = asyncHandler(async (req, res) => {
+    const currentSeason = "2024-25"
+    const PlayerGameLogs = `https://stats.nba.com/stats/playergamelogs?Season=${currentSeason}&SeasonType=Regular%20Season`
+
+    try {
+        console.log("Fetching NBA game logs...")
+
+        const response = await fetch(PlayerGameLogs, {
+            headers: {
+                "User-Agent": "Mozilla/5.0",
+                "Accept-Language": "en-US,en;q=0.9",
+                Referer: "https://www.nba.com/",
+            },
+        })
+
+        if (!response.ok)
+            throw new Error(`HTTP Error! Status: ${response.status}`)
+
+        const data = await response.json()
+        res.status(200).json({
+            success: true,
+            message: "API request successful",
+            data: data.resultSets[0].rowSet[0],
+        })
+    } catch (error) {
+        console.error("Error fetching NBA API:", error)
+        res.status(500).json({
+            success: false,
+            message: "API request failed",
+            error: error.message,
+        })
+    }
+})
+
 const idToName = (id) => {
     for (player of Players) {
         if (id == player.personId) return player.name
@@ -422,4 +457,5 @@ module.exports = {
     getSeasonStats,
     getCareerStats,
     getGameLogs,
+    testGameLogs,
 }
