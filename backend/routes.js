@@ -4,7 +4,6 @@ const {
     getSeasonStats,
     getCareerStats,
     getGameLogs,
-    testGameLogs,
 } = require("./controllers/statController")
 const {
     addQuestion,
@@ -37,7 +36,6 @@ router.post("/votes", optionalAuth, setVote)
 router.post("/stats/season", getSeasonStats)
 router.post("/stats/career", getCareerStats)
 router.post("/stats/gamelogs", getGameLogs)
-router.get("/stats/gamelogs", testGameLogs)
 
 // question routes
 router.post("/questions", admin, addQuestion)
