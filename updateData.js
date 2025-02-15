@@ -15,7 +15,6 @@ const setPlayers = async () => {
     const LeagueDashPlayerBio = `https://stats.nba.com/stats/leaguedashplayerbiostats?LeagueID=00&PerMode=PerGame&Season=${currentSeason}&SeasonType=Regular+Season`
     const PlayerCareerStats =
         "https://stats.nba.com/stats/playercareerstats?LeagueID=&PerMode=PerGame&PlayerID="
-    const PlayerGameLogs = `https://stats.nba.com/stats/playergamelogs?DateFrom=&DateTo=&GameSegment=&LastNGames=&LeagueID=&Location=&MeasureType=&Month=&OppTeamID=&Outcome=&PORound=&PerMode=&Period=&PlayerID=&Season=${currentSeason}&SeasonSegment=&SeasonType=&ShotClockRange=&TeamID=&VsConference=&VsDivision=`
 
     console.log("\nFetching league data...")
     console.time("Response time")
@@ -38,18 +37,8 @@ const setPlayers = async () => {
         },
     }).then((res) => res.json())
 
-    const gameLogsResponse = await fetch(PlayerGameLogs, {
-        headers: {
-            "User-Agent":
-                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15",
-            "Accept-Language": "en-CA,en-US;q=0.9,en;q=0.8",
-            Referer: "https://www.nba.com/",
-        },
-    }).then((res) => res.json())
-
     const leagueStats = leagueStatsResponse.resultSets[0].rowSet
     const leagueBios = leagueBiosResponse.resultSets[0].rowSet
-    const gameLogs = gameLogsResponse.resultSets[0].rowSet
 
     console.timeEnd("Response time")
 
@@ -121,15 +110,6 @@ const setPlayers = async () => {
             let playerObjComplete = {
                 ...playerObj,
                 stats: playerCareerStats.resultSets,
-                games: (() => {
-                    let games = []
-                    for (const log of gameLogs) {
-                        if (log[1] === playerId) {
-                            games.push(log)
-                        }
-                    }
-                    return games
-                })(),
             }
 
             allPlayers.push(playerObj)

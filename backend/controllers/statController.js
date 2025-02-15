@@ -1,6 +1,7 @@
 const asyncHandler = require("express-async-handler")
 const Players = require("../data/roster.json")
 const Stats = require("../data/stats.json")
+const Logs = require("../data/logs.json")
 
 const ID = 0
 const NAME = 1
@@ -150,17 +151,11 @@ const getGameLogs = asyncHandler(async (req, res) => {
             res.status(400).json("Invalid request")
             return
         }
-        const id = req.body.id
+        const id = req.body.id.toString()
         const stat = req.body.stat
 
         // get game logs for requested player
-        let games
-        for (player of Players) {
-            if (player.personId == id) {
-                games = player.games
-                break
-            }
-        }
+        const games = Logs[id]
 
         // get game logs for targeted stat
         let gameLogs = []
