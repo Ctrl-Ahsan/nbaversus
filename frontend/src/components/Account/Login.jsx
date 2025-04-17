@@ -4,7 +4,11 @@ import { toast } from "react-toastify"
 import { FaSignInAlt } from "react-icons/fa"
 import axios from "axios"
 import Spinner from "../Spinner/Spinner"
-import { signInWithEmailAndPassword } from "firebase/auth"
+import {
+    signInWithEmailAndPassword,
+    GoogleAuthProvider,
+    signInWithPopup,
+} from "firebase/auth"
 import { auth } from "../../firebase"
 
 const Login = (props) => {
@@ -58,10 +62,10 @@ const Login = (props) => {
                     localStorage.setItem(
                         "user",
                         JSON.stringify({
-                            name,
+                            name: name,
                             email: user.email,
-                            isPremium,
-                            token,
+                            isPremium: isPremium,
+                            token: token,
                         })
                     )
                     props.setLoggedIn(true)
@@ -118,10 +122,26 @@ const Login = (props) => {
                         <button type="submit">Sign In</button>
                     )}
                 </div>
-                <hr className="divider" />
                 <div className="form-item">
-                    <button className="green" onClick={props.setToggleRegister}>
-                        Register
+                    <div className="subtitle">
+                        Don't have an account?{" "}
+                        <span
+                            className="link"
+                            onClick={props.setToggleRegister}
+                        >
+                            Sign up
+                        </span>
+                    </div>
+                </div>
+                <div class="divider">
+                    <span>OR</span>
+                </div>
+                <div className="form-item">
+                    <button class="google" onClick={props.handleGoogleSignIn}>
+                        <span class="icon-wrapper">
+                            <img src="/google.png" class="icon" alt="Google" />
+                        </span>
+                        <span>Continue with Google</span>
                     </button>
                 </div>
             </form>

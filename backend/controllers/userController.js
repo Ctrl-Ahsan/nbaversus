@@ -46,6 +46,15 @@ const registerUser = asycHandler(async (req, res) => {
             return res.status(400).json({ message: "Missing required fields" })
         }
 
+        const existingUser = await User.findOne({ uid })
+        if (existingUser) {
+            return res.status(409).json({
+                message: "User already exists",
+                name: existingUser.name,
+                isPremium: existingUser.isPremium,
+            })
+        }
+
         const user = await User.create({ uid, email, name })
 
         console.log(

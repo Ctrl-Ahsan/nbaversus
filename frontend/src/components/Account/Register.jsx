@@ -145,14 +145,28 @@ const Register = (props) => {
                         </button>
                     )}
                 </div>
-                <hr className="divider" />
                 <div className="form-item">
-                    <button
-                        onClick={() => {
-                            props.setToggleRegister()
-                        }}
-                    >
-                        Sign In
+                    <div className="subtitle">
+                        Already have an account?{" "}
+                        <span
+                            className="link"
+                            onClick={() => {
+                                props.setToggleRegister(false)
+                            }}
+                        >
+                            Log in
+                        </span>
+                    </div>
+                </div>
+                <div class="divider">
+                    <span>OR</span>
+                </div>
+                <div className="form-item">
+                    <button class="google" onClick={props.handleGoogleSignIn}>
+                        <span class="icon-wrapper">
+                            <img src="/google.png" class="icon" alt="Google" />
+                        </span>
+                        <span>Continue with Google</span>
                     </button>
                 </div>
             </form>

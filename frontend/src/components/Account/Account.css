@@ -19,7 +19,7 @@
     display: flex;
     flex-direction: column;
     width: 90%;
-    max-width: 740px;
+    max-width: 600px;
     padding: 20px;
 
     #active {
@@ -65,7 +65,7 @@
     }
 
     .form-item {
-        margin-bottom: 10px;
+        margin-bottom: 0.5em;
         width: 100%;
         display: flex;
         justify-content: center;
@@ -89,9 +89,66 @@
             }
         }
     }
+    .subtitle {
+        font-size: 0.85em;
+        font-family: Roboto;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+
+        .link {
+            color: #4f90f8;
+            cursor: pointer;
+        }
+    }
     .divider {
-        border: solid 0.5px grey;
-        margin: 1em;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color: #aaa;
+        font-size: 0.85em;
+        margin: 1.5em 0;
+    }
+
+    .divider::before,
+    .divider::after {
+        content: "";
+        flex: 1;
+        border-bottom: 1px solid #aaa;
+    }
+
+    .divider::before {
+        margin-right: 0.75em;
+    }
+
+    .divider::after {
+        margin-left: 0.75em;
+    }
+
+    .google {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px; /* spacing between icon and text */
+
+        background-color: white;
+        color: black;
+    }
+
+    .google:hover {
+        background-color: #d2d2d2;
+        color: black;
+    }
+
+    .google .icon-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .google .icon {
+        width: 18px;
+        height: 18px;
+        display: block;
     }
 }
 

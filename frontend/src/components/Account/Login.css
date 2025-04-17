@@ -6,8 +6,8 @@
     background-color: #0000007a;
     border: solid 1px #21212179;
     border-radius: 5px;
-    height: 25em;
-    padding: 1em 0;
+    height: 100%;
+    padding: 3em 0;
 
     .spinner-container {
         height: 30px;
