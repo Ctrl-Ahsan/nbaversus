@@ -1,20 +1,25 @@
 import "./Register.css"
 import { useState } from "react"
 import { toast } from "react-toastify"
-import { IoPersonAdd } from "react-icons/io5"
 import axios from "axios"
+import {
+    createUserWithEmailAndPassword,
+    sendEmailVerification,
+} from "firebase/auth"
+import { auth } from "../../firebase"
 import Spinner from "../Spinner/Spinner"
 
 const Register = (props) => {
     const Form = () => {
         const [formData, setFormData] = useState({
             name: "",
+            email: "",
             password: "",
             password2: "",
         })
         const [loading, setLoading] = useState(false)
 
-        const { name, password, password2 } = formData
+        const { name, email, password, password2 } = formData
 
         const onChange = (e) => {
             setFormData((prevState) => ({
@@ -23,37 +28,63 @@ const Register = (props) => {
             }))
         }
 
-        const onSubmit = (e) => {
+        const onSubmit = async (e) => {
             e.preventDefault()
-            if (name === "" || password === "" || password2 === "") {
+
+            if (!name || !email || !password || !password2) {
                 toast.error("Please fill in all fields")
-            } else if (name.length > 16)
-                toast.error("Username exceeds 16 character limit")
-            else if (password !== password2)
+                return
+            }
+            if (password !== password2) {
                 toast.error("Passwords do not match")
-            else {
-                setLoading(true)
-                const userData = {
-                    name,
-                    password,
+                return
+            }
+            if (name.length > 16) {
+                toast.error("Name exceeds 16 character limit")
+                return
+            }
+            if (password.length < 6) {
+                toast.error("Password should be at least 6 characters")
+                return
+            }
+
+            setLoading(true)
+            try {
+                const userCredential = await createUserWithEmailAndPassword(
+                    auth,
+                    email,
+                    password
+                )
+                const user = userCredential.user
+
+                await sendEmailVerification(user)
+                toast.info("Verification email sent to " + user.email)
+
+                const token = await user.getIdToken()
+                await axios.post(
+                    "/api/users",
+                    { name },
+                    {
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                        },
+                    }
+                )
+                props.setToggleRegister()
+            } catch (error) {
+                console.error(error)
+                const code = error.code
+                if (code === "auth/email-already-in-use") {
+                    toast.error("This email is already in use")
+                } else if (code === "auth/invalid-email") {
+                    toast.error("Please enter a valid email address")
+                } else if (code === "auth/weak-password") {
+                    toast.error("Password should be at least 6 characters")
+                } else {
+                    toast.error("Account creation failed. Please try again")
                 }
-                axios
-                    .post("/api/users", userData)
-                    .then((response) => {
-                        if (response.data) {
-                            localStorage.setItem(
-                                "user",
-                                JSON.stringify(response.data)
-                            )
-                            props.setLoggedIn(true)
-                            props.setToggleRegister(false)
-                        }
-                        setLoading(false)
-                    })
-                    .catch((error) => {
-                        toast.error(error.response.data)
-                        setLoading(false)
-                    })
+            } finally {
+                setLoading(false)
             }
         }
 
@@ -67,6 +98,17 @@ const Register = (props) => {
                         name="name"
                         value={name}
                         placeholder="Username"
+                        onChange={onChange}
+                    />
+                </div>
+                <div className="form-item">
+                    <input
+                        required
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={email}
+                        placeholder="Email"
                         onChange={onChange}
                     />
                 </div>
@@ -110,7 +152,7 @@ const Register = (props) => {
                             props.setToggleRegister()
                         }}
                     >
-                        Login
+                        Sign In
                     </button>
                 </div>
             </form>
@@ -119,9 +161,7 @@ const Register = (props) => {
 
     return (
         <section className="register-container">
-            <div className="form-title">
-                <IoPersonAdd /> Register
-            </div>
+            <div className="form-title">Create an account</div>
             <Form />
         </section>
     )

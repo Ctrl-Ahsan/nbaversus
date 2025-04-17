@@ -2,15 +2,10 @@ const mongoose = require("mongoose")
 
 const userSchema = mongoose.Schema(
     {
-        name: {
-            type: String,
-            required: [true, "Please add a name"],
-            unique: true,
-        },
-        password: {
-            type: String,
-            required: [true, "Please add a password"],
-        },
+        uid: { type: String, required: true, unique: true },
+        email: { type: String, required: true },
+        name: { type: String, required: true },
+        isPremium: { type: Boolean, default: false },
         currentStreak: { type: Number, default: 0 },
         longestStreak: { type: Number, default: 0 },
         lastActiveDate: { type: Date },

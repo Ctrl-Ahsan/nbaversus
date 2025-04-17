@@ -1,5 +1,5 @@
-const jwt = require("jsonwebtoken")
 const asyncHandler = require("express-async-handler")
+const firebaseAdmin = require("../firebaseAdmin")
 const User = require("../models/userModel")
 
 const optionalAuth = asyncHandler(async (req, res, next) => {
@@ -14,10 +14,10 @@ const optionalAuth = asyncHandler(async (req, res, next) => {
             token = req.headers.authorization.split(" ")[1]
 
             // Verify token
-            const decoded = jwt.verify(token, process.env.JWT_SECRET)
+            const decoded = await firebaseAdmin.auth().verifyIdToken(token)
 
             // Get user from the token
-            req.user = await User.findById(decoded.id).select("-password")
+            req.user = await User.findOne({ uid: decoded.uid })
 
             next()
         } catch (error) {
@@ -41,19 +41,21 @@ const protect = asyncHandler(async (req, res, next) => {
             token = req.headers.authorization.split(" ")[1]
 
             // Verify token
-            const decoded = jwt.verify(token, process.env.JWT_SECRET)
+            const decoded = await firebaseAdmin.auth().verifyIdToken(token)
 
             // Get user from the token
-            req.user = await User.findById(decoded.id).select("-password")
+            req.user = await User.findOne({ uid: decoded.uid })
+
+            if (!req.user) {
+                return res.status(401).json("User not found in database")
+            }
 
             next()
         } catch (error) {
             console.log(error)
             res.status(401).json("Not authorized.")
         }
-    }
-
-    if (!token) {
+    } else {
         res.status(401).json("Not authorized, no token")
     }
 })

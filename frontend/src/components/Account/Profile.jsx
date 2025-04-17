@@ -2,6 +2,8 @@ import "./Profile.css"
 import { useEffect, useState } from "react"
 import axios from "axios"
 import { toast } from "react-toastify"
+import { signOut } from "firebase/auth"
+import { auth } from "../../firebase"
 
 import { FaSignOutAlt, FaUser } from "react-icons/fa"
 
@@ -22,10 +24,10 @@ const Profile = (props) => {
 
     useEffect(() => {
         if (localStorage.getItem("user") !== null) {
-            setUser(JSON.parse(localStorage.getItem("user")).Name)
+            setUser(JSON.parse(localStorage.getItem("user")).name)
             setLoading(true)
             // get me
-            const token = JSON.parse(localStorage.getItem("user")).Token
+            const token = JSON.parse(localStorage.getItem("user")).token
             axios
                 .get("/api/users/me", {
                     headers: { Authorization: "Bearer " + token },
@@ -67,7 +69,8 @@ const Profile = (props) => {
         }
     }, [])
 
-    const onLogout = () => {
+    const onLogout = async () => {
+        await signOut(auth)
         localStorage.removeItem("user")
         localStorage.removeItem("streak")
         localStorage.removeItem("voteTracking")

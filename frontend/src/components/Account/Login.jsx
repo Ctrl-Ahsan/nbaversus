@@ -4,16 +4,17 @@ import { toast } from "react-toastify"
 import { FaSignInAlt } from "react-icons/fa"
 import axios from "axios"
 import Spinner from "../Spinner/Spinner"
+import { signInWithEmailAndPassword } from "firebase/auth"
+import { auth } from "../../firebase"
 
 const Login = (props) => {
     const Form = () => {
         const [formData, setFormData] = useState({
-            name: "",
+            email: "",
             password: "",
         })
         const [loading, setLoading] = useState(false)
-
-        const { name, password } = formData
+        const { email, password } = formData
 
         const onChange = (e) => {
             setFormData((prevState) => ({
@@ -22,33 +23,65 @@ const Login = (props) => {
             }))
         }
 
-        const onSubmit = (e) => {
+        const onSubmit = async (e) => {
             e.preventDefault()
 
-            if (name === "" || password === "") {
+            if (!email || !password) {
                 toast.error("Please fill in all fields")
-            } else {
-                setLoading(true)
-                const userData = {
-                    name,
-                    password,
-                }
-                axios
-                    .post("/api/users/login", userData)
-                    .then((response) => {
-                        if (response.data) {
-                            localStorage.setItem(
-                                "user",
-                                JSON.stringify(response.data)
-                            )
-                            props.setLoggedIn(true)
+                return
+            }
+            setLoading(true)
+            try {
+                const userCredential = await signInWithEmailAndPassword(
+                    auth,
+                    email,
+                    password
+                )
+                const user = userCredential.user
+
+                if (!user.emailVerified) {
+                    toast.warn("Please verify your email address to continue.")
+                } else {
+                    const token = await user.getIdToken()
+
+                    const res = await axios.post(
+                        "/api/users/login",
+                        {},
+                        {
+                            headers: {
+                                Authorization: `Bearer ${token}`,
+                            },
                         }
-                        setLoading(false)
-                    })
-                    .catch((error) => {
-                        toast.error(error.response.data)
-                        setLoading(false)
-                    })
+                    )
+                    const { name, isPremium } = res.data
+
+                    localStorage.setItem(
+                        "user",
+                        JSON.stringify({
+                            name,
+                            email: user.email,
+                            isPremium,
+                            token,
+                        })
+                    )
+                    props.setLoggedIn(true)
+                }
+            } catch (error) {
+                console.error(error)
+                const code = error.code
+
+                if (
+                    code === "auth/user-not-found" ||
+                    code === "auth/invalid-credential"
+                ) {
+                    toast.error("Invalid login credentials")
+                } else if (code === "auth/wrong-password") {
+                    toast.error("Incorrect password")
+                } else {
+                    toast.error("Login failed. Please try again.")
+                }
+            } finally {
+                setLoading(false)
             }
         }
 
@@ -57,11 +90,11 @@ const Login = (props) => {
                 <div className="form-item">
                     <input
                         required
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={name}
-                        placeholder="Username"
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={email}
+                        placeholder="Email"
                         onChange={onChange}
                     />
                 </div>
@@ -98,7 +131,7 @@ const Login = (props) => {
     return (
         <section className="login-container">
             <div className="form-title">
-                <FaSignInAlt /> Login
+                <FaSignInAlt /> Sign In
             </div>
             <Form />
         </section>

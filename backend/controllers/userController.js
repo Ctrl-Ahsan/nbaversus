@@ -1,5 +1,4 @@
-const jwt = require("jsonwebtoken")
-const bcrypt = require("bcryptjs")
+const firebaseAdmin = require("../firebaseAdmin")
 const geoip = require("geoip-lite")
 const asycHandler = require("express-async-handler")
 const User = require("../models/userModel")
@@ -34,50 +33,28 @@ const userVisit = asycHandler(async (req, res) => {
 
 const registerUser = asycHandler(async (req, res) => {
     try {
-        const { name, password } = req.body
+        const authHeader = req.headers.authorization || ""
+        const token = authHeader.split("Bearer ")[1]
+        if (!token)
+            return res.status(401).json({ message: "Missing Firebase token" })
 
-        // Check if all fields are present
-        if (!name || !password) {
-            res.status(400).send("Please include username and password")
-            return
+        const decoded = await firebaseAdmin.auth().verifyIdToken(token)
+        const { uid, email } = decoded
+        const { name } = req.body
+
+        if (!name || !email || !uid) {
+            return res.status(400).json({ message: "Missing required fields" })
         }
 
-        // Check if user already exists
-        const userExists = await User.find({
-            name: new RegExp(`^${name}$`, "i"),
+        const user = await User.create({ uid, email, name })
+
+        console.log(
+            `[ACCOUNT] ${user.name} has created their account | ${req.ip}`.green
+        )
+
+        res.status(201).json({
+            name: user.name,
         })
-        if (userExists.length > 0) {
-            res.status(400).send("This name is already taken")
-            return
-        }
-
-        // Hash password
-        const salt = await bcrypt.genSalt(10)
-        const hashedPassword = await bcrypt.hash(password, salt)
-
-        // Create user
-        const user = await User.create({
-            name,
-            password: hashedPassword,
-        })
-
-        if (user) {
-            console.log(
-                `[ACCOUNT] ${user.name} has created their account | ${req.ip}`
-                    .green
-            )
-            res.status(201).json({
-                _id: user.id,
-                Name: user.name,
-                Token: generateToken(user.id),
-            })
-        } else {
-            res.status(400)
-            console.log(
-                `[ACCOUNT] Failed to create an account | ${req.ip}`.yellow
-            )
-            res.status(400).json("Could not create account")
-        }
     } catch (error) {
         console.error(error)
         res.status(500).json("Registration failed")
@@ -86,28 +63,26 @@ const registerUser = asycHandler(async (req, res) => {
 
 const loginUser = asycHandler(async (req, res) => {
     try {
-        const { name, password } = req.body
-        if (!(req.body.name && req.body.password)) {
-            res.status(400).json("Please include username and password")
-            return
+        const authHeader = req.headers.authorization || ""
+        const token = authHeader.split("Bearer ")[1]
+        if (!token)
+            return res.status(401).json({ message: "Missing Firebase token" })
+
+        const decoded = await firebaseAdmin.auth().verifyIdToken(token)
+        const { uid } = decoded
+
+        const user = await User.findOne({ uid })
+
+        if (!user) {
+            return res.status(404).json({ message: "User not found in DB" })
         }
 
-        const user = await User.findOne({ name })
-        if (user && (await bcrypt.compare(password, user.password))) {
-            console.log(`[ACCOUNT] ${user.name} logged in | ${req.ip}`.green)
-            res.json({
-                _id: user.id,
-                Name: user.name,
-                Token: generateToken(user.id),
-            })
-        } else {
-            console.log(
-                `[ACCOUNT] Attempted login with invalid credentials | ${req.ip}`
-                    .yellow
-            )
-            res.status(400).send("Invalid credentials")
-            return
-        }
+        console.log(`[ACCOUNT] ${user.name} logged in | ${req.ip}`.green)
+
+        res.status(200).json({
+            name: user.name,
+            isPremium: user.isPremium,
+        })
     } catch (error) {
         console.error(error)
         res.status(500).json("Login failed")
@@ -246,33 +221,9 @@ const getMe = asycHandler(async (req, res) => {
     }
 })
 
-const updateMe = asycHandler(async (req, res) => {
-    const me = await User.findById(req.user.id)
-
-    if (req.body.password) {
-        samePassword = await bcrypt.compare(req.body.password, me.password)
-        if (samePassword) {
-            res.status(400).send("You already have these credentials")
-            return
-        }
-
-        const salt = await bcrypt.genSalt(10)
-        const hashedPassword = await bcrypt.hash(req.body.password, salt)
-        me.password = hashedPassword
-        me.save()
-    }
-})
-
-const generateToken = (id) => {
-    return jwt.sign({ id }, process.env.JWT_SECRET, {
-        expiresIn: "90d",
-    })
-}
-
 module.exports = {
     userVisit,
     registerUser,
     loginUser,
     getMe,
-    updateMe,
 }

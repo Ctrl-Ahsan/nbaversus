@@ -17,7 +17,6 @@ const {
     registerUser,
     loginUser,
     getMe,
-    updateMe,
 } = require("./controllers/userController")
 const { optionalAuth, protect, admin } = require("./middleware/authMiddleware")
 
@@ -26,7 +25,6 @@ router.post("/users/visit", optionalAuth, userVisit)
 router.post("/users", registerUser)
 router.post("/users/login", loginUser)
 router.get("/users/me", protect, getMe)
-router.put("/users/me", protect, updateMe)
 
 // vote routes
 router.get("/votes", getVote)
