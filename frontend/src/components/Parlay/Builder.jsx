@@ -55,8 +55,8 @@ const Builder = () => {
                 console.log(line)
 
                 setLines((prev) => [
-                    ...prev,
                     { ...line, logs: gameLogsResponse.data },
+                    ...prev,
                 ])
                 setLine({
                     player: {},
@@ -86,7 +86,7 @@ const Builder = () => {
                                 backgroundColor: "#333333",
                                 backdropFilter: "blur(100px)",
                                 hoverBackgroundColor: "#000000ab",
-                                border: "1px solid rgba(148, 148, 148, 0.3)",
+                                border: "none",
                             }}
                             onSelect={onSelect}
                             formatResult={formatResult}
@@ -224,7 +224,7 @@ const Builder = () => {
                             <div className="content">
                                 <FaPlus />
                             </div>
-                            <div>Add Line</div>
+                            <div>Analyze</div>
                         </div>
                     </button>
                 ) : (

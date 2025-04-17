@@ -50,7 +50,6 @@
             font-family: inherit;
             color: white;
             padding: 0.65em 1.5em;
-            border: 1px solid rgba(148, 148, 148, 0.3);
             border-radius: 32px;
             background: #333333;
             cursor: pointer;
@@ -143,16 +142,6 @@
         .search-bar {
             width: 100%;
             z-index: 2;
-            .input {
-                font-family: inherit;
-                color: white;
-                padding: 1em 1.5em;
-                border: 1px solid rgba(148, 148, 148, 0.3);
-                border-radius: 50px;
-                background: rgba(0, 0, 0, 0.4);
-                backdrop-filter: blur(10px);
-                -webkit-backdrop-filter: blur(10px);
-            }
         }
     }
 
@@ -317,13 +306,16 @@
                     font-size: 0.7em;
                 }
                 .green {
-                    color: #1db303;
+                    color: #76f660ba;
+                    font-weight: 400;
                 }
                 .yellow {
-                    color: yellow;
+                    color: #ffff61b8;
+                    font-weight: 400;
                 }
                 .red {
-                    color: #c90808;
+                    color: #ff6c6cc1;
+                    font-weight: 400;
                 }
             }
 
