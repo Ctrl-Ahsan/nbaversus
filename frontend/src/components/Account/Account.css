@@ -31,6 +31,11 @@
         flex-direction: row;
         justify-content: space-evenly;
         margin-bottom: 1em;
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
     }
 
     .heading {
@@ -58,9 +63,9 @@
         margin-bottom: 0.5em;
         display: flex;
         align-items: center;
+        gap: 0.3em;
         svg {
             font-size: 1em;
-            margin-right: 0.2em;
         }
     }
 

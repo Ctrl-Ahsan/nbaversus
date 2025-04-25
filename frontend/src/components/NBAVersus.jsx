@@ -1,5 +1,6 @@
 import "./NBAVersus.css"
 import { useState, useEffect } from "react"
+import { Routes, Route } from "react-router-dom"
 import axios from "axios"
 
 import Navbar from "./Navbar/Navbar"
@@ -10,8 +11,6 @@ import Parlay from "./Parlay/Parlay"
 import Account from "./Account/Account"
 
 const NBAVersus = () => {
-    const [page, setPage] = useState("home")
-
     useEffect(() => {
         // log visit
         if (localStorage.getItem("user") !== null) {
@@ -26,18 +25,14 @@ const NBAVersus = () => {
 
     return (
         <main className="nbaversus">
-            {page === "versus" ? (
-                <Versus />
-            ) : page === "compare" ? (
-                <Compare />
-            ) : page === "parlay" ? (
-                <Parlay />
-            ) : page === "account" ? (
-                <Account />
-            ) : (
-                <Home />
-            )}
-            <Navbar page={page} setPage={setPage} />
+            <Routes>
+                <Route path="/*" element={<Home />} />
+                <Route path="/versus" element={<Versus />} />
+                <Route path="/compare" element={<Compare />} />
+                <Route path="/parlay" element={<Parlay />} />
+                <Route path="/account/*" element={<Account />} />
+            </Routes>
+            <Navbar />
         </main>
     )
 }

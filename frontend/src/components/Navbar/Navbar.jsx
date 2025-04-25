@@ -1,4 +1,5 @@
 import "./Navbar.css"
+import { Link, useLocation } from "react-router-dom"
 
 import { GoHome, GoHomeFill } from "react-icons/go"
 import { FaMagnifyingGlass, FaMagnifyingGlassChart } from "react-icons/fa6"
@@ -10,66 +11,49 @@ import {
 } from "react-icons/io5"
 import { FaUserCircle, FaRegUserCircle } from "react-icons/fa"
 
-const Navbar = (props) => {
+const Navbar = () => {
+    const location = useLocation()
+    const currentPath = location.pathname
+
     return (
         <nav className="navbar-container">
             <div className="nav">
-                <div
-                    className="item"
-                    onClick={() => {
-                        props.setPage("home")
-                    }}
-                >
-                    {props.page === "home" ? <GoHomeFill /> : <GoHome />}
+                <Link className="item" to="/">
+                    {currentPath === "/" ? <GoHomeFill /> : <GoHome />}
                     Home
-                </div>
-                <div className="item" onClick={() => props.setPage("versus")}>
-                    {props.page === "versus" ? (
+                </Link>
+                <Link className="item" to="/versus">
+                    {currentPath === "/versus" ? (
                         <IoBasketball />
                     ) : (
                         <IoBasketballOutline />
                     )}
                     Versus
-                </div>
-                <div
-                    className="item"
-                    onClick={() => {
-                        props.setPage("compare")
-                    }}
-                >
-                    {props.page === "compare" ? (
+                </Link>
+                <Link className="item" to="/compare">
+                    {currentPath === "/compare" ? (
                         <FaMagnifyingGlassChart />
                     ) : (
                         <FaMagnifyingGlass />
                     )}
                     Compare
-                </div>
-                <div
-                    className="item"
-                    onClick={() => {
-                        props.setPage("parlay")
-                    }}
-                >
-                    {props.page === "parlay" ? (
+                </Link>
+                <Link className="item" to="/parlay">
+                    {currentPath === "/parlay" ? (
                         <IoStatsChart />
                     ) : (
                         <IoStatsChartOutline />
                     )}
                     Parlay
-                </div>
-                <div
-                    className="item"
-                    onClick={() => {
-                        props.setPage("account")
-                    }}
-                >
-                    {props.page === "account" ? (
+                </Link>
+                <Link className="item" to="/account">
+                    {currentPath === "/account" ? (
                         <FaUserCircle />
                     ) : (
                         <FaRegUserCircle />
                     )}
                     Account
-                </div>
+                </Link>
             </div>
         </nav>
     )
