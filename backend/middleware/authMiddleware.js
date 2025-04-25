@@ -43,20 +43,27 @@ const protect = asyncHandler(async (req, res, next) => {
             // Verify token
             const decoded = await firebaseAdmin.auth().verifyIdToken(token)
 
-            // Get user from the token
+            // Get user from the database
             req.user = await User.findOne({ uid: decoded.uid })
 
             if (!req.user) {
-                return res.status(401).json("User not found in database")
+                return res
+                    .status(401)
+                    .json({ message: "Unauthorized: User not found" })
             }
 
             next()
         } catch (error) {
-            console.log(error)
-            res.status(401).json("Not authorized.")
+            console.error("Auth error:", error.message)
+
+            return res
+                .status(401)
+                .json({ message: "Unauthorized: Invalid or expired token" })
         }
     } else {
-        res.status(401).json("Not authorized, no token")
+        return res
+            .status(401)
+            .json({ message: "Unauthorized: No token provided" })
     }
 })
 
