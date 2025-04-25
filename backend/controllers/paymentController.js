@@ -28,7 +28,7 @@ const createCheckoutSession = asyncHandler(async (req, res) => {
                 firebaseUID: uid,
             },
             success_url: `${CLIENT_URL}/success`,
-            cancel_url: `${CLIENT_URL}/cancel`,
+            cancel_url: `${CLIENT_URL}/account/premium`,
         })
 
         res.json({ url: session.url })
