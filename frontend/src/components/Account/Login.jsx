@@ -4,11 +4,7 @@ import { toast } from "react-toastify"
 import { FaSignInAlt } from "react-icons/fa"
 import axios from "axios"
 import Spinner from "../Spinner/Spinner"
-import {
-    signInWithEmailAndPassword,
-    GoogleAuthProvider,
-    signInWithPopup,
-} from "firebase/auth"
+import { signInWithEmailAndPassword } from "firebase/auth"
 import { auth } from "../../firebase"
 
 const Login = (props) => {

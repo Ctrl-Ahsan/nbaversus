@@ -28,16 +28,6 @@
         .search-bar {
             width: 100%;
             z-index: 2;
-            .input {
-                font-family: inherit;
-                color: white;
-                padding: 1em 1.5em;
-                border: 1px solid rgba(148, 148, 148, 0.3);
-                border-radius: 50px;
-                background: rgba(0, 0, 0, 0.4);
-                backdrop-filter: blur(10px);
-                -webkit-backdrop-filter: blur(10px);
-            }
         }
         .reload {
             margin-left: 0.5em;
