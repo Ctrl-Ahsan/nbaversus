@@ -1,5 +1,5 @@
 import "./App.css"
-import { ToastContainer } from "react-toastify"
+import { ToastContainer, Flip } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 import NBAVersus from "./components/NBAVersus"
 
@@ -9,7 +9,14 @@ function App() {
             <div className="App">
                 <NBAVersus />
             </div>
-            <ToastContainer theme="colored" />
+            <ToastContainer
+                toastClassName="my-toast"
+                position="top-center"
+                autoClose={2500}
+                hideProgressBar
+                theme="dark"
+                transition={Flip}
+            />
         </>
     )
 }

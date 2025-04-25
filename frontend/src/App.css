@@ -48,6 +48,12 @@ button:active {
     }
 }
 
+.my-toast {
+    color: #fff !important;
+    font-size: 14px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+}
+
 .progress-stepper {
     position: absolute;
     bottom: 12%;
