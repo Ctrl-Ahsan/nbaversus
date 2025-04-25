@@ -5,7 +5,7 @@ import { toast } from "react-toastify"
 import "./Premium.css"
 import { PiStarFourFill } from "react-icons/pi"
 
-const Premium = () => {
+const Premium = (props) => {
     const [loading, setLoading] = useState(false)
 
     const handleSubscribe = async () => {
@@ -14,8 +14,9 @@ const Premium = () => {
             const currentUser = auth.currentUser
 
             if (!currentUser) {
-                toast.info("This action requires an account.")
+                toast.info("Please sign in to continue.")
                 setLoading(false)
+                props.setCategory("account")
                 return
             }
 

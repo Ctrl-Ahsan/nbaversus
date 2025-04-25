@@ -120,7 +120,9 @@ const Account = () => {
                         handleGoogleSignIn={handleGoogleSignIn}
                     />
                 )}
-                {category === "premium" && <Premium />}
+                {category === "premium" && (
+                    <Premium setCategory={setCategory} />
+                )}
                 {category === "support" && <Contact />}
             </div>
         </main>
