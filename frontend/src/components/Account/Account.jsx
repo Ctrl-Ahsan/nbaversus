@@ -8,6 +8,7 @@ import axios from "axios"
 import { toast } from "react-toastify"
 import { auth } from "../../firebase"
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth"
+import Premium from "./Premium"
 
 const Account = () => {
     const [category, setCategory] = useState("account")
@@ -82,6 +83,16 @@ const Account = () => {
                         <div className="headingText">Account</div>
                     </div>
                     <div
+                        id={category === "premium" ? "active" : ""}
+                        className="heading"
+                        onClick={() => {
+                            setCategory("premium")
+                            setToggleRegister(false)
+                        }}
+                    >
+                        <div className="headingText">Premium</div>
+                    </div>
+                    <div
                         id={category === "support" ? "active" : ""}
                         className="heading"
                         onClick={() => {
@@ -109,6 +120,7 @@ const Account = () => {
                         handleGoogleSignIn={handleGoogleSignIn}
                     />
                 )}
+                {category === "premium" && <Premium />}
                 {category === "support" && <Contact />}
             </div>
         </main>
