@@ -447,10 +447,12 @@ const Parlay = () => {
                             </div>
                         </div>
                     </div>
-                    {lines.length > 0 &&
-                        lines.map((item, index) => (
-                            <Line key={index} line={item} />
-                        ))}
+                    <div className="lines">
+                        {lines.length > 0 &&
+                            lines.map((item, index) => (
+                                <Line key={index} line={item} />
+                            ))}
+                    </div>
                 </div>
             )}
         </main>
