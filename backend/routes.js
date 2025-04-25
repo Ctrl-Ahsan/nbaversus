@@ -18,6 +18,7 @@ const {
     loginUser,
     getMe,
 } = require("./controllers/userController")
+const { createCheckoutSession } = require("./controllers/paymentController")
 const { optionalAuth, protect, admin } = require("./middleware/authMiddleware")
 
 // user routes
@@ -39,5 +40,8 @@ router.post("/stats/gamelogs", getGameLogs)
 router.post("/questions", admin, addQuestion)
 router.get("/questions/daily", optionalAuth, getDailyQuestions)
 router.post("/questions/daily", optionalAuth, answerDailyQuestion)
+
+// payment routes
+router.post("/premium/checkout", createCheckoutSession)
 
 module.exports = router
