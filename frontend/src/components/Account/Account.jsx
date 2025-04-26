@@ -4,6 +4,7 @@ import { Routes, Route, Link, useLocation } from "react-router-dom"
 import axios from "axios"
 import { toast } from "react-toastify"
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth"
+import { PiStarFourFill } from "react-icons/pi"
 
 import Register from "./Register"
 import Login from "./Login"
@@ -91,7 +92,9 @@ const Account = () => {
                             currentPath === "/account/premium" ? "active" : ""
                         }`}
                     >
-                        <div className="headingText">Premium</div>
+                        <div className="headingText">
+                            <PiStarFourFill /> Premium
+                        </div>
                     </Link>
                     <Link
                         to="/account/support"

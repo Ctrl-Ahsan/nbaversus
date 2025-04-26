@@ -22,15 +22,17 @@
     max-width: 600px;
     padding: 20px;
 
-    #active {
-        border-bottom: 1px solid white;
-    }
-
     .nav {
+        font-size: 0.75em;
         display: flex !important;
         flex-direction: row;
         justify-content: space-evenly;
-        margin-bottom: 1em;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 0.75em;
+        padding: 0 0.5em;
+        border-radius: 100px;
+        background-color: #0000007a;
 
         a {
             text-decoration: none;
@@ -38,18 +40,26 @@
         }
     }
 
-    .heading {
+    .heading.active {
+        background-color: #4141417a;
+        border-radius: 100px;
         font-weight: 700;
-        margin-top: 1em;
-        padding: 10px 20px;
-        transition: all 0.3s;
     }
-    .heading:active {
-        scale: 0.95;
+    .heading {
+        font-weight: 400;
+        text-decoration: none;
+        padding: 0.6em 1em;
+        margin: 0.5em;
+    }
+    .heading:hover {
     }
 
     .headingText {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         cursor: pointer;
+        gap: 5px;
     }
 
     .form {
