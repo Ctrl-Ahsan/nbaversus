@@ -1,12 +1,14 @@
 import React, { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { auth } from "../../firebase"
 import { signOut } from "firebase/auth"
 import { toast } from "react-toastify"
 import "./Premium.css"
 import { PiStarFourFill } from "react-icons/pi"
 
-const Premium = (props) => {
+const Premium = () => {
     const [loading, setLoading] = useState(false)
+    const navigate = useNavigate()
 
     const handleSubscribe = async () => {
         try {
@@ -14,9 +16,9 @@ const Premium = (props) => {
             const currentUser = auth.currentUser
 
             if (!currentUser) {
-                toast.info("Please sign in to continue.")
+                toast.warn("Sign in required to access Premium.")
                 setLoading(false)
-                props.setCategory("account")
+                navigate("/account")
                 return
             }
 
@@ -50,7 +52,6 @@ const Premium = (props) => {
         } catch (err) {
             console.error("Checkout error:", err.message)
             toast.error("Something went wrong. Please try again.")
-        } finally {
             setLoading(false)
         }
     }
