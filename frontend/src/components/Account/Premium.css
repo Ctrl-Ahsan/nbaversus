@@ -1,7 +1,8 @@
 .premium-container {
+    box-sizing: border-box;
     display: flex;
     justify-content: center;
-    width: 90%;
+    width: 100%;
     max-width: 600px;
     margin: 0 auto;
     text-align: center;
