@@ -42,6 +42,6 @@ router.get("/questions/daily", optionalAuth, getDailyQuestions)
 router.post("/questions/daily", optionalAuth, answerDailyQuestion)
 
 // payment routes
-router.post("/premium/checkout", createCheckoutSession)
+router.post("/premium/checkout", protect, createCheckoutSession)
 
 module.exports = router

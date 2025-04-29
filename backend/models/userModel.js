@@ -5,6 +5,7 @@ const userSchema = mongoose.Schema(
         uid: { type: String, required: true, unique: true },
         email: { type: String, required: true },
         name: { type: String, required: true },
+        stripeCustomerId: { type: String, default: null },
         isPremium: { type: Boolean, default: false },
         currentStreak: { type: Number, default: 0 },
         longestStreak: { type: Number, default: 0 },

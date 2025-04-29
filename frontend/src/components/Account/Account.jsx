@@ -12,6 +12,7 @@ import Profile from "./Profile"
 import Contact from "./Contact"
 import Premium from "./Premium"
 import { auth } from "../../firebase"
+import Success from "./Success"
 
 const Account = () => {
     const [loggedIn, setLoggedIn] = useState(
@@ -128,6 +129,7 @@ const Account = () => {
                         }
                     />
                     <Route path="premium" element={<Premium />} />
+                    <Route path="success" element={<Success />} />
                     <Route path="support" element={<Contact />} />
                 </Routes>
             </div>

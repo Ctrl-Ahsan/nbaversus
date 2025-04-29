@@ -16,7 +16,7 @@ const Premium = () => {
             const currentUser = auth.currentUser
 
             if (!currentUser) {
-                toast.warn("Sign in required to access Premium.")
+                toast.warn("Sign in to upgrade your account.")
                 setLoading(false)
                 navigate("/account")
                 return
@@ -39,7 +39,6 @@ const Premium = () => {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${token}`,
                 },
-                body: JSON.stringify({ uid: currentUser.uid }),
             })
 
             const data = await res.json()
@@ -47,11 +46,13 @@ const Premium = () => {
             if (res.ok) {
                 window.location.href = data.url
             } else {
-                throw new Error(data.message || "Subscription failed")
+                throw new Error(data.error || "Activation failed")
             }
         } catch (err) {
             console.error("Checkout error:", err.message)
-            toast.error("Something went wrong. Please try again.")
+            toast.error(
+                err.message || "Something went wrong. Please try again."
+            )
             setLoading(false)
         }
     }
