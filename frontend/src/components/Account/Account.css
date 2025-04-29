@@ -53,6 +53,8 @@
         margin: 0.5em;
     }
     .heading:hover {
+        transition: opacity 0.3s;
+        opacity: 80%;
     }
 
     .headingText {
