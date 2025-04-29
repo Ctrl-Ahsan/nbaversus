@@ -47,7 +47,7 @@ const Navbar = () => {
                     Parlay
                 </Link>
                 <Link className="item" to="/account">
-                    {currentPath === "/account" ? (
+                    {currentPath.startsWith("/account") ? (
                         <FaUserCircle />
                     ) : (
                         <FaRegUserCircle />
