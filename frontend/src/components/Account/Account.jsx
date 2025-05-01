@@ -20,6 +20,7 @@ const Account = () => {
         localStorage.getItem("user") !== null
     )
     const [toggleRegister, setToggleRegister] = useState(false)
+    const [loading, setLoading] = useState(false)
     const { isPremium } = useContext(AppContext)
 
     const location = useLocation()
@@ -80,39 +81,42 @@ const Account = () => {
     return (
         <main className="account-container">
             <div className="account-panel">
-                <nav className="nav">
-                    <Link
-                        to="/account"
-                        className={`heading ${
-                            currentPath === "/account" ? "active" : ""
-                        }`}
-                    >
-                        <div className="headingText">Account</div>
-                    </Link>
-                    {!isPremium && (
+                {!loading && (
+                    <nav className="nav">
                         <Link
-                            to="/account/premium"
+                            to="/account"
                             className={`heading ${
-                                currentPath === "/account/premium"
+                                currentPath === "/account" ? "active" : ""
+                            }`}
+                        >
+                            <div className="headingText">Account</div>
+                        </Link>
+                        {!isPremium && (
+                            <Link
+                                to="/account/premium"
+                                className={`heading ${
+                                    currentPath === "/account/premium"
+                                        ? "active"
+                                        : ""
+                                }`}
+                            >
+                                <div className="headingText">
+                                    <PiStarFourFill /> Premium
+                                </div>
+                            </Link>
+                        )}
+                        <Link
+                            to="/account/support"
+                            className={`heading ${
+                                currentPath === "/account/support"
                                     ? "active"
                                     : ""
                             }`}
                         >
-                            <div className="headingText">
-                                <PiStarFourFill /> Premium
-                            </div>
+                            <div className="headingText">Support</div>
                         </Link>
-                    )}
-                    <Link
-                        to="/account/support"
-                        className={`heading ${
-                            currentPath === "/account/support" ? "active" : ""
-                        }`}
-                    >
-                        <div className="headingText">Support</div>
-                    </Link>
-                </nav>
-
+                    </nav>
+                )}
                 <Routes>
                     <Route
                         index
@@ -135,7 +139,10 @@ const Account = () => {
                         }
                     />
                     <Route path="premium" element={<Premium />} />
-                    <Route path="success" element={<Success />} />
+                    <Route
+                        path="success"
+                        element={<Success setLoading={setLoading} />}
+                    />
                     <Route path="support" element={<Contact />} />
                 </Routes>
             </div>
