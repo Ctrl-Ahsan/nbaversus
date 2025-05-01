@@ -8,7 +8,6 @@ const CLIENT_URL = isProd ? process.env.CLIENT_URL : process.env.CLIENT_URL_DEV
 
 const createCheckoutSession = asyncHandler(async (req, res) => {
     try {
-        // Validate request
         const user = req.user
 
         if (!user) {
@@ -20,33 +19,37 @@ const createCheckoutSession = asyncHandler(async (req, res) => {
                 .json({ error: "Account has already been upgraded." })
         }
 
-        // Prepare params
-        const sessionParams = {
-            mode: "subscription",
-            payment_method_types: ["card"],
-            line_items: [
-                { price: "price_1RHalhCvI0mq4kI8RQby8RMP", quantity: 1 },
-            ],
-            subscription_data: {
-                trial_period_days: 7,
+        // Create Stripe customer if needed
+        if (!user.stripeCustomerId) {
+            const customer = await stripe.customers.create({
                 metadata: {
                     firebaseUID: user.uid,
                 },
+            })
+
+            user.stripeCustomerId = customer.id
+            await user.save()
+        }
+
+        const session = await stripe.checkout.sessions.create({
+            mode: "subscription",
+            payment_method_types: ["card"],
+            customer: user.stripeCustomerId,
+            line_items: [
+                {
+                    price: "price_1RHalhCvI0mq4kI8RQby8RMP", // your price ID
+                    quantity: 1,
+                },
+            ],
+            subscription_data: {
+                trial_period_days: 7,
             },
             metadata: {
                 firebaseUID: user.uid,
             },
             success_url: `${CLIENT_URL}/account/success?session_id={CHECKOUT_SESSION_ID}`,
             cancel_url: `${CLIENT_URL}/account/premium`,
-        }
-
-        // Attach existing Stripe customer if available
-        if (user.stripeCustomerId) {
-            sessionParams.customer = user.stripeCustomerId
-        }
-
-        // Create Stripe Checkout session
-        const session = await stripe.checkout.sessions.create(sessionParams)
+        })
 
         res.json({ url: session.url })
     } catch (err) {
@@ -70,33 +73,33 @@ const upgradeUser = asyncHandler(async (req, res) => {
 
     if (event.type === "checkout.session.completed") {
         const session = event.data.object
-
         const firebaseUID = session.metadata?.firebaseUID
 
-        if (firebaseUID) {
-            try {
-                const user = await User.findOne({ uid: firebaseUID })
-
-                if (user) {
-                    user.isPremium = true
-                    if (!user.stripeCustomerId && session.customer) {
-                        user.stripeCustomerId = session.customer
-                    }
-                    await user.save()
-                    console.log(
-                        `[PREMIUM] User ${firebaseUID} upgraded to Premium!`
-                    )
-                } else {
-                    console.error(
-                        "User not found for firebaseUID:",
-                        firebaseUID
-                    )
-                }
-            } catch (error) {
-                console.error(`Error upgrading User ${firebaseUID}: ${error}`)
-            }
-        } else {
+        if (!firebaseUID) {
             console.error("No firebaseUID found in session metadata.")
+            return res.status(400).send("Missing UID")
+        }
+
+        try {
+            const user = await User.findOne({ uid: firebaseUID })
+
+            if (!user) {
+                console.error("User not found:", firebaseUID)
+                return res.status(404).send("User not found")
+            }
+
+            user.isPremium = true
+            await user.save()
+
+            // Set Firebase custom claim
+            await firebaseAdmin.auth().setCustomUserClaims(firebaseUID, {
+                premium: true,
+            })
+
+            console.log(`[PREMIUM] ${firebaseUID} upgraded to Premium!`)
+        } catch (err) {
+            console.error(`Error upgrading User ${firebaseUID}: ${err}`)
+            return res.status(500).send("Upgrade error")
         }
     }
 
