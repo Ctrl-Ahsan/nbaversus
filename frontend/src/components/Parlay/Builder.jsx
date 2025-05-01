@@ -1,4 +1,7 @@
 import { useContext, useState } from "react"
+import { useNavigate } from "react-router-dom"
+import { signOut } from "firebase/auth"
+import { auth } from "../../firebase"
 import axios from "axios"
 import { ReactSearchAutocomplete } from "react-search-autocomplete"
 import { toast } from "react-toastify"
@@ -8,7 +11,8 @@ import { AppContext } from "../../AppContext"
 import Spinner from "../Spinner/Spinner"
 
 const Builder = () => {
-    const { lines, setLines } = useContext(AppContext)
+    const navigate = useNavigate()
+    const { lines, setLines, user, setUser } = useContext(AppContext)
     const players = [...roster.allPlayers]
     const [loading, setLoading] = useState(false)
     const [line, setLine] = useState({
@@ -27,6 +31,12 @@ const Builder = () => {
 
     const addLine = async () => {
         try {
+            if (!user) {
+                toast.warn("Sign in to use Parlay.")
+                navigate("/account")
+                return
+            }
+
             // Validate line
             if (JSON.stringify(line.player) === "{}") {
                 toast.error("No player selected")
@@ -43,17 +53,37 @@ const Builder = () => {
             }
             // Fetch game data
             setLoading(true)
+            let token
+            try {
+                token = await user.getIdToken()
+            } catch (err) {
+                toast.error("Session expired. Please sign in again.")
+                await signOut(auth)
+                setUser(null)
+                navigate("/signin")
+                return
+            }
             const gameLogsResponse = await axios
-                .post("/api/stats/gamelogs", {
-                    id: line.player.personId,
-                    stat: line.stat,
-                })
+                .post(
+                    "/api/lines/analyze",
+                    {
+                        personId: line.player.personId,
+                        name: line.player.name,
+                        teamId: line.player.nameteamId,
+                        stat: line.stat,
+                        operator: line.operator,
+                        value: line.value,
+                    },
+                    {
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                        },
+                    }
+                )
                 .catch((error) => {
                     toast.error(error.response.data)
                 })
             if (gameLogsResponse) {
-                console.log(line)
-
                 setLines((prev) => [
                     { ...line, logs: gameLogsResponse.data },
                     ...prev,
