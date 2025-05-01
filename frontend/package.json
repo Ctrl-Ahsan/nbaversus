@@ -43,15 +43,5 @@
             "last 1 firefox version",
             "last 1 safari version"
         ]
-    },
-    "nodemonConfig": {
-        "ignore": [
-            "frontend/*",
-            "*.log",
-            ".env",
-            "tmp/*",
-            "stripe.log",
-            ".stripe/*"
-        ]
     }
 }
