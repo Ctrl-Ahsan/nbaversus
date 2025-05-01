@@ -1,8 +1,30 @@
-import { createContext, useState } from "react"
+import { createContext, useState, useEffect } from "react"
+import { auth } from "./firebase"
+import { onAuthStateChanged, getIdTokenResult } from "firebase/auth"
 
 export const AppContext = createContext(null)
 
 export const AppContextProvider = ({ children }) => {
+    const [user, setUser] = useState(null)
+    const [isPremium, setIsPremium] = useState(false)
+    const [userLoading, setUserLoading] = useState(true)
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
+            if (firebaseUser) {
+                setUser(firebaseUser)
+                const tokenResult = await getIdTokenResult(firebaseUser, true) // force refresh
+                setIsPremium(!!tokenResult.claims.premium)
+            } else {
+                setUser(null)
+                setIsPremium(false)
+            }
+            setUserLoading(false)
+        })
+
+        return () => unsubscribe() // clean up listener
+    }, [])
+
     const [player1, setPlayer1] = useState({})
     const [player2, setPlayer2] = useState({})
     const [p1Wins, setP1Wins] = useState(false)
@@ -20,6 +42,12 @@ export const AppContextProvider = ({ children }) => {
     const [lines, setLines] = useState([])
     const [parlayScope, setParlayScope] = useState("l5")
     const value = {
+        user,
+        setUser,
+        isPremium,
+        setIsPremium,
+        userLoading,
+        setUserLoading,
         player1,
         setPlayer1,
         player2,
