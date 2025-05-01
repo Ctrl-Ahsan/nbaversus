@@ -1,9 +1,10 @@
 import "./Account.css"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { Routes, Route, Link, useLocation } from "react-router-dom"
 import axios from "axios"
 import { toast } from "react-toastify"
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth"
+import { auth } from "../../firebase"
 import { PiStarFourFill } from "react-icons/pi"
 
 import Register from "./Register"
@@ -11,14 +12,15 @@ import Login from "./Login"
 import Profile from "./Profile"
 import Contact from "./Contact"
 import Premium from "./Premium"
-import { auth } from "../../firebase"
 import Success from "./Success"
+import { AppContext } from "../../AppContext"
 
 const Account = () => {
     const [loggedIn, setLoggedIn] = useState(
         localStorage.getItem("user") !== null
     )
     const [toggleRegister, setToggleRegister] = useState(false)
+    const { isPremium } = useContext(AppContext)
 
     const location = useLocation()
     const currentPath = location.pathname
@@ -87,16 +89,20 @@ const Account = () => {
                     >
                         <div className="headingText">Account</div>
                     </Link>
-                    <Link
-                        to="/account/premium"
-                        className={`heading ${
-                            currentPath === "/account/premium" ? "active" : ""
-                        }`}
-                    >
-                        <div className="headingText">
-                            <PiStarFourFill /> Premium
-                        </div>
-                    </Link>
+                    {!isPremium && (
+                        <Link
+                            to="/account/premium"
+                            className={`heading ${
+                                currentPath === "/account/premium"
+                                    ? "active"
+                                    : ""
+                            }`}
+                        >
+                            <div className="headingText">
+                                <PiStarFourFill /> Premium
+                            </div>
+                        </Link>
+                    )}
                     <Link
                         to="/account/support"
                         className={`heading ${
