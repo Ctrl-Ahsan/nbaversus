@@ -1,18 +1,17 @@
 import { useContext, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { signOut } from "firebase/auth"
-import { auth } from "../../firebase"
 import axios from "axios"
 import { ReactSearchAutocomplete } from "react-search-autocomplete"
 import { toast } from "react-toastify"
 import { FaPlus } from "react-icons/fa"
 import roster from "../../roster.json"
 import { AppContext } from "../../AppContext"
+import { getAuthToken } from "../../utils/getAuthToken"
 import Spinner from "../Spinner/Spinner"
 
 const Builder = () => {
     const navigate = useNavigate()
-    const { lines, setLines, user, setUser } = useContext(AppContext)
+    const { lines, setLines, user } = useContext(AppContext)
     const players = [...roster.allPlayers]
     const [loading, setLoading] = useState(false)
     const [line, setLine] = useState({
@@ -53,16 +52,7 @@ const Builder = () => {
             }
             // Fetch game data
             setLoading(true)
-            let token
-            try {
-                token = await user.getIdToken()
-            } catch (err) {
-                toast.error("Session expired. Please sign in again.")
-                await signOut(auth)
-                setUser(null)
-                navigate("/signin")
-                return
-            }
+            const token = await getAuthToken(user, navigate)
             const gameLogsResponse = await axios
                 .post(
                     "/api/lines/analyze",
