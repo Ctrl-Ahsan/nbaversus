@@ -16,12 +16,9 @@ import Success from "./Success"
 import { AppContext } from "../../AppContext"
 
 const Account = () => {
-    const [loggedIn, setLoggedIn] = useState(
-        localStorage.getItem("user") !== null
-    )
     const [toggleRegister, setToggleRegister] = useState(false)
     const [loading, setLoading] = useState(false)
-    const { isPremium } = useContext(AppContext)
+    const { user, isPremium } = useContext(AppContext)
 
     const location = useLocation()
     const currentPath = location.pathname
@@ -71,7 +68,6 @@ const Account = () => {
                     token,
                 })
             )
-            setLoggedIn(true)
         } catch (error) {
             console.error(error)
             toast.error("Google sign-in failed")
@@ -121,17 +117,15 @@ const Account = () => {
                     <Route
                         index
                         element={
-                            loggedIn ? (
-                                <Profile setLoggedIn={setLoggedIn} />
+                            user ? (
+                                <Profile />
                             ) : toggleRegister ? (
                                 <Register
-                                    setLoggedIn={setLoggedIn}
                                     setToggleRegister={setToggleRegister}
                                     handleGoogleSignIn={handleGoogleSignIn}
                                 />
                             ) : (
                                 <Login
-                                    setLoggedIn={setLoggedIn}
                                     setToggleRegister={setToggleRegister}
                                     handleGoogleSignIn={handleGoogleSignIn}
                                 />

@@ -64,7 +64,6 @@ const Login = (props) => {
                             token: token,
                         })
                     )
-                    props.setLoggedIn(true)
                 }
             } catch (error) {
                 console.error(error)

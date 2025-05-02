@@ -1,15 +1,18 @@
 import "./Profile.css"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 import axios from "axios"
 import { toast } from "react-toastify"
 import { signOut } from "firebase/auth"
 import { auth } from "../../firebase"
 
 import { FaSignOutAlt, FaUser } from "react-icons/fa"
+import { getAuthToken } from "../../utils/getAuthToken"
+import { AppContext } from "../../AppContext"
 
-const Profile = (props) => {
-    const [user, setUser] = useState()
-    const [voteCount, setVoteCount] = useState()
+const Profile = () => {
+    const { user } = useContext(AppContext)
+    const navigate = useNavigate()
     const [goat, setGoat] = useState()
     const [goatVotes, setGoatVotes] = useState()
     const [streak, setStreak] = useState()
@@ -23,18 +26,16 @@ const Profile = (props) => {
     const [loading, setLoading] = useState(false)
 
     useEffect(() => {
-        if (localStorage.getItem("user") !== null) {
-            setUser(JSON.parse(localStorage.getItem("user")).name)
-            setLoading(true)
-            // get me
-            const token = JSON.parse(localStorage.getItem("user")).token
+        setLoading(true)
+        // get me
+        const getMe = async () => {
+            const token = await getAuthToken(user, navigate)
             axios
                 .get("/api/users/me", {
                     headers: { Authorization: "Bearer " + token },
                 })
                 .then((response) => {
                     if (response.data) {
-                        setVoteCount(response.data.voteCount)
                         if (response.data.goatVotes) {
                             setGoat(response.data.goat)
                             setGoatVotes(response.data.goatVotes)
@@ -62,11 +63,10 @@ const Profile = (props) => {
                 })
                 .catch(() => {
                     setLoading(false)
-                    toast.error("You have been signed out")
-                    localStorage.removeItem("user")
-                    props.setLoggedIn(false)
+                    toast.error("Could not fetch profile")
                 })
         }
+        getMe()
     }, [])
 
     const onLogout = async () => {
@@ -75,18 +75,14 @@ const Profile = (props) => {
         localStorage.removeItem("streak")
         localStorage.removeItem("voteTracking")
         localStorage.removeItem("lastUpdated")
-        props.setLoggedIn(false)
     }
 
     return (
         <section className="profile-container">
             <div className="me">
                 <div className="title">
-                    <FaUser /> {user}
-                    <div className="votes">
-                        {!loading &&
-                            `Total Votes: ${voteCount ? voteCount : 0}`}
-                    </div>
+                    <FaUser /> {user.displayName}
+                    <div className="votes">{!loading && user.email}</div>
                 </div>
                 <div className="favorites">
                     <div className={loading ? "panel shimmerBG" : "panel"}>
