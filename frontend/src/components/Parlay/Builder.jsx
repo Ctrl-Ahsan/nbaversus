@@ -38,7 +38,11 @@ const Builder = () => {
 
             // Validate line
             if (JSON.stringify(line.player) === "{}") {
-                toast.error("No player selected")
+                toast.error("No player selected.")
+                return
+            }
+            if (line.stat !== "dd" && line.stat !== "td" && line.value === "") {
+                toast.error("No value selected.")
                 return
             }
             for (let existingLine of lines) {
@@ -46,7 +50,7 @@ const Builder = () => {
                     line.player.personId === existingLine.player.personId &&
                     line.stat === existingLine.stat
                 ) {
-                    toast.error("Line has already been added")
+                    toast.error("Line has already been added.")
                     return
                 }
             }
@@ -82,11 +86,11 @@ const Builder = () => {
                     player: {},
                     stat: "pts",
                     operator: "over",
-                    value: 0.5,
+                    value: "",
                 })
             }
         } catch (error) {
-            toast.error("Error adding line")
+            toast.error("Error adding line.")
             console.log(error)
         }
 
