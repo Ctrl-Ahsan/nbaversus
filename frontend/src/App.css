@@ -595,6 +595,7 @@ button:active {
     top: 50%;
     left: 50%;
     translate: -50% -50%;
+    mask: radial-gradient(white, transparent 65%);
     -webkit-mask: radial-gradient(white, transparent 65%);
     z-index: -1;
     opacity: var(--active, 0);
@@ -634,6 +635,7 @@ button:active {
 .text {
     letter-spacing: 0.01ch;
     color: white !important;
+    background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
     transition: background var(--transition);
@@ -649,6 +651,7 @@ button:active {
     background: linear-gradient(to right, #9f9f9f 0, #fff 10%, #868686 20%);
     background-position: -200;
     background-size: 400px;
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: shine 3s infinite linear;
@@ -689,7 +692,8 @@ button:active {
 }
 
 .spinner {
-    margin-left: 8px;
+    margin-left: 4px;
+    margin-right: 8px;
     width: 0.65em;
     height: 0.65em;
     border: 2px solid white;
