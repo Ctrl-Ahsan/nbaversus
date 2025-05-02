@@ -18,7 +18,7 @@ const Builder = () => {
         player: {},
         stat: "pts",
         operator: "over",
-        value: 0.5,
+        value: "",
     })
 
     const onChange = (e) => {
@@ -224,6 +224,9 @@ const Builder = () => {
                                 value={line.value}
                                 onChange={onChange}
                             >
+                                <option value="" disabled hidden>
+                                    - -
+                                </option>
                                 {Array.from(
                                     { length: 100 },
                                     (_, i) => i + 0.5
