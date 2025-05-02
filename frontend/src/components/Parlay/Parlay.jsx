@@ -15,6 +15,7 @@ import {
     IoIosRemoveCircle,
 } from "react-icons/io"
 import Builder from "./Builder"
+import Analyzer from "./Analyzer"
 
 const Parlay = () => {
     const { lines, setLines, parlayScope, setParlayScope } =
@@ -389,7 +390,7 @@ const Parlay = () => {
 
     return (
         <main className="parlay-container">
-            <Builder />
+            <Analyzer />
 
             {lines.length === 0 && (
                 <div className="message-container">

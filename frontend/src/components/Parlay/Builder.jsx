@@ -162,7 +162,7 @@ const Builder = () => {
     }
 
     return (
-        <div className="builder">
+        <>
             <div className="items-wrapper">
                 <div className="item">
                     <div className="label">Player</div>
@@ -261,7 +261,7 @@ const Builder = () => {
                 )}
             </div>
             <div className="timestamp">Updated {roster.timestamp}</div>
-        </div>
+        </>
     )
 }
 
