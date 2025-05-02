@@ -2,6 +2,24 @@ const asyncHandler = require("express-async-handler")
 const Logs = require("../data/logs.json")
 const Line = require("../models/lineModel")
 
+const getLineUsage = asyncHandler(async (req, res) => {
+    const { uid, isPremium } = req.user
+
+    if (isPremium) {
+        return res.json({ linesRemaining: Infinity })
+    }
+
+    const count = await Line.countDocuments({
+        uid,
+        createdAt: { $gte: new Date(Date.now() - 24 * 60 * 60 * 1000) },
+    })
+
+    const limit = 25
+    const remaining = Math.max(0, limit - count)
+
+    res.json({ linesRemaining: remaining })
+})
+
 const analyzeLine = asyncHandler(async (req, res) => {
     try {
         const { personId, name, teamId, stat, operator, value } = req.body
@@ -137,5 +155,6 @@ const processGameLogs = (games, stat) => {
 }
 
 module.exports = {
+    getLineUsage,
     analyzeLine,
 }

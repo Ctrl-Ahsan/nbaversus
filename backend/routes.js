@@ -19,7 +19,7 @@ const {
 } = require("./controllers/userController")
 const { createCheckoutSession } = require("./controllers/paymentController")
 const { optionalAuth, protect, admin } = require("./middleware/authMiddleware")
-const { analyzeLine } = require("./controllers/lineController")
+const { analyzeLine, getLineUsage } = require("./controllers/lineController")
 
 // user routes
 router.post("/users/visit", optionalAuth, userVisit)
@@ -36,6 +36,7 @@ router.post("/stats/season", getSeasonStats)
 router.post("/stats/career", getCareerStats)
 
 // line routes
+router.get("/lines/usage", protect, getLineUsage)
 router.post("/lines/analyze", protect, analyzeLine)
 
 // question routes

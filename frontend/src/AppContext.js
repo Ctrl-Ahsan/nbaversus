@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect } from "react"
 import { auth } from "./firebase"
 import { onAuthStateChanged, getIdTokenResult } from "firebase/auth"
+import axios from "axios"
 
 export const AppContext = createContext(null)
 
@@ -8,6 +9,7 @@ export const AppContextProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [isPremium, setIsPremium] = useState(false)
     const [userLoading, setUserLoading] = useState(true)
+    const [linesRemaining, setLinesRemaining] = useState(0)
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
@@ -15,9 +17,20 @@ export const AppContextProvider = ({ children }) => {
                 setUser(firebaseUser)
                 const tokenResult = await getIdTokenResult(firebaseUser, true) // force refresh
                 setIsPremium(!!tokenResult.claims.premium)
+
+                if (!isPremium) {
+                    const token = tokenResult.token
+                    const res = await axios.get("/api/lines/usage", {
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                        },
+                    })
+                    setLinesRemaining(res.data)
+                }
             } else {
                 setUser(null)
                 setIsPremium(false)
+                setLinesRemaining(0)
             }
             setUserLoading(false)
         })
@@ -48,6 +61,8 @@ export const AppContextProvider = ({ children }) => {
         setIsPremium,
         userLoading,
         setUserLoading,
+        linesRemaining,
+        setLinesRemaining,
         player1,
         setPlayer1,
         player2,
