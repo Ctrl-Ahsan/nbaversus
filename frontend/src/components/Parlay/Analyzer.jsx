@@ -1,6 +1,7 @@
 import { useState } from "react"
 import Builder from "./Builder"
 import { PiStarFourFill } from "react-icons/pi"
+import Filters from "./Filters"
 
 const Analyzer = () => {
     const [tab, setTab] = useState("builder")
@@ -21,7 +22,7 @@ const Analyzer = () => {
                     <PiStarFourFill /> Filters
                 </div>
             </nav>
-            {tab === "filters" ? "" : <Builder />}
+            {tab === "filters" ? <Filters /> : <Builder />}
         </div>
     )
 }

@@ -63,10 +63,6 @@
             }
         }
 
-        .builder {
-            margin-top: 10em;
-        }
-
         .item {
             display: flex;
             flex-direction: column;
@@ -121,7 +117,7 @@
         button {
             width: 100%;
             margin-top: 1em;
-            padding: 10px;
+            padding: 0.75em 1em;
             border: none;
             border-radius: 50px;
             color: #fff;
@@ -164,6 +160,99 @@
             color: grey;
             font-size: 0.75em;
             margin-top: 10px;
+        }
+
+        .filters {
+            width: 80%;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .filters .item {
+            margin-bottom: 0.5em;
+            padding: 1em;
+            width: 100%;
+            background-color: #0000007a;
+            border-radius: 16px;
+            box-sizing: border-box;
+        }
+
+        .filters .field-label {
+            font-size: 1em;
+            color: #e0e0e0;
+            margin-bottom: 0.75em;
+            display: block;
+            font-family: "Roboto Condensed", Roboto, sans-serif;
+            font-weight: 700;
+        }
+
+        .filters .range input {
+            font-size: 1em;
+            width: 4.5em;
+            padding: 10px 15px;
+            margin: 0 10px;
+            border: 0.1px solid #2a2a2a;
+            border-radius: 5px;
+            background-color: #333;
+            color: #e0e0e0;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .filters .checkbox {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            justify-items: start;
+            gap: 0.5em 1em;
+            font-size: 1.05em;
+            color: #e0e0e0;
+            padding-top: 0.25em;
+            margin-left: 2em;
+        }
+
+        .filters input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-right: 6px;
+            accent-color: #e0e0e0;
+            vertical-align: middle;
+        }
+
+        .filters .range-captions {
+            display: flex;
+            justify-content: space-between;
+            padding: 4px 10px 0;
+            font-size: 0.75em;
+            color: #b0b0b0;
+            font-family: "Roboto Condensed", sans-serif;
+        }
+
+        .filters .checkbox label {
+            display: flex;
+            align-items: center;
+            min-width: 5.5em;
+        }
+
+        .submit {
+            display: flex;
+            justify-content: center;
+            gap: 0.75em;
+        }
+
+        .clear-btn {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            font-size: 0.8em;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .clear-btn:hover {
+            background-color: #555;
         }
     }
 
