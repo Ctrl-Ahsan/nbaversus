@@ -1,38 +1,34 @@
-import React, { useState } from "react"
+import "./Premium.css"
+import React, { useContext, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { auth } from "../../firebase"
 import { signOut } from "firebase/auth"
 import { toast } from "react-toastify"
-import "./Premium.css"
+import { auth } from "../../firebase"
+import { AppContext } from "../../AppContext"
 import { PiStarFourFill } from "react-icons/pi"
+import { getAuthToken } from "../../utils/getAuthToken"
 
 const Premium = () => {
     const [loading, setLoading] = useState(false)
+    const { user, isPremium } = useContext(AppContext)
     const navigate = useNavigate()
+
+    useEffect(() => {
+        if (isPremium) navigate("/account")
+    })
 
     const handleSubscribe = async () => {
         try {
             setLoading(true)
-            const currentUser = auth.currentUser
 
-            if (!currentUser) {
+            if (!user) {
                 toast.warn("Sign in to upgrade your account.")
                 setLoading(false)
                 navigate("/account")
                 return
             }
 
-            let token
-            try {
-                token = await currentUser.getIdToken(true) // force refresh
-            } catch (err) {
-                console.error("Token refresh failed:", err.message)
-                await signOut(auth)
-                localStorage.clear()
-                setLoading(false)
-                return
-            }
-
+            const token = getAuthToken(user, navigate)
             const res = await fetch("/api/premium/checkout", {
                 method: "POST",
                 headers: {
