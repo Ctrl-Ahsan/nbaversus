@@ -14,12 +14,49 @@ import {
     IoIosAddCircle,
     IoIosRemoveCircle,
 } from "react-icons/io"
-import Builder from "./Builder"
 import Analyzer from "./Analyzer"
 
 const Parlay = () => {
-    const { lines, setLines, parlayScope, setParlayScope } =
+    const { lines, setLines, parlayScope, setParlayScope, filters } =
         useContext(AppContext)
+    const {
+        minutesMin,
+        minutesMax,
+        home,
+        away,
+        win,
+        loss,
+        excludeBlowoutWins,
+        excludeBlowoutLosses,
+    } = filters
+
+    const applyFilters = (logs, filters) => {
+        return logs.filter((log) => {
+            // Minutes Played
+            if (
+                (minutesMin !== null && log.minutes < minutesMin) ||
+                (minutesMax !== null && log.minutes > minutesMax)
+            )
+                return false
+
+            // Location (Home/Away)
+            if ((log.isHome && !home) || (!log.isHome && !away)) return false
+
+            // Outcome (Win/Loss)
+            if ((log.result === "W" && !win) || (log.result === "L" && !loss))
+                return false
+
+            // Blowouts
+            const scoreDiff = Math.abs(log.teamScore - log.opponentScore)
+            if (
+                (excludeBlowoutWins && log.result === "W" && scoreDiff >= 20) ||
+                (excludeBlowoutLosses && log.result === "L" && scoreDiff >= 20)
+            )
+                return false
+
+            return true
+        })
+    }
 
     const Line = (props) => {
         let hit = 0
@@ -34,7 +71,8 @@ const Parlay = () => {
                 : total
 
         // Determine the subset of logs based on timeSpan
-        const relevantLogs = props.line.logs.slice(0, timeSpan)
+        let relevantLogs = props.line.logs.slice(0, timeSpan)
+        relevantLogs = applyFilters(relevantLogs)
 
         // Determine if the stat is categorical
         const isCategorical =

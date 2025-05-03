@@ -79,9 +79,19 @@ const processGameLogs = (games, stat) => {
     const logs = []
 
     for (const game of games) {
-        const [id, date, matchup] = [game[7], game[8], game[9]]
-        let value = null
+        const [id, date, matchup, result, minutes] = [
+            game[7], // GAME_ID
+            game[8], // GAME_DATE
+            game[9], // MATCHUP
+            game[10], // WL
+            game[11], // MIN
+        ]
 
+        const teamScore = game[31] // PTS
+        const opponentScore = game[32] // Opponent PTS
+        const isHome = matchup.includes("vs.")
+
+        let value = null
         switch (stat) {
             case "pts":
                 value = game[31]
@@ -119,7 +129,7 @@ const processGameLogs = (games, stat) => {
             case "stl+blk":
                 value = game[26] + game[27]
                 break
-            case "dd":
+            case "dd": {
                 const doubleStats = [
                     game[31],
                     game[23],
@@ -130,7 +140,8 @@ const processGameLogs = (games, stat) => {
                 doubleStats.sort((a, b) => b - a)
                 value = doubleStats[0] >= 10 && doubleStats[1] >= 10
                 break
-            case "td":
+            }
+            case "td": {
                 const tripleStats = [
                     game[31],
                     game[23],
@@ -144,11 +155,22 @@ const processGameLogs = (games, stat) => {
                     tripleStats[1] >= 10 &&
                     tripleStats[2] >= 10
                 break
+            }
             default:
                 value = null
         }
 
-        logs.push({ id, date, matchup, stat: value })
+        logs.push({
+            id,
+            date,
+            matchup,
+            stat: value,
+            minutes,
+            result,
+            isHome,
+            teamScore,
+            opponentScore,
+        })
     }
 
     return logs
