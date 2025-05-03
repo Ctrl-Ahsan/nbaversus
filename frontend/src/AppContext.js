@@ -38,6 +38,17 @@ export const AppContextProvider = ({ children }) => {
         return () => unsubscribe() // clean up listener
     }, [])
 
+    const [filters, setFilters] = useState({
+        minutesMin: 0,
+        minutesMax: 60,
+        home: true,
+        away: true,
+        win: true,
+        loss: true,
+        exludeBlowoutWins: false,
+        exludeBlowoutLosses: false,
+    })
+
     const [player1, setPlayer1] = useState({})
     const [player2, setPlayer2] = useState({})
     const [p1Wins, setP1Wins] = useState(false)
@@ -63,6 +74,8 @@ export const AppContextProvider = ({ children }) => {
         setUserLoading,
         linesRemaining,
         setLinesRemaining,
+        filters,
+        setFilters,
         player1,
         setPlayer1,
         player2,

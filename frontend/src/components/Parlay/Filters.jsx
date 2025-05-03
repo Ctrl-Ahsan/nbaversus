@@ -4,7 +4,21 @@ import { FaFilter } from "react-icons/fa"
 import { IoIosRefresh } from "react-icons/io"
 
 const Filters = () => {
-    const { isPremium } = useContext(AppContext)
+    const { isPremium, filters, setFilters } = useContext(AppContext)
+
+    const onChange = (e) => {
+        const { name, type, checked, value } = e.target
+
+        setFilters((prevState) => ({
+            ...prevState,
+            [name]:
+                type === "checkbox"
+                    ? checked
+                    : value === ""
+                    ? null
+                    : parseInt(value),
+        }))
+    }
 
     return (
         <>
@@ -13,17 +27,21 @@ const Filters = () => {
                     <label className="field-label">Minutes Played</label>
                     <div className="range">
                         <input
-                            id="minutes-min"
+                            name="minutesMin"
+                            value={filters.minutesMin}
                             type="number"
                             min="0"
-                            max="60"
+                            max={filters.minutesMax}
+                            onChange={onChange}
                         />
                         <span>to</span>
                         <input
-                            id="minutes-max"
+                            name="minutesMax"
+                            value={filters.minutesMax}
                             type="number"
-                            min="0"
+                            min={filters.minutesMin}
                             max="60"
+                            onChange={onChange}
                         />
                     </div>
                 </div>
@@ -33,16 +51,18 @@ const Filters = () => {
                         <label>
                             <input
                                 type="checkbox"
-                                name="location"
-                                value="home"
+                                name="home"
+                                checked={filters.home}
+                                onChange={onChange}
                             />
                             Home
                         </label>
                         <label>
                             <input
                                 type="checkbox"
-                                name="location"
-                                value="away"
+                                name="away"
+                                checked={filters.away}
+                                onChange={onChange}
                             />
                             Away
                         </label>
@@ -52,14 +72,20 @@ const Filters = () => {
                     <label className="field-label">Outcome</label>
                     <div className="checkbox">
                         <label>
-                            <input type="checkbox" name="outcome" value="win" />
+                            <input
+                                type="checkbox"
+                                name="win"
+                                checked={filters.win}
+                                onChange={onChange}
+                            />
                             Win
                         </label>
                         <label>
                             <input
                                 type="checkbox"
-                                name="outcome"
-                                value="loss"
+                                name="loss"
+                                checked={filters.loss}
+                                onChange={onChange}
                             />
                             Loss
                         </label>
@@ -71,27 +97,49 @@ const Filters = () => {
                     </label>
                     <div className="checkbox">
                         <label>
-                            <input type="checkbox" id="exclude-blowouts-win" />
+                            <input
+                                type="checkbox"
+                                name="excludeBlowoutWins"
+                                checked={filters.excludeBlowoutWins}
+                                onChange={onChange}
+                            />
                             Wins
                         </label>
                         <label>
-                            <input type="checkbox" id="exclude-blowouts-loss" />
+                            <input
+                                type="checkbox"
+                                name="excludeBlowoutLosses"
+                                checked={filters.excludeBlowoutLosses}
+                                onChange={onChange}
+                            />
                             Losses
                         </label>
                     </div>
                 </div>
             </div>
-
-            {/* Submit Buttons */}
             <div className="submit">
                 {isPremium ? (
                     <>
-                        <button className="clear-btn">
+                        <button
+                            className="clear-btn"
+                            onClick={() =>
+                                setFilters({
+                                    minutesMin: 0,
+                                    minutesMax: 60,
+                                    home: true,
+                                    away: true,
+                                    win: true,
+                                    loss: true,
+                                    exludeBlowoutWins: false,
+                                    exludeBlowoutLosses: false,
+                                })
+                            }
+                        >
                             <div className="button-content">
                                 <div className="content">
                                     <IoIosRefresh />
                                 </div>
-                                <div>Clear</div>
+                                <div>Reset</div>
                             </div>
                         </button>
                         <button className="green">
