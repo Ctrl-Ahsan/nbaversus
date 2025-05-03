@@ -28,7 +28,7 @@ const Premium = () => {
                 return
             }
 
-            const token = getAuthToken(user, navigate)
+            const token = await getAuthToken(user, navigate)
             const res = await fetch("/api/premium/checkout", {
                 method: "POST",
                 headers: {
