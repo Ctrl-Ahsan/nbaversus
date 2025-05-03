@@ -1,16 +1,18 @@
 import "./Contact.css"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { toast } from "react-toastify"
 import { BiSupport } from "react-icons/bi"
 import emailjs from "emailjs-com"
 import Spinner from "../Spinner/Spinner"
+import { AppContext } from "../../AppContext"
 
 const Contact = () => {
     const [submit, setSubmit] = useState(false)
+    const { user } = useContext(AppContext)
     const Form = () => {
         const [formData, setFormData] = useState({
-            name: "",
-            email: "",
+            name: user?.displayName || "",
+            email: user?.email || "",
             message: "",
         })
         const { name, email, message } = formData
@@ -40,7 +42,8 @@ const Contact = () => {
                     },
                     (error) => {
                         setSubmit(false)
-                        toast.error("Oops, something went wrong")
+                        toast.error("Oops, something went wrong.")
+                        console.log(error)
                     }
                 )
         }
