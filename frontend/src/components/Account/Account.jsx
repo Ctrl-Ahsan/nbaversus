@@ -1,6 +1,6 @@
 import "./Account.css"
 import { useContext, useState } from "react"
-import { Routes, Route, Link, useLocation } from "react-router-dom"
+import { Routes, Route, Link, useLocation, Navigate } from "react-router-dom"
 import axios from "axios"
 import { toast } from "react-toastify"
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth"
@@ -138,6 +138,10 @@ const Account = () => {
                         element={<Success setLoading={setLoading} />}
                     />
                     <Route path="support" element={<Contact />} />
+                    <Route
+                        path="*"
+                        element={<Navigate to="/account" replace />}
+                    />
                 </Routes>
             </div>
         </main>
