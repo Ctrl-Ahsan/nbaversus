@@ -1,5 +1,5 @@
 import "./App.css"
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import { BrowserRouter as Router } from "react-router-dom"
 import { ToastContainer, Flip } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 import NBAVersus from "./components/NBAVersus"
