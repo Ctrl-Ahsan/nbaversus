@@ -3,8 +3,7 @@ import { useState } from "react"
 import { toast } from "react-toastify"
 import { FaSignInAlt } from "react-icons/fa"
 import axios from "axios"
-import Spinner from "../Spinner/Spinner"
-import { signInWithEmailAndPassword } from "firebase/auth"
+import { signInWithEmailAndPassword, signOut } from "firebase/auth"
 import { auth } from "../../firebase"
 
 const Login = (props) => {
@@ -41,6 +40,7 @@ const Login = (props) => {
 
                 if (!user.emailVerified) {
                     toast.warn("Please verify your email address to continue.")
+                    return await signOut(auth)
                 } else {
                     const token = await user.getIdToken()
 
@@ -109,13 +109,21 @@ const Login = (props) => {
                     />
                 </div>
                 <div className="form-item">
-                    {loading ? (
-                        <div className="spinner-container">
-                            <Spinner size="small" />
-                        </div>
-                    ) : (
-                        <button type="submit">Sign In</button>
-                    )}
+                    <button type="submit">
+                        <span className="text">
+                            {loading ? (
+                                <>
+                                    Signing In
+                                    <span
+                                        className="spinner"
+                                        style={{ marginLeft: "0.5em" }}
+                                    />
+                                </>
+                            ) : (
+                                "Sign In"
+                            )}
+                        </span>
+                    </button>
                 </div>
                 <div className="form-item">
                     <div className="subtitle">

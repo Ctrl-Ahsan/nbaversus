@@ -13,12 +13,13 @@ export const AppContextProvider = ({ children }) => {
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
-            if (firebaseUser) {
+            if (firebaseUser && firebaseUser.emailVerified) {
                 setUser(firebaseUser)
                 const tokenResult = await getIdTokenResult(firebaseUser, true) // force refresh
-                setIsPremium(!!tokenResult.claims.premium)
+                const premiumClaim = !!tokenResult.claims.premium
+                setIsPremium(premiumClaim)
 
-                if (!isPremium) {
+                if (!premiumClaim) {
                     const token = tokenResult.token
                     const res = await axios.get("/api/lines/usage", {
                         headers: {
