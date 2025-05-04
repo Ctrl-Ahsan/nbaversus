@@ -67,6 +67,7 @@
 
     .form {
         width: 70%;
+        max-width: 350px;
     }
 
     .form-title {
