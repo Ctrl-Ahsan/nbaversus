@@ -116,7 +116,10 @@ const Premium = () => {
                         {loading ? (
                             <>
                                 Activating
-                                <span className="spinner" />
+                                <span
+                                    className="spinner"
+                                    style={{ marginLeft: "0.5em" }}
+                                />
                             </>
                         ) : (
                             "Try 7 days for $0"

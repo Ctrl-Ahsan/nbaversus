@@ -26,11 +26,11 @@
 }
 
 .premium-card {
-    width: 70%;
-    padding: 1em;
+    width: 80%;
+    padding: 1.5em;
     border-radius: 5px;
     @media screen and (max-width: 540px) {
-        padding: 1em 0em;
+        padding: 1.5em 0em;
         width: 85%;
     }
 }
@@ -60,6 +60,11 @@
 .premium-pricing {
     font-size: 0.95em;
     margin-bottom: 1.5em;
+}
+
+.text {
+    display: flex;
+    align-items: center;
 }
 
 .premium-note {
