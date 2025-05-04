@@ -2,12 +2,12 @@ import "./Contact.css"
 import { useContext, useState } from "react"
 import { toast } from "react-toastify"
 import { BiSupport } from "react-icons/bi"
+import { IoIosMail } from "react-icons/io"
 import emailjs from "emailjs-com"
-import Spinner from "../Spinner/Spinner"
 import { AppContext } from "../../AppContext"
 
 const Contact = () => {
-    const [submit, setSubmit] = useState(false)
+    const [loading, setLoading] = useState(false)
     const { user } = useContext(AppContext)
     const Form = () => {
         const [formData, setFormData] = useState({
@@ -26,7 +26,7 @@ const Contact = () => {
 
         const onSubmit = (e) => {
             e.preventDefault()
-            setSubmit(true)
+            setLoading(true)
             emailjs
                 .sendForm(
                     "service_o2hkgsn",
@@ -36,12 +36,12 @@ const Contact = () => {
                 )
                 .then(
                     (result) => {
-                        setSubmit(false)
+                        setLoading(false)
                         toast.success("Your message has been sent!")
                         setFormData({ name: "", email: "", message: "" })
                     },
                     (error) => {
-                        setSubmit(false)
+                        setLoading(false)
                         toast.error("Oops, something went wrong.")
                         console.log(error)
                     }
@@ -83,15 +83,39 @@ const Contact = () => {
                     />
                 </div>
                 <div className="form-item">
-                    {submit ? (
-                        <div className="spinner-container">
-                            <Spinner size="small" />
-                        </div>
-                    ) : (
-                        <button type="submit" className="blue">
-                            Send
-                        </button>
-                    )}
+                    <button
+                        style={{
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                        }}
+                        type="submit"
+                        className="blue"
+                        disabled={loading}
+                    >
+                        <span className="text">
+                            {loading ? (
+                                <>
+                                    Sending
+                                    <span
+                                        className="spinner"
+                                        style={{ marginLeft: "0.5em" }}
+                                    />
+                                </>
+                            ) : (
+                                "Send"
+                            )}
+                        </span>
+                    </button>
+                </div>
+                <div class="divider">
+                    <span>OR</span>
+                </div>
+                <div className="contact-email">
+                    <IoIosMail />
+                    <a href="mailto:support@nbaversus.com">
+                        support@nbaversus.com
+                    </a>
                 </div>
             </form>
         )
