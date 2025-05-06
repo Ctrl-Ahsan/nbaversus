@@ -18,7 +18,7 @@ import { AppContext } from "../../AppContext"
 const Account = () => {
     const [toggleRegister, setToggleRegister] = useState(false)
     const [loading, setLoading] = useState(false)
-    const { user, isPremium } = useContext(AppContext)
+    const { user, isPremium, userLoading } = useContext(AppContext)
 
     const location = useLocation()
     const currentPath = location.pathname
@@ -76,74 +76,78 @@ const Account = () => {
 
     return (
         <main className="account-container">
-            <div className="account-panel">
-                {!loading && (
-                    <nav className="nav">
-                        <Link
-                            to="/account"
-                            className={`heading ${
-                                currentPath === "/account" ? "active" : ""
-                            }`}
-                        >
-                            <div className="headingText">Account</div>
-                        </Link>
-                        {!isPremium && (
+            {userLoading ? (
+                <div className="spinner" style={{ fontSize: "5em" }}></div>
+            ) : (
+                <div className="account-panel">
+                    {!loading && (
+                        <nav className="nav">
                             <Link
-                                to="/account/premium"
+                                to="/account"
                                 className={`heading ${
-                                    currentPath === "/account/premium"
+                                    currentPath === "/account" ? "active" : ""
+                                }`}
+                            >
+                                <div className="headingText">Account</div>
+                            </Link>
+                            {!isPremium && (
+                                <Link
+                                    to="/account/premium"
+                                    className={`heading ${
+                                        currentPath === "/account/premium"
+                                            ? "active"
+                                            : ""
+                                    }`}
+                                >
+                                    <div className="headingText">
+                                        <PiStarFourFill /> Premium
+                                    </div>
+                                </Link>
+                            )}
+                            <Link
+                                to="/account/support"
+                                className={`heading ${
+                                    currentPath === "/account/support"
                                         ? "active"
                                         : ""
                                 }`}
                             >
-                                <div className="headingText">
-                                    <PiStarFourFill /> Premium
-                                </div>
+                                <div className="headingText">Support</div>
                             </Link>
-                        )}
-                        <Link
-                            to="/account/support"
-                            className={`heading ${
-                                currentPath === "/account/support"
-                                    ? "active"
-                                    : ""
-                            }`}
-                        >
-                            <div className="headingText">Support</div>
-                        </Link>
-                    </nav>
-                )}
-                <Routes>
-                    <Route
-                        index
-                        element={
-                            user ? (
-                                <Profile />
-                            ) : toggleRegister ? (
-                                <Register
-                                    setToggleRegister={setToggleRegister}
-                                    handleGoogleSignIn={handleGoogleSignIn}
-                                />
-                            ) : (
-                                <Login
-                                    setToggleRegister={setToggleRegister}
-                                    handleGoogleSignIn={handleGoogleSignIn}
-                                />
-                            )
-                        }
-                    />
-                    <Route path="premium" element={<Premium />} />
-                    <Route
-                        path="success"
-                        element={<Success setLoading={setLoading} />}
-                    />
-                    <Route path="support" element={<Contact />} />
-                    <Route
-                        path="*"
-                        element={<Navigate to="/account" replace />}
-                    />
-                </Routes>
-            </div>
+                        </nav>
+                    )}
+                    <Routes>
+                        <Route
+                            index
+                            element={
+                                user ? (
+                                    <Profile />
+                                ) : toggleRegister ? (
+                                    <Register
+                                        setToggleRegister={setToggleRegister}
+                                        handleGoogleSignIn={handleGoogleSignIn}
+                                    />
+                                ) : (
+                                    <Login
+                                        setToggleRegister={setToggleRegister}
+                                        handleGoogleSignIn={handleGoogleSignIn}
+                                    />
+                                )
+                            }
+                        />
+                        <Route path="premium" element={<Premium />} />
+                        <Route
+                            path="success"
+                            element={<Success setLoading={setLoading} />}
+                        />
+                        <Route path="support" element={<Contact />} />
+                        <Route
+                            path="*"
+                            element={<Navigate to="/account" replace />}
+                        />
+                    </Routes>
+                </div>
+            )}
         </main>
     )
 }
