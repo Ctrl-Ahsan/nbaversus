@@ -7,11 +7,12 @@ import { signOut } from "firebase/auth"
 import { auth } from "../../firebase"
 
 import { FaSignOutAlt, FaUser } from "react-icons/fa"
+import { PiStarFourFill } from "react-icons/pi"
 import { getAuthToken } from "../../utils/getAuthToken"
 import { AppContext } from "../../AppContext"
 
 const Profile = () => {
-    const { user } = useContext(AppContext)
+    const { user, isPremium } = useContext(AppContext)
     const navigate = useNavigate()
     const [favoritePropPlayer, setFavoritePropPlayer] = useState()
     const [favoritePropId, setFavoritePropId] = useState()
@@ -27,6 +28,7 @@ const Profile = () => {
     const [favoriteTeamURL, setFavoriteTeamURL] = useState()
     const [favoriteTeamVotes, setFavoriteTeamVotes] = useState()
     const [loading, setLoading] = useState(false)
+    const [stripeLoading, setStripeLoading] = useState(false)
 
     useEffect(() => {
         setLoading(true)
@@ -87,11 +89,57 @@ const Profile = () => {
         localStorage.removeItem("lastUpdated")
     }
 
+    const handleManage = async () => {
+        if (stripeLoading) return
+        try {
+            setStripeLoading(true)
+
+            if (!user) {
+                toast.warn("Sign in to manage your account.")
+                setStripeLoading(false)
+                return
+            }
+
+            const token = await getAuthToken(user, navigate)
+            const res = await fetch("/api/premium/manage", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+            })
+
+            const data = await res.json()
+
+            if (res.ok) {
+                window.location.href = data.url
+            } else {
+                throw new Error(data.error || "Request failed")
+            }
+        } catch (err) {
+            console.error("Checkout error:", err.message)
+            toast.error(
+                err.message || "Something went wrong. Please try again."
+            )
+            setStripeLoading(false)
+        }
+    }
+
     return (
         <section className="profile-container">
             <div className="me">
                 <div className="title">
-                    <FaUser /> {user.displayName}
+                    <div className="name">
+                        {isPremium ? (
+                            <PiStarFourFill
+                                size={"1.2em"}
+                                style={{ color: "#facc15" }}
+                            />
+                        ) : (
+                            <FaUser />
+                        )}{" "}
+                        {user.displayName}
+                    </div>
                     <div className="votes">{!loading && user.email}</div>
                 </div>
                 <div className="favorites">
@@ -123,35 +171,50 @@ const Profile = () => {
                             </>
                         )}
                     </div>
-                    <div className={loading ? "panel shimmerBG" : "panel"}>
-                        {!loading && (
+                    <div
+                        className={
+                            loading || stripeLoading
+                                ? "panel shimmerBG"
+                                : "panel"
+                        }
+                    >
+                        {!loading && !stripeLoading && (
                             <>
-                                <div className="image">
-                                    {goat && (
-                                        <img
-                                            src={`https://cdn.nba.com/headshots/nba/latest/1040x760/${
-                                                goat === "LeBron"
-                                                    ? 2544
-                                                    : goat === "Jordan"
-                                                    ? 893
-                                                    : 0
-                                            }.png`}
-                                            alt="goat"
-                                            className="playerImg"
-                                        />
-                                    )}
-                                </div>
-                                <div>
-                                    <div className="profile-heading">GOAT</div>
-                                    <div>{goat}</div>
+                                {stripeLoading ? (
                                     <div
-                                        className="profile-heading"
-                                        style={{ marginTop: "0.5em" }}
-                                    >
-                                        Votes
-                                    </div>
-                                    {goatVotes}
-                                </div>
+                                        className="spinner"
+                                        style={{ fontSize: "2em" }}
+                                    ></div>
+                                ) : (
+                                    <>
+                                        <div className="image">
+                                            <PiStarFourFill
+                                                size={"3em"}
+                                                style={{ color: "#facc15" }}
+                                            />
+                                        </div>
+                                        <div>
+                                            <div className="profile-heading">
+                                                Premium
+                                            </div>
+                                            <div>
+                                                <a
+                                                    onClick={handleManage}
+                                                    className="link"
+                                                >
+                                                    Manage
+                                                </a>
+                                            </div>
+                                            <div
+                                                className="profile-heading"
+                                                style={{ marginTop: "0.5em" }}
+                                            >
+                                                Next Billing Date
+                                            </div>
+                                            {goatVotes}
+                                        </div>
+                                    </>
+                                )}
                             </>
                         )}
                     </div>
@@ -187,6 +250,7 @@ const Profile = () => {
                             </>
                         )}
                     </div>
+
                     <div className={loading ? "panel shimmerBG" : "panel"}>
                         {!loading && (
                             <>

@@ -17,7 +17,10 @@ const {
     loginUser,
     getMe,
 } = require("./controllers/userController")
-const { createCheckoutSession } = require("./controllers/paymentController")
+const {
+    createCheckoutSession,
+    createManageSession,
+} = require("./controllers/paymentController")
 const { optionalAuth, protect, admin } = require("./middleware/authMiddleware")
 const { analyzeLine, getLineUsage } = require("./controllers/lineController")
 
@@ -46,5 +49,6 @@ router.post("/questions/daily", optionalAuth, answerDailyQuestion)
 
 // payment routes
 router.post("/premium/checkout", protect, createCheckoutSession)
+router.post("/premium/manage", protect, createManageSession)
 
 module.exports = router

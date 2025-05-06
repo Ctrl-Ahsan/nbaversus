@@ -46,6 +46,13 @@
             font-size: 0.7em;
         }
 
+        .name {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+        }
+
         .votes {
             margin-top: 0.25em;
             height: 1em;
@@ -60,6 +67,19 @@
         font-size: 0.7em;
         font-family: Roboto Condensed, Roboto, Arial;
         margin-top: 1em;
+    }
+
+    .link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #3b82f6;
+        font-weight: 500;
+        cursor: pointer;
+        transition: color 0.2s ease;
+    }
+    .link:hover {
+        color: #2563eb;
     }
 
     .streak {

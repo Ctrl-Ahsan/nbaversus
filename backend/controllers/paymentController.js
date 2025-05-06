@@ -106,7 +106,32 @@ const upgradeUser = asyncHandler(async (req, res) => {
     res.status(200).send("Webhook received.")
 })
 
+const createManageSession = asyncHandler(async (req, res) => {
+    try {
+        const user = req.user
+
+        if (!user || !user.stripeCustomerId) {
+            return res
+                .status(400)
+                .json({ error: "Stripe customer not found for user." })
+        }
+
+        const session = await stripe.billingPortal.sessions.create({
+            customer: user.stripeCustomerId,
+            return_url: `${CLIENT_URL}/account`,
+        })
+
+        res.json({ url: session.url })
+    } catch (err) {
+        console.error("Stripe Manage Subscription Error:", err)
+        res.status(500).json({
+            error: "Failed to create billing portal session.",
+        })
+    }
+})
+
 module.exports = {
     createCheckoutSession,
     upgradeUser,
+    createManageSession,
 }
