@@ -95,7 +95,7 @@
             font-family: inherit;
             padding: 10px 15px;
             border: 0.1px solid #2a2a2a;
-            border-radius: 5px;
+            border-radius: 10px;
             background-color: #333333;
             color: white;
             box-sizing: border-box;
@@ -180,7 +180,7 @@
     margin-top: 5px;
     padding: 10px;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     background: #000;
     color: #fff;
     font-size: 1em;

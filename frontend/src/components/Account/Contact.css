@@ -4,7 +4,7 @@
     align-items: center;
     background-color: #0000007a;
     border: solid 1px #21212179;
-    border-radius: 5px;
+    border-radius: 20px;
     padding: 1.5em 0;
 
     textarea {
@@ -14,7 +14,7 @@
         font-family: inherit;
         padding: 1em;
         border: 0.1px solid #2a2a2a;
-        border-radius: 5px;
+        border-radius: 10px;
         background-color: #333333;
         color: white;
         resize: none;
