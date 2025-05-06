@@ -1,13 +1,14 @@
 const firebaseAdmin = require("../firebaseAdmin")
 const geoip = require("geoip-lite")
-const asycHandler = require("express-async-handler")
+const asyncHandler = require("express-async-handler")
 const User = require("../models/userModel")
 const Vote = require("../models/voteModel")
+const Line = require("../models/lineModel")
 const Players = require("../data/roster.json")
 
 let usersVisited = []
 
-const userVisit = asycHandler(async (req, res) => {
+const userVisit = asyncHandler(async (req, res) => {
     try {
         // log visit once per day / dyno reset
         if (!usersVisited.includes(req.ip)) {
@@ -31,7 +32,7 @@ const userVisit = asycHandler(async (req, res) => {
     }
 })
 
-const registerUser = asycHandler(async (req, res) => {
+const registerUser = asyncHandler(async (req, res) => {
     try {
         const authHeader = req.headers.authorization || ""
         const token = authHeader.split("Bearer ")[1]
@@ -70,7 +71,7 @@ const registerUser = asycHandler(async (req, res) => {
     }
 })
 
-const loginUser = asycHandler(async (req, res) => {
+const loginUser = asyncHandler(async (req, res) => {
     try {
         const authHeader = req.headers.authorization || ""
         const token = authHeader.split("Bearer ")[1]
@@ -98,7 +99,7 @@ const loginUser = asycHandler(async (req, res) => {
     }
 })
 
-const getMe = asycHandler(async (req, res) => {
+const getMe = asyncHandler(async (req, res) => {
     console.log(
         `[ACCOUNT] ${req.user.name} requested their profile | ${req.ip}`.green
     )
@@ -114,28 +115,25 @@ const getMe = asycHandler(async (req, res) => {
         if (req.user.dailyAnswers.length > 0) {
             let lebronVotes = 0
             let jordanVotes = 0
-            req.user.dailyAnswers.forEach((dailyAnswersObject) => {
+
+            for (const dailyAnswersObject of req.user.dailyAnswers) {
                 if (dailyAnswersObject.answers) {
-                    dailyAnswersObject.answers.forEach((answer) => {
+                    for (const answer of dailyAnswersObject.answers) {
                         if (answer.questionIndex === 0) {
-                            if (answer.winner === "p1") {
-                                lebronVotes += 1
-                            } else if (answer.winner === "p2") {
-                                jordanVotes += 1
-                            }
+                            if (answer.winner === "p1") lebronVotes++
+                            else if (answer.winner === "p2") jordanVotes++
                         }
-                        // Count user daily answers
-                        response.voteCount += 1
-                    })
+                        response.voteCount++
+                    }
                 }
-            })
+            }
+
             response.goat = lebronVotes > jordanVotes ? "LeBron" : "Jordan"
-            response.goatVotes =
-                lebronVotes > jordanVotes ? lebronVotes : jordanVotes
+            response.goatVotes = Math.max(lebronVotes, jordanVotes)
         }
 
         // Count user votes
-        const voteIDs = req.user.votes
+        const voteIDs = req.user.votes || []
         response.voteCount += voteIDs.length
 
         if (voteIDs.length > 0) {
@@ -175,11 +173,7 @@ const getMe = asycHandler(async (req, res) => {
             response.favoritePlayerID = favoritePlayerId
             response.favoritePlayerVotes = winnerArray[0][1]
             response.favoritePlayer = playerMap.has(favoritePlayerId)
-                ? playerMap
-                      .get(favoritePlayerId)
-                      .split(" ")
-                      .splice(1, 2)
-                      .join(" ")
+                ? playerMap.get(favoritePlayerId).split(" ").slice(1).join(" ")
                 : "Unknown Player"
 
             // Use a mapping object for team names
@@ -221,6 +215,38 @@ const getMe = asycHandler(async (req, res) => {
             response.favoriteTeamID = favoriteTeamId
             response.favoriteTeamVotes = teamArray[0][1]
             response.favoriteTeam = teamMap[favoriteTeamId] || "Unknown Team"
+        }
+
+        // Most Analyzed Prop
+        const userLines = await Line.find({ uid: req.user.uid })
+
+        const propFrequency = {}
+
+        for (const line of userLines) {
+            if (line.personId && line.stat && line.name) {
+                const key = `${line.personId}-${line.stat}`
+                propFrequency[key] = (propFrequency[key] || 0) + 1
+            }
+        }
+        console.log(propFrequency)
+
+        const mostFrequent = Object.entries(propFrequency).sort(
+            (a, b) => b[1] - a[1]
+        )[0]
+
+        if (mostFrequent) {
+            const [key] = mostFrequent
+            const [personId, stat] = key.split("-")
+
+            const topLine = userLines.find(
+                (line) =>
+                    line.personId.toString() === personId && line.stat === stat
+            )
+
+            response.favoritePropId = personId
+            response.favoritePropStat = stat
+            response.favoritePropPlayer =
+                topLine?.name?.split(" ").slice(1).join(" ") || "Unknown"
         }
 
         res.status(200).json(response)

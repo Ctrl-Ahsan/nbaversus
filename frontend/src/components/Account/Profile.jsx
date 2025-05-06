@@ -13,6 +13,9 @@ import { AppContext } from "../../AppContext"
 const Profile = () => {
     const { user } = useContext(AppContext)
     const navigate = useNavigate()
+    const [favoritePropPlayer, setFavoritePropPlayer] = useState()
+    const [favoritePropId, setFavoritePropId] = useState()
+    const [favoritePropStat, setFavoritePropStat] = useState()
     const [goat, setGoat] = useState()
     const [goatVotes, setGoatVotes] = useState()
     const [streak, setStreak] = useState()
@@ -36,6 +39,13 @@ const Profile = () => {
                 })
                 .then((response) => {
                     if (response.data) {
+                        if (response.data.favoritePropPlayer) {
+                            setFavoritePropPlayer(
+                                response.data.favoritePropPlayer
+                            )
+                            setFavoritePropId(response.data.favoritePropId)
+                            setFavoritePropStat(response.data.favoritePropStat)
+                        }
                         if (response.data.goatVotes) {
                             setGoat(response.data.goat)
                             setGoatVotes(response.data.goatVotes)
@@ -85,6 +95,66 @@ const Profile = () => {
                     <div className="votes">{!loading && user.email}</div>
                 </div>
                 <div className="favorites">
+                    <div className={loading ? "panel shimmerBG" : "panel"}>
+                        {!loading && (
+                            <>
+                                <div className="image">
+                                    {favoritePropId && (
+                                        <img
+                                            src={`https://cdn.nba.com/headshots/nba/latest/1040x760/${favoritePropId}.png`}
+                                            alt="goat"
+                                            className="playerImg"
+                                        />
+                                    )}
+                                </div>
+                                <div>
+                                    <div className="profile-heading">
+                                        Favorite Prop
+                                    </div>
+                                    <div>{favoritePropPlayer}</div>
+                                    <div
+                                        className="profile-heading"
+                                        style={{ marginTop: "0.5em" }}
+                                    >
+                                        Stat
+                                    </div>
+                                    {favoritePropStat?.toUpperCase()}
+                                </div>
+                            </>
+                        )}
+                    </div>
+                    <div className={loading ? "panel shimmerBG" : "panel"}>
+                        {!loading && (
+                            <>
+                                <div className="image">
+                                    {goat && (
+                                        <img
+                                            src={`https://cdn.nba.com/headshots/nba/latest/1040x760/${
+                                                goat === "LeBron"
+                                                    ? 2544
+                                                    : goat === "Jordan"
+                                                    ? 893
+                                                    : 0
+                                            }.png`}
+                                            alt="goat"
+                                            className="playerImg"
+                                        />
+                                    )}
+                                </div>
+                                <div>
+                                    <div className="profile-heading">GOAT</div>
+                                    <div>{goat}</div>
+                                    <div
+                                        className="profile-heading"
+                                        style={{ marginTop: "0.5em" }}
+                                    >
+                                        Votes
+                                    </div>
+                                    {goatVotes}
+                                </div>
+                            </>
+                        )}
+                    </div>
                     <div className={loading ? "panel shimmerBG" : "panel"}>
                         {!loading && (
                             <>
