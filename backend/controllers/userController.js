@@ -1,6 +1,8 @@
 const firebaseAdmin = require("../firebaseAdmin")
 const geoip = require("geoip-lite")
 const asyncHandler = require("express-async-handler")
+const Stripe = require("stripe")
+const stripe = Stripe(process.env.STRIPE_SECRET_KEY)
 const User = require("../models/userModel")
 const Vote = require("../models/voteModel")
 const Line = require("../models/lineModel")
@@ -100,23 +102,24 @@ const loginUser = asyncHandler(async (req, res) => {
 })
 
 const getMe = asyncHandler(async (req, res) => {
+    const user = req.user
     console.log(
-        `[ACCOUNT] ${req.user.name} requested their profile | ${req.ip}`.green
+        `[ACCOUNT] ${user.name} requested their profile | ${req.ip}`.green
     )
     let response = {}
 
     try {
         // Set streak details
-        response.currentStreak = req.user.currentStreak
-        response.longestStreak = req.user.longestStreak
+        response.currentStreak = user.currentStreak
+        response.longestStreak = user.longestStreak
         response.voteCount = 0
 
         // Calculate and set GOAT details
-        if (req.user.dailyAnswers.length > 0) {
+        if (user.dailyAnswers.length > 0) {
             let lebronVotes = 0
             let jordanVotes = 0
 
-            for (const dailyAnswersObject of req.user.dailyAnswers) {
+            for (const dailyAnswersObject of user.dailyAnswers) {
                 if (dailyAnswersObject.answers) {
                     for (const answer of dailyAnswersObject.answers) {
                         if (answer.questionIndex === 0) {
@@ -133,7 +136,7 @@ const getMe = asyncHandler(async (req, res) => {
         }
 
         // Count user votes
-        const voteIDs = req.user.votes || []
+        const voteIDs = user.votes || []
         response.voteCount += voteIDs.length
 
         if (voteIDs.length > 0) {
@@ -217,8 +220,29 @@ const getMe = asyncHandler(async (req, res) => {
             response.favoriteTeam = teamMap[favoriteTeamId] || "Unknown Team"
         }
 
+        if (user.stripeCustomerId) {
+            const subscriptions = await stripe.subscriptions.list({
+                customer: user.stripeCustomerId,
+                limit: 1,
+            })
+            console.log(subscriptions)
+
+            const sub = subscriptions.data[0]
+            if (sub) {
+                const isTrialing = sub.status === "trialing"
+                const timestamp = isTrialing
+                    ? sub.trial_end
+                    : sub.current_period_end
+
+                response.billingLabel = isTrialing
+                    ? "Trial Ends On"
+                    : "Next Billing Date"
+                response.billingDate = new Date(timestamp * 1000).toISOString()
+            }
+        }
+
         // Most Analyzed Prop
-        const userLines = await Line.find({ uid: req.user.uid })
+        const userLines = await Line.find({ uid: user.uid })
 
         const propFrequency = {}
 
@@ -247,6 +271,7 @@ const getMe = asyncHandler(async (req, res) => {
             response.favoritePropPlayer =
                 topLine?.name?.split(" ").slice(1).join(" ") || "Unknown"
         }
+        console.log(response)
 
         res.status(200).json(response)
     } catch (error) {

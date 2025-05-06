@@ -17,6 +17,8 @@ const Profile = () => {
     const [favoritePropPlayer, setFavoritePropPlayer] = useState()
     const [favoritePropId, setFavoritePropId] = useState()
     const [favoritePropStat, setFavoritePropStat] = useState()
+    const [billingDate, setBillingDate] = useState()
+    const [billingLabel, setBillingLabel] = useState()
     const [goat, setGoat] = useState()
     const [goatVotes, setGoatVotes] = useState()
     const [streak, setStreak] = useState()
@@ -41,6 +43,10 @@ const Profile = () => {
                 })
                 .then((response) => {
                     if (response.data) {
+                        if (isPremium) {
+                            setBillingDate(response.data.billingDate)
+                            setBillingLabel(response.data.billingLabel)
+                        }
                         if (response.data.favoritePropPlayer) {
                             setFavoritePropPlayer(
                                 response.data.favoritePropPlayer
@@ -209,9 +215,14 @@ const Profile = () => {
                                                 className="profile-heading"
                                                 style={{ marginTop: "0.5em" }}
                                             >
-                                                Next Billing Date
+                                                {billingLabel}
                                             </div>
-                                            {goatVotes}
+                                            {new Date(
+                                                billingDate
+                                            ).toLocaleDateString("en-US", {
+                                                month: "short",
+                                                day: "numeric",
+                                            })}
                                         </div>
                                     </>
                                 )}
