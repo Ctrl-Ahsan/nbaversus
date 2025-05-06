@@ -228,7 +228,6 @@ const getMe = asyncHandler(async (req, res) => {
                 propFrequency[key] = (propFrequency[key] || 0) + 1
             }
         }
-        console.log(propFrequency)
 
         const mostFrequent = Object.entries(propFrequency).sort(
             (a, b) => b[1] - a[1]
