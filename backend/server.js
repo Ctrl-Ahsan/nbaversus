@@ -5,7 +5,7 @@ const path = require("path")
 require("dotenv").config()
 const colors = require("colors")
 const { errorHandler } = require("./middleware/errorMiddleware")
-const { upgradeUser } = require("./controllers/paymentController.js")
+const { handleStripeWebhook } = require("./controllers/paymentController.js")
 const bodyParser = require("body-parser")
 const connectDB = require("./db")
 const port = process.env.PORT || 3000
@@ -24,7 +24,7 @@ const limiter = rateLimit({
 app.post(
     "/api/webhook",
     bodyParser.raw({ type: "application/json" }),
-    upgradeUser
+    handleStripeWebhook
 )
 
 // configure
