@@ -2,7 +2,8 @@
     background-color: #0000007a;
     border: solid 1px #21212179;
     border-radius: 20px;
-    padding: 2em 0em;
+    padding-top: 1.5em;
+    padding-bottom: 1em;
     position: relative;
     .me {
         padding: 0 1em;
@@ -36,6 +37,19 @@
             width: 5em;
             border-radius: 50px;
         }
+    }
+    .locked-panel {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: darkgray;
+    }
+
+    .locked-text {
+        margin-top: 0.75em;
+        font-size: 0.75em;
+        font-weight: 400;
     }
 
     .image {
@@ -74,6 +88,9 @@
         font-weight: 300;
         font-size: 0.7em;
         font-family: Roboto Condensed, Roboto, Arial;
+    }
+    .second {
+        margin-top: 0.5em;
     }
 
     .logout {

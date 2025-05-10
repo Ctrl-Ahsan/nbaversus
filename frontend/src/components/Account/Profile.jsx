@@ -6,7 +6,7 @@ import { toast } from "react-toastify"
 import { signOut } from "firebase/auth"
 import { auth } from "../../firebase"
 
-import { FaSignOutAlt, FaUser } from "react-icons/fa"
+import { FaSignOutAlt, FaUser, FaLock } from "react-icons/fa"
 import { PiStarFourFill } from "react-icons/pi"
 import { getAuthToken } from "../../utils/getAuthToken"
 import { AppContext } from "../../AppContext"
@@ -31,6 +31,12 @@ const Profile = () => {
     const [favoriteTeamVotes, setFavoriteTeamVotes] = useState()
     const [loading, setLoading] = useState(false)
     const [stripeLoading, setStripeLoading] = useState(false)
+    // Unlock conditions
+    const isFavoritePropUnlocked = favoritePropPlayer !== undefined
+    const isGoatUnlocked = goat !== undefined
+    const isFavoritePlayerUnlocked = favorite !== undefined
+    const isFavoriteTeamUnlocked = favoriteTeam !== undefined
+    const isStreakUnlocked = longestStreak !== undefined
 
     useEffect(() => {
         setLoading(true)
@@ -43,8 +49,10 @@ const Profile = () => {
                 })
                 .then((response) => {
                     if (response.data) {
-                        if (isPremium) {
+                        if (response.data.billingDate) {
                             setBillingDate(response.data.billingDate)
+                        }
+                        if (response.data.billingLabel) {
                             setBillingLabel(response.data.billingLabel)
                         }
                         if (response.data.favoritePropPlayer) {
@@ -87,7 +95,7 @@ const Profile = () => {
         getMe()
     }, [])
 
-    const onLogout = async () => {
+    const handleLogout = async () => {
         await signOut(auth)
         localStorage.removeItem("user")
         localStorage.removeItem("streak")
@@ -131,9 +139,22 @@ const Profile = () => {
         }
     }
 
+    const Panel = ({ unlocked, loading, children, caption }) => {
+        if (loading) return <div className="panel shimmerBG"></div>
+        if (!unlocked) {
+            return (
+                <div className="panel locked-panel">
+                    <FaLock size={30} />
+                    <div className="locked-text">{caption}</div>
+                </div>
+            )
+        }
+        return <div className="panel">{children}</div>
+    }
+
     return (
         <section className="profile-container">
-            <button className="logout" onClick={onLogout} title="Sign out">
+            <button className="logout" onClick={handleLogout} title="Sign out">
                 <FaSignOutAlt size={"1em"} />
             </button>
             <div className="me">
@@ -150,203 +171,144 @@ const Profile = () => {
                         {user.displayName}
                     </div>
 
-                    <div className="email">{!loading && user.email} </div>
+                    <div className="email">{user.email}</div>
                 </div>
                 <div className="favorites">
-                    <div className={loading ? "panel shimmerBG" : "panel"}>
-                        {!loading && (
-                            <>
-                                <div className="image">
-                                    {favoritePropId && (
-                                        <img
-                                            src={`https://cdn.nba.com/headshots/nba/latest/1040x760/${favoritePropId}.png`}
-                                            alt="goat"
-                                            className="playerImg"
-                                        />
-                                    )}
-                                </div>
-                                <div className="info">
-                                    <div className="profile-heading">
-                                        Favorite Prop
-                                    </div>
-                                    <div>{favoritePropPlayer}</div>
-                                    <div
-                                        className="profile-heading"
-                                        style={{
-                                            marginTop: "0.5em",
-                                        }}
-                                    >
-                                        Stat
-                                    </div>
-                                    <div className="prop">
-                                        {favoritePropStat?.toUpperCase()}
-                                    </div>
-                                </div>
-                            </>
-                        )}
-                    </div>
-                    <div
-                        className={
-                            loading || stripeLoading
-                                ? "panel shimmerBG"
-                                : "panel"
-                        }
+                    <Panel
+                        unlocked={isFavoritePropUnlocked}
+                        loading={loading}
+                        caption="Analyze a player prop"
                     >
-                        {!loading && !stripeLoading && (
-                            <>
-                                {stripeLoading ? (
-                                    <div
-                                        className="spinner"
-                                        style={{ fontSize: "2em" }}
-                                    ></div>
-                                ) : (
-                                    <>
-                                        <div className="image">
-                                            <PiStarFourFill
-                                                size={"3em"}
-                                                style={{ color: "#facc15" }}
-                                            />
-                                        </div>
-                                        <div className="info">
-                                            <div className="profile-heading">
-                                                Premium
-                                            </div>
-                                            <div>
-                                                <a
-                                                    onClick={handleManage}
-                                                    className="link"
-                                                >
-                                                    Manage
-                                                </a>
-                                            </div>
-                                            <div
-                                                className="profile-heading"
-                                                style={{ marginTop: "0.5em" }}
-                                            >
-                                                {billingLabel}
-                                            </div>
-                                            {new Date(
-                                                billingDate
-                                            ).toLocaleDateString("en-US", {
-                                                month: "short",
-                                                day: "numeric",
-                                            })}
-                                        </div>
-                                    </>
-                                )}
-                            </>
-                        )}
-                    </div>
-                    <div className={loading ? "panel shimmerBG" : "panel"}>
-                        {!loading && (
-                            <>
-                                <div className="image">
-                                    {goat && (
-                                        <img
-                                            src={`https://cdn.nba.com/headshots/nba/latest/1040x760/${
-                                                goat === "LeBron"
-                                                    ? 2544
-                                                    : goat === "Jordan"
-                                                    ? 893
-                                                    : 0
-                                            }.png`}
-                                            alt="goat"
-                                            className="playerImg"
-                                        />
-                                    )}
-                                </div>
-                                <div className="info">
-                                    <div className="profile-heading">GOAT</div>
-                                    <div>{goat}</div>
-                                    <div
-                                        className="profile-heading"
-                                        style={{ marginTop: "0.5em" }}
-                                    >
-                                        Votes
-                                    </div>
-                                    {goatVotes}
-                                </div>
-                            </>
-                        )}
-                    </div>
-
-                    <div className={loading ? "panel shimmerBG" : "panel"}>
-                        {!loading && (
-                            <>
-                                {streak !== undefined ? (
-                                    <div className="streak">🔥</div>
-                                ) : (
-                                    <div className="image"></div>
-                                )}
-                                <div className="info">
-                                    <div className="profile-heading">
-                                        Longest Streak
-                                    </div>
-                                    {longestStreak}
-                                    <div
-                                        className="profile-heading"
-                                        style={{ marginTop: "0.5em" }}
-                                    >
-                                        Current
-                                    </div>
-                                    {streak}
-                                </div>
-                            </>
-                        )}
-                    </div>
-                    <div className={loading ? "panel shimmerBG" : "panel"}>
-                        {!loading && (
-                            <>
-                                <div className="image">
-                                    {favoriteURL && (
-                                        <img
-                                            src={favoriteURL}
-                                            alt="favorite player"
-                                            className="playerImg"
-                                        />
-                                    )}
-                                </div>
-                                <div className="info">
-                                    <div className="profile-heading">
-                                        Favorite Player
-                                    </div>
-                                    <div>{favorite}</div>
-                                    <div
-                                        className="profile-heading"
-                                        style={{ marginTop: "0.5em" }}
-                                    >
-                                        Votes
-                                    </div>
-                                    {favoriteVotes}
-                                </div>
-                            </>
-                        )}
-                    </div>
-                    <div className={loading ? "panel shimmerBG" : "panel"}>
                         <div className="image">
-                            {favoriteTeamURL && !loading && (
-                                <img
-                                    src={favoriteTeamURL}
-                                    className="playerImg"
-                                />
-                            )}
+                            <img
+                                src={`https://cdn.nba.com/headshots/nba/latest/1040x760/${favoritePropId}.png`}
+                                alt="goat"
+                                className="playerImg"
+                            />
                         </div>
-                        {!loading && (
-                            <div className="info">
-                                <div className="profile-heading">
-                                    Favorite Team
-                                </div>
-                                {favoriteTeam}
-                                <div
-                                    className="profile-heading"
-                                    style={{ marginTop: "0.5em" }}
-                                >
-                                    Votes
-                                </div>
-                                {favoriteTeamVotes}
+                        <div className="info">
+                            <div className="profile-heading">Favorite Prop</div>
+                            <div>{favoritePropPlayer}</div>
+                            <div className="second profile-heading">Stat</div>
+                            <div className="prop">
+                                {favoritePropStat?.toUpperCase()}
                             </div>
-                        )}
-                    </div>
+                        </div>
+                    </Panel>
+
+                    <Panel
+                        unlocked={isPremium}
+                        loading={loading || stripeLoading}
+                        caption="Upgrade to Premium"
+                    >
+                        <div className="image">
+                            <PiStarFourFill
+                                size={"3em"}
+                                style={{ color: "#facc15" }}
+                            />
+                        </div>
+                        <div className="info">
+                            <div className="profile-heading">Premium</div>
+                            <div>
+                                <a onClick={handleManage} className="link">
+                                    Manage
+                                </a>
+                            </div>
+                            <div className="second profile-heading">
+                                {billingLabel}
+                            </div>
+                            {new Date(billingDate).toLocaleDateString("en-US", {
+                                month: "short",
+                                day: "numeric",
+                            })}
+                        </div>
+                    </Panel>
+
+                    <Panel
+                        unlocked={isGoatUnlocked}
+                        loading={loading}
+                        caption="Vote for the GOAT"
+                    >
+                        <div className="image">
+                            <img
+                                src={`https://cdn.nba.com/headshots/nba/latest/1040x760/${
+                                    goat === "LeBron"
+                                        ? 2544
+                                        : goat === "Jordan"
+                                        ? 893
+                                        : 0
+                                }.png`}
+                                alt="goat"
+                                className="playerImg"
+                            />
+                        </div>
+                        <div className="info">
+                            <div className="profile-heading">GOAT</div>
+                            <div>{goat}</div>
+                            <div className="second profile-heading">Votes</div>
+                            {goatVotes}
+                        </div>
+                    </Panel>
+
+                    <Panel
+                        unlocked={isStreakUnlocked}
+                        loading={loading}
+                        caption="Start a streak"
+                    >
+                        <div className="streak">🔥</div>
+                        <div className="info">
+                            <div className="profile-heading">
+                                Longest Streak
+                            </div>
+                            {longestStreak}
+                            <div className="second profile-heading">
+                                Current
+                            </div>
+                            {streak}
+                        </div>
+                    </Panel>
+
+                    <Panel
+                        unlocked={isFavoritePlayerUnlocked}
+                        loading={loading}
+                        caption="Complete a Versus round"
+                    >
+                        <div className="image">
+                            <img
+                                src={favoriteURL}
+                                alt="favorite player"
+                                className="playerImg"
+                            />
+                        </div>
+                        <div className="info">
+                            <div className="profile-heading">
+                                Favorite Player
+                            </div>
+                            <div>{favorite}</div>
+                            <div className="second profile-heading">Votes</div>
+                            {favoriteVotes}
+                        </div>
+                    </Panel>
+
+                    <Panel
+                        unlocked={isFavoriteTeamUnlocked}
+                        loading={loading}
+                        caption="Complete a Versus round"
+                    >
+                        <div className="image">
+                            <img
+                                src={favoriteTeamURL}
+                                className="playerImg"
+                                alt="favorite team"
+                            />
+                        </div>
+                        <div className="info">
+                            <div className="profile-heading">Favorite Team</div>
+                            {favoriteTeam}
+                            <div className="second profile-heading">Votes</div>
+                            {favoriteTeamVotes}
+                        </div>
+                    </Panel>
                 </div>
             </div>
         </section>
