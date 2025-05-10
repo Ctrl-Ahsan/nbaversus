@@ -109,6 +109,14 @@ const Login = (props) => {
                         onChange={onChange}
                     />
                 </div>
+                <div className="forgot-password">
+                    <span
+                        className="link"
+                        onClick={() => props.setToggleReset(true)}
+                    >
+                        Forgot password?
+                    </span>
+                </div>
                 <div className="form-item">
                     <button type="submit">
                         <span className="text">
@@ -158,9 +166,7 @@ const Login = (props) => {
 
     return (
         <section className="login-container">
-            <div className="form-title">
-                <FaSignInAlt /> Sign In
-            </div>
+            <div className="form-title">Sign In</div>
             <Form />
         </section>
     )

@@ -14,9 +14,11 @@ import Contact from "./Contact"
 import Premium from "./Premium"
 import Success from "./Success"
 import { AppContext } from "../../AppContext"
+import Reset from "./Reset"
 
 const Account = () => {
     const [toggleRegister, setToggleRegister] = useState(false)
+    const [toggleReset, setToggleReset] = useState(false)
     const [loading, setLoading] = useState(false)
     const { user, isPremium, userLoading } = useContext(AppContext)
 
@@ -123,6 +125,8 @@ const Account = () => {
                             element={
                                 user ? (
                                     <Profile />
+                                ) : toggleReset ? (
+                                    <Reset setToggleReset={setToggleReset} />
                                 ) : toggleRegister ? (
                                     <Register
                                         setToggleRegister={setToggleRegister}
@@ -131,6 +135,7 @@ const Account = () => {
                                 ) : (
                                     <Login
                                         setToggleRegister={setToggleRegister}
+                                        setToggleReset={setToggleReset}
                                         handleGoogleSignIn={handleGoogleSignIn}
                                     />
                                 )
