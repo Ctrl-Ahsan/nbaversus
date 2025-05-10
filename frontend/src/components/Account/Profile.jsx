@@ -133,6 +133,9 @@ const Profile = () => {
 
     return (
         <section className="profile-container">
+            <button className="logout" onClick={onLogout} title="Sign out">
+                <FaSignOutAlt size={"1em"} />
+            </button>
             <div className="me">
                 <div className="title">
                     <div className="name">
@@ -146,7 +149,8 @@ const Profile = () => {
                         )}{" "}
                         {user.displayName}
                     </div>
-                    <div className="email">{!loading && user.email}</div>
+
+                    <div className="email">{!loading && user.email} </div>
                 </div>
                 <div className="favorites">
                     <div className={loading ? "panel shimmerBG" : "panel"}>
@@ -345,11 +349,6 @@ const Profile = () => {
                     </div>
                 </div>
             </div>
-            <button className="logout red" onClick={onLogout}>
-                <div className="button-text">
-                    <FaSignOutAlt /> Sign Out
-                </div>
-            </button>
         </section>
     )
 }
