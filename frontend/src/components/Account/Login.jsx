@@ -140,7 +140,11 @@ const Login = (props) => {
                     <span>OR</span>
                 </div>
                 <div className="form-item">
-                    <button class="google" onClick={props.handleGoogleSignIn}>
+                    <button
+                        type="button"
+                        class="google"
+                        onClick={props.handleGoogleSignIn}
+                    >
                         <span class="icon-wrapper">
                             <img src="/google.png" class="icon" alt="Google" />
                         </span>
