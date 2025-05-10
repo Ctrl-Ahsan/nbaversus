@@ -32,7 +32,8 @@ const createCheckoutSession = asyncHandler(async (req, res) => {
             await user.save()
         }
 
-        const session = await stripe.checkout.sessions.create({
+        // Session data
+        const checkoutSessionData = {
             mode: "subscription",
             payment_method_types: ["card"],
             customer: user.stripeCustomerId,
@@ -42,15 +43,23 @@ const createCheckoutSession = asyncHandler(async (req, res) => {
                     quantity: 1,
                 },
             ],
-            subscription_data: {
-                trial_period_days: 7,
-            },
             metadata: {
                 firebaseUID: user.uid,
             },
             success_url: `${CLIENT_URL}/account/success?session_id={CHECKOUT_SESSION_ID}`,
             cancel_url: `${CLIENT_URL}/account/premium`,
-        })
+        }
+
+        // Attach trial only if they have not had a trial yet
+        if (!user.hadTrial) {
+            checkoutSessionData.subscription_data = {
+                trial_period_days: 7,
+            }
+        }
+
+        const session = await stripe.checkout.sessions.create(
+            checkoutSessionData
+        )
 
         res.json({ url: session.url })
     } catch (err) {
@@ -119,13 +128,19 @@ const handleStripeWebhook = asyncHandler(async (req, res) => {
                 if (!user) break
 
                 user.isPremium = true
+                if (!user.hadTrial) {
+                    user.hadTrial = true
+                }
 
                 const subscriptionId = session.subscription
                 const sub = await stripe.subscriptions.retrieve(subscriptionId)
 
-                if (sub?.trial_end) {
+                if (sub?.status === "trialing" && sub.trial_end) {
                     user.billingDate = new Date(sub.trial_end * 1000)
                     user.billingLabel = "Trial Ends On"
+                } else if (sub?.current_period_end) {
+                    user.billingDate = new Date(sub.current_period_end * 1000)
+                    user.billingLabel = "Next Billing Date"
                 }
 
                 await user.save()
@@ -143,7 +158,7 @@ const handleStripeWebhook = asyncHandler(async (req, res) => {
                 const periodEnd = invoice.lines.data[0]?.period?.end
                 if (periodEnd) {
                     user.billingDate = new Date(periodEnd * 1000)
-                    user.billingLabel = "Next billing date"
+                    user.billingLabel = "Next Billing Date"
                     await user.save()
 
                     console.log(
@@ -165,9 +180,7 @@ const handleStripeWebhook = asyncHandler(async (req, res) => {
 
                 await updateFirebasePremiumClaim(user, false)
 
-                console.log(
-                    `[PREMIUM] Downgraded User ${user.uid} (subscription canceled)`
-                )
+                console.log(`[PREMIUM] Downgraded User ${user.uid}`)
                 break
             }
 

@@ -7,6 +7,7 @@ const userSchema = mongoose.Schema(
         name: { type: String, required: true },
         stripeCustomerId: { type: String, default: null },
         isPremium: { type: Boolean, default: false },
+        hadTrial: { type: Boolean, default: false },
         billingDate: { type: Date, default: null },
         billingLabel: { type: String, default: null },
         currentStreak: { type: Number, default: 0 },
