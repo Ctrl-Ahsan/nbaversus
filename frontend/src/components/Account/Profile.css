@@ -37,6 +37,13 @@
         }
     }
 
+    .image {
+        width: 5em;
+    }
+    .info {
+        width: 5em;
+    }
+
     .title {
         font-size: 1.5em;
         font-weight: 700;
@@ -53,7 +60,7 @@
             gap: 5px;
         }
 
-        .votes {
+        .email {
             margin-top: 0.25em;
             height: 1em;
             font-family: Roboto Condensed, Roboto, Arial;
@@ -67,6 +74,10 @@
         font-size: 0.7em;
         font-family: Roboto Condensed, Roboto, Arial;
         margin-top: 1em;
+    }
+
+    .prop {
+        font-size: 0.8em;
     }
 
     .link {
@@ -84,6 +95,7 @@
 
     .streak {
         font-size: 3em;
+        width: 1.67em;
     }
 
     .logout {

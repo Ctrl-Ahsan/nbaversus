@@ -146,7 +146,7 @@ const Profile = () => {
                         )}{" "}
                         {user.displayName}
                     </div>
-                    <div className="votes">{!loading && user.email}</div>
+                    <div className="email">{!loading && user.email}</div>
                 </div>
                 <div className="favorites">
                     <div className={loading ? "panel shimmerBG" : "panel"}>
@@ -161,18 +161,22 @@ const Profile = () => {
                                         />
                                     )}
                                 </div>
-                                <div>
+                                <div className="info">
                                     <div className="profile-heading">
                                         Favorite Prop
                                     </div>
                                     <div>{favoritePropPlayer}</div>
                                     <div
                                         className="profile-heading"
-                                        style={{ marginTop: "0.5em" }}
+                                        style={{
+                                            marginTop: "0.5em",
+                                        }}
                                     >
                                         Stat
                                     </div>
-                                    {favoritePropStat?.toUpperCase()}
+                                    <div className="prop">
+                                        {favoritePropStat?.toUpperCase()}
+                                    </div>
                                 </div>
                             </>
                         )}
@@ -199,7 +203,7 @@ const Profile = () => {
                                                 style={{ color: "#facc15" }}
                                             />
                                         </div>
-                                        <div>
+                                        <div className="info">
                                             <div className="profile-heading">
                                                 Premium
                                             </div>
@@ -247,7 +251,7 @@ const Profile = () => {
                                         />
                                     )}
                                 </div>
-                                <div>
+                                <div className="info">
                                     <div className="profile-heading">GOAT</div>
                                     <div>{goat}</div>
                                     <div
@@ -270,7 +274,7 @@ const Profile = () => {
                                 ) : (
                                     <div className="image"></div>
                                 )}
-                                <div>
+                                <div className="info">
                                     <div className="profile-heading">
                                         Longest Streak
                                     </div>
@@ -298,7 +302,7 @@ const Profile = () => {
                                         />
                                     )}
                                 </div>
-                                <div>
+                                <div className="info">
                                     <div className="profile-heading">
                                         Favorite Player
                                     </div>
@@ -324,7 +328,7 @@ const Profile = () => {
                             )}
                         </div>
                         {!loading && (
-                            <div>
+                            <div className="info">
                                 <div className="profile-heading">
                                     Favorite Team
                                 </div>
