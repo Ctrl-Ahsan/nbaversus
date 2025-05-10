@@ -78,6 +78,7 @@ const Register = (props) => {
                     }
                 )
                 await signOut(auth)
+                window.history.replaceState({}, "", "/account")
                 props.setToggleRegister()
             } catch (error) {
                 console.error(error)

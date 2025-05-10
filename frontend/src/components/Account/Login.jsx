@@ -64,6 +64,7 @@ const Login = (props) => {
                             token: token,
                         })
                     )
+                    window.history.replaceState({}, "", "/account")
                 }
             } catch (error) {
                 console.error(error)

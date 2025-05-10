@@ -68,6 +68,7 @@ const Account = () => {
                     token,
                 })
             )
+            window.history.replaceState({}, "", "/account")
         } catch (error) {
             console.error(error)
             toast.error("Google sign-in failed")
