@@ -2,7 +2,7 @@
     background-color: #0000007a;
     border: solid 1px #21212179;
     border-radius: 20px;
-    padding: 1.5em 0em;
+    padding: 2em 0em;
     position: relative;
     .me {
         padding: 0 1em;
@@ -62,6 +62,7 @@
         }
 
         .email {
+            height: 1em;
             margin-top: 0.25em;
             font-family: Roboto Condensed, Roboto, Arial;
             font-size: 0.5em;
@@ -95,6 +96,9 @@
         &:hover {
             background-color: red;
             color: white;
+        }
+        svg {
+            padding-left: 2px;
         }
     }
 
