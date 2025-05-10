@@ -109,6 +109,9 @@ const getMe = asyncHandler(async (req, res) => {
     let response = {}
 
     try {
+        // Set billing info
+        response.billingLabel = user.billingLabel || null
+        response.billingDate = user.billingDate
         // Set streak details
         response.currentStreak = user.currentStreak
         response.longestStreak = user.longestStreak
@@ -220,27 +223,6 @@ const getMe = asyncHandler(async (req, res) => {
             response.favoriteTeam = teamMap[favoriteTeamId] || "Unknown Team"
         }
 
-        if (user.stripeCustomerId) {
-            const subscriptions = await stripe.subscriptions.list({
-                customer: user.stripeCustomerId,
-                limit: 1,
-            })
-            console.log(subscriptions)
-
-            const sub = subscriptions.data[0]
-            if (sub) {
-                const isTrialing = sub.status === "trialing"
-                const timestamp = isTrialing
-                    ? sub.trial_end
-                    : sub.current_period_end
-
-                response.billingLabel = isTrialing
-                    ? "Trial Ends On"
-                    : "Next Billing Date"
-                response.billingDate = new Date(timestamp * 1000).toISOString()
-            }
-        }
-
         // Most Analyzed Prop
         const userLines = await Line.find({ uid: user.uid })
 
@@ -271,7 +253,6 @@ const getMe = asyncHandler(async (req, res) => {
             response.favoritePropPlayer =
                 topLine?.name?.split(" ").slice(1).join(" ") || "Unknown"
         }
-        console.log(response)
 
         res.status(200).json(response)
     } catch (error) {
