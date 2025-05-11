@@ -55,7 +55,7 @@ const Account = () => {
                 }
             }
 
-            window.history.replaceState({}, "", "/account")
+            window.location.href = "/account"
         } catch (error) {
             console.error(error)
             toast.error("Google sign-in failed")
