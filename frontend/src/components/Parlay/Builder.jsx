@@ -255,7 +255,7 @@ const Builder = () => {
             </div>
             <div className="submit">
                 {!loading && !userLoading ? (
-                    isPremium || linesRemaining > 0 ? (
+                    !user || isPremium || linesRemaining > 0 ? (
                         <button className="green" onClick={addLine}>
                             <div className="button-content">
                                 <div className="content">
