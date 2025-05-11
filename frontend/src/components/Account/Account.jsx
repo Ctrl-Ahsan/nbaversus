@@ -15,10 +15,14 @@ import Premium from "./Premium"
 import Success from "./Success"
 import { AppContext } from "../../AppContext"
 import Reset from "./Reset"
+import Terms from "./Terms"
+import Privacy from "./Privacy"
 
 const Account = () => {
     const [toggleRegister, setToggleRegister] = useState(false)
     const [toggleReset, setToggleReset] = useState(false)
+    const [toggleTerms, setToggleTerms] = useState(false)
+    const [togglePrivacy, setTogglePrivacy] = useState(false)
     const [loading, setLoading] = useState(false)
     const { user, isPremium, userLoading } = useContext(AppContext)
 
@@ -26,7 +30,6 @@ const Account = () => {
     const currentPath = location.pathname
 
     const provider = new GoogleAuthProvider()
-
     const handleGoogleSignIn = async () => {
         try {
             const result = await signInWithPopup(auth, provider)
@@ -77,6 +80,37 @@ const Account = () => {
         }
     }
 
+    let activeScreen
+
+    if (user) {
+        activeScreen = <Profile />
+    } else if (toggleTerms) {
+        activeScreen = <Terms setToggleTerms={setToggleTerms} />
+    } else if (togglePrivacy) {
+        activeScreen = <Privacy setTogglePrivacy={setTogglePrivacy} />
+    } else if (toggleReset) {
+        activeScreen = <Reset setToggleReset={setToggleReset} />
+    } else if (toggleRegister) {
+        activeScreen = (
+            <Register
+                setToggleRegister={setToggleRegister}
+                setToggleTerms={setToggleTerms}
+                setTogglePrivacy={setTogglePrivacy}
+                handleGoogleSignIn={handleGoogleSignIn}
+            />
+        )
+    } else {
+        activeScreen = (
+            <Login
+                setToggleRegister={setToggleRegister}
+                setToggleReset={setToggleReset}
+                setToggleTerms={setToggleTerms}
+                setTogglePrivacy={setTogglePrivacy}
+                handleGoogleSignIn={handleGoogleSignIn}
+            />
+        )
+    }
+
     return (
         <main className="account-container">
             {userLoading ? (
@@ -120,28 +154,16 @@ const Account = () => {
                         </nav>
                     )}
                     <Routes>
+                        <Route index element={activeScreen} />
                         <Route
-                            index
+                            path="premium"
                             element={
-                                user ? (
-                                    <Profile />
-                                ) : toggleReset ? (
-                                    <Reset setToggleReset={setToggleReset} />
-                                ) : toggleRegister ? (
-                                    <Register
-                                        setToggleRegister={setToggleRegister}
-                                        handleGoogleSignIn={handleGoogleSignIn}
-                                    />
-                                ) : (
-                                    <Login
-                                        setToggleRegister={setToggleRegister}
-                                        setToggleReset={setToggleReset}
-                                        handleGoogleSignIn={handleGoogleSignIn}
-                                    />
-                                )
+                                <Premium
+                                    setToggleTerms={setToggleTerms}
+                                    setTogglePrivacy={setTogglePrivacy}
+                                />
                             }
                         />
-                        <Route path="premium" element={<Premium />} />
                         <Route
                             path="success"
                             element={<Success setLoading={setLoading} />}

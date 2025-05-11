@@ -184,6 +184,25 @@ const Register = (props) => {
                         <span>Continue with Google</span>
                     </button>
                 </div>
+                <div className="form-item">
+                    <div className="terms-text">
+                        By signing up, you agree to our{" "}
+                        <span
+                            className="link"
+                            onClick={() => props.setToggleTerms(true)}
+                        >
+                            Terms
+                        </span>{" "}
+                        and{" "}
+                        <span
+                            className="link"
+                            onClick={() => props.setTogglePrivacy(true)}
+                        >
+                            Privacy Policy
+                        </span>
+                        .
+                    </div>
+                </div>
             </form>
         )
     }

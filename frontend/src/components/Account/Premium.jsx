@@ -6,7 +6,7 @@ import { AppContext } from "../../AppContext"
 import { PiStarFourFill } from "react-icons/pi"
 import { getAuthToken } from "../../utils/getAuthToken"
 
-const Premium = () => {
+const Premium = (props) => {
     const [loading, setLoading] = useState(false)
     const { user, isPremium } = useContext(AppContext)
     const navigate = useNavigate()
@@ -410,8 +410,27 @@ const Premium = () => {
 
                 <p className="premium-note">
                     By starting your trial, you agree to auto-renewal at
-                    $4.99/month. See our <a href="/terms">Terms</a> and{" "}
-                    <a href="/privacy">Privacy Policy</a>.
+                    $4.99/month. See our{" "}
+                    <span
+                        className="link"
+                        onClick={() => {
+                            props.setToggleTerms(true)
+                            navigate("/account")
+                        }}
+                    >
+                        Terms
+                    </span>{" "}
+                    and{" "}
+                    <span
+                        className="link"
+                        onClick={() => {
+                            props.setTogglePrivacy(true)
+                            navigate("/account")
+                        }}
+                    >
+                        Privacy Policy
+                    </span>
+                    .
                 </p>
             </div>
         </div>
