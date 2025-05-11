@@ -39,7 +39,7 @@ const createCheckoutSession = asyncHandler(async (req, res) => {
             customer: user.stripeCustomerId,
             line_items: [
                 {
-                    price: "price_1RHalhCvI0mq4kI8RQby8RMP", // your price ID
+                    price: "price_1RNjGHEIDft5RhtGJG0OHoem",
                     quantity: 1,
                 },
             ],
