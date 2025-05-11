@@ -10,6 +10,12 @@ import {
     IoBasketballOutline,
 } from "react-icons/io5"
 import { FaUserCircle, FaRegUserCircle } from "react-icons/fa"
+import {
+    PiMoneyLight,
+    PiMoneyFill,
+    PiMoneyWavy,
+    PiMoneyWavyFill,
+} from "react-icons/pi"
 
 const Navbar = () => {
     const location = useLocation()
@@ -40,9 +46,9 @@ const Navbar = () => {
                 </Link>
                 <Link className="item" to="/parlay">
                     {currentPath === "/parlay" ? (
-                        <IoStatsChart />
+                        <PiMoneyWavyFill />
                     ) : (
-                        <IoStatsChartOutline />
+                        <PiMoneyWavy />
                     )}
                     Parlay
                 </Link>
