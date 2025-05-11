@@ -88,6 +88,7 @@ const processGameLogs = (games, stat) => {
         const teamScore = game[31] // PTS
         const opponentScore = game[32] // Opponent PTS
         const isHome = matchup.includes("vs.")
+        const isPlayoffs = game[game.length - 1] === "Playoffs"
 
         let value = null
         switch (stat) {
@@ -168,6 +169,7 @@ const processGameLogs = (games, stat) => {
             isHome,
             teamScore,
             opponentScore,
+            isPlayoffs,
         })
     }
 

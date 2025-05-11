@@ -30,7 +30,7 @@ const Parlay = () => {
         excludeBlowoutLosses,
     } = filters
 
-    const applyFilters = (logs, filters) => {
+    const applyFilters = (logs) => {
         return logs.filter((log) => {
             // Minutes Played
             if (
@@ -61,17 +61,24 @@ const Parlay = () => {
     const Line = (props) => {
         let hit = 0
         const total = props.line.logs.length
-        const timeSpan =
-            parlayScope === "l5"
-                ? 5
-                : parlayScope === "l10"
-                ? 10
-                : parlayScope === "l20"
-                ? 20
-                : total
+        let relevantLogs
 
-        // Determine the subset of logs based on timeSpan
-        let relevantLogs = props.line.logs.slice(0, timeSpan)
+        if (parlayScope === "p") {
+            relevantLogs = props.line.logs.filter((log) => log.isPlayoffs)
+        } else if (parlayScope === "s") {
+            relevantLogs = props.line.logs.filter((log) => !log.isPlayoffs)
+        } else {
+            const timeSpan =
+                parlayScope === "l5"
+                    ? 5
+                    : parlayScope === "l10"
+                    ? 10
+                    : parlayScope === "l20"
+                    ? 20
+                    : total
+
+            relevantLogs = props.line.logs.slice(0, timeSpan)
+        }
         relevantLogs = applyFilters(relevantLogs)
 
         // Determine if the stat is categorical
@@ -483,6 +490,16 @@ const Parlay = () => {
                                 onClick={() => setParlayScope("s")}
                             >
                                 Season
+                            </div>
+                            <div
+                                className={
+                                    parlayScope === "p"
+                                        ? "scope-item active"
+                                        : "scope-item"
+                                }
+                                onClick={() => setParlayScope("p")}
+                            >
+                                Playoffs
                             </div>
                         </div>
                     </div>
