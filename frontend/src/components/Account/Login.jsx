@@ -1,10 +1,8 @@
 import "./Login.css"
 import { useState } from "react"
 import { toast } from "react-toastify"
-import { FaSignInAlt } from "react-icons/fa"
 import axios from "axios"
-import Spinner from "../Spinner/Spinner"
-import { signInWithEmailAndPassword } from "firebase/auth"
+import { signInWithEmailAndPassword, signOut } from "firebase/auth"
 import { auth } from "../../firebase"
 
 const Login = (props) => {
@@ -41,31 +39,10 @@ const Login = (props) => {
 
                 if (!user.emailVerified) {
                     toast.warn("Please verify your email address to continue.")
-                } else {
-                    const token = await user.getIdToken()
-
-                    const res = await axios.post(
-                        "/api/users/login",
-                        {},
-                        {
-                            headers: {
-                                Authorization: `Bearer ${token}`,
-                            },
-                        }
-                    )
-                    const { name, isPremium } = res.data
-
-                    localStorage.setItem(
-                        "user",
-                        JSON.stringify({
-                            name: name,
-                            email: user.email,
-                            isPremium: isPremium,
-                            token: token,
-                        })
-                    )
-                    props.setLoggedIn(true)
+                    return await signOut(auth)
                 }
+
+                window.history.replaceState({}, "", "/account")
             } catch (error) {
                 console.error(error)
                 const code = error.code
@@ -109,14 +86,30 @@ const Login = (props) => {
                         onChange={onChange}
                     />
                 </div>
+                <div className="forgot-password">
+                    <span
+                        className="link"
+                        onClick={() => props.setToggleReset(true)}
+                    >
+                        Forgot password?
+                    </span>
+                </div>
                 <div className="form-item">
-                    {loading ? (
-                        <div className="spinner-container">
-                            <Spinner size="small" />
-                        </div>
-                    ) : (
-                        <button type="submit">Sign In</button>
-                    )}
+                    <button type="submit">
+                        <span className="text">
+                            {loading ? (
+                                <>
+                                    Signing In
+                                    <span
+                                        className="spinner"
+                                        style={{ marginLeft: "0.5em" }}
+                                    />
+                                </>
+                            ) : (
+                                "Sign In"
+                            )}
+                        </span>
+                    </button>
                 </div>
                 <div className="form-item">
                     <div className="subtitle">
@@ -133,7 +126,11 @@ const Login = (props) => {
                     <span>OR</span>
                 </div>
                 <div className="form-item">
-                    <button class="google" onClick={props.handleGoogleSignIn}>
+                    <button
+                        type="button"
+                        class="google"
+                        onClick={props.handleGoogleSignIn}
+                    >
                         <span class="icon-wrapper">
                             <img src="/google.png" class="icon" alt="Google" />
                         </span>
@@ -146,9 +143,7 @@ const Login = (props) => {
 
     return (
         <section className="login-container">
-            <div className="form-title">
-                <FaSignInAlt /> Sign In
-            </div>
+            <div className="form-title">Sign In</div>
             <Form />
         </section>
     )

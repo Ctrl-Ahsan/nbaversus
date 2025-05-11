@@ -5,9 +5,10 @@ import axios from "axios"
 import {
     createUserWithEmailAndPassword,
     sendEmailVerification,
+    updateProfile,
+    signOut,
 } from "firebase/auth"
 import { auth } from "../../firebase"
-import Spinner from "../Spinner/Spinner"
 
 const Register = (props) => {
     const Form = () => {
@@ -32,19 +33,19 @@ const Register = (props) => {
             e.preventDefault()
 
             if (!name || !email || !password || !password2) {
-                toast.error("Please fill in all fields")
+                toast.error("Please fill in all fields.")
                 return
             }
             if (password !== password2) {
-                toast.error("Passwords do not match")
+                toast.error("Passwords do not match.")
                 return
             }
             if (name.length > 16) {
-                toast.error("Name exceeds 16 character limit")
+                toast.error("Name exceeds 16 character limit.")
                 return
             }
             if (password.length < 6) {
-                toast.error("Password should be at least 6 characters")
+                toast.error("Password should be at least 6 characters.")
                 return
             }
 
@@ -57,8 +58,14 @@ const Register = (props) => {
                 )
                 const user = userCredential.user
 
+                await updateProfile(user, {
+                    displayName: name,
+                })
+
                 await sendEmailVerification(user)
-                toast.info("Verification email sent to " + user.email)
+                toast.info("Verification email sent to " + user.email + ".", {
+                    autoClose: 30000,
+                })
 
                 const token = await user.getIdToken()
                 await axios.post(
@@ -70,18 +77,20 @@ const Register = (props) => {
                         },
                     }
                 )
+                await signOut(auth)
+                window.history.replaceState({}, "", "/account")
                 props.setToggleRegister()
             } catch (error) {
                 console.error(error)
                 const code = error.code
                 if (code === "auth/email-already-in-use") {
-                    toast.error("This email is already in use")
+                    toast.error("This email is already in use.")
                 } else if (code === "auth/invalid-email") {
-                    toast.error("Please enter a valid email address")
+                    toast.error("Please enter a valid email address.")
                 } else if (code === "auth/weak-password") {
-                    toast.error("Password should be at least 6 characters")
+                    toast.error("Password should be at least 6 characters.")
                 } else {
-                    toast.error("Account creation failed. Please try again")
+                    toast.error("Account creation failed. Please try again.")
                 }
             } finally {
                 setLoading(false)
@@ -135,15 +144,21 @@ const Register = (props) => {
                     />
                 </div>
                 <div className="form-item">
-                    {loading ? (
-                        <div className="spinner-container">
-                            <Spinner size="small" />
-                        </div>
-                    ) : (
-                        <button className="green" type="submit">
-                            Sign Up
-                        </button>
-                    )}
+                    <button className="green" type="submit">
+                        <span className="text">
+                            {loading ? (
+                                <>
+                                    Signing Up
+                                    <span
+                                        className="spinner"
+                                        style={{ marginLeft: "0.5em" }}
+                                    />
+                                </>
+                            ) : (
+                                "Sign Up"
+                            )}
+                        </span>
+                    </button>
                 </div>
                 <div className="form-item">
                     <div className="subtitle">
@@ -154,7 +169,7 @@ const Register = (props) => {
                                 props.setToggleRegister(false)
                             }}
                         >
-                            Log in
+                            Sign in
                         </span>
                     </div>
                 </div>
@@ -168,6 +183,25 @@ const Register = (props) => {
                         </span>
                         <span>Continue with Google</span>
                     </button>
+                </div>
+                <div className="form-item">
+                    <div className="terms-text">
+                        By signing up, you agree to our{" "}
+                        <span
+                            className="link"
+                            onClick={() => props.setToggleTerms(true)}
+                        >
+                            Terms
+                        </span>{" "}
+                        and{" "}
+                        <span
+                            className="link"
+                            onClick={() => props.setTogglePrivacy(true)}
+                        >
+                            Privacy Policy
+                        </span>
+                        .
+                    </div>
                 </div>
             </form>
         )

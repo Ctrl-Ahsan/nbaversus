@@ -3,7 +3,6 @@ const router = express.Router()
 const {
     getSeasonStats,
     getCareerStats,
-    getGameLogs,
 } = require("./controllers/statController")
 const {
     addQuestion,
@@ -18,13 +17,16 @@ const {
     loginUser,
     getMe,
 } = require("./controllers/userController")
-const { createCheckoutSession } = require("./controllers/paymentController")
+const {
+    createCheckoutSession,
+    createManageSession,
+} = require("./controllers/paymentController")
 const { optionalAuth, protect, admin } = require("./middleware/authMiddleware")
+const { analyzeLine, getLineUsage } = require("./controllers/lineController")
 
 // user routes
 router.post("/users/visit", optionalAuth, userVisit)
 router.post("/users", registerUser)
-router.post("/users/login", loginUser)
 router.get("/users/me", protect, getMe)
 
 // vote routes
@@ -34,7 +36,10 @@ router.post("/votes", optionalAuth, setVote)
 // stats routes
 router.post("/stats/season", getSeasonStats)
 router.post("/stats/career", getCareerStats)
-router.post("/stats/gamelogs", getGameLogs)
+
+// line routes
+router.get("/lines/usage", protect, getLineUsage)
+router.post("/lines/analyze", protect, analyzeLine)
 
 // question routes
 router.post("/questions", admin, addQuestion)
@@ -43,5 +48,6 @@ router.post("/questions/daily", optionalAuth, answerDailyQuestion)
 
 // payment routes
 router.post("/premium/checkout", protect, createCheckoutSession)
+router.post("/premium/manage", protect, createManageSession)
 
 module.exports = router

@@ -1,8 +1,77 @@
-import { createContext, useState } from "react"
+import { createContext, useState, useEffect } from "react"
+import { auth } from "./firebase"
+import { onAuthStateChanged, getIdTokenResult } from "firebase/auth"
+import axios from "axios"
 
 export const AppContext = createContext(null)
 
 export const AppContextProvider = ({ children }) => {
+    const [user, setUser] = useState(null)
+    const [isPremium, setIsPremium] = useState(false)
+    const [userLoading, setUserLoading] = useState(true)
+    const [linesRemaining, setLinesRemaining] = useState(null)
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
+            if (firebaseUser && firebaseUser.emailVerified) {
+                setUser(firebaseUser)
+                const tokenResult = await getIdTokenResult(firebaseUser, true) // force refresh
+                const token = tokenResult.token
+                const premiumClaim = !!tokenResult.claims.premium
+                setIsPremium(premiumClaim)
+
+                if (!premiumClaim) {
+                    const res = await axios.get("/api/lines/usage", {
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                        },
+                    })
+                    setLinesRemaining(res.data.linesRemaining)
+                }
+
+                // Log visit (logged-in user)
+                try {
+                    await axios.post(
+                        "/api/users/visit",
+                        {},
+                        {
+                            headers: {
+                                Authorization: `Bearer ${token}`,
+                            },
+                        }
+                    )
+                } catch (error) {
+                    console.error("Failed to log visit:", error)
+                }
+            } else {
+                setUser(null)
+                setIsPremium(false)
+                setLinesRemaining(null)
+
+                // Log visit (anonymous user)
+                try {
+                    await axios.post("/api/users/visit")
+                } catch (error) {
+                    console.error("Failed to log visit:", error)
+                }
+            }
+            setUserLoading(false)
+        })
+
+        return () => unsubscribe() // clean up listener
+    }, [])
+
+    const [filters, setFilters] = useState({
+        minutesMin: 0,
+        minutesMax: 60,
+        home: true,
+        away: true,
+        win: true,
+        loss: true,
+        exludeBlowoutWins: false,
+        exludeBlowoutLosses: false,
+    })
+
     const [player1, setPlayer1] = useState({})
     const [player2, setPlayer2] = useState({})
     const [p1Wins, setP1Wins] = useState(false)
@@ -20,6 +89,16 @@ export const AppContextProvider = ({ children }) => {
     const [lines, setLines] = useState([])
     const [parlayScope, setParlayScope] = useState("l5")
     const value = {
+        user,
+        setUser,
+        isPremium,
+        setIsPremium,
+        userLoading,
+        setUserLoading,
+        linesRemaining,
+        setLinesRemaining,
+        filters,
+        setFilters,
         player1,
         setPlayer1,
         player2,

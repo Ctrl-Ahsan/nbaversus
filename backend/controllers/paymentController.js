@@ -1,3 +1,4 @@
+const firebaseAdmin = require("../firebaseAdmin")
 const Stripe = require("stripe")
 const stripe = Stripe(process.env.STRIPE_SECRET_KEY)
 const asyncHandler = require("express-async-handler")
@@ -8,7 +9,6 @@ const CLIENT_URL = isProd ? process.env.CLIENT_URL : process.env.CLIENT_URL_DEV
 
 const createCheckoutSession = asyncHandler(async (req, res) => {
     try {
-        // Validate request
         const user = req.user
 
         if (!user) {
@@ -20,19 +20,29 @@ const createCheckoutSession = asyncHandler(async (req, res) => {
                 .json({ error: "Account has already been upgraded." })
         }
 
-        // Prepare params
-        const sessionParams = {
-            mode: "subscription",
-            payment_method_types: ["card"],
-            line_items: [
-                { price: "price_1RHalhCvI0mq4kI8RQby8RMP", quantity: 1 },
-            ],
-            subscription_data: {
-                trial_period_days: 7,
+        // Create Stripe customer if needed
+        if (!user.stripeCustomerId) {
+            const customer = await stripe.customers.create({
                 metadata: {
                     firebaseUID: user.uid,
                 },
-            },
+            })
+
+            user.stripeCustomerId = customer.id
+            await user.save()
+        }
+
+        // Session data
+        const checkoutSessionData = {
+            mode: "subscription",
+            payment_method_types: ["card"],
+            customer: user.stripeCustomerId,
+            line_items: [
+                {
+                    price: "price_1RHalhCvI0mq4kI8RQby8RMP", // your price ID
+                    quantity: 1,
+                },
+            ],
             metadata: {
                 firebaseUID: user.uid,
             },
@@ -40,13 +50,16 @@ const createCheckoutSession = asyncHandler(async (req, res) => {
             cancel_url: `${CLIENT_URL}/account/premium`,
         }
 
-        // Attach existing Stripe customer if available
-        if (user.stripeCustomerId) {
-            sessionParams.customer = user.stripeCustomerId
+        // Attach trial only if they have not had a trial yet
+        if (!user.hadTrial) {
+            checkoutSessionData.subscription_data = {
+                trial_period_days: 7,
+            }
         }
 
-        // Create Stripe Checkout session
-        const session = await stripe.checkout.sessions.create(sessionParams)
+        const session = await stripe.checkout.sessions.create(
+            checkoutSessionData
+        )
 
         res.json({ url: session.url })
     } catch (err) {
@@ -55,7 +68,31 @@ const createCheckoutSession = asyncHandler(async (req, res) => {
     }
 })
 
-const upgradeUser = asyncHandler(async (req, res) => {
+const createManageSession = asyncHandler(async (req, res) => {
+    try {
+        const user = req.user
+
+        if (!user || !user.stripeCustomerId) {
+            return res
+                .status(400)
+                .json({ error: "Stripe customer not found for user." })
+        }
+
+        const session = await stripe.billingPortal.sessions.create({
+            customer: user.stripeCustomerId,
+            return_url: `${CLIENT_URL}/account`,
+        })
+
+        res.json({ url: session.url })
+    } catch (err) {
+        console.error("Stripe Manage Subscription Error:", err)
+        res.status(500).json({
+            error: "Failed to create billing portal session.",
+        })
+    }
+})
+
+const handleStripeWebhook = asyncHandler(async (req, res) => {
     const sig = req.headers["stripe-signature"]
     const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET
 
@@ -68,42 +105,98 @@ const upgradeUser = asyncHandler(async (req, res) => {
         return res.status(400).send(`Webhook Error: ${err.message}`)
     }
 
-    if (event.type === "checkout.session.completed") {
-        const session = event.data.object
+    try {
+        // Helper functions
+        const findUserByStripeCustomer = async (stripeCustomerId) => {
+            if (!stripeCustomerId) return null
+            return await User.findOne({ stripeCustomerId })
+        }
 
-        const firebaseUID = session.metadata?.firebaseUID
+        const updateFirebasePremiumClaim = async (user, isPremium) => {
+            await firebaseAdmin
+                .auth()
+                .setCustomUserClaims(user.uid, { premium: isPremium })
+        }
 
-        if (firebaseUID) {
-            try {
+        switch (event.type) {
+            case "checkout.session.completed": {
+                const session = event.data.object
+                const firebaseUID = session.metadata?.firebaseUID
+                if (!firebaseUID) break
+
                 const user = await User.findOne({ uid: firebaseUID })
+                if (!user) break
 
-                if (user) {
-                    user.isPremium = true
-                    if (!user.stripeCustomerId && session.customer) {
-                        user.stripeCustomerId = session.customer
-                    }
+                user.isPremium = true
+                if (!user.hadTrial) {
+                    user.hadTrial = true
+                }
+
+                const subscriptionId = session.subscription
+                const sub = await stripe.subscriptions.retrieve(subscriptionId)
+
+                if (sub?.status === "trialing" && sub.trial_end) {
+                    user.billingDate = new Date(sub.trial_end * 1000)
+                    user.billingLabel = "Trial Ends On"
+                } else if (sub?.current_period_end) {
+                    user.billingDate = new Date(sub.current_period_end * 1000)
+                    user.billingLabel = "Next Billing Date"
+                }
+
+                await user.save()
+                await updateFirebasePremiumClaim(user, true)
+
+                console.log(`[PREMIUM] ${firebaseUID} upgraded to Premium!`)
+                break
+            }
+
+            case "invoice.paid": {
+                const invoice = event.data.object
+                const user = await findUserByStripeCustomer(invoice.customer)
+                if (!user) break
+
+                const periodEnd = invoice.lines.data[0]?.period?.end
+                if (periodEnd) {
+                    user.billingDate = new Date(periodEnd * 1000)
+                    user.billingLabel = "Next Billing Date"
                     await user.save()
+
                     console.log(
-                        `[PREMIUM] User ${firebaseUID} upgraded to Premium!`
-                    )
-                } else {
-                    console.error(
-                        "User not found for firebaseUID:",
-                        firebaseUID
+                        `[PREMIUM] Updated billing date for ${user.uid}`
                     )
                 }
-            } catch (error) {
-                console.error(`Error upgrading User ${firebaseUID}: ${error}`)
+                break
             }
-        } else {
-            console.error("No firebaseUID found in session metadata.")
-        }
-    }
 
-    res.status(200).send("Webhook received.")
+            case "customer.subscription.deleted": {
+                const sub = event.data.object
+                const user = await findUserByStripeCustomer(sub.customer)
+                if (!user) break
+
+                user.isPremium = false
+                user.billingDate = null
+                user.billingLabel = null
+                await user.save()
+
+                await updateFirebasePremiumClaim(user, false)
+
+                console.log(`[PREMIUM] Downgraded User ${user.uid}`)
+                break
+            }
+
+            default:
+                console.log(`Unhandled Stripe event type: ${event.type}`)
+        }
+
+        res.status(200).send("Webhook received.")
+    } catch (err) {
+        console.error("Error processing Stripe webhook:", err)
+        res.status(500).send("Webhook processing error")
+    }
 })
 
 module.exports = {
     createCheckoutSession,
-    upgradeUser,
+    createManageSession,
+    handleStripeWebhook,
 }

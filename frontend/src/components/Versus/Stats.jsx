@@ -6,7 +6,6 @@ import { toast } from "react-toastify"
 import Spinner from "../Spinner/Spinner"
 
 import { AiOutlineClose } from "react-icons/ai"
-import { IoInformationCircle } from "react-icons/io5"
 
 const Stats = (props) => {
     const [stats1, setStats1] = useState(null)
@@ -79,9 +78,7 @@ const Stats = (props) => {
             <div className="close" onClick={handleClick}>
                 <AiOutlineClose />
             </div>
-            <div className="title">
-                <IoInformationCircle size={"1.35em"} /> Stats
-            </div>
+            <div className="title">Stats</div>
             <div className="headers">
                 <Row
                     left={

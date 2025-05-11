@@ -14,26 +14,72 @@ import {
     IoIosAddCircle,
     IoIosRemoveCircle,
 } from "react-icons/io"
-import Builder from "./Builder"
+import Analyzer from "./Analyzer"
 
 const Parlay = () => {
-    const { lines, setLines, parlayScope, setParlayScope } =
+    const { lines, setLines, parlayScope, setParlayScope, filters } =
         useContext(AppContext)
+    const {
+        minutesMin,
+        minutesMax,
+        home,
+        away,
+        win,
+        loss,
+        excludeBlowoutWins,
+        excludeBlowoutLosses,
+    } = filters
+
+    const applyFilters = (logs) => {
+        return logs.filter((log) => {
+            // Minutes Played
+            if (
+                (minutesMin !== null && log.minutes < minutesMin) ||
+                (minutesMax !== null && log.minutes > minutesMax)
+            )
+                return false
+
+            // Location (Home/Away)
+            if ((log.isHome && !home) || (!log.isHome && !away)) return false
+
+            // Outcome (Win/Loss)
+            if ((log.result === "W" && !win) || (log.result === "L" && !loss))
+                return false
+
+            // Blowouts
+            const scoreDiff = Math.abs(log.teamScore - log.opponentScore)
+            if (
+                (excludeBlowoutWins && log.result === "W" && scoreDiff >= 20) ||
+                (excludeBlowoutLosses && log.result === "L" && scoreDiff >= 20)
+            )
+                return false
+
+            return true
+        })
+    }
 
     const Line = (props) => {
         let hit = 0
         const total = props.line.logs.length
-        const timeSpan =
-            parlayScope === "l5"
-                ? 5
-                : parlayScope === "l10"
-                ? 10
-                : parlayScope === "l20"
-                ? 20
-                : total
+        let relevantLogs
 
-        // Determine the subset of logs based on timeSpan
-        const relevantLogs = props.line.logs.slice(0, timeSpan)
+        if (parlayScope === "p") {
+            relevantLogs = props.line.logs.filter((log) => log.isPlayoffs)
+        } else if (parlayScope === "s") {
+            relevantLogs = props.line.logs.filter((log) => !log.isPlayoffs)
+        } else {
+            const timeSpan =
+                parlayScope === "l5"
+                    ? 5
+                    : parlayScope === "l10"
+                    ? 10
+                    : parlayScope === "l20"
+                    ? 20
+                    : total
+
+            relevantLogs = props.line.logs.slice(0, timeSpan)
+        }
+        relevantLogs = applyFilters(relevantLogs)
 
         // Determine if the stat is categorical
         const isCategorical =
@@ -389,7 +435,7 @@ const Parlay = () => {
 
     return (
         <main className="parlay-container">
-            <Builder />
+            <Analyzer />
 
             {lines.length === 0 && (
                 <div className="message-container">
@@ -444,6 +490,16 @@ const Parlay = () => {
                                 onClick={() => setParlayScope("s")}
                             >
                                 Season
+                            </div>
+                            <div
+                                className={
+                                    parlayScope === "p"
+                                        ? "scope-item active"
+                                        : "scope-item"
+                                }
+                                onClick={() => setParlayScope("p")}
+                            >
+                                Playoffs
                             </div>
                         </div>
                     </div>

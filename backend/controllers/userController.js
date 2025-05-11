@@ -1,13 +1,14 @@
 const firebaseAdmin = require("../firebaseAdmin")
 const geoip = require("geoip-lite")
-const asycHandler = require("express-async-handler")
+const asyncHandler = require("express-async-handler")
 const User = require("../models/userModel")
 const Vote = require("../models/voteModel")
+const Line = require("../models/lineModel")
 const Players = require("../data/roster.json")
 
 let usersVisited = []
 
-const userVisit = asycHandler(async (req, res) => {
+const userVisit = asyncHandler(async (req, res) => {
     try {
         // log visit once per day / dyno reset
         if (!usersVisited.includes(req.ip)) {
@@ -31,7 +32,7 @@ const userVisit = asycHandler(async (req, res) => {
     }
 })
 
-const registerUser = asycHandler(async (req, res) => {
+const registerUser = asyncHandler(async (req, res) => {
     try {
         const authHeader = req.headers.authorization || ""
         const token = authHeader.split("Bearer ")[1]
@@ -70,72 +71,45 @@ const registerUser = asycHandler(async (req, res) => {
     }
 })
 
-const loginUser = asycHandler(async (req, res) => {
-    try {
-        const authHeader = req.headers.authorization || ""
-        const token = authHeader.split("Bearer ")[1]
-        if (!token)
-            return res.status(401).json({ message: "Missing Firebase token" })
-
-        const decoded = await firebaseAdmin.auth().verifyIdToken(token)
-        const { uid } = decoded
-
-        const user = await User.findOne({ uid })
-
-        if (!user) {
-            return res.status(404).json({ message: "User not found in DB" })
-        }
-
-        console.log(`[ACCOUNT] ${user.name} logged in | ${req.ip}`.green)
-
-        res.status(200).json({
-            name: user.name,
-            isPremium: user.isPremium,
-        })
-    } catch (error) {
-        console.error(error)
-        res.status(500).json("Login failed")
-    }
-})
-
-const getMe = asycHandler(async (req, res) => {
+const getMe = asyncHandler(async (req, res) => {
+    const user = req.user
     console.log(
-        `[ACCOUNT] ${req.user.name} requested their profile | ${req.ip}`.green
+        `[ACCOUNT] ${user.name} requested their profile | ${req.ip}`.green
     )
     let response = {}
 
     try {
+        // Set billing info
+        response.billingLabel = user.billingLabel || null
+        response.billingDate = user.billingDate
         // Set streak details
-        response.currentStreak = req.user.currentStreak
-        response.longestStreak = req.user.longestStreak
+        response.currentStreak = user.currentStreak
+        response.longestStreak = user.longestStreak
         response.voteCount = 0
 
         // Calculate and set GOAT details
-        if (req.user.dailyAnswers.length > 0) {
+        if (user.dailyAnswers.length > 0) {
             let lebronVotes = 0
             let jordanVotes = 0
-            req.user.dailyAnswers.forEach((dailyAnswersObject) => {
+
+            for (const dailyAnswersObject of user.dailyAnswers) {
                 if (dailyAnswersObject.answers) {
-                    dailyAnswersObject.answers.forEach((answer) => {
+                    for (const answer of dailyAnswersObject.answers) {
                         if (answer.questionIndex === 0) {
-                            if (answer.winner === "p1") {
-                                lebronVotes += 1
-                            } else if (answer.winner === "p2") {
-                                jordanVotes += 1
-                            }
+                            if (answer.winner === "p1") lebronVotes++
+                            else if (answer.winner === "p2") jordanVotes++
                         }
-                        // Count user daily answers
-                        response.voteCount += 1
-                    })
+                        response.voteCount++
+                    }
                 }
-            })
+            }
+
             response.goat = lebronVotes > jordanVotes ? "LeBron" : "Jordan"
-            response.goatVotes =
-                lebronVotes > jordanVotes ? lebronVotes : jordanVotes
+            response.goatVotes = Math.max(lebronVotes, jordanVotes)
         }
 
         // Count user votes
-        const voteIDs = req.user.votes
+        const voteIDs = user.votes || []
         response.voteCount += voteIDs.length
 
         if (voteIDs.length > 0) {
@@ -175,11 +149,7 @@ const getMe = asycHandler(async (req, res) => {
             response.favoritePlayerID = favoritePlayerId
             response.favoritePlayerVotes = winnerArray[0][1]
             response.favoritePlayer = playerMap.has(favoritePlayerId)
-                ? playerMap
-                      .get(favoritePlayerId)
-                      .split(" ")
-                      .splice(1, 2)
-                      .join(" ")
+                ? playerMap.get(favoritePlayerId).split(" ").slice(1).join(" ")
                 : "Unknown Player"
 
             // Use a mapping object for team names
@@ -223,6 +193,37 @@ const getMe = asycHandler(async (req, res) => {
             response.favoriteTeam = teamMap[favoriteTeamId] || "Unknown Team"
         }
 
+        // Most Analyzed Prop
+        const userLines = await Line.find({ uid: user.uid })
+
+        const propFrequency = {}
+
+        for (const line of userLines) {
+            if (line.personId && line.stat && line.name) {
+                const key = `${line.personId}-${line.stat}`
+                propFrequency[key] = (propFrequency[key] || 0) + 1
+            }
+        }
+
+        const mostFrequent = Object.entries(propFrequency).sort(
+            (a, b) => b[1] - a[1]
+        )[0]
+
+        if (mostFrequent) {
+            const [key] = mostFrequent
+            const [personId, stat] = key.split("-")
+
+            const topLine = userLines.find(
+                (line) =>
+                    line.personId.toString() === personId && line.stat === stat
+            )
+
+            response.favoritePropId = personId
+            response.favoritePropStat = stat
+            response.favoritePropPlayer =
+                topLine?.name?.split(" ").slice(1).join(" ") || "Unknown"
+        }
+
         res.status(200).json(response)
     } catch (error) {
         console.error(error)
@@ -233,6 +234,5 @@ const getMe = asycHandler(async (req, res) => {
 module.exports = {
     userVisit,
     registerUser,
-    loginUser,
     getMe,
 }

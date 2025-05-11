@@ -3,36 +3,47 @@ const { writeFileSync } = require("fs")
 const fetch = require("node-fetch")
 
 const currentSeason = "2024-25"
-const PlayerGameLogs =
-    "https://stats.nba.com/stats/playergamelogs?Season=" +
-    currentSeason +
-    "&SeasonType=Regular%20Season"
 
-// Fetch and update game logs
+const getPlayerGameLogs = async (seasonType) => {
+    console.log(`Fetching ${seasonType} game logs...`)
+
+    const url = `https://stats.nba.com/stats/playergamelogs?Season=${currentSeason}&SeasonType=${encodeURIComponent(
+        seasonType
+    )}`
+    const response = await fetch(url, {
+        headers: {
+            "User-Agent": "Mozilla/5.0",
+            "Accept-Language": "en-US,en;q=0.9",
+            Referer: "https://www.nba.com/",
+        },
+    })
+
+    if (!response.ok) throw new Error(`HTTP Error Status: ${response.status}`)
+
+    const data = await response.json()
+    return data.resultSets[0].rowSet
+}
+
 const updateGameLogs = async () => {
-    console.log("Fetching game logs...")
+    console.log("Starting update")
 
     try {
-        const response = await fetch(PlayerGameLogs, {
-            headers: {
-                "User-Agent": "Mozilla/5.0",
-                "Accept-Language": "en-US,en;q=0.9",
-                Referer: "https://www.nba.com/",
-            },
-        })
+        const regularSeasonLogs = await getPlayerGameLogs("Regular Season")
+        const playoffLogs = await getPlayerGameLogs("Playoffs")
 
-        if (!response.ok)
-            throw new Error(`HTTP Error Status: ${response.status}`)
-
-        const data = await response.json()
-        const gameLogs = data.resultSets[0].rowSet
+        // Attach seasonType directly onto each game array
+        const combinedLogs = [
+            ...regularSeasonLogs.map((log) => [...log, "Regular Season"]),
+            ...playoffLogs.map((log) => [...log, "Playoffs"]),
+        ]
 
         let logsObj = {}
-        for (log of gameLogs) {
-            if (logsObj[log[1]]) {
-                logsObj[log[1]].push(log)
+        for (const log of combinedLogs) {
+            const playerId = log[1] // Player ID is at index 1
+            if (logsObj[playerId]) {
+                logsObj[playerId].push(log)
             } else {
-                logsObj[log[1]] = [log]
+                logsObj[playerId] = [log]
             }
         }
 
@@ -49,5 +60,4 @@ const updateGameLogs = async () => {
     }
 }
 
-// Run script
 updateGameLogs()

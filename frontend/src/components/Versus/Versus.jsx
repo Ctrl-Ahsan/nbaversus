@@ -20,9 +20,12 @@ import {
     IoArrowForwardCircle,
 } from "react-icons/io5"
 import { GiPodium } from "react-icons/gi"
+import { getAuthToken } from "../../utils/getAuthToken"
+import { useNavigate } from "react-router-dom"
 
 const Versus = () => {
     const {
+        user,
         player1,
         setPlayer1,
         player2,
@@ -48,6 +51,7 @@ const Versus = () => {
         leaderboard,
         setLeaderboard,
     } = useContext(AppContext)
+    const navigate = useNavigate()
 
     const playerArray = roster.filteredPlayers
 
@@ -93,7 +97,7 @@ const Versus = () => {
     const bg2 = teamColors[player2.teamId] || defaultColor
 
     // handle clicks
-    const handleClick1 = () => {
+    const handleClick1 = async () => {
         if (!p1Wins && !p2Wins && !menuOpen) {
             setP1Wins(true)
             setSameP1(true)
@@ -102,8 +106,8 @@ const Versus = () => {
             setMenuOpen(false)
             setMenuClosed(false)
             if (round === 3) {
-                if (localStorage.getItem("user") !== null) {
-                    const token = JSON.parse(localStorage.getItem("user")).Token
+                if (user) {
+                    const token = await getAuthToken(user, navigate)
                     axios.post(
                         "/api/votes",
                         {
@@ -128,7 +132,7 @@ const Versus = () => {
             }
         }
     }
-    const handleClick2 = () => {
+    const handleClick2 = async () => {
         if (!p1Wins && !p2Wins && !menuOpen) {
             setP2Wins(true)
             setSameP2(true)
@@ -138,8 +142,8 @@ const Versus = () => {
             setMenuClosed(false)
 
             if (round === 3) {
-                if (localStorage.getItem("user") !== null) {
-                    const token = JSON.parse(localStorage.getItem("user")).Token
+                if (user) {
+                    const token = await getAuthToken(user, navigate)
                     axios.post(
                         "/api/votes",
                         {
@@ -174,6 +178,7 @@ const Versus = () => {
         width: 100%;
         max-height: -webkit-fill-available;
         position: relative;
+        overflow: hidden;
 
         @media screen and (min-width: 1080px) {
             height: 100%;
@@ -425,10 +430,12 @@ const Versus = () => {
                 -webkit-tap-highlight-color: transparent;
             }
             .reload {
-                @media (hover: hover) {
-                    :hover {
-                        color: #bb7a00 !important;
-                    }
+                font-size: 5em;
+                margin-bottom: 0.1em;
+                color: orange;
+
+                :hover {
+                    color: #bb7a00 !important;
                 }
                 :active {
                     scale: 0.9;
@@ -436,10 +443,8 @@ const Versus = () => {
                 }
             }
             .item {
-                @media (hover: hover) {
-                    :hover {
-                        color: #d7d7d7 !important;
-                    }
+                :hover {
+                    color: #d7d7d7 !important;
                 }
                 :active {
                     scale: 0.9;
@@ -451,15 +456,7 @@ const Versus = () => {
         return (
             <MenuContainer>
                 {(!p1Wins && !p2Wins) || round === 3 ? (
-                    <IoReloadCircle
-                        onClick={handleReload}
-                        className="reload"
-                        style={{
-                            color: "orange",
-                            fontSize: "5em",
-                            marginBottom: "0.1em",
-                        }}
-                    />
+                    <IoReloadCircle onClick={handleReload} className="reload" />
                 ) : (
                     <IoArrowForwardCircle
                         className={
@@ -468,11 +465,6 @@ const Versus = () => {
                                 : "reload"
                         }
                         onClick={handleNext}
-                        style={{
-                            color: "orange",
-                            fontSize: "5em",
-                            marginBottom: "0.1em",
-                        }}
                     />
                 )}
                 <IoInformationCircle

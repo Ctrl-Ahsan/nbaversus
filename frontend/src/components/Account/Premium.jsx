@@ -1,38 +1,32 @@
-import React, { useState } from "react"
-import { useNavigate } from "react-router-dom"
-import { auth } from "../../firebase"
-import { signOut } from "firebase/auth"
-import { toast } from "react-toastify"
 import "./Premium.css"
+import React, { useContext, useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
+import { toast } from "react-toastify"
+import { AppContext } from "../../AppContext"
 import { PiStarFourFill } from "react-icons/pi"
+import { getAuthToken } from "../../utils/getAuthToken"
 
-const Premium = () => {
+const Premium = (props) => {
     const [loading, setLoading] = useState(false)
+    const { user, isPremium } = useContext(AppContext)
     const navigate = useNavigate()
+
+    useEffect(() => {
+        if (isPremium) navigate("/account")
+    })
 
     const handleSubscribe = async () => {
         try {
             setLoading(true)
-            const currentUser = auth.currentUser
 
-            if (!currentUser) {
+            if (!user) {
                 toast.warn("Sign in to upgrade your account.")
                 setLoading(false)
                 navigate("/account")
                 return
             }
 
-            let token
-            try {
-                token = await currentUser.getIdToken(true) // force refresh
-            } catch (err) {
-                console.error("Token refresh failed:", err.message)
-                await signOut(auth)
-                localStorage.clear()
-                setLoading(false)
-                return
-            }
-
+            const token = await getAuthToken(user, navigate)
             const res = await fetch("/api/premium/checkout", {
                 method: "POST",
                 headers: {
@@ -120,7 +114,10 @@ const Premium = () => {
                         {loading ? (
                             <>
                                 Activating
-                                <span className="spinner" />
+                                <span
+                                    className="spinner"
+                                    style={{ marginLeft: "0.5em" }}
+                                />
                             </>
                         ) : (
                             "Try 7 days for $0"
@@ -413,8 +410,27 @@ const Premium = () => {
 
                 <p className="premium-note">
                     By starting your trial, you agree to auto-renewal at
-                    $4.99/month. See our <a href="/terms">Terms</a> and{" "}
-                    <a href="/privacy">Privacy Policy</a>.
+                    $4.99/month. See our{" "}
+                    <span
+                        className="link"
+                        onClick={() => {
+                            props.setToggleTerms(true)
+                            navigate("/account")
+                        }}
+                    >
+                        Terms
+                    </span>{" "}
+                    and{" "}
+                    <span
+                        className="link"
+                        onClick={() => {
+                            props.setTogglePrivacy(true)
+                            navigate("/account")
+                        }}
+                    >
+                        Privacy Policy
+                    </span>
+                    .
                 </p>
             </div>
         </div>
