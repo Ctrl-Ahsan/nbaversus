@@ -97,7 +97,6 @@ const Profile = () => {
 
     const handleLogout = async () => {
         await signOut(auth)
-        localStorage.removeItem("user")
         localStorage.removeItem("streak")
         localStorage.removeItem("voteTracking")
         localStorage.removeItem("lastUpdated")
@@ -144,7 +143,7 @@ const Profile = () => {
         if (!unlocked) {
             return (
                 <div className="panel locked-panel">
-                    <FaLock size={30} />
+                    <FaLock size={"2em"} />
                     <div className="locked-text">{caption}</div>
                 </div>
             )
@@ -210,9 +209,9 @@ const Profile = () => {
                         <div className="info">
                             <div className="profile-heading">Premium</div>
                             <div>
-                                <a onClick={handleManage} className="link">
+                                <span onClick={handleManage} className="link">
                                     Manage
-                                </a>
+                                </span>
                             </div>
                             <div className="second profile-heading">
                                 {billingLabel}

@@ -1,8 +1,6 @@
 const firebaseAdmin = require("../firebaseAdmin")
 const geoip = require("geoip-lite")
 const asyncHandler = require("express-async-handler")
-const Stripe = require("stripe")
-const stripe = Stripe(process.env.STRIPE_SECRET_KEY)
 const User = require("../models/userModel")
 const Vote = require("../models/voteModel")
 const Line = require("../models/lineModel")
@@ -70,34 +68,6 @@ const registerUser = asyncHandler(async (req, res) => {
     } catch (error) {
         console.error(error)
         res.status(500).json("Registration failed")
-    }
-})
-
-const loginUser = asyncHandler(async (req, res) => {
-    try {
-        const authHeader = req.headers.authorization || ""
-        const token = authHeader.split("Bearer ")[1]
-        if (!token)
-            return res.status(401).json({ message: "Missing Firebase token" })
-
-        const decoded = await firebaseAdmin.auth().verifyIdToken(token)
-        const { uid } = decoded
-
-        const user = await User.findOne({ uid })
-
-        if (!user) {
-            return res.status(404).json({ message: "User not found in DB" })
-        }
-
-        console.log(`[ACCOUNT] ${user.name} logged in | ${req.ip}`.green)
-
-        res.status(200).json({
-            name: user.name,
-            isPremium: user.isPremium,
-        })
-    } catch (error) {
-        console.error(error)
-        res.status(500).json("Login failed")
     }
 })
 
@@ -264,6 +234,5 @@ const getMe = asyncHandler(async (req, res) => {
 module.exports = {
     userVisit,
     registerUser,
-    loginUser,
     getMe,
 }

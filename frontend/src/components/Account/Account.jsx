@@ -48,31 +48,13 @@ const Account = () => {
                     }
                 )
             } catch (error) {
-                if (error.response?.status === 409) {
-                    // User already exists → fallback to login
-                    res = await axios.post(
-                        "/api/users/login",
-                        {},
-                        {
-                            headers: { Authorization: `Bearer ${token}` },
-                        }
-                    )
-                } else {
+                if (error.response?.status !== 409) {
                     console.error(error)
                     toast.error("Google sign-in failed")
+                    return
                 }
             }
 
-            const { name, isPremium } = res.data
-            localStorage.setItem(
-                "user",
-                JSON.stringify({
-                    name,
-                    email: user.email,
-                    isPremium,
-                    token,
-                })
-            )
             window.history.replaceState({}, "", "/account")
         } catch (error) {
             console.error(error)

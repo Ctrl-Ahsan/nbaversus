@@ -1,7 +1,6 @@
 import "./Login.css"
 import { useState } from "react"
 import { toast } from "react-toastify"
-import { FaSignInAlt } from "react-icons/fa"
 import axios from "axios"
 import { signInWithEmailAndPassword, signOut } from "firebase/auth"
 import { auth } from "../../firebase"
@@ -41,31 +40,9 @@ const Login = (props) => {
                 if (!user.emailVerified) {
                     toast.warn("Please verify your email address to continue.")
                     return await signOut(auth)
-                } else {
-                    const token = await user.getIdToken()
-
-                    const res = await axios.post(
-                        "/api/users/login",
-                        {},
-                        {
-                            headers: {
-                                Authorization: `Bearer ${token}`,
-                            },
-                        }
-                    )
-                    const { name, isPremium } = res.data
-
-                    localStorage.setItem(
-                        "user",
-                        JSON.stringify({
-                            name: name,
-                            email: user.email,
-                            isPremium: isPremium,
-                            token: token,
-                        })
-                    )
-                    window.history.replaceState({}, "", "/account")
                 }
+
+                window.history.replaceState({}, "", "/account")
             } catch (error) {
                 console.error(error)
                 const code = error.code

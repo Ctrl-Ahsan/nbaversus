@@ -27,7 +27,6 @@ const { analyzeLine, getLineUsage } = require("./controllers/lineController")
 // user routes
 router.post("/users/visit", optionalAuth, userVisit)
 router.post("/users", registerUser)
-router.post("/users/login", loginUser)
 router.get("/users/me", protect, getMe)
 
 // vote routes

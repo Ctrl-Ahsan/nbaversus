@@ -16,11 +16,11 @@ export const AppContextProvider = ({ children }) => {
             if (firebaseUser && firebaseUser.emailVerified) {
                 setUser(firebaseUser)
                 const tokenResult = await getIdTokenResult(firebaseUser, true) // force refresh
+                const token = tokenResult.token
                 const premiumClaim = !!tokenResult.claims.premium
                 setIsPremium(premiumClaim)
 
                 if (!premiumClaim) {
-                    const token = tokenResult.token
                     const res = await axios.get("/api/lines/usage", {
                         headers: {
                             Authorization: `Bearer ${token}`,
@@ -28,10 +28,32 @@ export const AppContextProvider = ({ children }) => {
                     })
                     setLinesRemaining(res.data)
                 }
+
+                // Log visit (logged-in user)
+                try {
+                    await axios.post(
+                        "/api/users/visit",
+                        {},
+                        {
+                            headers: {
+                                Authorization: `Bearer ${token}`,
+                            },
+                        }
+                    )
+                } catch (error) {
+                    console.error("Failed to log visit:", error)
+                }
             } else {
                 setUser(null)
                 setIsPremium(false)
                 setLinesRemaining(0)
+
+                // Log visit (anonymous user)
+                try {
+                    await axios.post("/api/users/visit")
+                } catch (error) {
+                    console.error("Failed to log visit:", error)
+                }
             }
             setUserLoading(false)
         })

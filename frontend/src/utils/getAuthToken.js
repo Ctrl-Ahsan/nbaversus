@@ -14,6 +14,9 @@ export const getAuthToken = async (user, navigate) => {
         console.error("Token fetch failed:", err)
         toast.error("Session expired. Please sign in again.")
         await signOut(auth)
+        localStorage.removeItem("streak")
+        localStorage.removeItem("voteTracking")
+        localStorage.removeItem("lastUpdated")
         navigate("/account")
     }
 }

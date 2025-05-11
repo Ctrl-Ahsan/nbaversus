@@ -20,9 +20,12 @@ import {
     IoArrowForwardCircle,
 } from "react-icons/io5"
 import { GiPodium } from "react-icons/gi"
+import { getAuthToken } from "../../utils/getAuthToken"
+import { useNavigate } from "react-router-dom"
 
 const Versus = () => {
     const {
+        user,
         player1,
         setPlayer1,
         player2,
@@ -48,6 +51,7 @@ const Versus = () => {
         leaderboard,
         setLeaderboard,
     } = useContext(AppContext)
+    const navigate = useNavigate()
 
     const playerArray = roster.filteredPlayers
 
@@ -93,7 +97,7 @@ const Versus = () => {
     const bg2 = teamColors[player2.teamId] || defaultColor
 
     // handle clicks
-    const handleClick1 = () => {
+    const handleClick1 = async () => {
         if (!p1Wins && !p2Wins && !menuOpen) {
             setP1Wins(true)
             setSameP1(true)
@@ -102,8 +106,8 @@ const Versus = () => {
             setMenuOpen(false)
             setMenuClosed(false)
             if (round === 3) {
-                if (localStorage.getItem("user") !== null) {
-                    const token = JSON.parse(localStorage.getItem("user")).Token
+                if (user) {
+                    const token = await getAuthToken(user, navigate)
                     axios.post(
                         "/api/votes",
                         {
@@ -128,7 +132,7 @@ const Versus = () => {
             }
         }
     }
-    const handleClick2 = () => {
+    const handleClick2 = async () => {
         if (!p1Wins && !p2Wins && !menuOpen) {
             setP2Wins(true)
             setSameP2(true)
@@ -138,8 +142,8 @@ const Versus = () => {
             setMenuClosed(false)
 
             if (round === 3) {
-                if (localStorage.getItem("user") !== null) {
-                    const token = JSON.parse(localStorage.getItem("user")).Token
+                if (user) {
+                    const token = await getAuthToken(user, navigate)
                     axios.post(
                         "/api/votes",
                         {
@@ -174,6 +178,7 @@ const Versus = () => {
         width: 100%;
         max-height: -webkit-fill-available;
         position: relative;
+        overflow: hidden;
 
         @media screen and (min-width: 1080px) {
             height: 100%;

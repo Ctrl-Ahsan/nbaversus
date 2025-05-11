@@ -1,15 +1,20 @@
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useState, useRef, useContext } from "react"
 import "./Home.css"
 import { teamColors } from "../../config"
 import { GiGoat } from "react-icons/gi"
 import axios from "axios"
 import { toast } from "react-toastify"
+import { AppContext } from "../../AppContext"
+import { useNavigate } from "react-router-dom"
+import { getAuthToken } from "../../utils/getAuthToken"
 
 const Home = () => {
     const [versus, setVersus] = useState([])
     const [loading, setLoading] = useState(false)
+    const { user } = useContext(AppContext)
     const streakRef = useRef(parseInt(localStorage.getItem("streak")) || 0)
     const streakDivRef = useRef(null)
+    const navigate = useNavigate()
 
     useEffect(() => {
         setLoading(true)
@@ -19,8 +24,8 @@ const Home = () => {
     const fetchDailyQuestions = async () => {
         try {
             let response
-            if (localStorage.getItem("user") !== null) {
-                const token = JSON.parse(localStorage.getItem("user")).Token
+            if (user) {
+                const token = await getAuthToken(user, navigate)
                 response = await axios.get("/api/questions/daily", {
                     headers: { Authorization: "Bearer " + token },
                 })
@@ -97,7 +102,7 @@ const Home = () => {
         return date === yesterday.toISOString().split("T")[0]
     }
 
-    const handleVote = (questionIndex, winner) => {
+    const handleVote = async (questionIndex, winner) => {
         // Cast vote if same day otherwise refresh
         if (isToday(localStorage.getItem("lastUpdated"))) {
             // Increment streak on first vote of the day
@@ -109,8 +114,8 @@ const Home = () => {
             localStorage.setItem("voteTracking", JSON.stringify(updatedVotes)) // Save to local storage
 
             // Send vote
-            if (localStorage.getItem("user") !== null) {
-                const token = JSON.parse(localStorage.getItem("user")).Token
+            if (user) {
+                const token = await getAuthToken(user, navigate)
                 axios
                     .post(
                         "/api/questions/daily",
