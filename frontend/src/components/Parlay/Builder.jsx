@@ -596,7 +596,7 @@ const Builder = () => {
                     </div>
                 )}
             </div>
-            {!isPremium && linesRemaining !== 0 && (
+            {!isPremium && linesRemaining === 0 && (
                 <div className="caption">24h limit reached.</div>
             )}
         </>
