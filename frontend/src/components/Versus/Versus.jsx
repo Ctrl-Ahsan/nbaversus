@@ -430,10 +430,12 @@ const Versus = () => {
                 -webkit-tap-highlight-color: transparent;
             }
             .reload {
-                @media (hover: hover) {
-                    :hover {
-                        color: #bb7a00 !important;
-                    }
+                font-size: 5em;
+                margin-bottom: 0.1em;
+                color: orange;
+
+                :hover {
+                    color: #bb7a00 !important;
                 }
                 :active {
                     scale: 0.9;
@@ -441,10 +443,8 @@ const Versus = () => {
                 }
             }
             .item {
-                @media (hover: hover) {
-                    :hover {
-                        color: #d7d7d7 !important;
-                    }
+                :hover {
+                    color: #d7d7d7 !important;
                 }
                 :active {
                     scale: 0.9;
@@ -456,15 +456,7 @@ const Versus = () => {
         return (
             <MenuContainer>
                 {(!p1Wins && !p2Wins) || round === 3 ? (
-                    <IoReloadCircle
-                        onClick={handleReload}
-                        className="reload"
-                        style={{
-                            color: "orange",
-                            fontSize: "5em",
-                            marginBottom: "0.1em",
-                        }}
-                    />
+                    <IoReloadCircle onClick={handleReload} className="reload" />
                 ) : (
                     <IoArrowForwardCircle
                         className={
@@ -473,11 +465,6 @@ const Versus = () => {
                                 : "reload"
                         }
                         onClick={handleNext}
-                        style={{
-                            color: "orange",
-                            fontSize: "5em",
-                            marginBottom: "0.1em",
-                        }}
                     />
                 )}
                 <IoInformationCircle

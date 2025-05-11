@@ -84,10 +84,6 @@ const Reset = (props) => {
                 <div className="form-item">
                     <div
                         className="subtitle link"
-                        style={{
-                            textAlign: "center",
-                            cursor: "pointer",
-                        }}
                         onClick={() => props.setToggleReset(false)}
                     >
                         Back to Login
