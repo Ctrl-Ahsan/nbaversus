@@ -9,7 +9,7 @@ export const AppContextProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [isPremium, setIsPremium] = useState(false)
     const [userLoading, setUserLoading] = useState(true)
-    const [linesRemaining, setLinesRemaining] = useState(0)
+    const [linesRemaining, setLinesRemaining] = useState(null)
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
@@ -26,7 +26,7 @@ export const AppContextProvider = ({ children }) => {
                             Authorization: `Bearer ${token}`,
                         },
                     })
-                    setLinesRemaining(res.data)
+                    setLinesRemaining(res.data.linesRemaining)
                 }
 
                 // Log visit (logged-in user)
@@ -46,7 +46,7 @@ export const AppContextProvider = ({ children }) => {
             } else {
                 setUser(null)
                 setIsPremium(false)
-                setLinesRemaining(0)
+                setLinesRemaining(null)
 
                 // Log visit (anonymous user)
                 try {

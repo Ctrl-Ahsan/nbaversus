@@ -44,9 +44,7 @@ const analyzeLine = asyncHandler(async (req, res) => {
             })
 
             if (recentCount >= 25) {
-                return res
-                    .status(403)
-                    .json("Free user daily line limit reached")
+                return res.status(403).json("24h limit reached.")
             }
         }
 

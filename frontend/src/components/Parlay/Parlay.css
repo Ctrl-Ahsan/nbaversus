@@ -156,10 +156,10 @@
             background: #006c00;
         }
 
-        .timestamp {
+        .caption {
             color: grey;
             font-size: 0.75em;
-            margin-top: 10px;
+            margin-top: 0.5em;
         }
 
         .filters {
@@ -236,6 +236,7 @@
         }
 
         .submit {
+            height: 3.5em;
             display: flex;
             justify-content: center;
         }
@@ -266,6 +267,7 @@
         background-color: #0000007a;
         border-radius: 10px;
         height: 100%;
+        min-height: 20vh;
         width: 90%;
         margin-bottom: 1em;
 
