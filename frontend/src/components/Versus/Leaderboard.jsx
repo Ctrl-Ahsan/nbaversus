@@ -7,7 +7,6 @@ import Spinner from "../Spinner/Spinner"
 
 import { AiOutlineClose } from "react-icons/ai"
 import { FaCrown } from "react-icons/fa"
-import { GiPodium } from "react-icons/gi"
 
 const Leaderboard = (props) => {
     const [winners, setWinners] = useState([])
@@ -36,9 +35,7 @@ const Leaderboard = (props) => {
             <div className="close" onClick={handleClick}>
                 <AiOutlineClose />
             </div>
-            <div className="title">
-                <GiPodium /> Leaderboard
-            </div>
+            <div className="title">Leaderboard</div>
             <div className="headers">
                 <div>Rank</div>
                 <div></div>
