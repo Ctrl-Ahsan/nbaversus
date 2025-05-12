@@ -42,8 +42,4 @@
             margin-bottom: 0.1em;
         }
     }
-    .item:hover {
-        opacity: 0.8;
-        transition: opacity 0.3s;
-    }
 }
