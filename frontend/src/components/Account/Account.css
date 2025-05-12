@@ -129,6 +129,7 @@
     cursor: pointer;
     appearance: button;
     align-self: center;
+    -webkit-tap-highlight-color: transparent;
 
     @media screen and (min-width: 740px) {
         padding: 15px;
