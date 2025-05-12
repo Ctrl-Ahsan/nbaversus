@@ -32,6 +32,7 @@ const Account = () => {
     const provider = new GoogleAuthProvider()
     const handleGoogleSignIn = async () => {
         try {
+            setLoading(true)
             const result = await signInWithPopup(auth, provider)
             const user = result.user
             const token = await user.getIdToken()
@@ -50,15 +51,17 @@ const Account = () => {
             } catch (error) {
                 if (error.response?.status !== 409) {
                     console.error(error)
-                    toast.error("Google sign-in failed")
+                    toast.error("Google sign-in failed.")
                     return
                 }
             }
 
-            window.location.href = "/account"
+            window.history.replaceState({}, "", "/account")
         } catch (error) {
             console.error(error)
-            toast.error("Google sign-in failed")
+            toast.error("Google sign-in failed.")
+        } finally {
+            setLoading(false)
         }
     }
 
@@ -95,46 +98,45 @@ const Account = () => {
 
     return (
         <main className="account-container">
-            {userLoading ? (
+            {loading || userLoading ? (
                 <div className="spinner" style={{ fontSize: "5em" }}></div>
             ) : (
                 <div className="account-panel">
-                    {!loading && (
-                        <nav className="nav">
+                    <nav className="nav">
+                        <Link
+                            to="/account"
+                            className={`heading ${
+                                currentPath === "/account" ? "active" : ""
+                            }`}
+                        >
+                            <div className="headingText">Account</div>
+                        </Link>
+                        {!isPremium && (
                             <Link
-                                to="/account"
+                                to="/account/premium"
                                 className={`heading ${
-                                    currentPath === "/account" ? "active" : ""
-                                }`}
-                            >
-                                <div className="headingText">Account</div>
-                            </Link>
-                            {!isPremium && (
-                                <Link
-                                    to="/account/premium"
-                                    className={`heading ${
-                                        currentPath === "/account/premium"
-                                            ? "active"
-                                            : ""
-                                    }`}
-                                >
-                                    <div className="headingText">
-                                        <PiStarFourFill /> Premium
-                                    </div>
-                                </Link>
-                            )}
-                            <Link
-                                to="/account/support"
-                                className={`heading ${
-                                    currentPath === "/account/support"
+                                    currentPath === "/account/premium"
                                         ? "active"
                                         : ""
                                 }`}
                             >
-                                <div className="headingText">Support</div>
+                                <div className="headingText">
+                                    <PiStarFourFill /> Premium
+                                </div>
                             </Link>
-                        </nav>
-                    )}
+                        )}
+                        <Link
+                            to="/account/support"
+                            className={`heading ${
+                                currentPath === "/account/support"
+                                    ? "active"
+                                    : ""
+                            }`}
+                        >
+                            <div className="headingText">Support</div>
+                        </Link>
+                    </nav>
+
                     <Routes>
                         <Route index element={activeScreen} />
                         <Route

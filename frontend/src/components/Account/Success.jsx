@@ -1,25 +1,34 @@
-import { useEffect } from "react"
+import { useContext, useEffect } from "react"
 import { useNavigate, useSearchParams } from "react-router-dom"
 import { toast } from "react-toastify"
 import { auth } from "../../firebase"
 import { onAuthStateChanged, getIdTokenResult } from "firebase/auth"
+import { AppContext } from "../../AppContext"
 
 const Success = (props) => {
     const navigate = useNavigate()
+    const { user } = useContext(AppContext)
     const [searchParams] = useSearchParams()
 
     useEffect(() => {
+        props.setLoading(true)
+        if (!user) {
+            props.setLoading(false)
+            return navigate("/account")
+        }
         const sessionId = searchParams.get("session_id")
-        if (!sessionId) return navigate("/account")
+        if (!sessionId) {
+            props.setLoading(false)
+            return navigate("/account")
+        }
 
         let retries = 0
         let done = false
 
         const unsubscribe = onAuthStateChanged(auth, (user) => {
-            if (!user || done) return
+            if (done) return
 
             const checkPremium = async () => {
-                props.setLoading(true)
                 const tokenResult = await getIdTokenResult(user, true)
                 const isPremium = tokenResult.claims.premium
 
@@ -45,12 +54,7 @@ const Success = (props) => {
         return () => unsubscribe()
     }, [navigate, searchParams])
 
-    return (
-        <div
-            className="spinner"
-            style={{ marginLeft: "auto", marginRight: "auto", fontSize: "5em" }}
-        ></div>
-    )
+    return null
 }
 
 export default Success
