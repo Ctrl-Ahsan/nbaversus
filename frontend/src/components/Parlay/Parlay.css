@@ -273,7 +273,7 @@
         margin-bottom: 1em;
 
         @media screen and (min-width: 1080px) {
-            height: calc(90% + 2em);
+            height: calc(90% + 2.5em);
             margin-right: 1em;
             margin-bottom: 0;
         }
@@ -304,7 +304,7 @@
         @media screen and (min-width: 1080px) {
             margin-right: 1em;
             margin-bottom: 0;
-            max-height: calc(90% + 2em);
+            max-height: calc(90% + 2.5em);
         }
 
         .header {
@@ -370,6 +370,9 @@
                 color: #ff3333;
                 cursor: pointer;
                 transition: all 0.5s;
+                @media screen and (max-width: 540px) {
+                    margin-right: 0.5em;
+                }
             }
             .remove:hover {
                 color: #b51a1a;
