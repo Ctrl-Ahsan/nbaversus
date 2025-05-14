@@ -58,6 +58,79 @@ const Parlay = () => {
         })
     }
 
+    const calculateWeightedHitRate = () => {
+        let totalHits = 0
+        let totalAttempts = 0
+
+        lines.forEach((line) => {
+            let relevantLogs
+
+            if (parlayScope === "p") {
+                relevantLogs = line.logs.filter((log) => log.isPlayoffs)
+            } else if (parlayScope === "s") {
+                relevantLogs = line.logs.filter((log) => !log.isPlayoffs)
+            } else {
+                const timeSpan =
+                    parlayScope === "l5"
+                        ? 5
+                        : parlayScope === "l10"
+                        ? 10
+                        : parlayScope === "l20"
+                        ? 20
+                        : line.logs.length
+                relevantLogs = line.logs.slice(0, timeSpan)
+            }
+
+            relevantLogs = applyFilters(relevantLogs)
+
+            // Determine if the stat is categorical
+            const isCategorical = line.stat === "dd" || line.stat === "td"
+
+            let hit = 0
+
+            if (line.operator === "over") {
+                relevantLogs.forEach((entry) => {
+                    if (isCategorical) {
+                        if (entry.stat) hit++
+                    } else if (
+                        typeof entry.stat === "number" &&
+                        entry.stat > line.value
+                    ) {
+                        hit++
+                    }
+                })
+            } else if (line.operator === "under") {
+                relevantLogs.forEach((entry) => {
+                    if (isCategorical) {
+                        if (!entry.stat) hit++
+                    } else if (
+                        typeof entry.stat === "number" &&
+                        entry.stat < line.value
+                    ) {
+                        hit++
+                    }
+                })
+            }
+
+            totalHits += hit
+            totalAttempts += relevantLogs.length
+        })
+
+        if (totalAttempts === 0) return 0
+
+        return (totalHits / totalAttempts) * 100
+    }
+
+    const getHitRateColor = (hitRate) => {
+        if (hitRate >= 75) {
+            return "#76f660ba" // Green
+        } else if (hitRate >= 50) {
+            return "#ffff61b8"
+        } else {
+            return "#ff6c6cc1" // Red
+        }
+    }
+
     const Line = (props) => {
         let hit = 0
         const total = props.line.logs.length
@@ -501,6 +574,20 @@ const Parlay = () => {
                             >
                                 Playoffs
                             </div>
+                        </div>
+                        <div className="hit-rate-summary">
+                            {lines.length}{" "}
+                            {lines.length === 1 ? "Line" : "Lines"} |{" "}
+                            <span
+                                style={{
+                                    color: getHitRateColor(
+                                        calculateWeightedHitRate()
+                                    ),
+                                }}
+                            >
+                                {calculateWeightedHitRate().toFixed(1)}%
+                            </span>{" "}
+                            Hit Rate
                         </div>
                     </div>
                     <div className="lines">

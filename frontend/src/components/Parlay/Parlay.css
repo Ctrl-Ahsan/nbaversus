@@ -309,9 +309,11 @@
 
         .header {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             min-height: 5em;
+            padding-top: 0.5em;
             width: 100%;
             background-color: #000000a0;
             border-radius: 10px;
@@ -456,4 +458,13 @@
             }
         }
     }
+}
+
+.hit-rate-summary {
+    margin-top: 0.5em;
+    text-align: center;
+    font-size: 0.75em;
+    color: #ffffffb2; /* a little faded white */
+    font-weight: 500;
+    font-family: Roboto Condensed, Roboto, sans-serif;
 }
