@@ -46,7 +46,7 @@ const createCheckoutSession = asyncHandler(async (req, res) => {
             metadata: {
                 firebaseUID: user.uid,
             },
-            success_url: `${CLIENT_URL}/account/success?session_id={CHECKOUT_SESSION_ID}`,
+            success_url: `${CLIENT_URL}/account/success`,
             cancel_url: `${CLIENT_URL}/account/premium`,
         }
 
