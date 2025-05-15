@@ -33,8 +33,8 @@ const updateGameLogs = async () => {
 
         // Attach seasonType directly onto each game array
         const combinedLogs = [
-            ...regularSeasonLogs.map((log) => [...log, "Regular Season"]),
             ...playoffLogs.map((log) => [...log, "Playoffs"]),
+            ...regularSeasonLogs.map((log) => [...log, "Regular Season"]),
         ]
 
         let logsObj = {}
