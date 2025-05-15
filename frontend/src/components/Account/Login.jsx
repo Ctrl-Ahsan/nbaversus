@@ -1,7 +1,6 @@
 import "./Login.css"
 import { useState } from "react"
 import { toast } from "react-toastify"
-import axios from "axios"
 import { signInWithEmailAndPassword, signOut } from "firebase/auth"
 import { auth } from "../../firebase"
 
