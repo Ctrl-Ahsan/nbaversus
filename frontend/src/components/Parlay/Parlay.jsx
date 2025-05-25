@@ -320,12 +320,17 @@ const Parlay = () => {
         }
 
         // Helper function to determine the color class based on differential
-        const getColorClass = (diff, stat, operator) => {
+        const getColorClass = (diff, stat, operator, lineValue) => {
             if (diff === null) return ""
             if (operator === "under") diff *= -1
             if (diff < 0) return "red"
-            const threshold = differentialThresholds[stat] || 10 // Default threshold
-            if (diff >= threshold) return "green"
+
+            const rawThreshold = differentialThresholds[stat] || 10 // fallback if stat not listed
+
+            // Convert raw threshold to percentage threshold
+            const percentageThreshold = (rawThreshold / lineValue) * 100
+
+            if (diff >= percentageThreshold) return "green"
             return "yellow"
         }
 
@@ -333,17 +338,22 @@ const Parlay = () => {
         const formatDifferential = (diff) => {
             if (diff === null) return ""
             const fixedDiff = diff.toFixed(1)
-            return diff >= 0 ? `+${fixedDiff}` : `${fixedDiff}`
+            return diff >= 0 ? `+${fixedDiff}%` : `${fixedDiff}%`
         }
 
-        // Calculate differentials for High, Low, and Average
+        // Calculate percentage differentials for High, Low, and Average
         let highDiff = isCategorical
             ? null
-            : (high - props.line.value).toFixed(1)
-        let lowDiff = isCategorical ? null : (low - props.line.value).toFixed(1)
+            : ((high - props.line.value) / props.line.value) * 100
+
+        let lowDiff = isCategorical
+            ? null
+            : ((low - props.line.value) / props.line.value) * 100
+
         let averageDiff = isCategorical
             ? null
-            : (parseFloat(average) - props.line.value).toFixed(1)
+            : ((parseFloat(average) - props.line.value) / props.line.value) *
+              100
 
         return (
             <div className="line">
@@ -399,7 +409,8 @@ const Parlay = () => {
                                         className={getColorClass(
                                             parseFloat(highDiff),
                                             props.line.stat,
-                                            props.line.operator
+                                            props.line.operator,
+                                            props.line.value
                                         )}
                                     >
                                         (
@@ -417,7 +428,8 @@ const Parlay = () => {
                                         className={getColorClass(
                                             parseFloat(lowDiff),
                                             props.line.stat,
-                                            props.line.operator
+                                            props.line.operator,
+                                            props.line.value
                                         )}
                                     >
                                         (
@@ -435,7 +447,8 @@ const Parlay = () => {
                                         className={getColorClass(
                                             parseFloat(averageDiff),
                                             props.line.stat,
-                                            props.line.operator
+                                            props.line.operator,
+                                            props.line.value
                                         )}
                                     >
                                         (
