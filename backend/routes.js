@@ -39,7 +39,7 @@ router.post("/stats/career", getCareerStats)
 
 // line routes
 router.get("/lines/usage", protect, getLineUsage)
-router.post("/lines/analyze", protect, analyzeLine)
+router.post("/lines/analyze", optionalAuth, analyzeLine)
 
 // question routes
 router.post("/questions", admin, addQuestion)

@@ -38,9 +38,8 @@ const Builder = () => {
 
     const addLine = async () => {
         try {
-            if (!user) {
-                toast.warn("Sign in to use Parlay.")
-                navigate("/account")
+            if (!user && lines.length >= 1) {
+                toast.warn("Sign in to build multi-leg parlays.")
                 return
             }
 
@@ -64,7 +63,7 @@ const Builder = () => {
             }
             // Fetch game data
             setLoading(true)
-            const token = await getAuthToken(user, navigate)
+            const token = user ? await getAuthToken(user, navigate) : null
             const gameLogsResponse = await axios
                 .post(
                     "/api/lines/analyze",
@@ -77,9 +76,11 @@ const Builder = () => {
                         value: line.value,
                     },
                     {
-                        headers: {
-                            Authorization: `Bearer ${token}`,
-                        },
+                        headers: token
+                            ? {
+                                  Authorization: `Bearer ${token}`,
+                              }
+                            : {},
                     }
                 )
                 .catch((error) => {

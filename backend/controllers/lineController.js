@@ -23,7 +23,12 @@ const getLineUsage = asyncHandler(async (req, res) => {
 const analyzeLine = asyncHandler(async (req, res) => {
     try {
         const { personId, name, teamId, stat, operator, value } = req.body
-        const { uid, isPremium } = req.user
+        let uid = null
+        let isPremium = null
+        if (req.user) {
+            uid = req.user.uid
+            isPremium = req.user.isPremium
+        }
 
         if (!personId || !stat || !name || !operator) {
             return res.status(400).json("Invalid request")
@@ -37,7 +42,7 @@ const analyzeLine = asyncHandler(async (req, res) => {
         const gameLogs = processGameLogs(games, stat)
 
         // Enforce line limit for free users
-        if (!isPremium) {
+        if (uid && !isPremium) {
             const recentCount = await Line.countDocuments({
                 uid,
                 createdAt: { $gte: new Date(Date.now() - 24 * 60 * 60 * 1000) },
