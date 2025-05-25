@@ -347,7 +347,7 @@
             margin: 1em;
             padding: 1em;
             @media screen and (max-width: 540px) {
-                padding: 0.5em;
+                padding: 0.5em 0;
             }
 
             @media screen and (min-width: 720px) {
@@ -363,6 +363,7 @@
             .left {
                 display: flex;
                 align-items: center;
+                min-width: 10em;
             }
 
             .remove {
@@ -386,7 +387,7 @@
                 }
 
                 .name {
-                    font-size: 1.2em;
+                    font-size: 1.1em;
                     font-weight: 700;
                 }
 
@@ -420,7 +421,7 @@
             }
 
             .summary {
-                width: 7em;
+                width: 9em;
                 height: 4em;
                 display: flex;
                 flex-direction: column;
