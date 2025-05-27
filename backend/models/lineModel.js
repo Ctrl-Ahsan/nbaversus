@@ -2,7 +2,7 @@ const mongoose = require("mongoose")
 
 const lineSchema = new mongoose.Schema(
     {
-        uid: { type: String, required: true },
+        uid: { type: String },
         personId: { type: Number, required: true },
         name: { type: String, required: true },
         teamId: { type: Number },

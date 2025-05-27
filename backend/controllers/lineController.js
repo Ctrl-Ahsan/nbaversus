@@ -55,7 +55,7 @@ const analyzeLine = asyncHandler(async (req, res) => {
 
         // Save line to DB
         await Line.create({
-            uid,
+            uid: uid ? uid : null,
             personId,
             name,
             teamId,
