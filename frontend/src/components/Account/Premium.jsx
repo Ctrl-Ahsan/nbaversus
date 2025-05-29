@@ -63,7 +63,7 @@ const Premium = (props) => {
                     Upgrade to Premium
                 </h1>
                 <h2 className="premium-subtitle btn-shine">
-                    No ads. Unlimited lines. Advanced filters.
+                    Advanced tools. Unlimited lines. Real advantage.
                 </h2>
 
                 <p className="premium-description">
