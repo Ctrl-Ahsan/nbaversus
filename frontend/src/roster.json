@@ -1,5 +1,5 @@
 {
-    "timestamp": "5/27",
+    "timestamp": "5/29",
     "allPlayers": [
         {
             "id": "0",
@@ -330,7 +330,7 @@
             "name": "Austin Reaves",
             "personId": 1630559,
             "teamId": 1610612747,
-            "age": 26,
+            "age": 27,
             "height": "6'5\"",
             "weight": "197"
         },
@@ -852,7 +852,7 @@
             "name": "Colby Jones",
             "personId": 1641732,
             "teamId": 1610612764,
-            "age": 22,
+            "age": 23,
             "height": "6'6\"",
             "weight": "207"
         },
@@ -933,7 +933,7 @@
             "name": "Cui Yongxi",
             "personId": 1642385,
             "teamId": 1610612751,
-            "age": 21,
+            "age": 22,
             "height": "6'5\"",
             "weight": "190"
         },
@@ -1158,7 +1158,7 @@
             "name": "De'Anthony Melton",
             "personId": 1629001,
             "teamId": 1610612751,
-            "age": 26,
+            "age": 27,
             "height": "6'3\"",
             "weight": "200"
         },
@@ -3462,7 +3462,7 @@
             "name": "Markelle Fultz",
             "personId": 1628365,
             "teamId": 1610612758,
-            "age": 26,
+            "age": 27,
             "height": "6'4\"",
             "weight": "209"
         },
@@ -5176,7 +5176,7 @@
             "name": "Austin Reaves",
             "personId": 1630559,
             "teamId": 1610612747,
-            "age": 26,
+            "age": 27,
             "height": "6'5\"",
             "weight": "197"
         },
