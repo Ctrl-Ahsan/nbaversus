@@ -8,17 +8,19 @@ import "react-circular-progressbar/dist/styles.css"
 
 import { AppContext } from "../../AppContext"
 
-import { IoPersonAdd } from "react-icons/io5"
+import { IoPersonAdd, IoLockClosed } from "react-icons/io5"
 import {
     IoIosRemoveCircleOutline,
     IoIosAddCircle,
     IoIosRemoveCircle,
 } from "react-icons/io"
 import Analyzer from "./Analyzer"
+import { useNavigate } from "react-router-dom"
 
 const Parlay = () => {
-    const { lines, setLines, parlayScope, setParlayScope, filters } =
+    const { lines, setLines, parlayScope, setParlayScope, filters, isPremium } =
         useContext(AppContext)
+    const navigate = useNavigate()
     const {
         minutesMin,
         minutesMax,
@@ -126,6 +128,60 @@ const Parlay = () => {
             return "#76f660ba" // Green
         } else if (hitRate >= 50) {
             return "#ffff61b8"
+        } else {
+            return "#ff6c6cc1" // Red
+        }
+    }
+
+    const calculateWeightedAverageEdge = () => {
+        let weightedSum = 0
+        let totalLogs = 0
+
+        lines.forEach((line) => {
+            if (line.stat === "dd" || line.stat === "td") return
+
+            const timeSpan =
+                parlayScope === "l5"
+                    ? 5
+                    : parlayScope === "l10"
+                    ? 10
+                    : parlayScope === "l20"
+                    ? 20
+                    : line.logs.length
+
+            let relevantLogs =
+                parlayScope === "p"
+                    ? line.logs.filter((log) => log.isPlayoffs)
+                    : parlayScope === "s"
+                    ? line.logs.filter((log) => !log.isPlayoffs)
+                    : line.logs.slice(0, timeSpan)
+
+            relevantLogs = applyFilters(relevantLogs)
+
+            const stats = relevantLogs
+                .map((entry) => entry.stat)
+                .filter((stat) => typeof stat === "number")
+
+            if (stats.length === 0) return
+
+            const avg =
+                stats.reduce((acc, curr) => acc + curr, 0) / stats.length
+
+            let diff = ((avg - line.value) / line.value) * 100
+            if (line.operator === "under") diff *= -1
+
+            weightedSum += diff * stats.length
+            totalLogs += stats.length
+        })
+
+        return totalLogs > 0 ? weightedSum / totalLogs : 0
+    }
+
+    const getEdgeColor = (edge) => {
+        if (edge >= 25) {
+            return "#76f660ba" // Green
+        } else if (edge >= 10) {
+            return "#ffff61b8" // Yellow
         } else {
             return "#ff6c6cc1" // Red
         }
@@ -600,7 +656,35 @@ const Parlay = () => {
                             >
                                 {calculateWeightedHitRate().toFixed(1)}%
                             </span>{" "}
-                            Hit Rate
+                            Hit Rate |{" "}
+                            {isPremium ? (
+                                <span
+                                    style={{
+                                        color: getEdgeColor(
+                                            calculateWeightedAverageEdge()
+                                        ),
+                                    }}
+                                >
+                                    {calculateWeightedAverageEdge().toFixed(1)}%
+                                </span>
+                            ) : (
+                                <span
+                                    className="locked-edge"
+                                    onClick={() => navigate("/account/premium")}
+                                >
+                                    <IoLockClosed
+                                        style={{
+                                            verticalAlign: "middle",
+                                            fontSize: "0.9em",
+                                            cursor: "pointer",
+                                        }}
+                                    />
+                                    {"  "}
+                                </span>
+                            )}{" "}
+                            <span style={{ verticalAlign: "middle" }}>
+                                Edge
+                            </span>
                         </div>
                     </div>
                     <div className="lines">
