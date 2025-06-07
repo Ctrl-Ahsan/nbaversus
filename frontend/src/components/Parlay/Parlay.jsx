@@ -60,9 +60,9 @@ const Parlay = () => {
         })
     }
 
-    const calculateWeightedHitRate = () => {
-        let totalHits = 0
-        let totalAttempts = 0
+    const calculateHitRate = () => {
+        let totalRate = 0
+        let count = 0
 
         lines.forEach((line) => {
             let relevantLogs
@@ -85,7 +85,8 @@ const Parlay = () => {
 
             relevantLogs = applyFilters(relevantLogs)
 
-            // Determine if the stat is categorical
+            if (relevantLogs.length === 0) return
+
             const isCategorical = line.stat === "dd" || line.stat === "td"
 
             let hit = 0
@@ -114,13 +115,14 @@ const Parlay = () => {
                 })
             }
 
-            totalHits += hit
-            totalAttempts += relevantLogs.length
+            const hitRate = hit / relevantLogs.length
+            totalRate += hitRate
+            count++
         })
 
-        if (totalAttempts === 0) return 0
+        if (count === 0) return 0
 
-        return (totalHits / totalAttempts) * 100
+        return (totalRate * 100) / count
     }
 
     const getHitRateColor = (hitRate) => {
@@ -649,12 +651,10 @@ const Parlay = () => {
                             {lines.length === 1 ? "Line" : "Lines"} |{" "}
                             <span
                                 style={{
-                                    color: getHitRateColor(
-                                        calculateWeightedHitRate()
-                                    ),
+                                    color: getHitRateColor(calculateHitRate()),
                                 }}
                             >
-                                {calculateWeightedHitRate().toFixed(1)}%
+                                {calculateHitRate().toFixed(1)}%
                             </span>{" "}
                             Hit Rate |{" "}
                             {isPremium ? (
