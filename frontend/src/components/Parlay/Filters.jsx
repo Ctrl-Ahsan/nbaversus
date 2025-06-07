@@ -151,7 +151,7 @@ const Filters = () => {
                     <>
                         <button
                             class="sparkle-button"
-                            style={{ padding: "0.75em 1.5em" }}
+                            style={{ padding: "1em 1.5em" }}
                             onClick={() => navigate("/account/premium")}
                         >
                             <span class="spark"></span>

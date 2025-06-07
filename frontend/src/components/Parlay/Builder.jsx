@@ -30,6 +30,26 @@ const Builder = () => {
     })
 
     const onChange = (e) => {
+        if (e.target.value === "auto") {
+            if (!line.player?.personId) {
+                toast.warn("No player selected.")
+                return
+            }
+            if (isPremium) {
+                const auto = roster?.allPlayers?.find(
+                    (p) => p.personId === line.player?.personId
+                )?.autoStat
+
+                if (auto) {
+                    setLine((prev) => ({ ...prev, stat: auto }))
+                } else {
+                    toast.warn("Auto stat not found for this player.")
+                }
+                return
+            } else {
+                toast.warn("Upgrade to Premium to use Auto.")
+            }
+        }
         setLine((prevState) => ({
             ...prevState,
             [e.target.name]: e.target.value,
@@ -132,7 +152,21 @@ const Builder = () => {
     }
 
     const onSelect = (player) => {
-        setLine((prev) => ({ ...prev, player: player }))
+        setLine((prev) => {
+            const updated = { ...prev, player }
+
+            if (isPremium) {
+                const auto = roster?.allPlayers?.find(
+                    (p) => p.personId === player.personId
+                )?.autoStat
+
+                if (auto) {
+                    updated.stat = auto
+                }
+            }
+
+            return updated
+        })
     }
 
     const formatResult = (player) => {
@@ -211,6 +245,7 @@ const Builder = () => {
                         <option value={"stl+blk"}>Steals and Blocks</option>
                         <option value={"dd"}>Double Double</option>
                         <option value={"td"}>Triple Double</option>
+                        <option value={"auto"}>✦ Auto</option>
                     </select>
                 </div>
                 <div className="item" id="operator">
@@ -256,7 +291,8 @@ const Builder = () => {
             </div>
             <div className="submit">
                 {!loading && !userLoading ? (
-                    !user || isPremium || linesRemaining > 0 ? (
+                    (!user || isPremium || linesRemaining > 0) &&
+                    line.stat !== "auto" ? (
                         <button className="green" onClick={addLine}>
                             <div className="button-content">
                                 <div className="content">
@@ -269,7 +305,7 @@ const Builder = () => {
                         <>
                             <button
                                 class="sparkle-button"
-                                style={{ padding: "0.75em 1.5em" }}
+                                style={{ padding: "1em 1.5em" }}
                                 onClick={() => navigate("/account/premium")}
                             >
                                 <span class="spark"></span>
