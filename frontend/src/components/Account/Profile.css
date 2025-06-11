@@ -58,6 +58,11 @@
     .info {
         width: 5em;
     }
+    .player-name {
+        width: 5em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 
     .title {
         font-size: 1.5em;

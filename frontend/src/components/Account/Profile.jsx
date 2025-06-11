@@ -187,7 +187,9 @@ const Profile = () => {
                         </div>
                         <div className="info">
                             <div className="profile-heading">Favorite Prop</div>
-                            <div>{favoritePropPlayer}</div>
+                            <div className="player-name">
+                                {favoritePropPlayer}
+                            </div>
                             <div className="second profile-heading">Stat</div>
                             <div className="prop">
                                 {favoritePropStat?.toUpperCase()}
@@ -283,7 +285,7 @@ const Profile = () => {
                             <div className="profile-heading">
                                 Favorite Player
                             </div>
-                            <div>{favorite}</div>
+                            <div className="player-name">{favorite}</div>
                             <div className="second profile-heading">Votes</div>
                             {favoriteVotes}
                         </div>
