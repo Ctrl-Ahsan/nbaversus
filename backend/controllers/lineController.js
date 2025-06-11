@@ -67,8 +67,9 @@ const analyzeLine = asyncHandler(async (req, res) => {
         })
 
         console.log(
-            `[ACTIVITY][PROPS] Analysis requested for ${name} ${stat} ${operator} ${value} | ${req.ip}`
-                .green
+            `[ACTIVITY][PROPS] ${
+                req.user?.name ? req.user.name : "A user"
+            } analyzed ${name} ${stat} ${operator} ${value} | ${req.ip}`.green
         )
 
         res.status(200).json(gameLogs)
